@@ -1,7 +1,6 @@
 package com.growingnetwork.configuration;
 
 import com.amazonaws.auth.PropertiesFileCredentialsProvider;
-import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -26,15 +25,28 @@ public class ApplicationConfiguration {
         return new BCryptPasswordEncoder();
     }
     
+    /**
+     * Getting client with default credentials (from file: /user/.aws/config) 
+     */
     @Bean
     public AmazonS3Client amazonS3Client() {
         return (AmazonS3Client) AmazonS3ClientBuilder
                 .standard()
                 .withRegion(Regions.EU_WEST_2)
-//                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("",""))
-//                .withCredentials(new PropertiesFileCredentialsProvider(s3CredentialsPath))
                 .build();
     }
+    
+    /**
+     * With credentials from specified file
+     */
+//    @Bean
+//    public AmazonS3Client amazonS3Client() {
+//        return (AmazonS3Client) AmazonS3ClientBuilder
+//                .standard()
+//                .withRegion(Regions.EU_WEST_2)
+//                .withCredentials(new PropertiesFileCredentialsProvider(s3CredentialsPath))
+//                .build();
+//    }
     
     @Bean
     public ModelMapper modelMapper() {

@@ -1,0 +1,37 @@
+# Amazon S3 (credentials - optional)
+#amazonProperties:
+#  bucketName: growingnetwork
+#  credentials:
+#    path: /user/.aws/config
+
+spring:
+  profiles:
+    active: dev
+
+  # localhost OR Amazon RDS 
+  datasource:
+    url: jdbc:mysql://<url>:<port>/<name_db>
+    username: username
+    password: password
+
+  security:
+    jwt-secret:
+      ${random.uuid}
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: <>
+            client-secret: <>
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: username@gmail.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
