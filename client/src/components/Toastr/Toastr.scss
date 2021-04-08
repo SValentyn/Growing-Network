@@ -1,0 +1,40 @@
+.redux-toastr {
+  .bottom-right {
+    right: 40px;
+    bottom: 40px;
+    padding: 0;
+  }
+
+  .toastr {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: .8 !important;
+
+    &.rrt-message {
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      box-shadow: none;
+
+      .rrt-title {
+        display: none;
+      }
+
+      .rrt-text {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .rrt-no-message {
+    .rrt-middle-container {
+      margin-top: 0;
+    }
+  }
+}
