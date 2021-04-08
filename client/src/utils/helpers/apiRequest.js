@@ -3,14 +3,14 @@
 import axios from 'axios'
 import {Toastr} from '../toastr/Toastr'
 
+const DOMAIN = 'http://localhost:3000'
+// const DOMAIN = 'http://ec2-18-132-120-237.eu-west-2.compute.amazonaws.com:8080'
+const API_BASE_URL = '/api/v1'
+const SOCKET_URL = '/ws'
 const METHOD_GET = 'get'
 const METHOD_POST = 'post'
 const METHOD_PUT = 'put'
 const METHOD_DELETE = 'delete'
-const API_BASE_URL = '/api/v1'
-const SOCKET_URL = '/ws'
-const DOMAIN = 'http://ec2-18-132-120-237.eu-west-2.compute.amazonaws.com:8080'
-// const DOMAIN = 'http://localhost:8080'
 
 const setAuthToken = token => {
     if (token) {
