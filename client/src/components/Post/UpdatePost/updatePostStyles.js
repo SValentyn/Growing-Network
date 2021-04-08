@@ -8,12 +8,12 @@ const useStyles = makeStyles(theme => ({
         width: 550
     },
     header: {
-        padding: '8px 10px',
+        padding: '4px 6px',
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '4px 4px 0 0',
-        fontWeight: 900,
+        fontWeight: 300,
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
     },
     textContainer: {

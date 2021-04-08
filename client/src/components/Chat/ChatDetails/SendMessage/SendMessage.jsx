@@ -50,7 +50,7 @@ const SendMessage = ({authUser, chatId}) => {
                     value={value}
                     onChange={handleChange}
                     onKeyPress={handleKeyPress}
-                    placeholder="Send a message"
+                    placeholder="Write a message..."
                 />
             </Paper>
             <Tooltip title="Send">

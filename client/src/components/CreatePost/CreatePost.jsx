@@ -131,8 +131,8 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                             autoComplete="lastName"
                             name="lastName"
                             variant="outlined"
-                            placeholder={'\n What you\'d like to share, ' + firstName + '?'}
-                            rows="3"
+                            placeholder={'What you\'d like to share, ' + firstName + '?'}
+                            rows="2"
                             onChange={handleTextInputChange}
                             multiline
                             required

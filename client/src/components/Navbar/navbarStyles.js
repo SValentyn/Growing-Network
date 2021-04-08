@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
     link: {
         textDecoration: 'none',
-        color: 'white'
+        color: 'black'
     },
     searchContainer: {
         width: '300px',
@@ -68,7 +68,6 @@ const useStyles = makeStyles(theme => ({
             background: styleConstants.BTN_BG_HOVER
         },
         '&:active': {
-            top: 1,
             background: styleConstants.BTN_BG_ACTIVE,
             boxShadow: styleConstants.BTN_SHADOW_ACTIVE
         }

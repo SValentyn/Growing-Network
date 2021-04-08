@@ -13,12 +13,12 @@ const useStyles = makeStyles(() => ({
     }),
     gridItem: {
         display: 'flex',
-        border: '1px solid',
-        borderColor: 'rgb(126,126,127)',
+        // border: '1px solid',
+        // borderColor: 'rgb(227,227,227)',
         borderRadius: 4,
         margin: 10,
         minWidth: 300,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)'
+        // boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
     },
     friendInfo: {
         display: 'flex',

@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '4px 4px 0 0',
-        fontWeight: '900',
+        fontWeight: '500',
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
     },
     notification: {

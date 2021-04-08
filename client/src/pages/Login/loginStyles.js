@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         width: 440,
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)',
+        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
         padding: '20px 40px',
         display: 'flex',
         flexDirection: 'column',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     },
     link: {
         textDecoration: 'none',
-        color: styleConstants.CONTAINER_TEXT_COLOR,
+        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
         '&:hover': {
             textDecoration: 'underline'
         }

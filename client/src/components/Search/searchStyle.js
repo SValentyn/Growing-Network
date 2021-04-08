@@ -10,25 +10,22 @@ const useStyles = makeStyles(theme => ({
         cursor: 'pointer',
         color: 'black'
     },
-
     userPhoto: {
         borderRadius: '50%',
         width: 40,
         height: 40,
         margin: '5px 15px 5px 10px'
     },
-
     optionWrapper: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-
     searchInput: {
         '& .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]': {
             height: 45,
             '& .MuiAutocomplete-input': {
-                color: 'white',
+                color: 'black',
                 padding: '5px 0 5px 35px'
             }
         }
@@ -49,6 +46,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     searchIcon: {
+        color: 'black',
         width: theme.spacing(7),
         height: '100%',
         position: 'absolute',

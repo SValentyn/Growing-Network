@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
         backgroundColor: '#f5f6f7',
         borderBottom: '1px solid #dddfe2',
         borderRadius: '4px 4px 0 0',
-        fontWeight: '900',
+        fontWeight: '500',
         color: '#1c1e21'
     },
     avatarBg: props => ({

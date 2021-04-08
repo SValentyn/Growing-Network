@@ -5,7 +5,7 @@ const useStyles = makeStyles(() => ({
     header: {
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
         padding: '8px 10px',
-        fontWeight: 900,
+        fontWeight: 500,
         borderBottom: '1px solid rgb(188,188,189)',
         borderRadius: '4px 4px 0 0',
         paddingRight: 24,
