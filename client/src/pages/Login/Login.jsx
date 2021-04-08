@@ -11,12 +11,12 @@ import Preloader from '../../components/Preloader/Preloader'
 import {Toastr} from '../../utils/toastr/Toastr'
 import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpers/inputValidators'
 
-import usestyles from './loginStyles'
+import useStyles from './loginStyles'
 
-const googleLogo = 'static/google-icon.svg'
+const googleLogo = 'google-icon.svg'
 
 const Login = ({isAuthenticated, login, loading}) => {
-    const classes = usestyles()
+    const classes = useStyles()
     const inputStyleProps = {
         InputProps: {
             classes: {
