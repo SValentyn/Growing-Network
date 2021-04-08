@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +55,8 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "gender")
     private Gender gender;
     
-    @Column(name = "open_account")
+    @Column(name = "open_account", nullable = false)
+    @ColumnDefault("true")
     private Boolean openAccount;
     
     @Column(name = "last_activity_time")
