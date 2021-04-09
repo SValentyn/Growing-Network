@@ -5,8 +5,8 @@ import {get, isEmpty} from 'lodash'
 
 import Preloader from '../Preloader/Preloader'
 import Tile from '../Tile/Tile'
-import {getAvatarLink} from '../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../utils/helpers/formatters'
+import {getAvatarLink} from '../../utils/helpers/imageHelper'
+import {getFullName} from '../../utils/helpers/commonFormatter'
 
 import useStyles from './profileFieldStyles'
 
@@ -29,7 +29,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
             }
         } else {
             if (isEmpty(userPhotos)) {
-                return <p className={classes.notification}>You don't have photos</p>
+                return <p className={classes.notification}>You don&apos;t have photos</p>
             } else {
                 return listForRender.map(photo => <Tile imageSrc={get(photo, 'src')}
                                                         key={get(photo, 'id', '')}/>)
@@ -47,9 +47,9 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
             <div className={classes.container}>
                 <Typography className={classes.header} variant="subtitle1" component="div">
                     {friends
-                        ? <Fragment>Friends <span
+                        ? <Fragment>Friends – <span
                             className={classes.count}>{get(friends, 'length', '—')}</span></Fragment>
-                        : <Fragment>Photos <span
+                        : <Fragment>Photos – <span
                             className={classes.count}>{get(userPhotos, 'length', '—')}</span></Fragment>
                     }
                 </Typography>

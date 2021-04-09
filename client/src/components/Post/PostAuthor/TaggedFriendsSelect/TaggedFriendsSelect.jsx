@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import {ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
 
-import {getAvatarLink} from '../../../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../../../utils/helpers/formatters'
+import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../../utils/helpers/commonFormatter'
 
 import useStyles from './taggedFriendsSelectStyles'
 

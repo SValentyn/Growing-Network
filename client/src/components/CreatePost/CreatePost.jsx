@@ -21,7 +21,7 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import {Toastr} from '../../utils/toastr/Toastr'
 import TagFriendButton from './TagFriendButton/TagFriendButton'
 import {createPost, uploadImages} from '../../actions/post'
-import {getAvatarLink} from '../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink} from '../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../actions/friends'
 
 import useStyles from './createPostStyles'
@@ -152,7 +152,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                 </Grid>
                 <Grid container className={classes.toolsContainer}>
                     <Grid item xs={10}>
-                        <Button className={classes.button}>
+                        <Button className={classes.button} cursor="true">
                             <label htmlFor="file_upload" className={classes.label}>
                                 <CropOriginalOutlinedIcon className={classes.icon}/>
                                 <div className={classes.labelText}> Add image</div>

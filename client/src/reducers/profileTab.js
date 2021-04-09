@@ -1,4 +1,4 @@
-import {FRIEND_REQUEST_TAB_SELECTED, TAB_CHANGED, TAB_RESET} from '../utils/constants/actionsName'
+import {FRIEND_REQUEST_TAB_SELECTED, TAB_CHANGED, TAB_RESET} from '../utils/constants/actionConstants'
 
 const initialState = {
     selectedTab: 'timeline'

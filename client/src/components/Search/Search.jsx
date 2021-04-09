@@ -7,7 +7,7 @@ import {Avatar, CircularProgress, TextField} from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import SearchIcon from '@material-ui/icons/Search'
 
-import {getAvatarLink} from '../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink} from '../../utils/helpers/imageHelper'
 import {searchData} from '../../actions/search'
 import {throttlingWrapper} from '../../utils/helpers/throttle'
 

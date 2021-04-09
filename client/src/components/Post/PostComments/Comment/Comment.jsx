@@ -7,9 +7,9 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import {Avatar, Box, IconButton} from '@material-ui/core'
 
 import {deleteComment} from '../../../../actions/post'
-import {getDate} from '../../../../utils/date/getDate'
-import {getFullName} from '../../../../utils/helpers/formatters'
-import {getAvatarLink} from '../../../../utils/helpers/imageLinkHelpers'
+import {dateFormatter} from '../../../../utils/helpers/dateFormatter'
+import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 
 import useStyles from './commentStyles'
 
@@ -39,7 +39,7 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
                         </Link>
                         {message}
                     </p>
-                    <p className={classes.commentDate}>{getDate(date)}</p>
+                    <p className={classes.commentDate}>{dateFormatter(date)}</p>
                 </div>
             </Box>
             {showDeleteBtn &&

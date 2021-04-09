@@ -22,7 +22,7 @@ import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
 import TagFriendButton from './../../CreatePost/TagFriendButton/TagFriendButton'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../../actions/friends'
 
 import useStyles from './updatePostStyles'

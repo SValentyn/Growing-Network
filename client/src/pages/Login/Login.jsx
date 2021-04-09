@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import {login} from '../../actions/auth'
 import Preloader from '../../components/Preloader/Preloader'
 import {Toastr} from '../../utils/toastr/Toastr'
-import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpers/inputValidators'
+import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpers/inputValidator'
 
 import useStyles from './loginStyles'
 
@@ -140,7 +140,7 @@ const Login = ({isAuthenticated, login, loading}) => {
                         className={classNames(classes.button, classes.googleBtn)}
                         onClick={proceedToGoogleOauth}
                     >
-                        <img src={googleLogo} alt="google logo" className={classes.googleIcon}/> Sign in with Google
+                        <img src={googleLogo} alt="Google" className={classes.googleIcon}/> Sign in with Google
                     </Button>
                     <Grid container>
                         <Grid item xs>

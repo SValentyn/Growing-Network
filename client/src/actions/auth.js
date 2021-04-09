@@ -12,7 +12,7 @@ import {
     START_LOADING,
     STOP_LOADING,
     USER_LOADED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import {Toastr} from '../utils/toastr/Toastr'
 
 // Load User

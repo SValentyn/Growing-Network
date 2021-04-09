@@ -16,7 +16,7 @@ import {
     RESET_ACTIVE_FRIENDS,
     RESET_FRIEND_SUGGESTIONS,
     RESET_FRIENDS
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import {addPagedPayload} from '../utils/helpers/payloadAdapter'
 
 const initialState = {

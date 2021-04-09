@@ -7,9 +7,9 @@ import {Avatar, IconButton, Tooltip, Typography} from '@material-ui/core'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import Preloader from '../Preloader/Preloader'
-import {getAvatarLink} from '../../utils/helpers/imageLinkHelpers'
-import {getActiveTime} from '../../utils/date/getDate'
-import {getFullName} from '../../utils/helpers/formatters'
+import {getAvatarLink} from '../../utils/helpers/imageHelper'
+import {getActiveTime} from '../../utils/helpers/dateFormatter'
+import {getFullName} from '../../utils/helpers/commonFormatter'
 import {changeTab} from '../../actions/profileTab'
 
 import useStyles from './activeFriendsStyles'
@@ -40,7 +40,6 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
                                     <MailOutlineIcon/>
                                 </IconButton>
                             </Link>
-
                         </Tooltip>
                     </div>
                 )
@@ -53,7 +52,7 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
     return (
         <Fragment>
             <Typography className={classes.header} variant="subtitle1" component="div">
-                Active Friends <span className={classes.count}>{get(activeFriends, 'length', '—')}</span>
+                Active Friends – <span className={classes.count}>{get(activeFriends, 'length', '—')}</span>
             </Typography>
             {loadedContent}
         </Fragment>

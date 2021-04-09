@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {Avatar, IconButton, Input, Paper, Tooltip} from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 
-import {getAvatarLink} from '../../../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 import {sendMessage} from '../../../../actions/chat'
 
 import useStyles from './sendMessageStyles'
@@ -16,7 +16,7 @@ const SendMessage = ({authUser, chatId}) => {
     const handleChange = event => {
         setValue(event.target.value)
     }
-    
+
     const handleSubmit = () => {
         if (value) {
             sendMessage({chatId, text: value})

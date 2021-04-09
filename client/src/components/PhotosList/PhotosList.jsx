@@ -10,7 +10,7 @@ const PhotosList = ({userPhotos}) => {
 
     const photoComponents = userPhotos => {
         if (isEmpty(userPhotos)) {
-            return <p className={classes.notification}>You don't have photos</p>
+            return <p className={classes.notification}>You don&apos;t have photos</p>
         } else {
             return userPhotos.map(photo => <Tile imageSrc={get(photo, 'src')}
                                                  key={get(photo, 'id', '')}/>)
@@ -20,7 +20,7 @@ const PhotosList = ({userPhotos}) => {
     return (
         <div className={classes.container}>
             <Typography className={classes.header} variant="subtitle1" component="div">
-                Photos <span className={classes.count}>{get(userPhotos, 'length', '—')}</span>
+                Photos – <span className={classes.count}>{get(userPhotos, 'length', '—')}</span>
             </Typography>
             <Grid className={classes.gridContainer} container spacing={1}>
                 {photoComponents(userPhotos)}

@@ -8,8 +8,8 @@ import SearchIcon from '@material-ui/icons/Search'
 
 import Preloader from '../../../Preloader/Preloader'
 import StatusIcon from '../../../StatusIcon/StatusIcon'
-import {getActiveTime} from '../../../../utils/date/getDate'
-import {getFullName} from '../../../../utils/helpers/formatters'
+import {getActiveTime} from '../../../../utils/helpers/dateFormatter'
+import {getFullName} from '../../../../utils/helpers/commonFormatter'
 
 import useStyles from './chatToolbarStyles'
 

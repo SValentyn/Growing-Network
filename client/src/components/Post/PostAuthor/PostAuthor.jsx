@@ -9,9 +9,9 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 
 import PostMenu from './PostMenu/PostMenu'
 import TaggedFriendsSelect from './TaggedFriendsSelect/TaggedFriendsSelect'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../../utils/helpers/formatters'
-import {getDate} from '../../../utils/date/getDate'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {dateFormatter} from '../../../utils/helpers/dateFormatter'
 
 import useStyles from './postAuthorStyles'
 
@@ -81,7 +81,7 @@ const PostAuthor = ({
                         {nextToUsernameLine}
                     </p>
                     {belowUsernameLine}
-                    <p className={classes.postDate}>{getDate(date)}</p>
+                    <p className={classes.postDate}>{dateFormatter(date)}</p>
                 </div>
             </Grid>
             <Grid>

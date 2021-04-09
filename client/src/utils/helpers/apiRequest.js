@@ -3,8 +3,8 @@
 import axios from 'axios'
 import {Toastr} from '../toastr/Toastr'
 
-const DOMAIN = 'http://localhost:3000'
 // const DOMAIN = 'http://ec2-18-132-120-237.eu-west-2.compute.amazonaws.com:8080'
+const DOMAIN = 'http://localhost:8080'
 const API_BASE_URL = '/api/v1'
 const SOCKET_URL = '/ws'
 const METHOD_GET = 'get'
@@ -31,17 +31,17 @@ const handleRequestError = error => {
     if (error.response) {
         const toastrMessage = error.response.data.message
             ? error.response.data.message
-            : error.response.data || 'Error occurred during request to server'
+            : error.response.data || 'Error occurred during request to server..'
         Toastr.error(toastrMessage)
         return error.response
     } else if (error.request) {
-        Toastr.error('Application is not responding, check your network connection')
+        Toastr.error('Application is not responding, check your network connection..')
         return error.request
     } else if (error.message) {
         Toastr.error(error.message)
         return error.message
     } else {
-        Toastr.error('Error occurred during request to server')
+        Toastr.error('Error occurred during request to server..')
     }
 }
 
@@ -137,7 +137,7 @@ class ApiRequest {
             }).catch(() => {
                 this.pendingTokenRequest = null
                 window.location.href = '/login'
-                return Promise.reject(new Error('Your credentials have expired, please log in'))
+                return Promise.reject(new Error('Access to the application has expired, please log in again.'))
             })
 
         this.pendingTokenRequest = req

@@ -47,6 +47,7 @@ const useStyles = makeStyles(() => ({
         width: 125,
         height: 125,
         border: '3px solid white',
+        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
         backgroundPosition: 'center',
         backgroundSize: 'cover'
     },

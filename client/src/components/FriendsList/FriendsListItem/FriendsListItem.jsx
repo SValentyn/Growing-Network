@@ -19,9 +19,9 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 
 import {confirmRequest, deleteFriend, deleteRequest} from '../../../actions/friends'
-import {getDateWithoutTime} from '../../../utils/date/getDate'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../../utils/helpers/formatters'
+import {getDateWithoutTime} from '../../../utils/helpers/dateFormatter'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './friendsListItemStyles'
 

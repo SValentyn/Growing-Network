@@ -21,8 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
     avatar: {
         height: styleConstants.AVATAR_SIZE_MID,
-        width: styleConstants.AVATAR_SIZE_MID,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)'
+        width: styleConstants.AVATAR_SIZE_MID
     },
     postInput: {
         borderStyle: 'none',
@@ -55,15 +54,13 @@ const useStyles = makeStyles(theme => ({
         padding: 0,
         margin: 5,
         background: styleConstants.BTN_BG_COLOR,
-        boxShadow: styleConstants.BTN_SHADOW,
         transition: '.2s ease-in-out',
         '&:hover:not(:active)': {
             background: styleConstants.BTN_BG_HOVER
         },
         '&:active': {
             top: 1,
-            background: styleConstants.BTN_BG_ACTIVE,
-            boxShadow: styleConstants.BTN_SHADOW_ACTIVE
+            background: styleConstants.BTN_BG_ACTIVE
         }
     },
     label: {

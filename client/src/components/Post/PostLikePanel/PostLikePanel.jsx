@@ -9,8 +9,8 @@ import {Avatar, IconButton, Tooltip} from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import {updateLikes} from '../../../actions/post'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../../utils/helpers/formatters'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './postLikeStyles'
 

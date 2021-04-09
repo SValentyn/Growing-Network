@@ -8,7 +8,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Preloader from '../../components/Preloader/Preloader'
 
 import {setNewPassword} from '../../actions/auth'
-import {areNoErrors, checkPasswordsMatch, validatePassword} from '../../utils/helpers/inputValidators'
+import {areNoErrors, checkPasswordsMatch, validatePassword} from '../../utils/helpers/inputValidator'
 
 import useStyles from './newPasswordStyles'
 

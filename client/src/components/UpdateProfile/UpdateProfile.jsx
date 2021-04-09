@@ -18,10 +18,10 @@ import {
 import classNames from 'classnames'
 
 import {PhotoCamera} from '@material-ui/icons'
-import {areNoErrors, validateEmail} from '../../utils/helpers/inputValidators'
+import {areNoErrors, validateEmail} from '../../utils/helpers/inputValidator'
 import {uploadSingleImage} from '../../actions/post'
 import {updateProfile} from '../../actions/auth'
-import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageHelper'
 
 import useStyles from './updateProfileStyles'
 

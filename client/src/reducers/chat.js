@@ -14,7 +14,7 @@ import {
     STOP_LOADING_CHATS,
     STOP_LOADING_MESSAGES,
     UNREAD_CHATS_RECEIVED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import {addPagedPayload, addPayloadIfNotInStore} from '../utils/helpers/payloadAdapter'
 import {orderBy} from 'lodash'
 

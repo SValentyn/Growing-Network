@@ -9,7 +9,7 @@ import {
     POSTS_START_LOADING,
     RESET_RECEIVED_POSTS,
     TAG_REMOVED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import {addPagedPayload} from '../utils/helpers/payloadAdapter'
 
 const initialState = {

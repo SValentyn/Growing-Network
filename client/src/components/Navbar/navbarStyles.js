@@ -62,17 +62,14 @@ const useStyles = makeStyles(theme => ({
         height: 'min-content',
         outline: 'none',
         background: styleConstants.BTN_BG_COLOR,
-        boxShadow: styleConstants.BTN_SHADOW,
         transition: '.2s ease-in-out',
         '&:hover:not(:active)': {
             background: styleConstants.BTN_BG_HOVER
         },
         '&:active': {
-            background: styleConstants.BTN_BG_ACTIVE,
-            boxShadow: styleConstants.BTN_SHADOW_ACTIVE
+            background: styleConstants.BTN_BG_ACTIVE
         }
     }
-
 }))
 
 export default useStyles

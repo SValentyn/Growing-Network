@@ -3,7 +3,7 @@ import {toastr} from 'react-redux-toastr'
 import ToastrContent from '../../components/Toastr/ToastrContent'
 
 const toastrDefaultOptions = {
-    timeOut: 3500,
+    timeOut: 3200,
     position: 'bottom-right',
     transitionIn: 'fadeIn',
     removeOnHover: true
@@ -25,7 +25,7 @@ export const Toastr = {
         showToastr({message, variant: 'success'})
     },
 
-    error: (message = 'Something goes wrong! Please try again later') => {
+    error: (message = 'Something goes wrong! Please try again later.') => {
         showToastr({
             message,
             variant: 'error'

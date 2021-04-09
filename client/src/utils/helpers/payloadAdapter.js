@@ -5,7 +5,7 @@ export const addPagedPayload = (currentArray, incomingArray, comparingKey) => {
 }
 
 export const addPayloadIfNotInStore = (currentArray, incomingItem, comparingKey) => {
-    let result = []
+    let result
 
     if (some(currentArray, {[comparingKey]: incomingItem[comparingKey]})) {
         result = [...currentArray]

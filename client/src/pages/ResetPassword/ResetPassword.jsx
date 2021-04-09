@@ -6,12 +6,12 @@ import {Avatar, Button, Container, CssBaseline, Paper, TextField, Typography} fr
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 import {resetPassword} from '../../actions/auth'
-import {validateEmail} from '../../utils/helpers/inputValidators'
+import {validateEmail} from '../../utils/helpers/inputValidator'
 
-import usestyles from './resetPasswordStyles'
+import useStyles from './resetPasswordStyles'
 
 const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
-    const classes = usestyles()
+    const classes = useStyles()
 
     const [formData, setFormData] = useState({
         email: '',
@@ -96,9 +96,9 @@ const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
                 ) : (
                     <Fragment>
                         <Typography component="h2" variant="body2" className={classes.center}>
-                            Check your email for a link to reset your password. If it does not appear within a few
-                            minutes, check your
-                            spam folder.
+                            E-mail sent!<br/>
+                            Check your email for a link to reset your password. If it doesn&apos;t show up within a few
+                            minutes, check your spam folder.
                         </Typography>
                         <Link to="/login" className={classes.linkBtn}>
                             <Button fullWidth variant="contained" color="primary" className={classes.submit}>

@@ -14,7 +14,7 @@ import {
     STOP_LOADING_CHATS,
     STOP_LOADING_MESSAGES,
     UNREAD_CHATS_RECEIVED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import apiRequest from '../utils/helpers/apiRequest'
 
 export const getAllChats = () => async dispatch => {

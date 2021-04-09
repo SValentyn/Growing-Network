@@ -16,7 +16,7 @@ import {
     RESET_ACTIVE_FRIENDS,
     RESET_FRIEND_SUGGESTIONS,
     RESET_FRIENDS
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import apiRequest from '../utils/helpers/apiRequest'
 import {Toastr} from '../utils/toastr/Toastr'
 
@@ -52,7 +52,7 @@ export const loadCurrentUserFriends = (username, page, size) => async dispatch =
             payload: friends
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -64,7 +64,7 @@ export const deleteFriend = friendUsername => async dispatch => {
             payload: deletedUser
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -76,7 +76,7 @@ export const confirmRequest = (requestId) => async dispatch => {
             payload: newFriend
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -88,7 +88,7 @@ export const deleteRequest = (requestId) => async dispatch => {
             payload: requestList
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -111,7 +111,7 @@ export const getFriendSuggestions = size => async dispatch => {
         dispatch({
             type: FRIEND_SUGGESTIONS_STOPPED_LOADING
         })
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -127,7 +127,7 @@ export const getIncomingFriendRequests = () => async dispatch => {
             payload: requests
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 

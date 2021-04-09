@@ -7,8 +7,7 @@ const useStyles = makeStyles((props) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: styleConstants.CONTAINER_BG_COLOR,
-        boxShadow: styleConstants.BTN_SHADOW
+        backgroundColor: styleConstants.CONTAINER_BG_COLOR
     })
 }))
 

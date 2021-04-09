@@ -4,7 +4,7 @@ import {Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from
 import BeenhereOutlinedIcon from '@material-ui/icons/BeenhereOutlined'
 import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined'
 
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 
 import useStyles from './tagFriendButtonStyles'
 

@@ -13,7 +13,7 @@ import {
     validateEmail,
     validatePassword,
     validateUsername
-} from '../../utils/helpers/inputValidators'
+} from '../../utils/helpers/inputValidator'
 
 import useStyles from './registerStyles'
 

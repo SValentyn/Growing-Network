@@ -16,9 +16,9 @@ const useStyles = makeStyles(() => ({
     avatarImg: {
         width: 175,
         height: 175,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)',
-        border: '3px solid',
-        borderColor: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
+        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
+        border: '4px solid',
+        borderColor: 'white',
         backgroundPosition: 'center',
         position: 'absolute',
         bottom: -30,
@@ -50,10 +50,11 @@ const useStyles = makeStyles(() => ({
         backgroundColor: 'white'
     },
     avatarName: {
-        fontSize: 26,
+        fontSize: 30,
+        fontWeight: 700,
         position: 'absolute',
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
-        bottom: 0,
+        bottom: -8,
         left: 240
     },
     tabContainer: {

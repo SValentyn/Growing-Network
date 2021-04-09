@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export const getDate = dateMilliseconds => {
+export const dateFormatter = dateMilliseconds => {
     return moment(dateMilliseconds).format('Do MMM YYYY [at] H:mm')
 }
 

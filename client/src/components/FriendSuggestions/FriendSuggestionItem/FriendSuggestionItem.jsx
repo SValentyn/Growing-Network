@@ -8,8 +8,8 @@ import PanToolOutlinedIcon from '@material-ui/icons/PanToolOutlined'
 import CallMadeOutlinedIcon from '@material-ui/icons/CallMadeOutlined'
 
 import {sendFriendRequest} from '../../../actions/friends'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../../utils/helpers/formatters'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './friendSuggestionItemStyles'
 

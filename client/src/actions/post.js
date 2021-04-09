@@ -10,7 +10,7 @@ import {
     POSTS_START_LOADING,
     RESET_RECEIVED_POSTS,
     TAG_REMOVED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 import {Toastr} from '../utils/toastr/Toastr'
 import apiRequest from '../utils/helpers/apiRequest'
 
@@ -65,7 +65,7 @@ export const updatePost = (postId, message, images, taggedFriends, isShownToEver
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -109,7 +109,7 @@ export const deletePost = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -121,7 +121,7 @@ export const updateLikes = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -137,7 +137,7 @@ export const createComment = (postId, comment) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -149,7 +149,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }
 
@@ -161,6 +161,6 @@ export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async 
             payload: {postId, post, tagOwnerUsername}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later')
+        Toastr.error('Something goes wrong! Please try again later...')
     }
 }

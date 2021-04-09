@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
         width: 48,
         height: 48,
         marginRight: 15,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)'
+        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
     },
     name: {
         paddingTop: 12,
@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
         width: 25,
         height: 25,
         marginLeft: 5,
-        boxShadow: '0 1px rgba(255,255,255,.2) inset,  0 3px 5px rgba(0,1,6,.5),  0 0 1px 1px rgba(0,1,6,.2)'
+        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
     }
 }))
 

@@ -7,8 +7,8 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import ManageFriendshipButton from '../ManageFriendshipButton/ManageFriendshipButton'
 import UpdateProfile from '../UpdateProfile/UpdateProfile'
 import {changeTab} from '../../actions/profileTab'
-import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageLinkHelpers'
-import {getFullName} from '../../utils/helpers/formatters'
+import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageHelper'
+import {getFullName} from '../../utils/helpers/commonFormatter'
 import styleConstants from '../../utils/constants/styleConstants'
 
 import useStyles from './profileCoverStyles'
@@ -35,16 +35,16 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
             <div className={classes.avatarBg}>
                 <Avatar className={classes.avatarImg} src={getAvatarLink(profileOwner)}/>
                 <p className={classes.avatarName}>{getFullName(profileOwner)}</p>
-                {isOwnProfile && (<Button
-                    variant="contained"
-                    onClick={handleModal}
-                    className={classes.editProfileBtn}
-                >
-                    <div className={classes.label}>
-                        <EditOutlinedIcon className={classes.icon}/>
-                        <div className={classes.labelText}> Edit profile</div>
-                    </div>
-                </Button>)}
+                {isOwnProfile && (
+                    <Button variant="contained"
+                            onClick={handleModal}
+                            className={classes.editProfileBtn}>
+                        <div className={classes.label}>
+                            <EditOutlinedIcon className={classes.icon}/>
+                            <div className={classes.labelText}> Edit profile</div>
+                        </div>
+                    </Button>)
+                }
                 {!isOwnProfile && <ManageFriendshipButton profileOwner={profileOwner}/>}
                 <Modal
                     disableAutoFocus

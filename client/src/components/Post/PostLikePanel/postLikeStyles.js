@@ -22,7 +22,6 @@ const useStyles = makeStyles(() => ({
         margin: 0,
         textAlign: 'left'
     }
-
 }))
 
 export default useStyles

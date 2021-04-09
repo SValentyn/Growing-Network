@@ -9,15 +9,13 @@ const useStyles = makeStyles(() => ({
         padding: 0,
         margin: 5,
         background: styleConstants.BTN_BG_COLOR,
-        boxShadow: styleConstants.BTN_SHADOW,
         transition: '.2s ease-in-out',
         '&:hover:not(:active)': {
             background: styleConstants.BTN_BG_HOVER
         },
         '&:active': {
             top: 1,
-            background: styleConstants.BTN_BG_ACTIVE,
-            boxShadow: styleConstants.BTN_SHADOW_ACTIVE
+            background: styleConstants.BTN_BG_ACTIVE
         }
     },
     label: {

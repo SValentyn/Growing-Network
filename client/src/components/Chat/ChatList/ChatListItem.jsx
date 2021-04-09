@@ -6,9 +6,9 @@ import {find, get} from 'lodash'
 import {Avatar, Badge, ListItem, ListItemAvatar, ListItemText, Typography} from '@material-ui/core'
 
 import Preloader from '../../Preloader/Preloader'
-import {getAvatarLink} from '../../../utils/helpers/imageLinkHelpers'
-import {getDateForChat} from '../../../utils/date/getDate'
-import {getFullName} from '../../../utils/helpers/formatters'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getDateForChat} from '../../../utils/helpers/dateFormatter'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './ChatListItemStyles'
 

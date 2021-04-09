@@ -10,7 +10,7 @@ import {
     START_LOADING,
     STOP_LOADING,
     USER_LOADED
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 
 const initialState = {
     isAuthenticated: false,

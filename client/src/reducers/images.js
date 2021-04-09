@@ -1,4 +1,4 @@
-import {PHOTOS_END_LOADING, PHOTOS_START_LOADING, USER_PHOTOS_RECEIVED} from '../utils/constants/actionsName'
+import {PHOTOS_END_LOADING, PHOTOS_START_LOADING, USER_PHOTOS_RECEIVED} from '../utils/constants/actionConstants'
 
 const initialState = {
     userPhotos: [],

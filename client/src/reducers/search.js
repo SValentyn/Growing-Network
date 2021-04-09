@@ -5,7 +5,7 @@ import {
     START_SEARCHING,
     STOP_LOADING_PROFILE,
     STOP_SEARCHING
-} from '../utils/constants/actionsName'
+} from '../utils/constants/actionConstants'
 
 const initialState = {
     searchResults: [],

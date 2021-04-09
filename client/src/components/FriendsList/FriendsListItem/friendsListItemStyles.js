@@ -13,12 +13,9 @@ const useStyles = makeStyles(() => ({
     }),
     gridItem: {
         display: 'flex',
-        // border: '1px solid',
-        // borderColor: 'rgb(227,227,227)',
         borderRadius: 4,
         margin: 10,
-        minWidth: 300,
-        // boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
+        minWidth: 300
     },
     friendInfo: {
         display: 'flex',
@@ -56,15 +53,13 @@ const useStyles = makeStyles(() => ({
         color: styleConstants.BTN_PRIMARY_TEXT_COLOR,
         textShadow: '0 -1px 2px rgba(0,0,0,.2)',
         background: styleConstants.BTN_BG_COLOR,
-        boxShadow: styleConstants.BTN_SHADOW,
         transition: '.2s ease-in-out',
         '&:hover:not(:active)': {
             background: styleConstants.BTN_BG_HOVER
         },
         '&:active': {
             top: 1,
-            background: styleConstants.BTN_BG_ACTIVE,
-            boxShadow: styleConstants.BTN_SHADOW_ACTIVE
+            background: styleConstants.BTN_BG_ACTIVE
         }
     }
 

@@ -5,9 +5,9 @@ import classnames from 'classnames'
 import {get} from 'lodash'
 import {Avatar, Link, Typography} from '@material-ui/core'
 
-import {getFullName} from '../../../../utils/helpers/formatters'
-import {getAvatarLink} from '../../../../utils/helpers/imageLinkHelpers'
-import {getDateForChat} from '../../../../utils/date/getDate'
+import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
+import {getDateForChat} from '../../../../utils/helpers/dateFormatter'
 
 import useStyles from './chatMessageStyles'
 
