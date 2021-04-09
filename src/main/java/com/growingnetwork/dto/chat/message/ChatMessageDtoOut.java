@@ -8,7 +8,7 @@ import lombok.Data;
 public class ChatMessageDtoOut {
     
     private Long id;
-    private String message;
+    private String text;
     private Long date;
     private UserLabelDtoOut author;
     private ChatDtoOut chat;

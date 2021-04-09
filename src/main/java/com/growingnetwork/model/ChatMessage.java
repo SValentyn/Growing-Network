@@ -29,7 +29,7 @@ public class ChatMessage implements DbEntity<Long> {
     private Long date;
     
     @ManyToOne
-    @JoinColumn(name = "fk_author")
+    @JoinColumn(name = "fk_author_username")
     private ApplicationUser author;
     
     @ManyToOne

@@ -29,14 +29,13 @@ public class ChatController {
         return ResponseEntity.ok(chatMapper.getAllChatsWithPrincipal());
     }
     
-    @GetMapping("/{participant}")
-    public ResponseEntity<ChatDtoOut> getChatWithParticipant(@PathVariable String participant) {
-        return ResponseEntity.ok(chatMapper.getChatWithParticipant(participant));
+    @GetMapping("/{participantUsername}")
+    public ResponseEntity<ChatDtoOut> getChatWithParticipant(@PathVariable String participantUsername) {
+        return ResponseEntity.ok(chatMapper.getChatWithParticipant(participantUsername));
     }
     
-    @PostMapping("/{participant}")
-    public ResponseEntity<ChatDtoOut> createChat(@PathVariable String participant) {
-        return ResponseEntity.ok(chatMapper.createChat(participant));
+    @PostMapping("/{participantUsername}")
+    public ResponseEntity<ChatDtoOut> createChat(@PathVariable String participantUsername) {
+        return ResponseEntity.ok(chatMapper.createChat(participantUsername));
     }
-    
 }

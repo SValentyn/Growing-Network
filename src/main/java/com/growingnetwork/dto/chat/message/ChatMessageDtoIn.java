@@ -6,6 +6,6 @@ import lombok.Data;
 public class ChatMessageDtoIn {
     
     private Long chatId;
-    private String message;
+    private String text;
     
 }
