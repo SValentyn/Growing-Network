@@ -1,20 +1,28 @@
-# Amazon S3 (credentials - optional)
-#amazonProperties:
-#  bucketName: growingnetwork
-#  credentials:
-#    path: /user/.aws/config
+server:
+  port: 5000
 
 spring:
+  profiles:
+    active: @spring.profiles.active@
 
-  # localhost OR Amazon RDS 
+  servlet:
+    multipart:
+      maxFileSize: 15MB
+      maxRequestSize: 15MB
+
   datasource:
-    url: jdbc:mysql://<url>:<port>/<name_db>
-    username: username
-    password: password
+    url: jdbc:mysql://aaj7867w1r4cg.cbrahwcrixlg.eu-west-2.rds.amazonaws.com:3306/ebdb?useUnicode=true&serverTimezone=UTC
+    username: # <username>
+    password: # <password>
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
+    show-sql: false
 
   security:
     jwt-secret:
@@ -23,17 +31,21 @@ spring:
       client:
         registration:
           google:
-            client-id: <>
-            client-secret: <>
+            client-id: 80984151153-9f91p0h7vtpivo52535okhirjrdom0ld.apps.googleusercontent.com # <client-id>
+            client-secret: T2uF0otx0tP-wPnqStyfRrDa                                            # <client-secret>
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: username@gmail.com
-    password: password
+    username: growingnetwork.service@gmail.com
+    password: # <password>
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+            
+amazonProperties:
+  endpointUrl: https://s3.eu-west-2.amazonaws.com
+  bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>

@@ -1,19 +1,4 @@
-# Amazon S3 (credentials - optional)
-#amazonProperties:
-#  bucketName: growingnetwork
-#  credentials:
-#    path: /user/.aws/config
-
 spring:
-  profiles:
-    active: dev
-
-  # localhost OR Amazon RDS 
-  datasource:
-    url: jdbc:mysql://<url>:<port>/<name_db>
-    username: username
-    password: password
-
   security:
     jwt-secret:
       ${random.uuid}
@@ -21,17 +6,21 @@ spring:
       client:
         registration:
           google:
-            client-id: <>
-            client-secret: <>
+            client-id: 80984151153-9f91p0h7vtpivo52535okhirjrdom0ld.apps.googleusercontent.com # <client-id>
+            client-secret: T2uF0otx0tP-wPnqStyfRrDa                                            # <client-secret>
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: username@gmail.com
-    password: password
+    username: growingnetwork.service@gmail.com
+    password: # <password>
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+            
+amazonProperties:
+  endpointUrl: https://s3.eu-west-2.amazonaws.com
+  bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>

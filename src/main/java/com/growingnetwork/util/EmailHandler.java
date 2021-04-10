@@ -1,6 +1,7 @@
 package com.growingnetwork.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailHandler {
     
-//    private static final String DOMAIN_NAME = "http://ec2-18-132-120-237.eu-west-2.compute.amazonaws.com:8080";
-    private static final String DOMAIN_NAME = "http://localhost:3000";
+    @Value("${spring.profiles.active}")
+    private static String profile;
+    
+    private static final String DOMAIN_NAME = ("prod".equals(profile)) ? "http://ec2-18-132-245-35.eu-west-2.compute.amazonaws.com" : "http://localhost:8080";
     private static final String CHANGE_PASSWORD_URL = DOMAIN_NAME + "/change_password/";
     private static final String SIGN_UP_CONFIRMATION_URL = DOMAIN_NAME + "/email/confirm/";
     private static final String SIGN_UP_LETTER_SUBJECT = "Congratulations! A new account has been registered at GrowingNetwork!";
