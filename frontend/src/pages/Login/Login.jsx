@@ -13,7 +13,7 @@ import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpe
 
 import useStyles from './loginStyles'
 
-const googleLogo = 'google-icon.svg'
+const googleLogo = '/static/images/google-icon.svg'
 
 const Login = ({isAuthenticated, login, loading}) => {
     const classes = useStyles()
