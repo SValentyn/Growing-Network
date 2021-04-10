@@ -43,10 +43,10 @@ public class UserController {
     }
     
     @PostMapping
-    public ResponseEntity<Token> signUp(@RequestBody UserRegistrationDtoIn userForm, HttpServletResponse resp) {
+    public ResponseEntity<Token> signUp(@RequestBody UserRegistrationDtoIn userForm, HttpServletResponse response) {
         Token token = userMapper.signUp(userForm);
         String refreshToken = userMapper.generateRefreshToken(userForm.getUsername());
-        cookieManager.addRefreshTokenCookie(resp, refreshToken);
+        cookieManager.addRefreshTokenCookie(response, refreshToken);
         return ResponseEntity.ok(token);
     }
     

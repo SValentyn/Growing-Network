@@ -31,10 +31,10 @@ public class AuthenticationController {
     }
     
     @PostMapping("/access-token")
-    public ResponseEntity<Token> getAccessJwt(@RequestBody UserCredentials credentials, HttpServletResponse resp) {
+    public ResponseEntity<Token> getAccessJwt(@RequestBody UserCredentials credentials, HttpServletResponse response) {
         Token token = authenticationMapper.getAccessToken(credentials);
         String newRefreshToken = authenticationMapper.generateRefreshToken(credentials.getUsername());
-        cookieManager.addRefreshTokenCookie(resp, newRefreshToken);
+        cookieManager.addRefreshTokenCookie(response, newRefreshToken);
         
         return ResponseEntity.ok(token);
     }
