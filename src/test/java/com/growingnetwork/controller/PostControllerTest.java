@@ -36,7 +36,6 @@ public class PostControllerTest {
                 .andExpect(jsonPath("$[*].owner.username").isNotEmpty())
                 .andExpect(jsonPath("$[*].comments").exists())
                 .andExpect(jsonPath("$[*].likes").exists());
-        
     }
     
 }

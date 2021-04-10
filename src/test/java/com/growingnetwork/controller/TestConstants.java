@@ -11,17 +11,17 @@ public class TestConstants {
     public static final String URL_CHATS_BASIC = "/api/v1/chats";
     public static final String URL_POSTS_BASIC = "/api/v1/posts";
     
-    public static final String USER_USERNAME = "admin0";
+    public static final String USER_USERNAME = "admin1";
     public static final String USER_PASSWORD = "000000";
-    public static final String USER_EMAIL = "admin0@test.com";
-    public static final String USER_FIRST_NAME = "admin";
-    public static final String USER_LAST_NAME = "admin";
-    public static final String USER_GENDER = "MALE";
-    public static final Long USER_BIRTH_DATE = 946684800000L;
+    public static final String USER_EMAIL = "growingnetwork.service@gmail.com";
+    public static final String USER_FIRST_NAME = "GN";
+    public static final String USER_LAST_NAME = "Service";
+    public static final String USER_GENDER = "OTHER";
+    public static final Long USER_BIRTH_DATE = 1618012800000L;
     public static final Boolean USER_OPEN_ACCOUNT = true;
-    public static final String USER_AVATAR_URL = "https://growingnetwork.s3.eu-west-2.amazonaws.com/1617873943952-1cb9.png";
-    public static final String USER_PROFILE_COVER_URL = "https://growingnetwork.s3.eu-west-2.amazonaws.com/1617873944017-67ae.png";
-    public static final String USER_EMAIL_CONFIRMATION_ID = "c76010d6-cb42-4df8-b232-ae6651676ea3";
+    public static final String USER_AVATAR_URL = "https://elasticbeanstalk-eu-west-2-160059151014.s3.eu-west-2.amazonaws.com/1618044116972-fefd.png";
+    public static final String USER_PROFILE_COVER_URL = "https://elasticbeanstalk-eu-west-2-160059151014.s3.eu-west-2.amazonaws.com/1618047482397-b43a.jpg";
+    public static final String USER_EMAIL_CONFIRMATION_ID = "90271bb8-3eae-4ebf-89dc-4bc75409ab65";
     
     public static final String OTHER_USER_USERNAME = "suggestFriend0";
     
