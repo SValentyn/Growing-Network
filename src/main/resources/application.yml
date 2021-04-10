@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: @spring.profiles.active@
+    
   servlet:
     multipart:
       maxFileSize: 15MB
