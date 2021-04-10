@@ -55,8 +55,7 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "gender")
     private Gender gender;
     
-    @Column(name = "open_account", nullable = false)
-    @ColumnDefault("true")
+    @Column(name = "open_account")
     private Boolean openAccount;
     
     @Column(name = "last_activity_time")
