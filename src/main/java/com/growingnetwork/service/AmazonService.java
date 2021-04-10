@@ -23,7 +23,7 @@ import java.util.UUID;
 @Slf4j
 public class AmazonService extends AbstractCrudService<Image, Long, ImageRepository> {
     
-    private static final String FILE_EXTENSION = ".png";
+    private static final String FILE_EXTENSION = ".jpg";
     
     private final AmazonS3Client s3client;
     
