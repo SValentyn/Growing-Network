@@ -153,7 +153,7 @@ const Navbar = ({
                     </Link>
                     <Typography variant="h6" className={classes.title}>
                         <Link to="/" className={classes.link}>
-                            GrowingNetwork
+                            Growing Network
                         </Link>
                     </Typography>
                     <div className={classes.searchContainer}>
