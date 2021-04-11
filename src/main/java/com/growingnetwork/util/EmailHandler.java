@@ -17,11 +17,14 @@ public class EmailHandler {
     private static final String CHANGE_PASSWORD_URL = DOMAIN_NAME + "/change_password/";
     private static final String SIGN_UP_CONFIRMATION_URL = DOMAIN_NAME + "/email/confirm/";
     private static final String SIGN_UP_LETTER_SUBJECT = "Congratulations! A new account has been registered at GrowingNetwork!";
-    private static final String SIGN_UP_LETTER_BODY = "Please follow this link to complete your registration: %s";
+    private static final String SIGN_UP_LETTER_BODY =
+            "Please follow this link to complete your registration: %s\n" +
+                    "This link is valid for half an hour. Hurry up!\n";
     private static final String CHANGE_PASSWORD_LETTER_SUBJECT = "Attention! Resetting your password in GrowingNetwork.";
-    private static final String CHANGE_PASSWORD_LETTER_BODY = "To reset your password, please follow this link: \n%s\n\n"
-            + "This link is valid for half an hour.\n"
-            + "If you didn't request to change your password, just ignore the email.";
+    private static final String CHANGE_PASSWORD_LETTER_BODY =
+            "To reset your password, please follow this link: %s\n\n" +
+                    "This link is valid for half an hour.\n" +
+                    "If you didn't request to change your password, just ignore the email.";
     
     private final JavaMailSender emailSender;
     
