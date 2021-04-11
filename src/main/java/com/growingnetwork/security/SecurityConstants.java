@@ -18,8 +18,8 @@ public class SecurityConstants {
     public static final String REFRESH_TOKEN_COOKIE_PATH = "/api/v1/auth/reissue-tokens/";
     public static final String USE_REFRESH_TOKEN_URL = "/api/v1/auth/reissue-tokens/**";
     
-    public static final long ACCESS_TOKEN_MAX_AGE = 1000L * 60 * 15;
-    public static final long REFRESH_TOKEN_MAX_AGE = 1000L * 60 * 60 * 24 * 30;
-    public static final long FORGOT_PASSWORD_TOKEN_MAX_AGE = 1000L * 60 * 30;
+    public static final long ACCESS_TOKEN_MAX_AGE = 1000L * 60 * 20; // 20 min
+    public static final long FORGOT_PASSWORD_TOKEN_MAX_AGE = 1000L * 60 * 30; // 30 min
+    public static final long REFRESH_TOKEN_MAX_AGE = 1000L * 60 * 60 * 24 * 30; 
     
 }
