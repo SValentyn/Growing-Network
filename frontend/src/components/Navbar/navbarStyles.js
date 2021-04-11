@@ -52,6 +52,10 @@ const useStyles = makeStyles(theme => ({
             display: 'none'
         }
     },
+    logoImage: {
+        width: '40px',
+        height: '40px'
+    },
     navbarButton: {
         margin: theme.spacing(1),
         position: 'relative',

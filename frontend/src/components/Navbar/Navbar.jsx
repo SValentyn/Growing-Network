@@ -9,7 +9,6 @@ import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle'
 import MoreIcon from '@material-ui/icons/MoreVert'
-import HomeIcon from '@material-ui/icons/Home'
 
 import Search from '../Search/Search'
 import ChatUpdateCenter from './ChatUpdateCenter/ChatUpdateCenter'
@@ -143,13 +142,7 @@ const Navbar = ({
             <AppBar position="static" className={classes.container}>
                 <Toolbar className={classes.toolbar}>
                     <Link to="/" className={classes.link}>
-                        <IconButton
-                            className={classes.navbarButton}
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu">
-                            <HomeIcon/>
-                        </IconButton>
+                        <img src={'/static/images/logo64.png'} alt={'Home'} className={classes.logoImage}/>
                     </Link>
                     <Typography variant="h6" className={classes.title}>
                         <Link to="/" className={classes.link}>
