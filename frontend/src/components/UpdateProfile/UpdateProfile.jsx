@@ -75,10 +75,10 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         if (dateMillis === null) {
             return 'dd.mm.yyyy'
         }
-        const d = new Date(dateMillis)
-        let month = '' + (d.getMonth() + 1)
-        let day = '' + d.getDate()
-        const year = d.getFullYear()
+        const date = new Date(dateMillis)
+        const year = date.getFullYear()
+        let month = '' + (date.getMonth() + 1)
+        let day = '' + date.getDate()
 
         if (month.length < 2) { month = '0' + month }
         if (day.length < 2) { day = '0' + day }
@@ -158,7 +158,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                     <IconButton
                         color="primary"
                         className={classNames(classes.uploadImgBtn, classes.uploadBgBtn)}
-                        aria-label="upload picture"
+                        aria-label="Upload"
                         component="span">
                         <PhotoCamera/>
                     </IconButton>
@@ -175,7 +175,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                         <IconButton
                             color="primary"
                             className={classNames(classes.uploadImgBtn, classes.uploadAvatarBtn)}
-                            aria-label="upload picture"
+                            aria-label="Upload"
                             component="span">
                             <PhotoCamera/>
                         </IconButton>
@@ -184,7 +184,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
             </div>
 
             <Typography variant="subtitle1" component="div" className={classes.header}>
-                Personal info
+                Personal information
             </Typography>
             <Grid container className={classes.sectionContainer}>
                 <Grid item xs={12} sm>
@@ -199,6 +199,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                         onChange={onChange}
                         {...inputStyleProps}
                     />
+                    <br/>
                     <TextField
                         className={classes.textInput}
                         name="lastName"
@@ -265,23 +266,21 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
             <Grid container alignContent="center" justify="flex-end" className={classes.btnSection}>
                 <Button
                     variant="contained"
-                    size="small"
                     onClick={handleClose}
-                    className={classes.summaryBtn}
+                    className={classes.buttonCancel}
                 >
-                    cancel
+                    Cancel
                 </Button>
+
                 <Button
                     type="submit"
                     variant="contained"
-                    size="large"
-                    className={classes.summaryBtnPrimary}
+                    className={classes.buttonSave}
                 >
-                    save changes
+                    Save changes
                 </Button>
             </Grid>
         </form>
-
     )
 }
 

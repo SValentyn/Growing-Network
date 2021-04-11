@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/core'
-import styleConstants from '../../../utils/constants/styleConstants'
+import styleConstants from '../../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     button: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
         }
     },
     label: {
-        padding: '5px 10px'
+        padding: '4px 10px'
     },
     icon: {
         verticalAlign: 'middle',
@@ -28,13 +28,15 @@ const useStyles = makeStyles(() => ({
     labelText: {
         verticalAlign: 'middle',
         display: 'inline-block',
+        paddingLeft: '6px',
         lineHeight: '18px'
     },
     checkedIcon: {
         paddingTop: 5,
         width: 18,
         height: 18,
-        color: '#8bc34a'
+        color: '#6fc700',
+        verticalAlign: 'middle'
     },
     userPic: {
         borderRadius: '50%',

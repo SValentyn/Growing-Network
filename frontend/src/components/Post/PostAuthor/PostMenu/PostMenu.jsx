@@ -122,7 +122,7 @@ const PostMenu = ({
                     Are you sure you want to permanently remove this post from GrowingNetwork?
                 </DialogContentText>
             </DialogContent>
-            <DialogActions>
+            <DialogActions className={classes.btnMenu}>
                 <Button className={classes.button} variant="contained" color="primary" onClick={handleModal}>
                     Cancel
                 </Button>

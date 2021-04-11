@@ -18,7 +18,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
 
         if (friends) {
             if (isEmpty(friends)) {
-                return <p className={classes.notification}>You have no friends</p>
+                return <p className={classes.notification}>You have no friends. Hurry up and find them!</p>
             } else {
                 return listForRender.map(friend =>
                     <Tile

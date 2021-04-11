@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         borderBottom: '1px solid #dddfe2',
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '5px 5px 0 0',
         fontWeight: 300,
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
     },
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     },
     postInput: {
         borderStyle: 'none',
-        borderRadius: 4,
+        borderRadius: 5,
         background: 'white',
         marginLeft: 5
     },
@@ -73,6 +73,7 @@ const useStyles = makeStyles(theme => ({
     labelText: {
         verticalAlign: 'middle',
         display: 'inline-block',
+        paddingLeft: '6px',
         lineHeight: '18px'
     },
     fileInput: {

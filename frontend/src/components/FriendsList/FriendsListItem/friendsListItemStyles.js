@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     }),
     gridItem: {
         display: 'flex',
-        borderRadius: 4,
+        borderRadius: 5,
         margin: 10,
         minWidth: 300
     },

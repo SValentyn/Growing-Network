@@ -5,7 +5,7 @@ import {get} from 'lodash'
 import Box from '@material-ui/core/Box'
 import {Avatar, Grid, IconButton, Tooltip, Typography} from '@material-ui/core'
 import PanToolOutlinedIcon from '@material-ui/icons/PanToolOutlined'
-import CallMadeOutlinedIcon from '@material-ui/icons/CallMadeOutlined'
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
 
 import {sendFriendRequest} from '../../../actions/friends'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
@@ -55,18 +55,19 @@ const FriendSuggestions = ({person, commonFriends}) => {
                 </Grid>
 
                 <Grid item xs={2}>
-                    {!requestSent ? (<Tooltip title="Send friend request">
-                        <IconButton className={classes.sendIcon} onClick={() => createFriendRequest(username)}
-                                    aria-label="Send friend request">
-                            <PanToolOutlinedIcon/>
-                        </IconButton>
-                    </Tooltip>) : (<CallMadeOutlinedIcon className={classes.requestSentIcon}/>)
+                    {!requestSent ? (
+                        <Tooltip title="Send friend request">
+                            <IconButton className={classes.sendIcon} onClick={() => createFriendRequest(username)}
+                                        aria-label="Send friend request">
+                                <PanToolOutlinedIcon/>
+                            </IconButton>
+                        </Tooltip>) : (<PersonAddOutlinedIcon className={classes.requestSentIcon}/>)
                     }
                 </Grid>
 
                 <Grid item xs={12} className={classes.commonFriendsWrapper}>
                     <Box display="flex">
-                        <span>{commonFriends.length} common friend{commonFriends.length > 1 && 's'}: </span>
+                        <span>{commonFriends.length} common friend{commonFriends.length > 1 && 's'}:&nbsp;</span>
                         {commonFriendAvatars} {commonFriendAvatars.length < commonFriends.length && '...'}
                     </Box>
                 </Grid>

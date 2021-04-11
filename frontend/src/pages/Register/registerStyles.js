@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     },
     textField: {
         background: 'white',
-        borderRadius: 4
+        borderRadius: 5
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     },
     cssOutlinedInput: {
         background: 'none',
-        borderRadius: 4,
+        borderRadius: 5,
         '&$cssFocused': {
             background: 'white'
         },

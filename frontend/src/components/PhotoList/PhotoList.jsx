@@ -1,11 +1,11 @@
 import React from 'react'
 import {Grid, Typography} from '@material-ui/core'
-import useStyles from './photosListStyles'
+import useStyles from './photoListStyles'
 import PropTypes from 'prop-types'
 import Tile from '../Tile/Tile'
 import {get, isEmpty} from 'lodash'
 
-const PhotosList = ({userPhotos}) => {
+const PhotoList = ({userPhotos}) => {
     const classes = useStyles()
 
     const photoComponents = userPhotos => {
@@ -29,8 +29,8 @@ const PhotosList = ({userPhotos}) => {
     )
 }
 
-PhotosList.propTypes = {
+PhotoList.propTypes = {
     userPhotos: PropTypes.array.isRequired
 }
 
-export default PhotosList
+export default PhotoList

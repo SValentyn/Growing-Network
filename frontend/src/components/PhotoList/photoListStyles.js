@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
         padding: '8px 10px',
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '5px 5px 0 0',
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR
     },

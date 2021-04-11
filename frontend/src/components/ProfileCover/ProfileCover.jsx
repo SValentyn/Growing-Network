@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Avatar, Button, Container, Modal, Tab, Tabs} from '@material-ui/core'
+import {Avatar, Container, IconButton, Modal, Tab, Tabs, Tooltip} from '@material-ui/core'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 import ManageFriendshipButton from '../ManageFriendshipButton/ManageFriendshipButton'
@@ -27,7 +27,7 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
     }
 
     const getStyle = (isActive) => {
-        if (isActive) return {color: styleConstants.BTN_PRIMARY_TEXT_COLOR}
+        if (isActive) return {color: styleConstants.CONTAINER_TEXT_COLOR}
     }
 
     return (
@@ -36,21 +36,17 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
                 <Avatar className={classes.avatarImg} src={getAvatarLink(profileOwner)}/>
                 <p className={classes.avatarName}>{getFullName(profileOwner)}</p>
                 {isOwnProfile && (
-                    <Button variant="contained"
-                            onClick={handleModal}
-                            className={classes.editProfileBtn}>
-                        <div className={classes.label}>
-                            <EditOutlinedIcon className={classes.icon}/>
-                            <div className={classes.labelText}> Edit profile</div>
-                        </div>
-                    </Button>)
+                    <Tooltip title="Edit profile">
+                        <IconButton className={classes.editProfileIcon} onClick={handleModal}
+                                    aria-label="Edit profile">
+                            <EditOutlinedIcon/>
+                        </IconButton>
+                    </Tooltip>)
                 }
                 {!isOwnProfile && <ManageFriendshipButton profileOwner={profileOwner}/>}
-                <Modal
-                    disableAutoFocus
-                    open={modalOpen}
-                    onClose={handleModal}
-                >
+                <Modal disableAutoFocus
+                       open={modalOpen}
+                       onClose={handleModal}>
                     <Container className={classes.modalContainer} maxWidth="md">
                         <UpdateProfile handleClose={handleModal}/>
                     </Container>
@@ -59,7 +55,7 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
             <div className={classes.tabContainer}>
                 <Tabs
                     value={selectedTab}
-                    TabIndicatorProps={{style: {background: styleConstants.BTN_PRIMARY_TEXT_COLOR}}}
+                    TabIndicatorProps={{style: {background: styleConstants.CONTAINER_TEXT_COLOR}}}
                     onChange={handleChangeTab}
                     aria-label="icon label tabs"
                     className={classes.submenu}>
@@ -68,16 +64,16 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
                         className={classes.submenuItem}
                         label="Timeline"
                         value="timeline"/>
-                    {isOwnProfile && <Tab
-                        style={getStyle(selectedTab === 'friend requests')}
-                        className={classes.submenuItem}
-                        label={'Friend requests'}
-                        value="friend requests"/>}
                     <Tab
                         style={getStyle(selectedTab === 'friends')}
                         className={classes.submenuItem}
                         label={'Friends'}
                         value="friends"/>
+                    {isOwnProfile && <Tab
+                        style={getStyle(selectedTab === 'friend requests')}
+                        className={classes.submenuItem}
+                        label={'Friend requests'}
+                        value="friend requests"/>}
                     <Tab
                         style={getStyle(selectedTab === 'photos')}
                         className={classes.submenuItem}

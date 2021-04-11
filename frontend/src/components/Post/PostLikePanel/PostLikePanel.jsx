@@ -66,7 +66,6 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
                     </IconButton>
                 </LikePanelTooltip>
                 {get(comments, 'length', '—')}
-
             </div>
         </Fragment>
     )

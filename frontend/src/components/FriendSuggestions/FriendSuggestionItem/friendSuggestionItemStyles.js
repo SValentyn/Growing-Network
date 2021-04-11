@@ -3,15 +3,14 @@ import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     container: {
-        borderBottom: '1px solid rgb(188,188,189)',
         padding: '5px 10px'
     },
     image: {
         borderRadius: '50%',
-        width: 48,
-        height: 48,
+        width: 42,
+        height: 42,
         marginRight: 15,
-        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)'
     },
     name: {
         paddingTop: 12,
@@ -37,7 +36,7 @@ const useStyles = makeStyles(() => ({
         width: 25,
         height: 25,
         marginLeft: 5,
-        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)'
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)'
     }
 }))
 

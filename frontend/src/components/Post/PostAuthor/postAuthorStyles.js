@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
         width: 40,
         height: 40,
         margin: '5px 15px 5px 10px',
-        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
     },
     userName: {
         margin: '5px 0 0'

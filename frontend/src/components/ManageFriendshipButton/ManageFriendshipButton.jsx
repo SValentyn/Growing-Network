@@ -36,23 +36,21 @@ const ManageFriendshipButton = ({profileOwner, confirmRequest, incomingFriendReq
 
     switch (friendshipStatus) {
         case ENUM_FRIENDS:
-            content = 'friends'
+            content = 'Your friend!'
             handlerFunction = () => {} // may be used for new functionality
             break
         case ENUM_NOT_FRIENDS:
-            content = 'send friend request'
+            content = 'Send friend request'
             handlerFunction = () => sendFriendRequest(username)
-                .then(() => setFriendshipStatus(ENUM_WAITING_FOR_APPROVAL),
-                    () => {})
+                .then(() => setFriendshipStatus(ENUM_WAITING_FOR_APPROVAL), () => {})
             break
         case ENUM_NEEDS_APPROVAL:
-            content = 'approve request'
+            content = 'Approve request'
             handlerFunction = () => confirmRequest(getFriendRequestId(username))
-                .then(() => setFriendshipStatus(ENUM_FRIENDS),
-                    () => {})
+                .then(() => setFriendshipStatus(ENUM_FRIENDS), () => {})
             break
         case ENUM_WAITING_FOR_APPROVAL:
-            content = 'request was sent'
+            content = 'Request was sent'
             handlerFunction = () => {} // may be used for new functionality
             break
         default:
@@ -60,11 +58,8 @@ const ManageFriendshipButton = ({profileOwner, confirmRequest, incomingFriendReq
     }
 
     return (
-        <Button
-            variant="contained"
-            className={classes.button}
-            onClick={handlerFunction}
-        >
+        <Button className={classes.button} variant="outlined"
+                onClick={handlerFunction}>
             {content}
         </Button>
     )

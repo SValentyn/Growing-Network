@@ -52,6 +52,7 @@ const Post = ({post}) => {
                 openUpdateWindow={openUpdateWindow}
                 handleToggleUpdate={handleToggleUpdate}
             />
+            {message && <p className={classes.postText}>{message}</p>}
             {image &&
             <Fragment>
                 <img src={get(image, 'src')} onClick={handleModal} className={classes.image} alt="Post"/>
@@ -66,7 +67,6 @@ const Post = ({post}) => {
                 </Dialog>
             </Fragment>
             }
-            {message && <p className={classes.postText}>{message}</p>}
             <PostLikePanel postId={id} likes={likes} comments={comments}
                            focusForCreatingComment={focusForCreatingComment}/>
             <PostComments postId={id} postOwner={owner} comments={comments} inputRef={inputRef}/>

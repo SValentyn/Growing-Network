@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {Container, Grid, Paper} from '@material-ui/core'
 
-import CreatePost from '../../components/CreatePost/CreatePost'
+import CreatePost from '../../components/Post/CreatePost/CreatePost'
 import PostFeed from '../../components/PostFeed/PostFeed'
 import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll'
 import ActiveFriends from '../../components/ActiveFriends/ActiveFriends'

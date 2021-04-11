@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     },
     cssOutlinedInput: {
         background: 'none',
-        borderRadius: 4,
+        borderRadius: 5,
         '&$cssFocused': {
             background: 'white'
         },

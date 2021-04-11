@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
         padding: '8px 10px',
         paddingRight: '24px',
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
+        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
         borderBottom: '1px solid #dddfe2',
-        borderRadius: '4px 4px 0 0',
-        fontWeight: '500',
-        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
+        borderRadius: '5px 5px 0 0',
+        fontWeight: '500'
     },
     notification: {
         textAlign: 'center',

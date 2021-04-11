@@ -2,14 +2,18 @@ import {makeStyles} from '@material-ui/core'
 import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
+    form: {
+        width: '100%',
+        marginTop: 100,
+    },
     header: {
-        padding: '8px 10px',
+        padding: '8px 20px',
         paddingRight: '24px',
         backgroundColor: '#f5f6f7',
         borderBottom: '1px solid #dddfe2',
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '10px 10px 0 0',
         fontWeight: '500',
-        color: '#1c1e21'
+        color: '#1c1e21',
     },
     avatarBg: props => ({
         backgroundImage: `url(${props.profileCover})`,
@@ -26,7 +30,7 @@ const useStyles = makeStyles(() => ({
         position: 'absolute',
         width: 20,
         height: 20,
-        backgroundColor: '#EAEAEA',
+        backgroundColor: '#eaeaea',
         color: styleConstants.PRIMARY_COLOR
     },
     uploadAvatarBtn: {
@@ -52,7 +56,7 @@ const useStyles = makeStyles(() => ({
         backgroundSize: 'cover'
     },
     sectionContainer: {
-        padding: '15px 20px 5px'
+        padding: '30px 34px 0px 22px'
     },
     textInput: {
         margin: '5px 10px'
@@ -62,14 +66,38 @@ const useStyles = makeStyles(() => ({
     },
     ageRadioBtn: {
         height: 30
-
     },
     btnSection: {
-        padding: '10px 20px'
+        padding: '0px 34px 30px'
     },
-    summaryBtn: {
-        padding: '5px 15px',
-        marginRight: 5
+    buttonCancel: {
+        position: 'relative',
+        color: styleConstants.BTN_PRIMARY_TEXT_COLOR,
+        textShadow: '0 -1px 2px rgba(0,0,0,.2)',
+        background: styleConstants.BTN_BG_COLOR,
+        transition: '.2s ease-in-out',
+        '&:hover:not(:active)': {
+            background: styleConstants.BTN_BG_HOVER
+        },
+        '&:active': {
+            top: 1,
+            background: styleConstants.BTN_BG_ACTIVE
+        }
+    },
+    buttonSave: {
+        position: 'relative',
+        marginLeft: 8,
+        color: styleConstants.BTN_PRIMARY_TEXT_COLOR,
+        textShadow: '0 -1px 2px rgba(0,0,0,.2)',
+        background: styleConstants.BTN_BG_COLOR,
+        transition: '.2s ease-in-out',
+        '&:hover:not(:active)': {
+            background: styleConstants.BTN_BG_HOVER
+        },
+        '&:active': {
+            top: 1,
+            background: styleConstants.BTN_BG_ACTIVE
+        }
     },
     summaryBtnPrimary: {
         padding: '5px 15px',

@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
         textAlign: 'left',
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR,
-        borderRadius: 4,
+        borderRadius: 5,
         boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
     },
     container: {

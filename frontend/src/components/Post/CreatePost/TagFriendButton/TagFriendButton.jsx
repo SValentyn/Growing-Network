@@ -4,7 +4,7 @@ import {Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from
 import BeenhereOutlinedIcon from '@material-ui/icons/BeenhereOutlined'
 import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined'
 
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 
 import useStyles from './tagFriendButtonStyles'
 
@@ -53,9 +53,9 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
             onClick={() => handleFriendTag(friend.userLabel)}
             key={friend.userLabel.username}
         >
-      <span>
-        {friend.isSelected && <BeenhereOutlinedIcon className={classes.checkedIcon}/>}
-      </span>&nbsp;
+            <span>
+                {friend.isSelected && <BeenhereOutlinedIcon className={classes.checkedIcon}/>}
+            </span>&nbsp;
             <img src={getAvatarLink(friend.userLabel)} alt={friend.userLabel.username} className={classes.userPic}/>
             <span>{friend.userLabel.firstName} {friend.userLabel.lastName}</span>
         </MenuItem>))

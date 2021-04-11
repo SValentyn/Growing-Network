@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     },
     createInput: {
         background: 'white',
-        borderRadius: 4
+        borderRadius: 5
     },
     footerText: {
         fontSize: 12,

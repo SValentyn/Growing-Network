@@ -25,11 +25,12 @@ const useStyles = makeStyles(() => ({
         left: 20,
         backgroundSize: 'cover'
     },
-    editProfileBtn: {
+    editProfileIcon: {
         position: 'absolute',
-        padding: '2px 4px',
         bottom: '5px',
-        right: '5px'
+        right: '5px',
+        padding: 12,
+        color: 'white'
     },
     label: {
         padding: 0
@@ -47,7 +48,9 @@ const useStyles = makeStyles(() => ({
     modalContainer: {
         padding: 0,
         margin: '50px auto',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderRadius: 10,
+        border: 'none'
     },
     avatarName: {
         fontSize: 30,
@@ -60,7 +63,8 @@ const useStyles = makeStyles(() => ({
     tabContainer: {
         display: 'flex',
         justifyContent: 'flex-end',
-        background: styleConstants.CONTAINER_HEADER_BG_COLOR
+        background: styleConstants.CONTAINER_HEADER_BG_COLOR,
+        borderRadius: '0 0 5px 5px'
     },
     submenu: {
         maxWidth: 635,
@@ -69,9 +73,9 @@ const useStyles = makeStyles(() => ({
         justifyContent: 'space-between'
     },
     submenuItem: {
-        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
+        minWidth: 120,
         fontSize: 14,
-        minWidth: 120
+        color: styleConstants.CONTAINER_TEXT_COLOR
     }
 }))
 

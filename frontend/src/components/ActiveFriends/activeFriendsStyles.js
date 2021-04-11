@@ -7,7 +7,7 @@ const useStyles = makeStyles(() => ({
         padding: '8px 10px',
         fontWeight: 500,
         borderBottom: '1px solid rgb(188,188,189)',
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '5px 5px 0 0',
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR
     },
@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
         width: 48,
         height: 48,
         marginRight: 15,
-        boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
     },
     userName: {
         margin: 'auto 0'

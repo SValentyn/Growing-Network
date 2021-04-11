@@ -18,11 +18,11 @@ import {
 import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
-import {Toastr} from '../../utils/toastr/Toastr'
+import {Toastr} from '../../../utils/toastr/Toastr'
 import TagFriendButton from './TagFriendButton/TagFriendButton'
-import {createPost, uploadImages} from '../../actions/post'
-import {getAvatarLink} from '../../utils/helpers/imageHelper'
-import {loadCurrentUserFriends} from '../../actions/friends'
+import {createPost, uploadImages} from '../../../actions/post'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {loadCurrentUserFriends} from '../../../actions/friends'
 
 import useStyles from './createPostStyles'
 
@@ -116,7 +116,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
     return (
         <div className={classes.container}>
             <Typography variant="subtitle1" component="div" className={classes.header}>
-                Create post
+                Post something interesting!
             </Typography>
             <form className={classes.form}>
                 <Grid container className={classes.textContainer}>

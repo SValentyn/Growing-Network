@@ -2,6 +2,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
     panel: {
+        textAlign: 'center',
         borderTop: '1px solid rgb(188,188,189)',
         borderBottom: '1px solid rgb(188,188,189)'
     },

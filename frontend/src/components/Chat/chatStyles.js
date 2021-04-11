@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         overflow: 'hidden'
     },
-
     chatList: {
         width: 350,
         flexBasis: 350,

@@ -9,8 +9,8 @@ import ProfileCover from '../../components/ProfileCover/ProfileCover'
 import ShortUserData from '../../components/ShortUserData/ShortUserData'
 import ProfileField from '../../components/ProfileField/ProfileField'
 import FriendsList from '../../components/FriendsList/FriendsList'
-import PhotosList from '../../components/PhotosList/PhotosList'
-import CreatePost from '../../components/CreatePost/CreatePost'
+import PhotoList from '../../components/PhotoList/PhotoList'
+import CreatePost from '../../components/Post/CreatePost/CreatePost'
 import PostFeed from '../../components/PostFeed/PostFeed'
 import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll'
 import Preloader from '../../components/Preloader/Preloader'
@@ -136,7 +136,7 @@ const ProfilePage = ({
                 {selectedTab === 'photos' &&
                 <Grid item sm={9}>
                     <Paper className={classes.paper}>
-                        <PhotosList userPhotos={userPhotos}/>
+                        <PhotoList userPhotos={userPhotos}/>
                     </Paper>
                 </Grid>
                 }

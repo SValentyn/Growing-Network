@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/core/styles'
-import styleConstants from '../../utils/constants/styleConstants'
+import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         borderBottom: '1px solid #dddfe2',
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '5px 5px 0 0',
         fontWeight: 500,
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
     },
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     postInput: {
         borderStyle: 'none',
-        borderRadius: 4,
+        borderRadius: 5,
         background: 'white',
         marginLeft: 5
     },
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     label: {
-        padding: '5px 10px'
+        padding: '4px 10px'
     },
     icon: {
         verticalAlign: 'middle',
@@ -71,6 +71,7 @@ const useStyles = makeStyles(theme => ({
     labelText: {
         verticalAlign: 'middle',
         display: 'inline-block',
+        paddingLeft: '6px',
         lineHeight: '18px'
     },
     fileInput: {
