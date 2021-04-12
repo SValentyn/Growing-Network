@@ -54,9 +54,7 @@ const ChatMessage = ({message, authUser, isChatGrouped}) => {
                         </div>
                     </div>
                     <div className={classes.footer}>
-                        <Typography
-                            variant="body2"
-                        >
+                        <Typography variant="caption" color={'textSecondary'}>
                             {getDateForChat(message.date)}
                         </Typography>
                     </div>

@@ -13,10 +13,9 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         flexGrow: 1,
-        marginLeft: theme.spacing(2),
-        padding: theme.spacing(0.5, 2)
+        margin: '18px 16px 24px',
+        padding: '8px 12px'
     }
-
 }))
 
 export default useStyles

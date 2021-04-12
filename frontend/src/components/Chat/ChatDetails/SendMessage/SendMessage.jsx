@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {Avatar, IconButton, Input, Paper, Tooltip} from '@material-ui/core'
+import {Avatar, IconButton, Input, Paper} from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 
 import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
@@ -13,7 +13,7 @@ const SendMessage = ({authUser, chatId}) => {
     const classes = useStyles()
     const [value, setValue] = useState('')
 
-    const handleChange = event => {
+    const handleChange = (event) => {
         setValue(event.target.value)
     }
 
@@ -38,10 +38,7 @@ const SendMessage = ({authUser, chatId}) => {
 
     return (
         <div className={classes.root}>
-            <Avatar
-                alt="User avatar"
-                src={getAvatarLink(authUser)}
-            />
+            <Avatar src={getAvatarLink(authUser)} alt=""/>
             <Paper className={classes.paper}>
                 <Input
                     disableUnderline
@@ -53,13 +50,11 @@ const SendMessage = ({authUser, chatId}) => {
                     placeholder="Write a message..."
                 />
             </Paper>
-            <Tooltip title="Send">
-                <IconButton
-                    onClick={handleSubmit}
-                    color={value.length > 0 ? 'primary' : 'default'}>
-                    <SendIcon/>
-                </IconButton>
-            </Tooltip>
+            <IconButton
+                onClick={handleSubmit}
+                color={value.length > 0 ? 'primary' : 'default'}>
+                <SendIcon/>
+            </IconButton>
         </div>
     )
 }
@@ -72,4 +67,5 @@ SendMessage.propTypes = {
 const mapStateToProps = state => ({
     authUser: state.auth.user
 })
+
 export default connect(mapStateToProps, null)(SendMessage)

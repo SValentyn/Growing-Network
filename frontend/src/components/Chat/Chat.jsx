@@ -94,7 +94,8 @@ const Chat = ({
 
     return (
         <div className={classes.root}>
-            {!isSingleChat && <ChatList
+            {!isSingleChat &&
+            <ChatList
                 className={classes.chatList}
                 chats={isSearchChatsApply ? sortedChats : chats}
                 chatMessages={chatMessages}
@@ -103,7 +104,8 @@ const Chat = ({
                 authUser={authUser}
                 unreadChats={unreadChats}
                 handleSearch={handleChatsSearch}
-            />}
+            />
+            }
             {selectedChat ? (
                 <ChatDetails
                     authUser={authUser}

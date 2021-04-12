@@ -21,14 +21,17 @@ const ChatMessages = ({
     isChatGrouped
 }) => {
     const classes = useStyles()
+    
     const scrollToBottom = () => {
         ChatMessages.messagesEnd.scrollIntoView({behavior: 'smooth'})
     }
+    
     useEffect(() => {
         if (ownMessageSent) {
             scrollToBottom()
         }
     })
+    
     const sortedMessages = sortBy(messages, ['date'])
 
     return (
@@ -48,8 +51,7 @@ const ChatMessages = ({
                 overflowY: 'scroll'
             }}
         >
-            <div
-                className={classnames(classes.root, className)}>
+            <div className={classnames(classes.root, className)}>
                 <div className={classes.inner}>
                     {sortedMessages
                         .map(message =>

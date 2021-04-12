@@ -35,23 +35,11 @@ const ChatListItem = ({active, chat, className, chatsLoading, authUser, unreadMe
         >
             {isChatGrouped ? (<ListItemAvatar>
                 <Fragment>
-                    <Avatar
-                        alt="User"
-                        className={classes.avatarSmall}
-                        src={getAvatarLink(secondParticipant)}
-                    />
-                    <Avatar
-                        alt="User"
-                        className={classes.avatarSmall}
-                        src={getAvatarLink(thirdParticipant)}
-                    />
+                    <Avatar className={classes.avatarSmall} src={getAvatarLink(secondParticipant)} alt=""/>
+                    <Avatar className={classes.avatarSmall} src={getAvatarLink(thirdParticipant)} alt=""/>
                 </Fragment>
             </ListItemAvatar>) : (<ListItemAvatar>
-                <Avatar
-                    alt="User"
-                    className={classes.avatar}
-                    src={getAvatarLink(secondParticipant)}
-                />
+                <Avatar className={classes.avatar} src={getAvatarLink(secondParticipant)} alt=""/>
             </ListItemAvatar>)}
 
             <ListItemText

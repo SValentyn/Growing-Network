@@ -1,5 +1,4 @@
 import {makeStyles} from '@material-ui/core/styles'
-import {colors} from '@material-ui/core'
 import styleConstants from '../../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
@@ -10,8 +9,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'flex-end',
         '& $body': {
-            backgroundColor: styleConstants.PRIMARY_COLOR,
-            color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
+            backgroundColor: 'white'
+        },
+        '& $footer': {
+            justifyContent: 'flex-end'
         }
     },
     inner: {
@@ -22,10 +23,11 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2)
     },
     body: {
-        backgroundColor: colors.grey[100],
-        color: theme.palette.text.primary,
-        borderRadius: theme.shape.borderRadius,
-        padding: theme.spacing(1, 2)
+        backgroundColor: '#f0f0f0',
+        color: styleConstants.CONTAINER_TEXT_COLOR,
+        padding: '8px 12px',
+        border: '1px solid #dddfe2',
+        borderRadius: 5
     },
     image: {
         marginTop: theme.spacing(2),
@@ -34,9 +36,8 @@ const useStyles = makeStyles(theme => ({
         maxWidth: '100%'
     },
     footer: {
-        marginTop: theme.spacing(1),
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-start'
     }
 }))
 
