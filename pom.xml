@@ -262,15 +262,7 @@
                                     <fileset dir="${project.basedir}/frontend/build"/>
                                 </copy>
                                 <copy todir="${project.build.directory}/classes/public/static/images">
-                                    <fileset dir="${project.basedir}/frontend/build">
-                                        <include name="**/*.ico"/>
-                                        <include name="**/*.svg"/>
-                                        <include name="**/*.png"/>
-                                        <include name="**/*.jpg"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="${project.build.directory}/classes/public/static/images">
-                                    <fileset dir="${project.basedir}/frontend/build/images">
+                                    <fileset dir="${project.basedir}/frontend/build/static/images">
                                         <include name="**/*.ico"/>
                                         <include name="**/*.svg"/>
                                         <include name="**/*.png"/>
@@ -278,7 +270,7 @@
                                     </fileset>
                                 </copy>
                                 <copy todir="${project.build.directory}/classes/public/static">
-                                    <fileset dir="${project.basedir}/frontend/build">
+                                    <fileset dir="${project.basedir}/frontend/build/static">
                                         <include name="**/*.json"/>
                                     </fileset>
                                 </copy>
