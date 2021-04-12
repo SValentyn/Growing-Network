@@ -9,7 +9,6 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         color: theme.palette.text.secondary
     },
-
     link: {
         fontSize: '20px'
     }

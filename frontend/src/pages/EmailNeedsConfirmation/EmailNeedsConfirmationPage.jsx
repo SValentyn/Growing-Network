@@ -28,12 +28,10 @@ const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
                     <Paper className={classes.paper}>
                         <Typography variant="h5" color="textPrimary" gutterBottom>
                             <EmailIcon className={classes.icon}/>
-                            <p>Please, confirm your email address to continue.</p>
-                            <p>Follow the link that was sent to your mailbox and <span><Link
-                                to="/"
-                                variant="inherit"
-                                className={classes.link}
-                                onClick={goBack}>try log in.</Link>
+                            <p>To confirm registration in the system, please follow the link sent to your email.</p>
+                            <p>After that,&nbsp;
+                                <span><Link to="/" variant="inherit" className={classes.link} onClick={goBack}>log in</Link>
+                                    &nbsp;to the network. We've been waiting for you!
                                 </span>
                             </p>
                         </Typography>
