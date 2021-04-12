@@ -15,7 +15,13 @@ const useStyles = makeStyles(theme => ({
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block'
-        }
+        },
+        marginLeft: '14px',
+        lineHeight: 1.6,
+        fontWeight: 500,
+        background: 'linear-gradient(135deg , #2ddbf2 10%, #1158f7 100%);',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent'
     },
     link: {
         textDecoration: 'none',
@@ -27,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },
     search: {
         position: 'relative',
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: 5,
         backgroundColor: fade(theme.palette.common.white, 0.15),
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25)

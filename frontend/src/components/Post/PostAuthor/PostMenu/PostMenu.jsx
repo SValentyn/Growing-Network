@@ -78,7 +78,7 @@ const PostMenu = ({
         setOpen(prevOpen => !prevOpen)
     }
 
-    const handleClose = event => {
+    const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return
         }
@@ -109,33 +109,33 @@ const PostMenu = ({
         deletePost(postId)
     }
 
-    const deletePostDialog = <Dialog
-        open={openDialog}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleModal}
-    >
-        <div className={classes.container}>
-            <DialogTitle id="alert">Delete Post?</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Are you sure you want to permanently remove this post from GrowingNetwork?
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions className={classes.btnMenu}>
-                <Button className={classes.button} variant="contained" color="primary" onClick={handleModal}>
-                    Cancel
-                </Button>
-                <Button
-                    className={classes.button}
-                    variant="contained"
-                    color="secondary"
-                    onClick={handleModalDelete}>
-                    Delete
-                </Button>
-            </DialogActions>
-        </div>
-    </Dialog>
+    const deletePostDialog =
+        <Dialog open={openDialog} onClose={handleModal}
+                className={classes.dialog}
+                TransitionComponent={Transition}
+                keepMounted
+        >
+            <div className={classes.container}>
+                <DialogTitle id="alert">Delete Post?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Are you sure you want to permanently remove this post from Growing Network?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions className={classes.btnMenu}>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={handleModal}>
+                        Cancel
+                    </Button>
+                    <Button
+                        className={classes.button}
+                        variant="contained"
+                        color="secondary"
+                        onClick={handleModalDelete}>
+                        Delete
+                    </Button>
+                </DialogActions>
+            </div>
+        </Dialog>
 
     return (
         <div>

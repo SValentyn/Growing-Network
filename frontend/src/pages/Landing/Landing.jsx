@@ -14,12 +14,12 @@ const Landing = () => {
                 <Grid item xs={10}>
                     <Paper className={classes.paper}>
                         <Typography variant="h2" component="h1" color="textPrimary" gutterBottom>
-                            GrowingNetwork
+                            Growing Network
                         </Typography>
                     </Paper>
                     <Paper className={classes.paper}>
                         <Typography variant="h4" color="textSecondary" gutterBottom>
-                            GrowingNetwork is a cool new social network! Share it with your friends!
+                            Growing Network is a cool new social network! Share it with your friends!
                         </Typography>
                     </Paper>
                     <Paper className={classes.paper}>

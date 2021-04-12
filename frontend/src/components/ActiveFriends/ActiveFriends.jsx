@@ -25,7 +25,7 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
                     <div className={classes.container} key={get(friend, 'username')}>
                         <div className={classes.user}>
                             <Link to={`/profile/${get(friend, 'username')}`}>
-                                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt="User"/>
+                                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt=""/>
                             </Link>
                             <div className={classes.userName}>
                                 <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>

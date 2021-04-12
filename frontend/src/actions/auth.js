@@ -17,7 +17,7 @@ import {Toastr} from '../utils/toastr/Toastr'
 
 // Load User
 
-export const loadUser = () => dispatch => {
+export const loadUser = () => (dispatch) => {
     dispatch({
         type: START_LOADING
     })
@@ -38,7 +38,7 @@ export const loadUser = () => dispatch => {
 
 // Register User
 
-export const register = (registerData) => async dispatch => {
+export const register = (registerData) => async (dispatch) => {
     try {
         dispatch({
             type: START_LOADING
@@ -60,7 +60,7 @@ export const register = (registerData) => async dispatch => {
 
 // Login User
 
-export const login = ({username, password}) => async dispatch => {
+export const login = ({username, password}) => async (dispatch) => {
     const body = {username, password}
 
     try {
@@ -86,14 +86,14 @@ export const login = ({username, password}) => async dispatch => {
 
 // Logout / Clear Profile
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
     apiRequest.forgetUser()
     dispatch({type: LOGOUT})
 }
 
 // Reset password
 
-export const resetPassword = email => async dispatch => {
+export const resetPassword = (email) => async (dispatch) => {
     dispatch({type: START_LOADING})
 
     try {
@@ -104,7 +104,7 @@ export const resetPassword = email => async dispatch => {
     }
 }
 
-export const setNewPassword = (password, token) => async dispatch => {
+export const setNewPassword = (password, token) => async (dispatch) => {
     dispatch({type: START_LOADING})
 
     try {
@@ -119,7 +119,7 @@ export const setNewPassword = (password, token) => async dispatch => {
 
 // Confirm email
 
-export const confirmEmail = token => dispatch => {
+export const confirmEmail = token => (dispatch) => {
     dispatch({
         type: START_LOADING
     })
@@ -133,7 +133,7 @@ export const confirmEmail = token => dispatch => {
         }))
 }
 
-export const updateProfile = dataForm => dispatch => {
+export const updateProfile = dataForm => (dispatch) => {
     return apiRequest.put('/users', dataForm)
         .then(data => dispatch({
                 type: USER_LOADED,

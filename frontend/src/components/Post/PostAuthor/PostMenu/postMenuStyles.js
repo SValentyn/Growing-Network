@@ -2,12 +2,16 @@ import {makeStyles} from '@material-ui/core'
 import styleConstants from '../../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
+    dialog: {
+        marginTop: -250
+    },
     container: {
+        width: 500,
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR
     },
     btnMenu: {
-        margin: 7,
+        margin: 15,
         padding: 5,
         color: styleConstants.PRIMARY_COLOR
     },

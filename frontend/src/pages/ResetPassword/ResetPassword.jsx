@@ -20,7 +20,7 @@ const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
 
     let {email, emailError} = formData
 
-    const onChange = e => {
+    const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 

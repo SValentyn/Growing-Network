@@ -29,7 +29,7 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
         setOpen(prevOpen => !prevOpen)
     }
 
-    const handleClose = event => {
+    const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return
         }

@@ -48,7 +48,7 @@ const NewPassword = ({loading, match, setNewPassword}) => {
         passwordUpdated
     } = formData
 
-    const onChange = e => {
+    const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
@@ -60,7 +60,7 @@ const NewPassword = ({loading, match, setNewPassword}) => {
         return areNoErrors(errors)
     }
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault()
         const inputIsValid = validate()
 

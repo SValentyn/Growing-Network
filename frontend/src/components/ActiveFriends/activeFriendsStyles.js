@@ -2,14 +2,21 @@ import {makeStyles} from '@material-ui/core/styles'
 import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
+    container: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: 'auto 0',
+        borderBottom: '1px solid #e6e6e6',
+        padding: '5px 10px'
+    },
     header: {
-        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
-        padding: '8px 10px',
-        fontWeight: 500,
-        borderBottom: '1px solid rgb(188,188,189)',
-        borderRadius: '5px 5px 0 0',
+        padding: '8px 16px',
         paddingRight: 24,
-        background: styleConstants.CONTAINER_HEADER_BG_COLOR
+        background: styleConstants.CONTAINER_HEADER_BG_COLOR,
+        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
+        borderBottom: '1px solid #dddfe2',
+        borderRadius: '5px 5px 0 0',
+        fontWeight: 500
     },
     count: {
         color: styleConstants.CONTAINER_COUNT_COLOR,
@@ -19,13 +26,6 @@ const useStyles = makeStyles(() => ({
         maxHeight: 459,
         position: 'relative',
         overflow: 'auto'
-    },
-    container: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        margin: 'auto 0',
-        borderBottom: '1px solid #e6e6e6',
-        padding: '5px 10px'
     },
     notification: {
         textAlign: 'center',

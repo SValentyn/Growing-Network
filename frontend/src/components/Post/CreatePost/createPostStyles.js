@@ -6,26 +6,27 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 20
     },
     header: {
-        padding: '4px 6px',
+        padding: '8px 16px',
         paddingRight: 24,
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
+        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
-        fontWeight: 500,
-        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
+        fontWeight: 500
     },
     textContainer: {
-        padding: '10px 15px 10px 10px'
+        padding: '10px 15px 4px 10px'
     },
     avatar: {
         height: styleConstants.AVATAR_SIZE_MID,
         width: styleConstants.AVATAR_SIZE_MID
     },
     postInput: {
-        borderStyle: 'none',
-        borderRadius: 5,
+        width: '98%',
+        margin: '2px 0 0 8px',
         background: 'white',
-        marginLeft: 5
+        borderRadius: 5,
+        border: '1px solid #dddfe2'
     },
     imgPreviewContainer: {
         padding: 5
@@ -40,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white'
     },
     toolsContainer: {
-        padding: '5px 10px'
+        padding: '5px 10px 8px'
     },
     errorImg: {
         border: '3px solid red'

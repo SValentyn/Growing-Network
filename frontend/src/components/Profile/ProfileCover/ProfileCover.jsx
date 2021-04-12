@@ -4,12 +4,12 @@ import {connect} from 'react-redux'
 import {Avatar, Container, IconButton, Modal, Tab, Tabs, Tooltip} from '@material-ui/core'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
-import ManageFriendshipButton from '../ManageFriendshipButton/ManageFriendshipButton'
+import ManageFriendshipButton from '../../ManageFriendshipButton/ManageFriendshipButton'
 import UpdateProfile from '../UpdateProfile/UpdateProfile'
-import {changeTab} from '../../actions/profileTab'
-import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageHelper'
-import {getFullName} from '../../utils/helpers/commonFormatter'
-import styleConstants from '../../utils/constants/styleConstants'
+import {changeTab} from '../../../actions/profileTab'
+import {getAvatarLink, getProfileCoverLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
+import styleConstants from '../../../utils/constants/styleConstants'
 
 import useStyles from './profileCoverStyles'
 

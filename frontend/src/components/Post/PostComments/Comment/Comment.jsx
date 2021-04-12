@@ -28,7 +28,7 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
         <div className={classes.panel}>
             <Box display="flex">
                 <Link to={`/profile/${get(author, 'username')}`}>
-                    <Avatar src={getAvatarLink(author)} alt="User"/>
+                    <Avatar src={getAvatarLink(author)}/>
                 </Link>
                 <div className={classes.comment}>
                     <p className={classes.commentText}>

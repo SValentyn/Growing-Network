@@ -3,7 +3,8 @@ body {
     font-family: 'Open Sans Condensed', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 code {

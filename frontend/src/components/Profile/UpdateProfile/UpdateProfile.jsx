@@ -18,10 +18,10 @@ import {
 import classNames from 'classnames'
 
 import {PhotoCamera} from '@material-ui/icons'
-import {areNoErrors, validateEmail} from '../../utils/helpers/inputValidator'
-import {uploadSingleImage} from '../../actions/post'
-import {updateProfile} from '../../actions/auth'
-import {getAvatarLink, getProfileCoverLink} from '../../utils/helpers/imageHelper'
+import {areNoErrors, validateEmail} from '../../../utils/helpers/inputValidator'
+import {uploadSingleImage} from '../../../actions/post'
+import {updateProfile} from '../../../actions/auth'
+import {getAvatarLink, getProfileCoverLink} from '../../../utils/helpers/imageHelper'
 
 import useStyles from './updateProfileStyles'
 
@@ -63,15 +63,15 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         }
     }
 
-    const onChange = e => {
+    const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
-    const onBirthDateChange = e => {
+    const onBirthDateChange = (e) => {
         setFormData({...formData, birthDate: new Date(e.target.value).getTime()})
     }
 
-    const parseMillisToStringDate = dateMillis => {
+    const parseMillisToStringDate = (dateMillis) => {
         if (dateMillis === null) {
             return 'dd.mm.yyyy'
         }
@@ -86,7 +86,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         return [year, month, day].join('-')
     }
 
-    const getFileObject = e => {
+    const getFileObject = (e) => {
         const file = e.target.files[0]
         return {
             file,
@@ -95,12 +95,12 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         }
     }
 
-    const handleBackgroundChange = e => {
+    const handleBackgroundChange = (e) => {
         const newBackground = getFileObject(e)
         setFormData({...formData, profileCover: newBackground})
     }
 
-    const handleAvatarChange = e => {
+    const handleAvatarChange = (e) => {
         const newAvatar = getFileObject(e)
         setFormData({...formData, avatar: newAvatar})
     }
@@ -120,7 +120,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         return Promise.resolve(currentImg)
     }
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
         const inputIsValid = validateInput()

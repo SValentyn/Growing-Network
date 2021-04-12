@@ -41,7 +41,7 @@ const FriendSuggestions = ({person, commonFriends}) => {
                 <Grid item container xs={10}>
                     <Grid item>
                         <Link to={`/profile/${get(person, 'username')}`}>
-                            <Avatar className={classes.image} src={getAvatarLink(person)} alt="User"/>
+                            <Avatar className={classes.image} src={getAvatarLink(person)} alt=""/>
                         </Link>
                     </Grid>
 

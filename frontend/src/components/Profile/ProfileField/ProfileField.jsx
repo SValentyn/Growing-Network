@@ -3,10 +3,10 @@ import {Grid, Typography} from '@material-ui/core'
 import PropTypes from 'prop-types'
 import {get, isEmpty} from 'lodash'
 
-import Preloader from '../Preloader/Preloader'
-import Tile from '../Tile/Tile'
-import {getAvatarLink} from '../../utils/helpers/imageHelper'
-import {getFullName} from '../../utils/helpers/commonFormatter'
+import Preloader from '../../Preloader/Preloader'
+import Tile from '../../Tile/Tile'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './profileFieldStyles'
 

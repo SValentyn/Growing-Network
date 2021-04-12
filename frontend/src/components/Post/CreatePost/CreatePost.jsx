@@ -52,6 +52,26 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
         taggedFriends
     } = uploadForm
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        uploadImages(imagesToUpload).then(
+            imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
+            images => {
+                Toastr.error('One or more images weren\'t uploaded')
+                setUploadForm({...uploadForm, imagesToUpload: images})
+            })
+    }
+
+    const handleKeyPress = (e) => {
+        if ((e.ctrlKey) && (e.which === 13)) {
+            handleSubmit(e)
+        }
+    }
+
+    const handleTextInputChange = (e) => {
+        setUploadForm({...uploadForm, textToUpload: e.target.value})
+    }
+    
     const handleFileInputChange = (e) => {
         let addedUrls = [].map.call(e.target.files, file => ({
             file,
@@ -59,15 +79,6 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
             uploadError: false
         }))
         setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
-    }
-
-    const removeImage = (url) => {
-        const filteredImages = imagesToUpload.filter(img => img.url !== url)
-        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
-    }
-
-    const handleTextInputChange = e => {
-        setUploadForm({...uploadForm, textToUpload: e.target.value})
     }
 
     const handleFriendTag = userLabel => {
@@ -84,14 +95,9 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
         }
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        uploadImages(imagesToUpload).then(
-            imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
-            images => {
-                Toastr.error('One or more images weren\'t uploaded')
-                setUploadForm({...uploadForm, imagesToUpload: images})
-            })
+    const removeImage = (url) => {
+        const filteredImages = imagesToUpload.filter(img => img.url !== url)
+        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
     }
 
     const images = imagesToUpload.map((img, index) => (
@@ -133,6 +139,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                             variant="outlined"
                             placeholder={'What you\'d like to share, ' + firstName + '?'}
                             rows="2"
+                            onKeyPress={handleKeyPress}
                             onChange={handleTextInputChange}
                             multiline
                             required

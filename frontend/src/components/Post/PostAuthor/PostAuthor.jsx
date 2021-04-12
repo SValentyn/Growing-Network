@@ -71,7 +71,7 @@ const PostAuthor = ({
         <Grid container justify="space-between" className={classes.container}>
             <Grid item className={classes.user}>
                 <Link to={`/profile/${get(author, 'username')}`}>
-                    <Avatar className={classes.userPhoto} src={getAvatarLink(author)} alt="User"/>
+                    <Avatar className={classes.userPhoto} src={getAvatarLink(author)}/>
                 </Link>
                 <div className={classes.userName}>
                     <p className={classes.userFullName}>

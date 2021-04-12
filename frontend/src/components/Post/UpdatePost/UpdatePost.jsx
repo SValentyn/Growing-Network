@@ -64,6 +64,40 @@ const UpdatePost = ({
         taggedFriendsToUpload
     } = uploadForm
 
+    const handleClose = (event) => {
+        if (updateRef.current && updateRef.current.contains(event.target)) {
+            return
+        }
+        setOpenUpdateWindow(false)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setOpenUpdateWindow(false)
+        if (imagesToUpload.length === 0) {
+            updatePost(id, textToUpload, imagesToUpload, taggedFriendsToUpload, true)
+        } else if (image && imagesToUpload[0].url === image.src) {
+            updatePost(id, textToUpload, [image], taggedFriendsToUpload, true)
+        } else {
+            uploadImages(imagesToUpload).then(
+                (imgLinks) => updatePost(id, textToUpload, imgLinks, taggedFriendsToUpload, true),
+                (images) => {
+                    Toastr.error('One or more images weren\'t uploaded')
+                    setUploadForm({...uploadForm, imagesToUpload: images})
+                })
+        }
+    }
+
+    const handleKeyPress = (e) => {
+        if ((e.ctrlKey) && (e.which === 13)) {
+            handleSubmit(e)
+        }
+    }
+
+    const handleTextInputChange = (e) => {
+        setUploadForm({...uploadForm, textToUpload: e.target.value})
+    }
+
     const handleFileInputChange = (e) => {
         let addedUrls = [].map.call(e.target.files, file => ({
             file,
@@ -73,16 +107,7 @@ const UpdatePost = ({
         setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
     }
 
-    const removeImage = (url) => {
-        const filteredImages = imagesToUpload.filter(img => img.url !== url)
-        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
-    }
-
-    const handleTextInputChange = e => {
-        setUploadForm({...uploadForm, textToUpload: e.target.value})
-    }
-
-    const handleFriendTag = userLabel => {
+    const handleFriendTag = (userLabel) => {
         if (taggedFriendsToUpload.some(u => u.username === userLabel.username)) {
             setUploadForm({
                 ...uploadForm,
@@ -96,28 +121,9 @@ const UpdatePost = ({
         }
     }
 
-    const handleClose = event => {
-        if (updateRef.current && updateRef.current.contains(event.target)) {
-            return
-        }
-        setOpenUpdateWindow(false)
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        setOpenUpdateWindow(false)
-        if (imagesToUpload.length === 0) {
-            updatePost(id, textToUpload, imagesToUpload, taggedFriendsToUpload, true)
-        } else if (image && imagesToUpload[0].url === image.src) {
-            updatePost(id, textToUpload, [image], taggedFriendsToUpload, true)
-        } else {
-            uploadImages(imagesToUpload).then(
-                imgLinks => updatePost(id, textToUpload, imgLinks, taggedFriendsToUpload, true),
-                images => {
-                    Toastr.error('One or more images weren\'t uploaded')
-                    setUploadForm({...uploadForm, imagesToUpload: images})
-                })
-        }
+    const removeImage = (url) => {
+        const filteredImages = imagesToUpload.filter(img => img.url !== url)
+        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
     }
 
     const images = imagesToUpload.map((img, index) => (
@@ -166,6 +172,7 @@ const UpdatePost = ({
                                         variant="outlined"
                                         placeholder={'What you\'d like to share, ' + firstName + '?'}
                                         rows="2"
+                                        onKeyPress={handleKeyPress}
                                         onChange={handleTextInputChange}
                                         multiline
                                         required
@@ -204,15 +211,11 @@ const UpdatePost = ({
                                         handleFriendTag={handleFriendTag}/>
                                 </Grid>
                                 <Grid container item xs={4} justify="flex-end">
-                                    <Button className={classes.button} variant="contained" onClick={handleClose}>
+                                    <Button className={classes.button} variant="contained" onClick={handleClose} style={{padding: '0 10px'}}>
                                         Cancel
                                     </Button>
-                                    <Button
-                                        className={classes.button}
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleSubmit}>
+                                    <Button className={classes.button} type="submit" variant="contained"
+                                            color="primary" onClick={handleSubmit}>
                                         Save
                                     </Button>
                                 </Grid>

@@ -45,9 +45,7 @@ const Search = ({loading, searchData, searchResults}) => {
     const renderOption = option => (
         <Link to={`/profile/${get(option, 'username')}`} className={classes.link}>
             <div className={classes.optionWrapper}>
-                <Avatar className={classes.userPhoto}
-                        src={getAvatarLink(option)}
-                        alt="User Avatar"/>
+                <Avatar className={classes.userPhoto} src={getAvatarLink(option)} alt=""/>
                 {`${get(option, 'firstName')} ${get(option, 'lastName')}`}
             </div>
         </Link>

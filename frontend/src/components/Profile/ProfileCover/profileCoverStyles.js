@@ -1,11 +1,11 @@
 import {makeStyles} from '@material-ui/core/styles'
-import styleConstants from '../../utils/constants/styleConstants'
+import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     container: {
         boxSizing: 'border-box'
     },
-    avatarBg: props => ({
+    avatarBg: (props) => ({
         backgroundImage: `url(${props.profileCover})`,
         height: 250,
         backgroundRepeat: 'no-repeat',
@@ -50,7 +50,8 @@ const useStyles = makeStyles(() => ({
         margin: '50px auto',
         backgroundColor: 'white',
         borderRadius: 10,
-        border: 'none'
+        border: 'none',
+        outline: 'none'
     },
     avatarName: {
         fontSize: 30,

@@ -39,7 +39,7 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
 
         return listForRender.map(friend =>
             <div className={classes.container} key={get(friend, 'username')}>
-                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt="User"/>
+                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)}/>
                 <div className={classes.userContainer}>
                     <p className={classes.text}>{getFullName(friend)}</p>
                 </div>

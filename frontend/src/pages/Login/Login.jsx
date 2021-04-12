@@ -50,7 +50,7 @@ const Login = ({isAuthenticated, login, loading}) => {
         }
     }, [error])
 
-    const onChange = e => {
+    const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 

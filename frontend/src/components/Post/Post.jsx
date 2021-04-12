@@ -55,7 +55,7 @@ const Post = ({post}) => {
             {message && <p className={classes.postText}>{message}</p>}
             {image &&
             <Fragment>
-                <img src={get(image, 'src')} onClick={handleModal} className={classes.image} alt="Post"/>
+                <img src={get(image, 'src')} onClick={handleModal} className={classes.image} alt="Post image"/>
                 <Dialog
                     maxWidth="md"
                     open={openDialog}
@@ -63,7 +63,7 @@ const Post = ({post}) => {
                     keepMounted
                     onClose={handleModal}
                 >
-                    <img className={classes.image} src={get(image, 'src')} onClick={handleModal} alt="UserPhoto"/>
+                    <img className={classes.image} src={get(image, 'src')} onClick={handleModal} alt=""/>
                 </Dialog>
             </Fragment>
             }

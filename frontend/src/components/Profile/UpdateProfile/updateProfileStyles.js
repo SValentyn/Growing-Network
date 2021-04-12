@@ -1,10 +1,10 @@
 import {makeStyles} from '@material-ui/core'
-import styleConstants from '../../utils/constants/styleConstants'
+import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     form: {
         width: '100%',
-        marginTop: 100,
+        marginTop: 100
     },
     header: {
         padding: '8px 20px',

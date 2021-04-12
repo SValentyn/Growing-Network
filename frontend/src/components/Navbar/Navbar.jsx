@@ -89,7 +89,7 @@ const Navbar = ({
             onClose={handleMenuClose}
         >
             <MenuItem onClick={openProfile}>Profile</MenuItem>
-            <MenuItem onClick={openChat}>Chat</MenuItem>
+            <MenuItem onClick={openChat}>Messenger</MenuItem>
             <MenuItem onClick={handleChange}>Logout</MenuItem>
         </Menu>
     )

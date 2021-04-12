@@ -5,7 +5,8 @@ const useStyles = makeStyles(theme => ({
     container: {
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR,
-        width: 550
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
+        width: 630
     },
     header: {
         padding: '4px 6px',
@@ -17,32 +18,31 @@ const useStyles = makeStyles(theme => ({
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR
     },
     textContainer: {
-        padding: '10px 15px 10px 10px'
+        padding: '10px 15px 4px 10px'
     },
     avatar: {
         height: styleConstants.AVATAR_SIZE_MID,
         width: styleConstants.AVATAR_SIZE_MID
     },
     postInput: {
-        borderStyle: 'none',
-        borderRadius: 5,
+        width: '98%',
+        margin: '3px 0 0 8px',
         background: 'white',
-        marginLeft: 5
+        borderRadius: 5,
+        border: '1px solid #dddfe2'
     },
     imgPreviewContainer: {
         padding: 5
     },
     titleBar: {
         height: 30,
-        background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, ' +
-            'rgba(0,0,0,0.1) 70%, rgba(0,0,0,0) 100%)'
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0) 100%)'
     },
     iconButton: {
         color: 'white'
     },
     toolsContainer: {
-        padding: '5px 10px'
+        padding: '5px 10px 8px'
     },
     errorImg: {
         border: '3px solid red'

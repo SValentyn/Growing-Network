@@ -17,7 +17,7 @@ const EmailConfirmedPage = (props) => {
     useEffect(() => confirmEmail(token), [confirmEmail, token])
 
     const textMessage = emailIsConfirmed
-        ? 'Your email was confirmed! Welcome to the GrowingNetwork!'
+        ? 'Your email was confirmed! Welcome to the Growing Network!'
         : 'Something went wrong, maybe your email wasn\'t confirmed...'
 
     const link = <Link to="/me" variant="body2" className={classes.link}>Go to your profile</Link>
