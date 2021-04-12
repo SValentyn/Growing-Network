@@ -114,7 +114,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="username"
+                                label="Username"
                                 value={username}
                                 onChange={e => onChange(e)}
                                 error={!(usernameError === '')}
@@ -129,7 +129,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="email"
+                                label="Email"
                                 value={email}
                                 onChange={e => onChange(e)}
                                 error={!(emailError === '')}
