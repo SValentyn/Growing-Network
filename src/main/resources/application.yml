@@ -11,7 +11,7 @@ spring:
       maxRequestSize: 15MB
 
   datasource:
-    url: jdbc:mysql://localhost:3306/growingnetworkdb?useUnicode=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/growingnetworkdb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: # <username>
     password: # <password>
     driver-class-name: com.mysql.cj.jdbc.Driver
