@@ -3,8 +3,8 @@ server:
 
 spring:
   profiles:
-    active: @spring.profiles.active@
-    
+    active: dev
+
   servlet:
     multipart:
       maxFileSize: 15MB
@@ -45,7 +45,7 @@ spring:
           auth: true
           starttls:
             enable: true
-            
+
 amazonProperties:
   endpointUrl: https://s3.eu-west-2.amazonaws.com
   bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>

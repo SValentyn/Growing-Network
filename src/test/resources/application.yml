@@ -4,7 +4,7 @@ spring:
     username: # <username>
     password: # <password>
     driver-class-name: com.mysql.cj.jdbc.Driver
-    
+
   security:
     jwt-secret:
       ${random.uuid}
@@ -26,7 +26,7 @@ spring:
           auth: true
           starttls:
             enable: true
-            
+
 amazonProperties:
   endpointUrl: https://s3.eu-west-2.amazonaws.com
   bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>

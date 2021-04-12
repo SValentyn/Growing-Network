@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: @spring.profiles.active@
+    active: prod
 
   servlet:
     multipart:
@@ -11,7 +11,7 @@ spring:
       maxRequestSize: 15MB
 
   datasource:
-    url: jdbc:mysql://aaj7867w1r4cg.cbrahwcrixlg.eu-west-2.rds.amazonaws.com:3306/ebdb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://aae34igm3vnuct.cbrahwcrixlg.eu-west-2.rds.amazonaws.com:3306/ebdb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: # <username>
     password: # <password>
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -45,7 +45,7 @@ spring:
           auth: true
           starttls:
             enable: true
-            
+
 amazonProperties:
   endpointUrl: https://s3.eu-west-2.amazonaws.com
   bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>
