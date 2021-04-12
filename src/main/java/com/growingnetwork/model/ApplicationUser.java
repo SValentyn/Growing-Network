@@ -2,12 +2,13 @@ package com.growingnetwork.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.growingnetwork.model.enums.Gender;
+import com.growingnetwork.util.MayAcceptNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,9 +22,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "users")
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -41,10 +42,10 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "email")
     private String email;
     
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 64)
     private String firstName;
     
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 64)
     private String lastName;
     
     @MayAcceptNull
