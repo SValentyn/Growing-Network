@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: prod
+    active: @spring.profiles.active@
 
   servlet:
     multipart:
