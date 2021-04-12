@@ -30,7 +30,7 @@ public class Chat implements DbEntity<Long> {
     private String name;
     
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "chat_to_user", 
+    @JoinTable(name = "chat_to_user",
             joinColumns = @JoinColumn(name = "fk_chat_id"),
             inverseJoinColumns = @JoinColumn(name = "fk_participant_username"))
     private List<ApplicationUser> participants;

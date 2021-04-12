@@ -7,7 +7,7 @@ import com.growingnetwork.dto.user.UserDtoOut;
 import com.growingnetwork.dto.user.UserLabelDtoOut;
 import com.growingnetwork.dto.user.UserRegistrationDtoIn;
 import com.growingnetwork.mapper.UserMapper;
-import com.growingnetwork.model.FriendshipStatus;
+import com.growingnetwork.model.enums.FriendshipStatus;
 import com.growingnetwork.util.CookieManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

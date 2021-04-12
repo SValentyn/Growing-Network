@@ -1,7 +1,7 @@
 package com.growingnetwork.dto.user;
 
 import com.growingnetwork.dto.image.ImageDtoIn;
-import com.growingnetwork.model.Gender;
+import com.growingnetwork.model.enums.Gender;
 import lombok.Data;
 
 @Data

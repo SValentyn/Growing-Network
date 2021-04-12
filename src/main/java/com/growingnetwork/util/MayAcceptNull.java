@@ -1,4 +1,4 @@
-package com.growingnetwork.model;
+package com.growingnetwork.util;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

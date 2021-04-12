@@ -1,6 +1,7 @@
-package com.growingnetwork.model;
+package com.growingnetwork.util;
 
 import com.growingnetwork.exception.NoDataFoundException;
+import com.growingnetwork.model.Image;
 import com.growingnetwork.service.AmazonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

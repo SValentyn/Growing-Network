@@ -1,4 +1,4 @@
-package com.growingnetwork.model;
+package com.growingnetwork.model.enums;
 
 public enum Gender {
     

@@ -1,5 +1,6 @@
 package com.growingnetwork.model;
 
+import com.growingnetwork.util.ImageListener;
 import lombok.Data;
 
 import javax.persistence.Column;

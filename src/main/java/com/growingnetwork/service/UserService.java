@@ -2,7 +2,7 @@ package com.growingnetwork.service;
 
 import com.growingnetwork.exception.NoDataFoundException;
 import com.growingnetwork.model.ApplicationUser;
-import com.growingnetwork.model.FriendshipStatus;
+import com.growingnetwork.model.enums.FriendshipStatus;
 import com.growingnetwork.model.Image;
 import com.growingnetwork.model.Token;
 import com.growingnetwork.repository.UserRepository;

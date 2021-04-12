@@ -1,6 +1,5 @@
 package com.growingnetwork.util;
 
-import com.growingnetwork.model.MayAcceptNull;
 import org.apache.commons.beanutils.BeanUtilsBean;
 
 import java.lang.reflect.InvocationTargetException;
