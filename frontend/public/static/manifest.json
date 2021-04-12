@@ -1,6 +1,7 @@
 {
   "short_name": "Growing Network",
   "name": "Growing Network",
+  "author": "SValentyn",
   "icons": [
     {
       "src": "static/images/logo.ico",
