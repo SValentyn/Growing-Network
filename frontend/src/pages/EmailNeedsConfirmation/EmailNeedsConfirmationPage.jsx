@@ -29,10 +29,9 @@ const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
                         <Typography variant="h5" color="textPrimary" gutterBottom>
                             <EmailIcon className={classes.icon}/>
                             <p>To confirm registration in the system, please follow the link sent to your email.</p>
-                            <p>After that,&nbsp;
-                                <span><Link to="/" variant="inherit" className={classes.link} onClick={goBack}>log in</Link>
-                                    &nbsp;to the network. We've been waiting for you!
-                                </span>
+                            <p>After that,&nbsp;<Link to="/" variant="inherit" className={classes.link}
+                                                      onClick={goBack}>log in</Link>
+                                &nbsp;to the network. We&apos;ve been waiting for you!
                             </p>
                         </Typography>
                     </Paper>
