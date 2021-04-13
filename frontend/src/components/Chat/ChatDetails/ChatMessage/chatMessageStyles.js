@@ -23,11 +23,13 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2)
     },
     body: {
+        maxWidth: 700,
         backgroundColor: '#f0f0f0',
         color: styleConstants.CONTAINER_TEXT_COLOR,
         padding: '8px 12px',
         border: '1px solid #dddfe2',
-        borderRadius: 5
+        borderRadius: 5,
+        wordWrap: 'break-word'
     },
     image: {
         marginTop: theme.spacing(2),
