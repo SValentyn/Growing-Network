@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 20
     },
     header: {
-        padding: '8px 16px',
+        padding: '8px 15px',
         paddingRight: '24px',
         background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,

@@ -2,9 +2,10 @@ package com.growingnetwork.service;
 
 import com.growingnetwork.exception.NoDataFoundException;
 import com.growingnetwork.model.ApplicationUser;
-import com.growingnetwork.model.enums.FriendshipStatus;
+import com.growingnetwork.model.FriendRequest;
 import com.growingnetwork.model.Image;
 import com.growingnetwork.model.Token;
+import com.growingnetwork.model.enums.FriendshipStatus;
 import com.growingnetwork.repository.UserRepository;
 import com.growingnetwork.util.EmailHandler;
 import com.growingnetwork.util.SmartCopyBeanUtilsBean;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -194,7 +196,36 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
             pageSize = 10;
         }
         ApplicationUser originalUser = getById(currentUsername());
-        return getFriendshipSuggestionsWithUsingGraph(originalUser, pageSize);
+        Map<ApplicationUser, List<ApplicationUser>> suggestionsWithUsingGraph = getFriendshipSuggestionsWithUsingGraph(originalUser, pageSize);
+        int size = suggestionsWithUsingGraph.keySet().size();
+        if (size < pageSize) {
+            List<ApplicationUser> randomSuggestions = getAll();
+            randomSuggestions.remove(originalUser);
+            randomSuggestions.removeAll(originalUser.getFriends());
+            randomSuggestions.removeAll(suggestionsWithUsingGraph.keySet());
+            
+            if (randomSuggestions.size() > 0) {
+                List<ApplicationUser> finalRandomSuggestions = new ArrayList<>(randomSuggestions);
+                for (ApplicationUser randomSuggestion : randomSuggestions) {
+                    for (FriendRequest friendRequest : randomSuggestion.getIncomingFriendRequests()) {
+                        if (friendRequest.getRequester().getId().equals(originalUser.getId())) {
+                            finalRandomSuggestions.remove(randomSuggestion);
+                            break;
+                        }
+                    }
+                }
+                
+                randomSuggestions = finalRandomSuggestions;
+                if (randomSuggestions.size() > 0) {
+                    Collections.shuffle(randomSuggestions);
+                    randomSuggestions = (randomSuggestions.size() > size) ? randomSuggestions.subList(0, pageSize - size) : randomSuggestions.subList(0, randomSuggestions.size());
+                    randomSuggestions.forEach(suggestion -> {
+                        suggestionsWithUsingGraph.put(suggestion, Collections.emptyList());
+                    });
+                }
+            }
+        }
+        return suggestionsWithUsingGraph;
     }
     
     /**
