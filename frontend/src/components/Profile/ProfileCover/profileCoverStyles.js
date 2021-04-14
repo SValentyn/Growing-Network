@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => ({
         fontSize: 30,
         fontWeight: 700,
         position: 'absolute',
-        color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
+        color: styleConstants.NAVBAR_BG_COLOR,
         bottom: -8,
         left: 240
     },
