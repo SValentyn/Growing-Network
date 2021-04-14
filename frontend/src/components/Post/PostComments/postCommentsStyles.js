@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     },
     createInput: {
         background: 'white',
-        borderRadius: 5, 
+        borderRadius: 5,
         border: 'none'
     },
     inputMultiline: {

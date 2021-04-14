@@ -18,7 +18,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
 
         if (friends) {
             if (isEmpty(friends)) {
-                return <p className={classes.notification}>Not friends with anyone 🙄</p>
+                return <p className={classes.notification}>Not friends with anyone <span role="img" aria-label="emoji">🙄</span></p>
             } else {
                 return listForRender.map(friend =>
                     <Tile
@@ -29,7 +29,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
             }
         } else {
             if (isEmpty(userPhotos)) {
-                return <p className={classes.notification}>There are no pictures 😞</p>
+                return <p className={classes.notification}>There are no pictures <span role="img" aria-label="emoji">😞</span></p>
             } else {
                 return listForRender.map(photo => <Tile imageSrc={get(photo, 'src')}
                                                         key={get(photo, 'id', '')}/>)
