@@ -22,7 +22,7 @@ public class Comment implements DbEntity<Long> {
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "message", length = 512)
+    @Column(name = "message", length = 2048)
     private String message;
     
     @Column(name = "date")

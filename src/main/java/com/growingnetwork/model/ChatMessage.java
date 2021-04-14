@@ -22,7 +22,7 @@ public class ChatMessage implements DbEntity<Long> {
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "text", length = 4096)
+    @Column(name = "text", length = 8192)
     private String text;
     
     @Column(name = "date")

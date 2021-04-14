@@ -28,7 +28,7 @@ public class Post implements DbEntity<Long> {
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "message", length = 4096)
+    @Column(name = "message", length = 8192)
     private String message;
     
     @Column(name = "date")
