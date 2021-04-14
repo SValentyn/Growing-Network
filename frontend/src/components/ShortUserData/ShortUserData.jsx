@@ -8,18 +8,20 @@ import useStyles from './shortUserDataStyles'
 
 const ShortUserData = ({profileOwner}) => {
     const classes = useStyles()
-    const {email, birthDate, gender} = profileOwner
+    const {email, birthDate, gender, joinedDate} = profileOwner
     const formattedBirthDate = birthDate ? getDateWithoutTime(birthDate) : ''
+    const formattedJoinedDate = getDateWithoutTime(joinedDate)
 
     return (
         <div className={classes.container}>
             <Typography className={classes.header} variant="subtitle1" component="div">
-                My brief personal information
+                Intro
             </Typography>
             <div className={classes.textContainer}>
-                <p><span className={classes.textSpan}>Email:</span> {email}</p>
-                <p><span className={classes.textSpan}>Birthday:</span> {formattedBirthDate}</p>
-                <p><span className={classes.textSpan}>Gender:</span> {gender && gender.toLowerCase()}</p>
+                <p><span className={classes.textSpan}>Email:</span>{email}</p>
+                <p><span className={classes.textSpan}>Gender:</span>{gender && gender.toLowerCase()}</p>
+                <p><span className={classes.textSpan}>Birthday:</span>{formattedBirthDate}</p>
+                <p><span className={classes.textSpan}>Joined:</span>{formattedJoinedDate}</p>
             </div>
         </div>
     )

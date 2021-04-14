@@ -20,6 +20,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -61,6 +64,13 @@ public class ApplicationUser implements DbEntity<String> {
     
     @Column(name = "last_activity_time")
     private Long lastActivityTime;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "joined_date", insertable = false, updatable = false)
+    @org.hibernate.annotations.Generated(
+            org.hibernate.annotations.GenerationTime.ALWAYS
+    )
+    private Date joinedDate;
     
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fk_avatar_img_id")

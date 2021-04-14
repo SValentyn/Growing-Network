@@ -7,7 +7,8 @@ const useStyles = makeStyles(() => ({
     },
     header: {
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
-        padding: '8px 16px',
+        fontSize: '20px',
+        padding: '4px 16px',
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
@@ -15,13 +16,14 @@ const useStyles = makeStyles(() => ({
         background: styleConstants.CONTAINER_HEADER_BG_COLOR
     },
     textContainer: {
-        padding: '6px 10px',
+        padding: '6px 15px',
         '& > *': {
             margin: 2
         }
     },
     textSpan: {
-        fontWeight: 600
+        width: 75,
+        display: 'inline-flex'
     }
 }))
 
