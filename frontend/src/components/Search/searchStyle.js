@@ -24,8 +24,9 @@ const useStyles = makeStyles(theme => ({
     searchInput: {
         '& .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]': {
             height: 45,
+            border: '1px solid #ffffff',
             '& .MuiAutocomplete-input': {
-                color: 'black',
+                color: '#14171a',
                 padding: '5px 0 5px 35px'
             }
         }
@@ -63,8 +64,7 @@ const useStyles = makeStyles(theme => ({
     cssFocused: {},
 
     notchedOutline: {
-        borderWidth: '1px',
-        borderColor: `${styleConstants.PRIMARY_COLOR} !important`
+        borderWidth: '1px'
     }
 }))
 

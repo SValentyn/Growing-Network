@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        padding: '0 10px'
+        padding: '0 0 0 16px'
     },
     userName: {
         color: styleConstants.CONTAINER_TEXT_COLOR,

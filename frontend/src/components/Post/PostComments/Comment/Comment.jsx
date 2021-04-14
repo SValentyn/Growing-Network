@@ -28,22 +28,25 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
         <div className={classes.panel}>
             <Box display="flex">
                 <Link to={`/profile/${get(author, 'username')}`}>
-                    <Avatar src={getAvatarLink(author)}/>
+                    <Avatar className={classes.userPhoto} src={getAvatarLink(author)}/>
                 </Link>
+                
+                
                 <div className={classes.comment}>
                     <p className={classes.commentText}>
                         <Link to={`/profile/${get(author, 'username')}`} className={classes.link}>
-              <span className={classes.commentAuthor}>
-                {getFullName(author)}
-              </span>
+                            <span className={classes.commentAuthor}>
+                                {getFullName(author)}
+                            </span>
                         </Link>
+                        <br/>
                         {message}
                     </p>
                     <p className={classes.commentDate}>{dateFormatter(date)}</p>
                 </div>
             </Box>
             {showDeleteBtn &&
-            <IconButton onClick={() => deleteComment(postId, id)} aria-label="delete">
+            <IconButton onClick={() => deleteComment(postId, id)} aria-label="Delete comment" className={classes.deleteComment}>
                 <DeleteIcon fontSize="small"/>
             </IconButton>
             }

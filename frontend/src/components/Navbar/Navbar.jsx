@@ -108,7 +108,7 @@ const Navbar = ({
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
+                <IconButton aria-label="Show a new messages" color="inherit">
                     <Badge badgeContent={4} color="secondary">
                         <MailIcon/>
                     </Badge>
@@ -116,7 +116,7 @@ const Navbar = ({
                 <p>Messages</p>
             </MenuItem>
             <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
+                <IconButton aria-label="Show a new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
                         <NotificationsIcon/>
                     </Badge>
@@ -125,7 +125,7 @@ const Navbar = ({
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
-                    aria-label="account of current user"
+                    aria-label="Account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
                     color="inherit"

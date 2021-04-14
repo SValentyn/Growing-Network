@@ -28,6 +28,15 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 5,
         border: '1px solid #dddfe2'
     },
+    inputMultiline: {
+        fontFamily: 'Open Sans Condensed'
+    },
+    footerText: {
+        fontSize: 11,
+        textAlign: 'right',
+        color: '#8c8f92',
+        margin: '-5px 0 0 0'
+    },
     imgPreviewContainer: {
         padding: 5
     },

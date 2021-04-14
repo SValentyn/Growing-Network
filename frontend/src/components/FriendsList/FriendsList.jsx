@@ -14,7 +14,7 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
     const fieldComponents = components => {
         if (friends) {
             if (isEmpty(friends)) {
-                return <p className={classes.notification}>You have no friends. Hurry up and find them!</p>
+                return <p className={classes.notification}>Not friends with anyone 🙄</p>
             } else {
                 return components.map(friend => <FriendsListItem
                     friend={friend}
@@ -23,7 +23,7 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
             }
         } else {
             if (isEmpty(requests)) {
-                return <p className={classes.notification}>You have no requests for friendship.</p>
+                return <p className={classes.notification}>Not friends with anyone 🙄</p>
             } else {
                 return components.map(request => <FriendsListItem request={request}
                                                                   key={get(request.requester, 'username')}/>)
@@ -38,10 +38,10 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
         <div className={classes.container}>
             <Typography className={classes.header} variant="subtitle1" component="div">
                 {friends
-                    ? <Fragment>Friends – <span
-                        className={classes.count}>{get(friends, 'length', '—')}</span></Fragment>
-                    : <Fragment>Friend requests – <span
-                        className={classes.count}>{get(requests, 'length', '—')}</span></Fragment>
+                    ? <Fragment>Friends (<span
+                        className={classes.count}>{get(friends, 'length', '—')}</span>)</Fragment>
+                    : <Fragment>Friend Requests (<span
+                        className={classes.count}>{get(requests, 'length', '—')}</span>)</Fragment>
                 }
             </Typography>
             <Grid className={classes.gridContainer} container justify="flex-start" alignItems="flex-start">

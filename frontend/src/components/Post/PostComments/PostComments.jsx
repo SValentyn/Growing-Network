@@ -51,13 +51,13 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                         inputRef={inputRef}
                         InputProps={{
                             classes: {
+                                inputMultiline: classes.inputMultiline,
                                 root: classes.cssOutlinedInput,
                                 focused: classes.cssFocused,
                                 notchedOutline: classes.notchedOutline
                             }
                         }}
                     />
-                    <p className={classes.footerText}>Press Enter to post</p>
                 </Grid>
             </Grid>
         </Fragment>

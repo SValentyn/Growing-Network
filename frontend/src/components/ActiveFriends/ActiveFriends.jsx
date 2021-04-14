@@ -52,7 +52,7 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
     return (
         <Fragment>
             <Typography className={classes.header} variant="subtitle1" component="div">
-                Active Friends – <span className={classes.count}>{get(activeFriends, 'length', '—')}</span>
+                Active Friends (<span className={classes.count}>{get(activeFriends, 'length', '—')})</span>
             </Typography>
             {loadedContent}
         </Fragment>

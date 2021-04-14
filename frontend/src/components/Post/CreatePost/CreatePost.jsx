@@ -71,7 +71,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
     const handleTextInputChange = (e) => {
         setUploadForm({...uploadForm, textToUpload: e.target.value})
     }
-    
+
     const handleFileInputChange = (e) => {
         let addedUrls = [].map.call(e.target.files, file => ({
             file,
@@ -122,7 +122,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
     return (
         <div className={classes.container}>
             <Typography variant="subtitle1" component="div" className={classes.header}>
-                Post something interesting!
+                Post something!
             </Typography>
             <form className={classes.form}>
                 <Grid container className={classes.textContainer}>
@@ -134,10 +134,11 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                     <Grid item xs={10} lg={11}>
                         <TextField
                             className={classes.postInput}
+                            style={{fontFamily: 'Open Sans Condensed'}}
                             autoComplete="lastName"
                             name="lastName"
                             variant="outlined"
-                            placeholder={'What you\'d like to share, ' + firstName + '?'}
+                            placeholder={'What\'s on your mind, ' + firstName + '?'}
                             rows="2"
                             onKeyPress={handleKeyPress}
                             onChange={handleTextInputChange}
@@ -146,6 +147,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                             fullWidth
                             InputProps={{
                                 classes: {
+                                    inputMultiline: classes.inputMultiline,
                                     root: classes.cssOutlinedInput,
                                     focused: classes.cssFocused,
                                     notchedOutline: classes.notchedOutline
@@ -155,6 +157,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                         <GridList spacing={3} cellHeight={80} cols={5} className={classes.imgPreviewContainer}>
                             {images}
                         </GridList>
+                        <p className={classes.footerText}>Press Ctrl+Enter to send</p>
                     </Grid>
                 </Grid>
                 <Grid container className={classes.toolsContainer}>

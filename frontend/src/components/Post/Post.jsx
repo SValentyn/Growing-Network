@@ -25,7 +25,7 @@ const Post = ({post}) => {
         inputRef.current.focus()
     }
 
-    // Open Img
+    // Open image
     const [openDialog, setOpenDialog] = useState(false)
     const handleModal = () => {
         setOpenDialog(!openDialog)

@@ -50,7 +50,7 @@ const useStyles = makeStyles(() => ({
     },
     userFullName: {
         display: 'flex',
-        fontWeight: 600,
+        fontWeight: 500,
         margin: 0,
         textAlign: 'left'
     },

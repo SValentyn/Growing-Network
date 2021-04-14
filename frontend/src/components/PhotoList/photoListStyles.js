@@ -7,7 +7,8 @@ const useStyles = makeStyles(() => ({
     },
     header: {
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
-        padding: '8px 16px',
+        fontSize: '20px',
+        padding: '4px 16px',
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: 500
     },
     gridContainer: {
-        padding: '8px 16px'
+        padding: '8px 15px'
     },
     notification: {
         margin: '10px auto'

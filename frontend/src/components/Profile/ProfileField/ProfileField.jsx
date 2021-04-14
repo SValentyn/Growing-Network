@@ -18,7 +18,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
 
         if (friends) {
             if (isEmpty(friends)) {
-                return <p className={classes.notification}>You have no friends. Hurry up and find them!</p>
+                return <p className={classes.notification}>Not friends with anyone 🙄</p>
             } else {
                 return listForRender.map(friend =>
                     <Tile
@@ -29,7 +29,7 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
             }
         } else {
             if (isEmpty(userPhotos)) {
-                return <p className={classes.notification}>You don&apos;t have photos</p>
+                return <p className={classes.notification}>There are no pictures 😞</p>
             } else {
                 return listForRender.map(photo => <Tile imageSrc={get(photo, 'src')}
                                                         key={get(photo, 'id', '')}/>)
@@ -47,10 +47,10 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading}) =
             <div className={classes.container}>
                 <Typography className={classes.header} variant="subtitle1" component="div">
                     {friends
-                        ? <Fragment>Friends – <span
-                            className={classes.count}>{get(friends, 'length', '—')}</span></Fragment>
-                        : <Fragment>Photos – <span
-                            className={classes.count}>{get(userPhotos, 'length', '—')}</span></Fragment>
+                        ? <Fragment>Friends (<span
+                            className={classes.count}>{get(friends, 'length', '—')}</span>)</Fragment>
+                        : <Fragment>Photos (<span
+                            className={classes.count}>{get(userPhotos, 'length', '—')}</span>)</Fragment>
                     }
                 </Typography>
                 <Grid className={classes.gridContainer} container spacing={1}>

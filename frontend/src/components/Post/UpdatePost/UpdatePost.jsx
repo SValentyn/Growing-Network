@@ -170,7 +170,7 @@ const UpdatePost = ({
                                         autoComplete="lastName"
                                         name="lastName"
                                         variant="outlined"
-                                        placeholder={'What you\'d like to share, ' + firstName + '?'}
+                                        placeholder={'What\'s on your mind, ' + firstName + '?'}
                                         rows="2"
                                         onKeyPress={handleKeyPress}
                                         onChange={handleTextInputChange}
@@ -179,6 +179,7 @@ const UpdatePost = ({
                                         fullWidth
                                         InputProps={{
                                             classes: {
+                                                inputMultiline: classes.inputMultiline,
                                                 root: classes.cssOutlinedInput,
                                                 focused: classes.cssFocused,
                                                 notchedOutline: classes.notchedOutline
@@ -189,6 +190,7 @@ const UpdatePost = ({
                                               className={classes.imgPreviewContainer}>
                                         {images}
                                     </GridList>
+                                    <p className={classes.footerText}>Press Ctrl+Enter to save</p>
                                 </Grid>
                             </Grid>
                             <Grid container className={classes.toolsContainer}>
@@ -211,7 +213,8 @@ const UpdatePost = ({
                                         handleFriendTag={handleFriendTag}/>
                                 </Grid>
                                 <Grid container item xs={4} justify="flex-end">
-                                    <Button className={classes.button} variant="contained" onClick={handleClose} style={{padding: '0 10px'}}>
+                                    <Button className={classes.button} variant="contained" onClick={handleClose}
+                                            style={{padding: '0 10px'}}>
                                         Cancel
                                     </Button>
                                     <Button className={classes.button} type="submit" variant="contained"

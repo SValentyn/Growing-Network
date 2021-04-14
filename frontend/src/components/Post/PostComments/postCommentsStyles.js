@@ -13,13 +13,11 @@ const useStyles = makeStyles(() => ({
     },
     createInput: {
         background: 'white',
-        borderRadius: 5
+        borderRadius: 5, 
+        border: 'none'
     },
-    footerText: {
-        fontSize: 12,
-        textAlign: 'left',
-        color: '#90949c',
-        margin: '5px 0 0 1px'
+    inputMultiline: {
+        fontFamily: 'Open Sans Condensed'
     },
     cssOutlinedInput: {
         '&$cssFocused $notchedOutline': {

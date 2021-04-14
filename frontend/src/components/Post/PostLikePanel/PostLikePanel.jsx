@@ -50,18 +50,15 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
     return (
         <Fragment>
             <div className={classes.panel}>
-                <LikePanelTooltip
-                    title={likedList(likes)}
-                    placement="left"
-                >
-                    <IconButton onClick={() => updateLikes(postId)} aria-label="like">
+                <LikePanelTooltip title={likedList(likes)} placement="left" style={{marginLeft: -8}}>
+                    <IconButton onClick={() => updateLikes(postId)} aria-label="like" className={classes.iconButton}>
                         {postIsLiked ? <FavoriteIcon color="secondary"/> : <FavoriteBorderIcon/>}
                     </IconButton>
                 </LikePanelTooltip>
                 {get(likes, 'length', '—')}
-
-                <LikePanelTooltip title="Create a comment?" placement="right">
-                    <IconButton onClick={focusForCreatingComment} aria-label="comments">
+                
+                <LikePanelTooltip title="Create a comment?" placement="right" style={{marginLeft: 8}}>
+                    <IconButton onClick={focusForCreatingComment} aria-label="comment" className={classes.iconButton}>
                         <ChatBubbleOutlineIcon/>
                     </IconButton>
                 </LikePanelTooltip>

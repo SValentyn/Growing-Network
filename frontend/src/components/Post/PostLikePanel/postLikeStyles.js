@@ -4,7 +4,8 @@ const useStyles = makeStyles(() => ({
     panel: {
         textAlign: 'center',
         borderTop: '1px solid rgb(188,188,189)',
-        borderBottom: '1px solid rgb(188,188,189)'
+        borderBottom: '1px solid rgb(188,188,189)',
+        padding: 2
     },
     container: {
         display: 'flex'
@@ -22,6 +23,9 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         margin: 0,
         textAlign: 'left'
+    },
+    iconButton: {
+        padding: 8,
     }
 }))
 
