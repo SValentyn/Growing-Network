@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {SmoothProvider} from 'react-smooth-scrolling'
 import {Provider} from 'react-redux'
 import store from './store'
 
@@ -16,23 +17,25 @@ import Toastr from './components/Toastr/Toastr'
 
 function App() {
     return (
-        <Provider store={store}>
-            <Toastr/>
-            <Router>
-                <Navbar/>
-                <Background>
-                    <Switch>
-                        <Route exact path="/access_denied" component={EmailNeedsConfirmationPage}/>
-                        <Route exact path="/register" component={Register}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/email/confirm/:token" component={EmailConfirmedPage}/>
-                        <Route exact path="/password_reset" component={ResetPassword}/>
-                        <Route exact path="/change_password/:token" component={NewPassword}/>
-                        <Route path="/" component={ProtectedRouter}/>
-                    </Switch>
-                </Background>
-            </Router>
-        </Provider>
+        <SmoothProvider skew={true} ease={0.0}>
+            <Provider store={store}>
+                <Toastr/>
+                <Router>
+                    <Navbar/>
+                    <Background>
+                        <Switch>
+                            <Route exact path="/access_denied" component={EmailNeedsConfirmationPage}/>
+                            <Route exact path="/register" component={Register}/>
+                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/email/confirm/:token" component={EmailConfirmedPage}/>
+                            <Route exact path="/password_reset" component={ResetPassword}/>
+                            <Route exact path="/change_password/:token" component={NewPassword}/>
+                            <Route path="/" component={ProtectedRouter}/>
+                        </Switch>
+                    </Background>
+                </Router>
+            </Provider>
+        </SmoothProvider>
     )
 }
 

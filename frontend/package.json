@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080",
-  "homepage": "http://growing-network.eu-west-2.elasticbeanstalk.com/",
+  "homepage": "https://www.growing-network.com/",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.7.0",
@@ -27,6 +27,7 @@
     "react-redux-toastr": "^7.6.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
+    "react-smooth-scrolling": "^1.0.2",
     "react-stomp": "^4.3.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
