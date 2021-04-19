@@ -4,7 +4,7 @@ import axios from 'axios'
 import {isLocalhost} from '../../serviceWorker'
 import {Toastr} from '../toastr/Toastr'
 
-const DOMAIN = isLocalhost ? 'http://localhost:8080' : 'https://ec2-13-53-132-174.eu-north-1.compute.amazonaws.com'
+const DOMAIN = isLocalhost ? 'http://localhost:8080' : 'https://ec2-18-192-220-179.eu-central-1.compute.amazonaws.com'
 const API_BASE_URL = '/api/v1'
 const SOCKET_URL = '/ws'
 const METHOD_GET = 'get'
