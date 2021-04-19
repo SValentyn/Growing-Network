@@ -107,12 +107,12 @@ ChatDetails.propTypes = {
     handleSearch: PropTypes.func.isRequired,
     selectedChatId: PropTypes.number
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     activeFriends: state.friends.activeFriends,
     activeFriendsAreLoading: state.friends.loadingActiveFriends
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     clearCurrentChatMessages: () => dispatch(clearCurrentChatMessages()),
     sendChatBeenReadNotification: chatId => dispatch(sendChatBeenReadNotification(chatId)),
     loadActiveFriends: (page, size, isInitial) => dispatch(loadActiveFriends(page, size, isInitial))

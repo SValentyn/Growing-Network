@@ -24,7 +24,7 @@ const StatusIcon = ({className, color}) => {
 
 StatusIcon.propTypes = {
     className: PropTypes.string,
-    color: PropTypes.oneOf(['active', 'inActive'])
+    color: PropTypes.oneOf(['active', 'recently', 'inActive'])
 }
 
 export default StatusIcon

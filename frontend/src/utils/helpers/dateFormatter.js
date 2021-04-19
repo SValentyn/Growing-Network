@@ -18,8 +18,8 @@ export const getActiveTime = (dateMilliseconds) => {
     let minuteDifference = Math.floor((new Date().getTime() - dateMilliseconds) / 60000)
 
     if (minuteDifference === 0) {
-        return 'just now'
-    } else if (minuteDifference === 1) {
+        return 'online'
+    } else if (minuteDifference <= 1) {
         return 'a ' + minuteDifference + ' minute ago'
     } else {
         return minuteDifference + ' minutes ago'

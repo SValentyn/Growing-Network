@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     active: {
         backgroundColor: colors.green[600]
     },
+    recently: {
+        backgroundColor: colors.yellow[600]
+    },
     inActive: {
         backgroundColor: colors.red[600]
     }

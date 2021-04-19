@@ -1,13 +1,13 @@
 import {makeStyles} from '@material-ui/core/styles'
 import styleConstants from '../../utils/constants/styleConstants'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         justifyContent: 'space-between',
         margin: 'auto 0',
         borderBottom: '1px solid #e6e6e6',
-        padding: '5px 10px'
+        padding: '5px 4px 5px 12px'
     },
     header: {
         padding: '8px 16px',
@@ -54,15 +54,24 @@ const useStyles = makeStyles(() => ({
         margin: 0,
         textAlign: 'left'
     },
+    lastActivity: {
+        display: 'inline-block'
+    },
+    statusIcon: {
+        marginRight: 5
+    },
     activeTime: {
         margin: 0,
         textAlign: 'left',
         lineHeight: '16px'
     },
     sendMessage: {
-        color: styleConstants.ICON_COLOR
+        color: styleConstants.ICON_COLOR,
+        padding: 10,
+        '&:hover': {
+            backgroundColor: 'rgb(15 135 220 / 9%)'
+        }
     }
-
 }))
 
 export default useStyles

@@ -53,7 +53,7 @@ const ChatToolbar = ({
                 className={classes.statusIcon}
                 color="inActive"
             />
-            <Typography variant="body2">Not Active</Typography>
+            <Typography variant="body2">Offline</Typography>
         </Fragment>
     )
 

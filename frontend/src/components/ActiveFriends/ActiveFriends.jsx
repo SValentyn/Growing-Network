@@ -13,6 +13,7 @@ import {getFullName} from '../../utils/helpers/commonFormatter'
 import {changeTab} from '../../actions/profileTab'
 
 import useStyles from './activeFriendsStyles'
+import StatusIcon from '../StatusIcon/StatusIcon'
 
 const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
     const classes = useStyles()
@@ -31,7 +32,14 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
                                 <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
                                     <p className={classes.userFullName}>{getFullName(friend)}</p>
                                 </Link>
-                                <p className={classes.activeTime}>{getActiveTime(friend.lastActivityTime)}</p>
+
+                                <Fragment>
+                                    <StatusIcon className={classes.statusIcon}
+                                                color={getActiveTime(friend.lastActivityTime) === 'online' ? 'active' : 'recently'}/>
+                                    <Typography variant="body2" className={classes.lastActivity}>
+                                        {getActiveTime(friend.lastActivityTime)}
+                                    </Typography>
+                                </Fragment>
                             </div>
                         </div>
                         <Tooltip title="Send message">

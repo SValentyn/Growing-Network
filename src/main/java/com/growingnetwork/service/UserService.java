@@ -1,6 +1,6 @@
 package com.growingnetwork.service;
 
-import com.growingnetwork.exception.NoDataFoundException;
+import com.growingnetwork.exception.NonExistDataException;
 import com.growingnetwork.model.ApplicationUser;
 import com.growingnetwork.model.FriendRequest;
 import com.growingnetwork.model.Image;
@@ -34,7 +34,7 @@ import static java.util.stream.Collectors.groupingBy;
 @Service
 public class UserService extends AbstractCrudService<ApplicationUser, String, UserRepository> {
     
-    public static final long LAST_THRESHOLD_OF_ONLINE_ACTIVITY = 300000; // 5 min
+    public static final long LAST_THRESHOLD_OF_ONLINE_ACTIVITY = 900000; // 15 min
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
     private final AuthenticationService authenticationService;
     private final ChatService chatService;
