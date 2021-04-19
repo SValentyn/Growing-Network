@@ -1,6 +1,6 @@
 package com.growingnetwork.configuration;
 
-import com.growingnetwork.interceptors.RequestHandlerInterceptor;
+import com.growingnetwork.interceptor.RequestHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

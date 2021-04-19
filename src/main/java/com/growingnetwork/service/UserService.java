@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,23 +102,42 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
             throw new BadCredentialsException(String.format("User with email '%s' already exists!", user.getEmail()));
         }
         
-        Token token = user.getToken();
-        token.setEmailIsConfirmed(false);
-        token.setEmailConfirmationId(UUID.randomUUID().toString());
-        
+        initTokenData(user);
+        initApplicationUserData(user);
         String password = user.getPassword();
         user.setPassword(bcryptPasswordEncoder.encode(password));
         
         jpaRepository.save(user);
-        emailHandler.sendEmailConfirmationLetter(user.getEmail(), token.getEmailConfirmationId());
+        emailHandler.sendEmailConfirmationLetter(user.getEmail(), user.getToken().getEmailConfirmationId());
         return authenticationService.getAccessToken(user.getUsername(), password);
     }
     
+    private void initTokenData(ApplicationUser user) {
+        Token token = user.getToken();
+        token.setEmailIsConfirmed(false);
+        token.setEmailConfirmationId(UUID.randomUUID().toString());
+    }
+    
+    private void initApplicationUserData(ApplicationUser user) {
+        blockApplicationUser(user, "Email not verified.");
+        user.setJoinedDate(new Date());
+        user.setCountUploadedFiles(0);
+    }
+    
     public Boolean confirmEmail(String confirmationId) {
-        ApplicationUser user = jpaRepository.getByEmailConfirmationId(confirmationId).orElseThrow(() -> new NoDataFoundException("Invalid email confirmation id!"));
+        ApplicationUser user = jpaRepository.getByEmailConfirmationId(confirmationId).orElseThrow(() -> new NonExistDataException("Invalid email confirmation id!"));
         user.getToken().setEmailIsConfirmed(true);
+        unblockApplicationUser(user);
         jpaRepository.save(user);
         return true;
+    }
+    
+    public void blockApplicationUser(ApplicationUser user, String cause) {
+        user.setOpenAccount(false);
+    }
+    
+    public void unblockApplicationUser(ApplicationUser user) {
+        user.setOpenAccount(true);
     }
     
     @Override

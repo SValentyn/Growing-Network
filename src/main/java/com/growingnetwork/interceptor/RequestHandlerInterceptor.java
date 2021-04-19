@@ -1,4 +1,4 @@
-package com.growingnetwork.interceptors;
+package com.growingnetwork.interceptor;
 
 import com.growingnetwork.model.ApplicationUser;
 import com.growingnetwork.service.UserService;
