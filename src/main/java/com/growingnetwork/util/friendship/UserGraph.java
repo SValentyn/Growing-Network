@@ -47,7 +47,7 @@ class UserGraph {
     }
     
     private Set<GraphVertex> getAdjacentVertexes(ApplicationUser user) {
-        return adjacentVertices.get(new GraphVertex(user));
+        return adjacentVertices.size() != 0 ? adjacentVertices.get(new GraphVertex(user)) : new HashSet<>();
     }
     
     Map<ApplicationUser, List<ApplicationUser>> breadthFirstTraversal(ApplicationUser currentUser) {
