@@ -4,6 +4,7 @@ import com.growingnetwork.dto.security.UserCredentials;
 import com.growingnetwork.model.ApplicationUser;
 import com.growingnetwork.model.Token;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (authenticationResult.isAuthenticated()) {
             return generateAccessToken(authenticationResult.getName());
         } else {
-            throw new BadCredentialsException("Unable to authenticate user");
+            throw new BadCredentialsException("The system cannot authenticate you as a user. Try again or contact support.");
         }
     }
     
@@ -63,11 +64,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String token = request.getHeader(HEADER_STRING);
         UsernamePasswordAuthenticationToken result = null;
         if (token != null) {
-            Claims claims = Jwts.parser()
-                    .setSigningKey(secret)
-                    .parseClaimsJws(token.replace("Bearer", ""))
-                    .getBody();
-            result = new UsernamePasswordAuthenticationToken(claims.getSubject(), null, Collections.emptyList());
+            try {
+                Claims claims = Jwts.parser()
+                        .setSigningKey(secret)
+                        .parseClaimsJws(token.replace("Bearer", ""))
+                        .getBody();
+                result = new UsernamePasswordAuthenticationToken(claims.getSubject(), null, Collections.emptyList());
+            } catch (JwtException e) {
+                throw new JwtException("The system cannot authenticate you as a user. Please try logging in again.");
+            }
         }
         return result;
     }
@@ -82,7 +87,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (userRefreshToken.equals(refreshToken) && tokenExpiration.after(Calendar.getInstance())) {
             return generateAccessToken(user.getUsername());
         } else {
-            throw new BadCredentialsException("Access to the application has expired, please log in again.");
+            throw new BadCredentialsException("Access to the application has expired. Please try logging in again.");
         }
     }
     
