@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     },
     gridContainer: {
         margin: '0 auto',
-        padding: '12px 20px'
+        padding: '2% 11%'
     },
     notification: {
         margin: '10px auto'

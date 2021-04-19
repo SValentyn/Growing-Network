@@ -3,21 +3,27 @@ import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     container: {
-        marginBottom: 20
+        marginBottom: 20,
     },
     header: {
+        display: 'flex',
+        background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
-        fontSize: '20px',
+        fontSize: '19.3px',
         padding: '4px 16px',
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
-        paddingRight: 24,
-        background: styleConstants.CONTAINER_HEADER_BG_COLOR
     },
-    count: {
+    headerTitle: {
         color: styleConstants.CONTAINER_COUNT_COLOR,
-        fontWeight: 500
+        textDecoration: 'none',
+        fontWeight: 500,
+        alignSelf: 'center',
+        '&:hover': {
+            textDecoration: 'none',
+            color: 'rgb(22 118 196)'
+        }
     },
     gridContainer: {
         padding: '8px 15px'
@@ -25,7 +31,6 @@ const useStyles = makeStyles(() => ({
     notification: {
         margin: '10px auto'
     }
-
 }))
 
 export default useStyles

@@ -23,7 +23,7 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
             }
         } else {
             if (isEmpty(requests)) {
-                return <p className={classes.notification}>Not friends with anyone 🙄</p>
+                return <p className={classes.notification}>Not friend requests 🙄</p>
             } else {
                 return components.map(request => <FriendsListItem request={request}
                                                                   key={get(request.requester, 'username')}/>)
@@ -38,10 +38,8 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
         <div className={classes.container}>
             <Typography className={classes.header} variant="subtitle1" component="div">
                 {friends
-                    ? <Fragment>Friends (<span
-                        className={classes.count}>{get(friends, 'length', '—')}</span>)</Fragment>
-                    : <Fragment>Friend Requests (<span
-                        className={classes.count}>{get(requests, 'length', '—')}</span>)</Fragment>
+                    ? <Fragment>Friends (<span className={classes.count}>{get(friends, 'length', '—')}</span>)</Fragment>
+                    : <Fragment>Friend Requests (<span className={classes.count}>{get(requests, 'length', '—')}</span>)</Fragment>
                 }
             </Typography>
             <Grid className={classes.gridContainer} container justify="flex-start" alignItems="flex-start">
