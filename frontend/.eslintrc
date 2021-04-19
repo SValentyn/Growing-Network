@@ -17,9 +17,9 @@
   ],
   "rules": {
     "no-console": "off",
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "no-trailing-spaces": [
-      "error",
+      "warn",
       {
         "skipBlankLines": true
       }
