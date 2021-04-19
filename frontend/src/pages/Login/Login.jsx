@@ -64,10 +64,10 @@ const Login = ({isAuthenticated, login, loading}) => {
     }
 
     const proceedToGoogleOauth = () => {
-        window.location.replace('/api/v1/auth/google')
+        // window.location.replace('/api/v1/auth/google')
     }
 
-    const onSubmit = async e => {
+    const onSubmit = async(e) => {
         e.preventDefault()
         const inputIsValid = validate()
 
@@ -107,7 +107,7 @@ const Login = ({isAuthenticated, login, loading}) => {
                         helperText={usernameError === '' ? '' : usernameError}
                         {...inputStyleProps}
                     />
-                    <Grid container>
+                    <Grid container style={{marginTop: -4}}>
                         <Grid item xs align="right">
                             <Link to="/password_reset" variant="body2" className={classes.link}>
                                 Forgot password?

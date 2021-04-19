@@ -13,7 +13,7 @@ const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
 
     const goBack = e => {
         e.preventDefault()
-        history.goBack()
+        window.location = '/login'
     }
 
     if (emailIsConfirmed) {
