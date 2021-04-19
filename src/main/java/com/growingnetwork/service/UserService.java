@@ -218,10 +218,12 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
                 randomSuggestions = finalRandomSuggestions;
                 if (randomSuggestions.size() > 0) {
                     Collections.shuffle(randomSuggestions);
-                    randomSuggestions = (randomSuggestions.size() > size) ? randomSuggestions.subList(0, pageSize - size) : randomSuggestions.subList(0, randomSuggestions.size());
-                    randomSuggestions.forEach(suggestion -> {
-                        suggestionsWithUsingGraph.put(suggestion, Collections.emptyList());
-                    });
+                    randomSuggestions.forEach(suggestion -> suggestionsWithUsingGraph.put(suggestion, Collections.emptyList()));
+                    return suggestionsWithUsingGraph
+                            .entrySet()
+                            .stream()
+                            .limit(pageSize)
+                            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
                 }
             }
         }
