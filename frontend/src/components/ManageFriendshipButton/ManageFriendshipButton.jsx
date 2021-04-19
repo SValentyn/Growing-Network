@@ -71,11 +71,11 @@ ManageFriendshipButton.propTypes = {
     incomingFriendRequests: PropTypes.array.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     incomingFriendRequests: state.friends.incomingFriendRequests
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     confirmRequest: (requestId) => dispatch(confirmRequest(requestId))
 })
 

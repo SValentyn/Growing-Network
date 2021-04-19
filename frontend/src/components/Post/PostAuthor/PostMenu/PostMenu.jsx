@@ -202,7 +202,7 @@ PostMenu.propTypes = {
     handleToggleUpdate: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     deletePost: postId => dispatch(deletePost(postId)),
     deleteCurrentUserTagFromPost: (postId, userUsername) => dispatch(deleteCurrentUserTagFromPost(postId, userUsername))
 })

@@ -44,13 +44,13 @@ ProtectedRouter.propTypes = {
     loadUser: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     authFailed: state.auth.authFailed,
     user: state.auth.user,
     emailIsConfirmed: state.auth.emailIsConfirmed
 })
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         loadUser: () => dispatch(loadUser())
     }

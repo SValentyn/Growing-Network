@@ -97,7 +97,7 @@ ProfileCover.propTypes = {
     changeTab: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     changeTab: (value) => dispatch(changeTab(value))
 })
 

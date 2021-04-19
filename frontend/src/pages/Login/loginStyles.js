@@ -44,7 +44,8 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1, 0)
     },
     googleIcon: {
-        marginRight: theme.spacing(1)
+        marginRight: theme.spacing(1),
+        width: 20
     },
     link: {
         textDecoration: 'none',

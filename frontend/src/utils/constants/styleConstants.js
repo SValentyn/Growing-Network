@@ -16,7 +16,6 @@ const styleConstants = {
     BTN_PRIMARY_TEXT_COLOR: 'white',
 
     ICON_COLOR: 'rgb(81,129,184)',
-
     AVATAR_SIZE_MID: '40px',
     POST_IMAGE_HEIGHT: '80px',
     POST_IMAGE_WIDTH: '120px'

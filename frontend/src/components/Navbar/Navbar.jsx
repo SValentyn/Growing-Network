@@ -13,7 +13,7 @@ import MoreIcon from '@material-ui/icons/MoreVert'
 import Search from '../Search/Search'
 import ChatUpdateCenter from './ChatUpdateCenter/ChatUpdateCenter'
 import {logout} from '../../actions/auth'
-import {resetTab, selectFriendRequestTab} from '../../actions/profileTab'
+import {resetTab, selectFriendRequestsTab} from '../../actions/profileTab'
 
 import useStyles from './navbarStyles'
 
@@ -221,14 +221,14 @@ Navbar.propTypes = {
     resetTab: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
     incomingFriendRequests: state.friends.incomingFriendRequests,
     unreadChats: state.chat.unreadChats
 })
 
-const mapDispatchToProps = dispatch => ({
-    selectFriendRequestTab: () => dispatch(selectFriendRequestTab()),
+const mapDispatchToProps = (dispatch) => ({
+    selectFriendRequestTab: () => dispatch(selectFriendRequestsTab()),
     logout: () => dispatch(logout()),
     resetTab: () => dispatch(resetTab())
 })

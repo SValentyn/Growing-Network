@@ -2,13 +2,15 @@ import {makeStyles} from '@material-ui/core/styles'
 import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
-    image: props => ({
+    image: (props) => ({
         paddingTop: '100%',
         backgroundImage: `url(${props.image})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: '50% 50%',
         position: 'relative',
+        borderRadius: 8,
+        cursor: 'pointer'
     }),
     userLink: {
         textDecoration: 'none',

@@ -5,7 +5,8 @@ const useStyles = makeStyles(() => ({
         textAlign: 'center',
         borderTop: '1px solid rgb(188,188,189)',
         borderBottom: '1px solid rgb(188,188,189)',
-        padding: 2
+        padding: '4px 0 2px 0',
+        marginTop: -4
     },
     container: {
         display: 'flex'

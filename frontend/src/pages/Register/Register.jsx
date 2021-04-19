@@ -200,9 +200,9 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">
-                        <Grid item>
+                        <Grid item style={{marginTop: 6}}>
                             <Link to="/login" variant="body2" className={classes.link}>
-                                Already have an account? Sign in
+                                Already have an account? Sign in!
                             </Link>
                         </Grid>
                     </Grid>

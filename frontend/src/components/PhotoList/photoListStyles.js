@@ -20,12 +20,11 @@ const useStyles = makeStyles(() => ({
         fontWeight: 500
     },
     gridContainer: {
-        padding: '8px 15px'
+        padding: '3% 3%'
     },
     notification: {
         margin: '10px auto'
     }
-
 }))
 
 export default useStyles

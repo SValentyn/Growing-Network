@@ -31,17 +31,17 @@ const handleRequestError = error => {
     if (error.response) {
         const toastrMessage = error.response.data.message
             ? error.response.data.message
-            : error.response.data || 'Error occurred during request to server..'
+            : error.response.data || 'Error occurred during request to server.'
         Toastr.error(toastrMessage)
         return error.response
     } else if (error.request) {
-        Toastr.error('Application is not responding, check your network connection..')
+        Toastr.error('Application is not responding, check your network connection.')
         return error.request
     } else if (error.message) {
         Toastr.error(error.message)
         return error.message
     } else {
-        Toastr.error('Error occurred during request to server..')
+        Toastr.error('Error occurred during request to server.')
     }
 }
 

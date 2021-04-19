@@ -100,7 +100,7 @@ HomePage.propTypes = {
     getIncomingFriendRequests: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     user: state.auth.user,
     postsAreLoading: state.posts.loading,
     posts: state.posts.posts,
@@ -111,7 +111,7 @@ const mapStateToProps = state => ({
     getIncomingFriendRequests: PropTypes.func.isRequired
 })
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         loadPostsHomePage: (page, size, isInitial) => dispatch(getPostsForHomePage(page, size, isInitial)),
         getFriendSuggestions: page => dispatch(getFriendSuggestions(page)),

@@ -1,5 +1,4 @@
 import apiRequest from '../utils/helpers/apiRequest'
-
 import {
     AUTH_ERROR,
     EMAIL_CONFIRMED,
@@ -15,8 +14,9 @@ import {
 } from '../utils/constants/actionConstants'
 import {Toastr} from '../utils/toastr/Toastr'
 
-// Load User
-
+/**
+ * Load current User
+ */
 export const loadUser = () => (dispatch) => {
     dispatch({
         type: START_LOADING
@@ -36,9 +36,10 @@ export const loadUser = () => (dispatch) => {
         })
 }
 
-// Register User
-
-export const register = (registerData) => async (dispatch) => {
+/**
+ * Register new User
+ */
+export const register = (registerData) => async(dispatch) => {
     try {
         dispatch({
             type: START_LOADING
@@ -46,7 +47,7 @@ export const register = (registerData) => async (dispatch) => {
 
         const data = await apiRequest.post('/users', registerData, {}, false)
 
-        Toastr.success('Congrats! Register success!')
+        Toastr.success('Congratulations! Your account was successfully registered!')
         apiRequest.rememberUser(data.accessToken)
         dispatch({
             type: REGISTER_SUCCESS
@@ -58,9 +59,10 @@ export const register = (registerData) => async (dispatch) => {
     }
 }
 
-// Login User
-
-export const login = ({username, password}) => async (dispatch) => {
+/**
+ * Login into Profile
+ */
+export const login = ({username, password}) => async(dispatch) => {
     const body = {username, password}
 
     try {
@@ -84,16 +86,18 @@ export const login = ({username, password}) => async (dispatch) => {
     }
 }
 
-// Logout / Clear Profile
-
+/**
+ * Logout from Profile
+ */
 export const logout = () => (dispatch) => {
     apiRequest.forgetUser()
     dispatch({type: LOGOUT})
 }
 
-// Reset password
-
-export const resetPassword = (email) => async (dispatch) => {
+/**
+ * Reset password
+ */
+export const resetPassword = (email) => async(dispatch) => {
     dispatch({type: START_LOADING})
 
     try {
@@ -104,7 +108,10 @@ export const resetPassword = (email) => async (dispatch) => {
     }
 }
 
-export const setNewPassword = (password, token) => async (dispatch) => {
+/**
+ * Set new password
+ */
+export const setNewPassword = (password, token) => async(dispatch) => {
     dispatch({type: START_LOADING})
 
     try {
@@ -117,8 +124,9 @@ export const setNewPassword = (password, token) => async (dispatch) => {
     }
 }
 
-// Confirm email
-
+/**
+ * Confirm email
+ */
 export const confirmEmail = token => (dispatch) => {
     dispatch({
         type: START_LOADING
@@ -133,6 +141,9 @@ export const confirmEmail = token => (dispatch) => {
         }))
 }
 
+/**
+ * Update Profile
+ */
 export const updateProfile = dataForm => (dispatch) => {
     return apiRequest.put('/users', dataForm)
         .then(data => dispatch({

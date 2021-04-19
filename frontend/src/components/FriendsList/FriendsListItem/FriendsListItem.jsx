@@ -19,7 +19,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 
 import {confirmRequest, deleteFriend, deleteRequest} from '../../../actions/friends'
-import {getDateWithoutTime} from '../../../utils/helpers/dateFormatter'
+import {dateFormatter} from '../../../utils/helpers/dateFormatter'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 import {getFullName} from '../../../utils/helpers/commonFormatter'
 
@@ -67,8 +67,8 @@ const FriendsListItem = ({
                         <p className={classes.userName}>{getFullName(friend)}</p>
                     </Link>
                     <div>
-                        {isOwnProfile && <Tooltip title="Remove friend">
-                            <IconButton color="secondary" onClick={handleModal} aria-label="Remove friend">
+                        {isOwnProfile && <Tooltip title="Delete friend">
+                            <IconButton color="secondary" onClick={handleModal} aria-label="Delete friend" style={{padding: 8}}>
                                 <HighlightOffIcon/>
                             </IconButton>
                         </Tooltip>}
@@ -77,15 +77,16 @@ const FriendsListItem = ({
                             TransitionComponent={Transition}
                             keepMounted
                             onClose={handleModal}
+                            className={classes.dialog}
                         >
                             <div className={classes.modalContainer}>
                                 <DialogTitle id="alert">Delete friend</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText>
-                                        Are you sure you want to delete friend?
+                                        Are you sure you want to delete him/her from your friends?
                                     </DialogContentText>
                                 </DialogContent>
-                                <DialogActions>
+                                <DialogActions className={classes.btnMenu}>
                                     <Button className={classes.modalButton} variant="contained" color="primary"
                                             onClick={handleModal}>
                                         Cancel
@@ -111,7 +112,7 @@ const FriendsListItem = ({
                         <Link to={`/profile/${get(request.requester, 'username')}`} className={classes.link}>
                             <p className={classes.userName}>{getFullName(request.requester)}</p>
                         </Link>
-                        <p className={classes.requestDate}>{getDateWithoutTime(request.date)}</p>
+                        <p className={classes.requestDate}>{dateFormatter(request.date)}</p>
                     </div>
                     <div>
                         <Tooltip title="Confirm request">

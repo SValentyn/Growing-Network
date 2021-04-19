@@ -6,7 +6,7 @@ import styleConstants from '../../utils/constants/styleConstants'
 
 import useStyles from './preloaderStyles'
 
-export default function Preloader({color = styleConstants.PRIMARY_COLOR, fullScreen = false, size = 40}) {
+export default function Preloader({color = styleConstants.BTN_BG_COLOR, fullScreen = false, size = 40}) {
     const classes = useStyles({fullScreen})
 
     return (

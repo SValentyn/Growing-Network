@@ -291,11 +291,11 @@ UpdateProfile.propTypes = {
 
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     user: state.auth.user
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     updateProfile: (formData) => dispatch(updateProfile(formData))
 })
 

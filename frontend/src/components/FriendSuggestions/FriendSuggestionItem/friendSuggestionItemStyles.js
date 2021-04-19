@@ -3,7 +3,7 @@ import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     container: {
-        padding: '5px 10px'
+        padding: '5px 4px 5px 12px'
     },
     image: {
         borderRadius: '50%',
@@ -22,7 +22,11 @@ const useStyles = makeStyles(() => ({
         color: styleConstants.CONTAINER_TEXT_COLOR
     },
     sendIcon: {
-        color: styleConstants.ICON_COLOR
+        color: styleConstants.ICON_COLOR,
+        padding: 10,
+        '&:hover': {
+            backgroundColor: 'rgb(15 135 220 / 9%)'
+        }
     },
     requestSentIcon: {
         padding: 10,

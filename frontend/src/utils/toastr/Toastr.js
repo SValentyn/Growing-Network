@@ -9,7 +9,7 @@ const toastrDefaultOptions = {
     removeOnHover: true
 }
 
-const showToastr = params => {
+const showToastr = (params) => {
     const {variant, message, toastrOptions = {}} = params
     toastr.message('', {
         ...toastrDefaultOptions,
@@ -21,22 +21,19 @@ const showToastr = params => {
 }
 
 export const Toastr = {
-    success: message => {
+    success: (message) => {
         showToastr({message, variant: 'success'})
     },
 
-    error: (message = 'Something goes wrong! Please try again later.') => {
-        showToastr({
-            message,
-            variant: 'error'
-        })
+    error: (message = 'Something is wrong! Please try again later.') => {
+        showToastr({message, variant: 'error'})
     },
 
-    warning: message => {
+    warning: (message) => {
         showToastr({message, variant: 'warning'})
     },
 
-    info: message => {
+    info: (message) => {
         showToastr({message, variant: 'info'})
     }
 }

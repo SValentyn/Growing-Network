@@ -19,7 +19,7 @@ const Tile = ({imageSrc, title, username}) => {
     }
 
     const content = (imageSrc, title, username) => {
-        return <Grid item xs={4}>
+        return <Grid item xs={3}>
             {title
                 ? (
                     <Fragment>

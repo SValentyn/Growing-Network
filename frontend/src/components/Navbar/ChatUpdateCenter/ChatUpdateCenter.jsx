@@ -53,14 +53,14 @@ ChatUpdateCenter.propTypes = {
     openChatId: PropTypes.number
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     currentUserName: state.auth.user.username,
     unreadChats: state.chat.unreadChats,
     selectedTab: state.profileTab.selectedTab,
     openChatId: state.chat.openChatId
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     getUnreadChats: () => dispatch(getUnreadChats()),
     addMessageToCurrentChat: msg => dispatch(addMessageToCurrentChat(msg)),
     sendChatBeenReadNotification: chatId => dispatch(sendChatBeenReadNotification(chatId)),

@@ -8,7 +8,7 @@ import InfiniteScroll from '../../../InfiniteScroll/InfiniteScroll'
 
 import useStyles from './chatMessagesStyles'
 
-const MESSAGES_PAGE_SIZE = 12
+const MESSAGES_PAGE_SIZE = 300
 
 const ChatMessages = ({
     authUser,
@@ -21,17 +21,17 @@ const ChatMessages = ({
     isChatGrouped
 }) => {
     const classes = useStyles()
-    
+
     const scrollToBottom = () => {
         ChatMessages.messagesEnd.scrollIntoView({behavior: 'smooth'})
     }
-    
+
     useEffect(() => {
         if (ownMessageSent) {
             scrollToBottom()
         }
     })
-    
+
     const sortedMessages = sortBy(messages, ['date'])
 
     return (
@@ -41,7 +41,7 @@ const ChatMessages = ({
             contentArrLength={messages.length}
             loadContentHandler={loadContentHandler}
             pageSize={MESSAGES_PAGE_SIZE}
-            throttleDelay={1000}
+            throttleDelay={0}
             isLastPage={isLastPageInChat}
             isContentUpdated={ownMessageSent}
             scrollContainerStyles={{

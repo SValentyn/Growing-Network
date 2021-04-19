@@ -78,7 +78,7 @@ const Search = ({loading, searchData, searchResults}) => {
                     </div>
                     <TextField
                         {...params}
-                        placeholder="Search"
+                        placeholder="User Search"
                         fullWidth
                         variant="outlined"
                         InputProps={{

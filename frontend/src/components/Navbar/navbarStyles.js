@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '14px',
         lineHeight: 1.6,
         fontWeight: 500,
-        background: 'linear-gradient(135deg , #2ddbf2 10%, #1158f7 100%);',
+        background: 'linear-gradient(135deg, #00dcff 0%, #1158f7 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent'
     },

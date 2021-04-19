@@ -42,11 +42,24 @@ const useStyles = makeStyles(() => ({
         color: '#8bc34a'
     },
     sendMessage: {
-        color: styleConstants.ICON_COLOR
+        color: styleConstants.ICON_COLOR,
+        padding: 10,
+        '&:hover': {
+            backgroundColor: 'rgb(15 135 220 / 9%)'
+        }
+    },
+    dialog: {
+        marginTop: -250
     },
     modalContainer: {
+        width: 500,
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR
+    },
+    btnMenu: {
+        margin: 15,
+        padding: 5,
+        color: styleConstants.PRIMARY_COLOR
     },
     modalButton: {
         position: 'relative',
@@ -62,7 +75,6 @@ const useStyles = makeStyles(() => ({
             background: styleConstants.BTN_BG_ACTIVE
         }
     }
-
 }))
 
 export default useStyles

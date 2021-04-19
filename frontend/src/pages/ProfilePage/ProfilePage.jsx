@@ -172,7 +172,7 @@ ProfilePage.propTypes = {
     friendsAreLoading: PropTypes.bool
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     user: state.auth.user,
     selectedTab: state.profileTab.selectedTab,
     userPhotos: state.images.userPhotos,
@@ -186,7 +186,7 @@ const mapStateToProps = state => ({
     incomingFriendRequests: state.friends.incomingFriendRequests
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     loadUserPhotos: (userId) => dispatch(getUserPhotosFromPosts(userId)),
     getPostsForProfile: (userId, page, size, isInitial) => dispatch(getPostsForProfile(userId, page, size, isInitial)),
     loadUserProfile: (userId) => dispatch(getUserProfile(userId)),

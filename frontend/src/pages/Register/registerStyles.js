@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 5
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 0),
         position: 'relative',
         color: styleConstants.BTN_PRIMARY_TEXT_COLOR,
         textShadow: '0 -1px 2px rgba(0,0,0,.2)',
@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     link: {
+        marginTop: -6,
         textDecoration: 'none',
         color: styleConstants.CONTAINER_TEXT_COLOR,
         '&:hover': {
