@@ -40,7 +40,7 @@ The purpose of this app is to use on practice Spring, React, SQL and other techn
 
 #### Swagger Documentation
 
-http://growing-network.eu-west-2.elasticbeanstalk.com/swagger-ui.html
+https://www.growing-network.com/swagger-ui.html
 
 ## Support
 

@@ -1,7 +1,6 @@
 package com.growingnetwork.configuration;
 
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.growingnetwork.util.SmartCopyBeanUtilsBean;
@@ -16,6 +15,12 @@ import static org.modelmapper.convention.MatchingStrategies.STRICT;
 @Configuration
 public class ApplicationConfiguration {
     
+    /**
+     * {@link com.amazonaws.regions.Regions} enum.
+     * "eu-north-1" is missing there.
+     */
+    private final String EU_NORTH_1 = "eu-north-1";
+    
     @Bean
     public BCryptPasswordEncoder bcryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -28,7 +33,7 @@ public class ApplicationConfiguration {
     public AmazonS3Client amazonS3Client() {
         return (AmazonS3Client) AmazonS3ClientBuilder
                 .standard()
-                .withRegion(Regions.EU_WEST_2)
+                .withRegion(EU_NORTH_1)
                 .withCredentials(new EnvironmentVariableCredentialsProvider())
                 .build();
     }
@@ -40,10 +45,9 @@ public class ApplicationConfiguration {
 //    public AmazonS3Client amazonS3Client() {
 //        return (AmazonS3Client) AmazonS3ClientBuilder
 //                .standard()
-//                .withRegion(Regions.EU_WEST_2)
+//                .withRegion(EU_NORTH_1)
 //                .build();
 //    }
-    
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper mapper = new ModelMapper();

@@ -2,20 +2,18 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: @spring.profiles.active@
 
   servlet:
     multipart:
-      maxFileSize: 15MB
-      maxRequestSize: 15MB
+      maxFileSize: 24MB
+      maxRequestSize: 24MB
 
   datasource:
-    url: jdbc:mysql://localhost:3306/growingnetworkdb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    url:      # <URL> + ?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: # <username>
     password: # <password>
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    
   jpa:
     properties:
       hibernate:
@@ -31,8 +29,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 80984151153-9f91p0h7vtpivo52535okhirjrdom0ld.apps.googleusercontent.com # <client-id>
-            client-secret: T2uF0otx0tP-wPnqStyfRrDa                                            # <client-secret>
+            client-id:     # <client-id>
+            client-secret: # <client-secret>
 
   mail:
     host: smtp.gmail.com
@@ -47,5 +45,5 @@ spring:
             enable: true
 
 amazonProperties:
-  endpointUrl: https://s3.eu-west-2.amazonaws.com
-  bucketName: elasticbeanstalk-eu-west-2-160059151014 # <bucketName>
+  endpointUrl: https://s3.eu-north-1.amazonaws.com
+  bucketName: # <bucketName>

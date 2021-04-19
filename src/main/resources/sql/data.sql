@@ -5,15 +5,14 @@ VALUES ('e4ed11a0-c2a8-448d-aece-4850ec44f3ed', 0, '', 0, '90271bb8-3eae-4ebf-89
        ('e4ed11a0-c2a8-448d-aece-4850ec44f3ed', 0, '', 0, '90271bb8-3eae-4ebf-89dc-4bc75409ab62', true);
 
 /* IMAGES [Amazon AWS S3] */
-INSERT INTO images (src_key, src)
-VALUES ('1618044116972-fefd.png', 'https://elasticbeanstalk-eu-west-2-160059151014.s3.eu-west-2.amazonaws.com/1618044116972-fefd.png'),
-       ('1618047482397-b43a.jpg','https://elasticbeanstalk-eu-west-2-160059151014.s3.eu-west-2.amazonaws.com/1618047482397-b43a.jpg');
+# INSERT INTO images (src_key, src)
+# VALUES
 
 /* USERS [password = 000000] */
 INSERT INTO users (username, password, email, first_name, last_name, birth_date, gender, joined_date, last_activity_time, fk_avatar_img_id, fk_cover_img_id, open_account, fk_tokens_data_id)
-VALUES ('admin1', '$2a$10$YNN2VpvnrFYDGnAbjBBaouSLMzyV.86ocPszcTftyvL2ai/9eP4rq', 'growingnetwork.service@gmail.com', 'GN', 'Service',1618012800000, 2, '2021-01-01 00:00:01',1617840000000, 1, 2, true, 1),
+VALUES ('admin1', '$2a$10$YNN2VpvnrFYDGnAbjBBaouSLMzyV.86ocPszcTftyvL2ai/9eP4rq', 'growingnetwork.service@gmail.com', 'GN', 'Service',1618012800000, 2, '2021-01-01 00:00:01', 1617840000000, null, null, true, 1),
        ('suggestFriend0', '$2a$10$YNN2VpvnrFYDGnAbjBBaouSLMzyV.86ocPszcTftyvL2ai/9eP4rq', 'suggestFriend0@test.com','Harry', 'Potter', 1618012800000, 0, '2021-01-01 00:00:01', 1617840000000, null, null, true, 2),
-       ('suggestFriend1', '$2a$10$YNN2VpvnrFYDGnAbjBBaouSLMzyV.86ocPszcTftyvL2ai/9eP4rq', 'suggestFriend1@test.com','Conan', 'Doyle', 1618012800000, 0, '2021-01-01 00:00:01',1617840000000, null, null, true, 3);
+       ('suggestFriend1', '$2a$10$YNN2VpvnrFYDGnAbjBBaouSLMzyV.86ocPszcTftyvL2ai/9eP4rq', 'suggestFriend1@test.com','Conan', 'Doyle', 1618012800000, 0, '2021-01-01 00:00:01', 1617840000000, null, null, true, 3);
 
 /* FRIENDS */
 INSERT INTO friends (fk_username, fk_friend_username)
