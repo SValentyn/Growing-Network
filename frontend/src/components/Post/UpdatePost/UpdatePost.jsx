@@ -76,13 +76,16 @@ const UpdatePost = ({
         setOpenUpdateWindow(false)
         if (imagesToUpload.length === 0) {
             updatePost(id, textToUpload, imagesToUpload, taggedFriendsToUpload, true)
+        } else if (imagesToUpload.length > 1) {
+            Toastr.error('The system does not support uploading multiple files 🙄')
+            setOpenUpdateWindow(true)
         } else if (image && imagesToUpload[0].url === image.src) {
             updatePost(id, textToUpload, [image], taggedFriendsToUpload, true)
         } else {
             uploadImages(imagesToUpload).then(
                 (imgLinks) => updatePost(id, textToUpload, imgLinks, taggedFriendsToUpload, true),
                 (images) => {
-                    Toastr.error('One or more images weren\'t uploaded')
+                    Toastr.error('Unable to load image.')
                     setUploadForm({...uploadForm, imagesToUpload: images})
                 })
         }

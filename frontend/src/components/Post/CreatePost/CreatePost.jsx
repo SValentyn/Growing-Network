@@ -54,12 +54,16 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        uploadImages(imagesToUpload).then(
-            imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
-            images => {
-                Toastr.error('One or more images weren\'t uploaded')
-                setUploadForm({...uploadForm, imagesToUpload: images})
-            })
+        if (imagesToUpload.length > 1) {
+            Toastr.error('The system does not support uploading multiple files 🙄')
+        } else {
+            uploadImages(imagesToUpload).then(
+                imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
+                images => {
+                    Toastr.error('Unable to load image.')
+                    setUploadForm({...uploadForm, imagesToUpload: images})
+                })
+        }
     }
 
     const handleKeyPress = (e) => {

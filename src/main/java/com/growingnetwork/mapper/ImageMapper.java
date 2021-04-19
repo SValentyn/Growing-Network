@@ -17,17 +17,17 @@ public final class ImageMapper extends AbstractControllerToCrudServiceMapper<Ima
         super(modelMapper, crudService);
     }
     
-    public ImageDtoOut responseDtoOf(Image entity) {
-        return modelMapper.map(entity, ImageDtoOut.class);
-    }
-    
     @Override
     public Image entityOf(ImageDtoIn dtoIn) {
         return modelMapper.map(dtoIn, Image.class);
     }
     
-    public ImageDtoOut uploadFile(MultipartFile file) {
-        return responseDtoOf(crudService.uploadFile(file));
+    @Override
+    public ImageDtoOut responseDtoOf(Image entity) {
+        return modelMapper.map(entity, ImageDtoOut.class);
     }
     
+    public ImageDtoOut upload(MultipartFile file) {
+        return responseDtoOf(crudService.uploadFile(file));
+    }
 }

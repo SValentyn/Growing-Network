@@ -55,7 +55,9 @@ const Post = ({post}) => {
             {message && <p className={classes.postText}>{message}</p>}
             {image &&
             <Fragment>
-                <img src={get(image, 'src')} onClick={handleModal} className={classes.image} alt="Post image"/>
+                <div className={classes.imageContainer}>
+                    <img src={get(image, 'src')} onClick={handleModal} className={classes.image} alt="Post image"/>
+                </div>
                 <Dialog
                     maxWidth="md"
                     open={openDialog}

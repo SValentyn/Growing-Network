@@ -1,6 +1,6 @@
 package com.growingnetwork.service;
 
-import com.growingnetwork.exception.NoDataFoundException;
+import com.growingnetwork.exception.NonExistDataException;
 import com.growingnetwork.model.ApplicationUser;
 import com.growingnetwork.model.Comment;
 import com.growingnetwork.model.Image;
@@ -137,7 +137,7 @@ public final class PostService extends AbstractCrudService<Post, Long, PostRepos
         Comment comment = comments.stream()
                 .filter(item -> item.getId().equals(commentId))
                 .findFirst()
-                .orElseThrow(() -> new NoDataFoundException(String.format("Comment with id '%d' wasn't found.", commentId)));
+                .orElseThrow(() -> new NonExistDataException(String.format("Comment with id '%d' wasn't found.", commentId)));
         
         final boolean hasCredentialsToDelete = principal.getName().equals(post.getAuthor().getUsername())
                 || principal.getName().equals(post.getOwner().getUsername())

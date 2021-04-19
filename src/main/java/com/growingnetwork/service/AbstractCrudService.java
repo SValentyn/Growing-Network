@@ -1,6 +1,6 @@
 package com.growingnetwork.service;
 
-import com.growingnetwork.exception.NoDataFoundException;
+import com.growingnetwork.exception.NonExistDataException;
 import com.growingnetwork.model.DbEntity;
 import com.growingnetwork.util.SmartCopyBeanUtilsBean;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -60,7 +60,7 @@ public abstract class AbstractCrudService<E extends DbEntity<T>, T, R extends Jp
     }
     
     public E resolvedOptional(Optional<E> entity, T id) {
-        return entity.orElseThrow(() -> new NoDataFoundException(String.format("Entity with id %s wasn't found!", id)));
+        return entity.orElseThrow(() -> new NonExistDataException(String.format("Entity with id %s wasn't found!", id)));
     }
     
 }

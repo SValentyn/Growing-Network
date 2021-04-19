@@ -33,7 +33,7 @@ public class FileHandlerController {
     
     @PostMapping("/upload")
     public ResponseEntity<ImageDtoOut> uploadFile(@RequestPart(value = "file") MultipartFile file) {
-        return ResponseEntity.ok(imageMapper.uploadFile(file));
+        return ResponseEntity.ok(imageMapper.upload(file));
     }
     
     @DeleteMapping("/delete/{fileId}")

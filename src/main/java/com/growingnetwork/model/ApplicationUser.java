@@ -62,15 +62,15 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "open_account")
     private Boolean openAccount;
     
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "joined_date", updatable = false)
+    private Date joinedDate;
+    
     @Column(name = "last_activity_time")
     private Long lastActivityTime;
     
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "joined_date", insertable = false, updatable = false)
-    @org.hibernate.annotations.Generated(
-            org.hibernate.annotations.GenerationTime.ALWAYS
-    )
-    private Date joinedDate;
+    @Column(name = "count_uploaded_files", columnDefinition = "int default 0")
+    private Integer countUploadedFiles;
     
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fk_avatar_img_id")
@@ -121,4 +121,13 @@ public class ApplicationUser implements DbEntity<String> {
     public String getId() {
         return username;
     }
+    
+    public void incrementCountUploadedFiles() {
+        countUploadedFiles++;
+    }
+    
+    public void decrementCountUploadedFiles() {
+        countUploadedFiles--;
+    }
+    
 }

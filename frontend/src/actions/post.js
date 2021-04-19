@@ -14,7 +14,7 @@ import {
 import {Toastr} from '../utils/toastr/Toastr'
 import apiRequest from '../utils/helpers/apiRequest'
 
-export const uploadSingleImage = image => {
+export const uploadSingleImage = (image) => {
     const configMultipart = {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -25,7 +25,8 @@ export const uploadSingleImage = image => {
     return apiRequest.post('/storage/upload', formData, configMultipart)
 }
 
-export const uploadImages = images => {
+// TODO: It doesn't work as it should now. Implement multiple downloads.
+export const uploadImages = (images) => {
     const uploadImageRequests = images.map((img, i) => uploadSingleImage(img)
         .catch(() => { images[i].uploadError = true }))
 
@@ -65,7 +66,7 @@ export const updatePost = (postId, message, images, taggedFriends, isShownToEver
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -109,7 +110,7 @@ export const deletePost = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -121,7 +122,7 @@ export const updateLikes = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -137,7 +138,7 @@ export const createComment = (postId, comment) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -149,7 +150,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -161,6 +162,6 @@ export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async 
             payload: {postId, post, tagOwnerUsername}
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }

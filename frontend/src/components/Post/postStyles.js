@@ -15,8 +15,13 @@ const useStyles = makeStyles(() => ({
         padding: '2px 20px 14px',
         color: styleConstants.PRIMARY_COLOR
     },
+    imageContainer: {
+        textAlign: 'center'
+    },
     image: {
-        width: '100%'
+        maxWidth: '100%',
+        minHeight: 400,
+        maxHeight: 600
     }
 }))
 
