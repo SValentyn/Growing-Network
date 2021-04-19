@@ -52,11 +52,11 @@ export const loadCurrentUserFriends = (username, page, size) => async (dispatch)
             payload: friends
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
-export const deleteFriend = friendUsername => async (dispatch) => {
+export const deleteFriend = (friendUsername) => async (dispatch) => {
     try {
         const deletedUser = await apiRequest.delete('/users/friends/' + friendUsername)
         dispatch({
@@ -64,7 +64,7 @@ export const deleteFriend = friendUsername => async (dispatch) => {
             payload: deletedUser
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -76,7 +76,7 @@ export const confirmRequest = (requestId) => async (dispatch) => {
             payload: newFriend
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
@@ -88,11 +88,11 @@ export const deleteRequest = (requestId) => async (dispatch) => {
             payload: requestList
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
-export const getFriendSuggestions = size => async (dispatch) => {
+export const getFriendSuggestions = (size) => async (dispatch) => {
     dispatch({
         type: FRIEND_SUGGESTIONS_STARTED_LOADING
     })
@@ -111,11 +111,11 @@ export const getFriendSuggestions = size => async (dispatch) => {
         dispatch({
             type: FRIEND_SUGGESTIONS_STOPPED_LOADING
         })
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
-export const sendFriendRequest = responderId => {
+export const sendFriendRequest = (responderId) => {
     return apiRequest.post(/requests/ + responderId)
 }
 
@@ -127,11 +127,11 @@ export const getIncomingFriendRequests = () => async dispatch => {
             payload: requests
         })
     } catch (e) {
-        Toastr.error('Something goes wrong! Please try again later...')
+        Toastr.error('Something is wrong! Please try again later.')
     }
 }
 
-export const checkFriendshipStatus = targetUsername => {
+export const checkFriendshipStatus = (targetUsername) => {
     return apiRequest.get('/users/friends/status/' + targetUsername)
 }
 

@@ -1,5 +1,5 @@
 import {makeStyles} from '@material-ui/core'
-import styleConstants from '../../../../utils/constants/styleConstants'
+import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
     button: {
@@ -23,7 +23,9 @@ const useStyles = makeStyles(() => ({
     },
     icon: {
         verticalAlign: 'middle',
-        display: 'inline-block'
+        display: 'inline-block',
+        fontSize: 21,
+        padding: '1.5px 0'
     },
     labelText: {
         verticalAlign: 'middle',

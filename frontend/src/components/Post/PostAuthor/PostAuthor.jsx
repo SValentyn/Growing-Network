@@ -32,14 +32,16 @@ const PostAuthor = ({
     let belowUsernameLine = null
 
     if (author.username !== owner.username) {
-        nextToUsernameLine = <Fragment>
-            <ArrowRightIcon className={classes.arrowRight}/>
-            <span>
-        <Link to={`/profile/${get(owner, 'username')}`} className={classes.authorLink}>
-          {getFullName(owner)}
-        </Link>
-      </span>
-        </Fragment>
+        nextToUsernameLine = (
+            <Fragment>
+                <ArrowRightIcon className={classes.arrowRight}/>
+                <span>
+                    <Link to={`/profile/${get(owner, 'username')}`} className={classes.authorLink}>
+                        {getFullName(owner)}
+                    </Link>
+                </span>
+            </Fragment>
+        )
     }
 
     if (taggedFriends.length > 0) {

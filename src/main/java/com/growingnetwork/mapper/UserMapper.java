@@ -90,7 +90,10 @@ public final class UserMapper extends AbstractControllerToCrudServiceMapper<Appl
     }
     
     public List<UserLabelDtoOut> getUserFriends(Pageable pageable, String username) {
-        return crudService.getUserFriends(pageable, username).stream().map(this::userLabelDtoOf).collect(Collectors.toList());
+        return crudService.getUserFriends(pageable, username).stream()
+                .limit(pageable.getPageSize())
+                .map(this::userLabelDtoOf)
+                .collect(Collectors.toList());
     }
     
     public List<FriendSuggestionDtoOut> getUserFriendSuggestions(Integer pageSize) {

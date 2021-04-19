@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     postInput: {
         width: '98%',
-        margin: '2px 0 0 8px',
+        margin: '3px 0 0 8px',
         background: 'white',
         borderRadius: 5,
         border: '1px solid #dddfe2'

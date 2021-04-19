@@ -187,7 +187,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
         jpaRepository.save(user);
     }
     
-    public Page<ApplicationUser> getUserFriends(Pageable pageable, String username) {
+    public List<ApplicationUser> getUserFriends(Pageable pageable, String username) {
         return jpaRepository.getAllUserFriends(username, pageable);
     }
     

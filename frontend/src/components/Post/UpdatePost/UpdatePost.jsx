@@ -21,7 +21,7 @@ import {
 import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
-import TagFriendButton from '../CreatePost/TagFriendButton/TagFriendButton'
+import TagFriendButton from '../TagFriendButton/TagFriendButton'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../../actions/friends'
 
@@ -29,7 +29,7 @@ import useStyles from './updatePostStyles'
 import {updatePost, uploadImages} from '../../../actions/post'
 import {Toastr} from '../../../utils/toastr/Toastr'
 
-const FRIENDS_INITIAL_SIZE = 10
+const FRIENDS_INITIAL_SIZE = 16
 const STARTING_PAGE = 0
 
 const UpdatePost = ({
@@ -245,12 +245,12 @@ UpdatePost.propTypes = {
     updateRef: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     currentUser: state.auth.user,
     currentUserFriends: state.friends.currentUserFriends
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     loadCurrentUserFriends: (username, page, size) => dispatch(loadCurrentUserFriends(username, page, size)),
     updatePost: (postId, message, images, taggedFriends, isShownToEveryone) => dispatch(updatePost(postId, message, images, taggedFriends, isShownToEveryone))
 })

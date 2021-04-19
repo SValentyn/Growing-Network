@@ -2,9 +2,9 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
 import BeenhereOutlinedIcon from '@material-ui/icons/BeenhereOutlined'
-import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined'
+import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 
-import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 
 import useStyles from './tagFriendButtonStyles'
 
@@ -71,7 +71,7 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
                 onClick={handleToggle}
             >
                 <div className={classes.label}>
-                    <AssignmentIndOutlinedIcon className={classes.icon}/>
+                    <ContactsOutlinedIcon className={classes.icon}/>
                     <div className={classes.labelText}> Tag a friend</div>
                 </div>
             </Button>
