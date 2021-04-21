@@ -14,15 +14,15 @@ const useStyles = makeStyles(() => ({
     gridItem: {
         display: 'flex',
         borderRadius: 5,
-        margin: 10,
-        minWidth: 300
+        minWidth: 300,
+        margin: '26px auto'
     },
     friendInfo: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        padding: '0 0 0 16px'
+        padding: '0 14px 0 16px'
     },
     userName: {
         color: styleConstants.CONTAINER_TEXT_COLOR,

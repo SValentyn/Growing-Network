@@ -48,6 +48,7 @@ const SendMessage = ({authUser, chatId}) => {
                     onChange={handleChange}
                     onKeyPress={handleKeyPress}
                     placeholder="Write a message..."
+                    autoFocus
                 />
             </Paper>
             <IconButton

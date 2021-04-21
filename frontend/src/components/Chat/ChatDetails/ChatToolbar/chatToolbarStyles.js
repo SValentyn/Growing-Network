@@ -1,4 +1,5 @@
 import {makeStyles} from '@material-ui/core/styles'
+import styleConstants from '../../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -11,6 +12,17 @@ const useStyles = makeStyles(theme => ({
     user: {
         flexShrink: 0,
         flexGrow: 1
+    },
+    otherParticipant: {
+        margin: 0,
+        color: styleConstants.PRIMARY_COLOR
+    },
+    otherParticipantLink: {
+        textDecoration: 'none',
+        color: styleConstants.PRIMARY_COLOR,
+        fontSize: '1.5rem',
+        fontWeight: 500,
+        lineHeight: 1.33
     },
     activity: {
         display: 'flex',

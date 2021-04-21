@@ -30,8 +30,7 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
                 <Link to={`/profile/${get(author, 'username')}`}>
                     <Avatar className={classes.userPhoto} src={getAvatarLink(author)}/>
                 </Link>
-                
-                
+
                 <div className={classes.comment}>
                     <p className={classes.commentText}>
                         <Link to={`/profile/${get(author, 'username')}`} className={classes.link}>
@@ -46,7 +45,9 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
                 </div>
             </Box>
             {showDeleteBtn &&
-            <IconButton onClick={() => deleteComment(postId, id)} aria-label="Delete comment" className={classes.deleteComment}>
+            <IconButton onClick={() => deleteComment(postId, id)}
+                        aria-label="Delete comment"
+                        className={classes.deleteComment}>
                 <DeleteIcon fontSize="small"/>
             </IconButton>
             }

@@ -30,7 +30,10 @@ const useStyles = makeStyles(() => ({
         bottom: '5px',
         right: '5px',
         padding: 12,
-        color: 'white'
+        color: 'white',
+        '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.21)'
+        }
     },
     label: {
         padding: 0

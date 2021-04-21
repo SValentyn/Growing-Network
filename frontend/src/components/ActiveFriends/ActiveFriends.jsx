@@ -8,7 +8,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import Preloader from '../Preloader/Preloader'
 import {getAvatarLink} from '../../utils/helpers/imageHelper'
-import {getActiveTime} from '../../utils/helpers/dateFormatter'
+import {getLastActiveTime} from '../../utils/helpers/dateFormatter'
 import {getFullName} from '../../utils/helpers/commonFormatter'
 import {changeTab} from '../../actions/profileTab'
 
@@ -35,9 +35,9 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
 
                                 <Fragment>
                                     <StatusIcon className={classes.statusIcon}
-                                                color={getActiveTime(friend.lastActivityTime) === 'online' ? 'active' : 'recently'}/>
+                                                color={getLastActiveTime(friend.lastActivityTime) === 'online' ? 'active' : 'recently'}/>
                                     <Typography variant="body2" className={classes.lastActivity}>
-                                        {getActiveTime(friend.lastActivityTime)}
+                                        {getLastActiveTime(friend.lastActivityTime)}
                                     </Typography>
                                 </Fragment>
                             </div>

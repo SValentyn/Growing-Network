@@ -36,11 +36,17 @@ const useStyles = makeStyles(() => ({
     uploadAvatarBtn: {
         bottom: 0,
         left: '50%',
-        transform: 'translate(-50%, 30%)'
+        transform: 'translate(-50%, 30%)',
+        '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.75)'
+        }
     },
     uploadBgBtn: {
         top: 10,
-        left: 10
+        left: 10,
+        '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.7)'
+        }
     },
     avatarContainer: {
         position: 'absolute',

@@ -8,10 +8,11 @@ import SearchIcon from '@material-ui/icons/Search'
 
 import Preloader from '../../../Preloader/Preloader'
 import StatusIcon from '../../../StatusIcon/StatusIcon'
-import {getActiveTime} from '../../../../utils/helpers/dateFormatter'
+import {getLastActiveTime} from '../../../../utils/helpers/dateFormatter'
 import {getFullName} from '../../../../utils/helpers/commonFormatter'
 
 import useStyles from './chatToolbarStyles'
+import {get} from 'lodash'
 
 const ChatToolbar = ({
     chat,
@@ -32,36 +33,45 @@ const ChatToolbar = ({
 
     const classes = useStyles()
     const [inputValue, setInputValue] = useState('')
-    const chatName = isChatGrouped ? chat.name : `Chat with ${getFullName(otherParticipant)}`
+    const chatName = isChatGrouped
+        ? chat.name
+        : (<p className={classes.otherParticipant}>
+                Chat with&nbsp;
+                <Link to={`/profile/${get(otherParticipant, 'username')}`} className={classes.otherParticipantLink}>
+                    <span className={classes.commentAuthor}>
+                        {getFullName(otherParticipant)}
+                    </span>
+                </Link>
+            </p>
+        )
 
-    const handleInputChange = evt => {
-        setInputValue(evt.target.value)
-        handleSearch(evt.target.value)
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
+        handleSearch(e.target.value)
     }
 
-    const ActiveStatus = isActive ? (
-        <Fragment>
-            <StatusIcon
-                className={classes.statusIcon}
-                color="active"
-            />
-            <Typography variant="body2">{getActiveTime(lastActivityTime)}</Typography>
-        </Fragment>
-    ) : (
-        <Fragment>
-            <StatusIcon
-                className={classes.statusIcon}
-                color="inActive"
-            />
-            <Typography variant="body2">Offline</Typography>
-        </Fragment>
-    )
+    const ActiveStatus = isActive
+        ? (
+            <Fragment>
+                <StatusIcon className={classes.statusIcon} color="active"/>
+                <Typography variant="body2" className={classes.lastActivity}>
+                    {getLastActiveTime(lastActivityTime)}
+                </Typography>
+            </Fragment>)
+        : (
+            <Fragment>
+                <StatusIcon className={classes.statusIcon}
+                            color={getLastActiveTime(lastActivityTime) === 'offline' ? 'inActive' : 'recently'}/>
+                <Typography variant="body2" className={classes.lastActivity}>
+                    {getLastActiveTime(lastActivityTime)}
+                </Typography>
+            </Fragment>)
 
     return (
         <Toolbar
             className={classnames(classes.root, className)}
         >
-            {isSingleChat && <Tooltip title="To chat">
+            {isSingleChat && <Tooltip title="Back to chat">
                 <IconButton
                     className={classes.backButton}
                     component={Link}
@@ -72,7 +82,7 @@ const ChatToolbar = ({
                 </IconButton>
             </Tooltip>}
             <div className={classes.user}>
-                <Typography variant="h6">{chatName}</Typography>
+                <Typography variant="h5">{chatName}</Typography>
                 {!isChatGrouped && <div className={classes.activity}>
                     {activeFriendsAreLoading ? <Preloader size={10}/> : ActiveStatus}
                 </div>}
@@ -82,7 +92,7 @@ const ChatToolbar = ({
                 <Input
                     className={classes.searchInput}
                     disableUnderline
-                    placeholder="Search message"
+                    placeholder="Message Search"
                     value={inputValue}
                     onChange={handleInputChange}
                 />

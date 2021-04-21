@@ -41,7 +41,7 @@ const ChatList = ({
                     <Input
                         className={classes.searchInput}
                         disableUnderline
-                        placeholder="Search chat"
+                        placeholder="Chat Search"
                         value={inputValue}
                         onChange={handleInputChange}
                     />

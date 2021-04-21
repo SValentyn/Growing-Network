@@ -73,7 +73,8 @@ const useStyles = makeStyles(theme => ({
         }
     },
     label: {
-        padding: '5px 10px'
+        padding: '4px 10px',
+        cursor: 'pointer'
     },
     icon: {
         verticalAlign: 'middle',
