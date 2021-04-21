@@ -7,8 +7,8 @@ spring:
 
   servlet:
     multipart:
-      maxFileSize: 24MB
-      maxRequestSize: 24MB
+      maxFileSize: 200MB
+      maxRequestSize: 200MB
 
   datasource:
     url:      # <URL> + ?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
