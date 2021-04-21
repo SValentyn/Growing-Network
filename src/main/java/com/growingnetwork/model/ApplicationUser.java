@@ -37,6 +37,12 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "username")
     private String username;
     
+    @Column(name = "isAdmin", columnDefinition = "bit(1) default 0")
+    private Boolean isAdmin;
+    
+    @Column(name = "open_account")
+    private Boolean openAccount;
+    
     @ToString.Exclude
     @JsonIgnore
     @Column(name = "password")
@@ -58,9 +64,6 @@ public class ApplicationUser implements DbEntity<String> {
     @MayAcceptNull
     @Column(name = "gender")
     private Gender gender;
-    
-    @Column(name = "open_account")
-    private Boolean openAccount;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "joined_date", updatable = false)

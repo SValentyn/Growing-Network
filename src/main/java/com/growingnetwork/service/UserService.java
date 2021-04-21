@@ -120,6 +120,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
     
     private void initApplicationUserData(ApplicationUser user) {
         blockApplicationUser(user, "Email not verified.");
+        user.setIsAdmin(false);
         user.setJoinedDate(new Date());
         user.setCountUploadedFiles(0);
     }
