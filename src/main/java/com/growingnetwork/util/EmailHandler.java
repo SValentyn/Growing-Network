@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailHandler {
     
-    private static final String DOMAIN_NAME = "https://ec2-18-192-220-179.eu-central-1.compute.amazonaws.com";
-    private static final String LOCALHOST_DOMAIN_NAME = "http://localhost:8080";
+    private static final String DOMAIN_NAME = "https://www.growing-network.com"; // AWS EC2
+    private static final String LOCALHOST_DOMAIN_NAME = "http://localhost:8080"; // localhost
     private static final String CHANGE_PASSWORD_URL = LOCALHOST_DOMAIN_NAME + "/change_password/";
     private static final String SIGN_UP_CONFIRMATION_URL = LOCALHOST_DOMAIN_NAME + "/email/confirm/";
     
