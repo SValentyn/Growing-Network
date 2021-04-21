@@ -29,9 +29,8 @@ const useStyles = makeStyles(() => ({
         margin: '0 0 3px'
     },
     userFullName: {
-        display: 'flex',
-        alignItems: 'center',
         margin: 0,
+        alignItems: 'center',
         textAlign: 'left'
     },
     authorLink: {

@@ -50,7 +50,7 @@ const ChatToolbar = ({
         handleSearch(e.target.value)
     }
 
-    const ActiveStatus = isActive
+    const ActiveStatus = getLastActiveTime(lastActivityTime) === 'online'
         ? (
             <Fragment>
                 <StatusIcon className={classes.statusIcon} color="active"/>

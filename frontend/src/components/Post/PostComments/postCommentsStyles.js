@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
         border: 'none'
     },
     inputMultiline: {
-        fontFamily: 'Open Sans Condensed'
+        fontFamily: 'Open Sans Condensed, sans-serif'
     },
     cssOutlinedInput: {
         '&$cssFocused $notchedOutline': {

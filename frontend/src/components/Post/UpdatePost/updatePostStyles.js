@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid #dddfe2'
     },
     inputMultiline: {
-        fontFamily: 'Open Sans Condensed'
+        fontFamily: 'Open Sans Condensed, sans-serif'
     },
     footerText: {
         fontSize: 11,

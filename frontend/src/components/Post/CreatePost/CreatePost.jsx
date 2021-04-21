@@ -139,7 +139,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                     <Grid item xs={10} lg={11}>
                         <TextField
                             className={classes.postInput}
-                            style={{fontFamily: 'Open Sans Condensed'}}
+                            style={{fontFamily: 'Open Sans Condensed, sans-serif'}}
                             autoComplete="lastName"
                             name="lastName"
                             variant="outlined"
