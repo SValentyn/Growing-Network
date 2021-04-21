@@ -4,6 +4,8 @@ import com.growingnetwork.dto.image.ImageDtoOut;
 import com.growingnetwork.model.enums.Gender;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class UserDtoOut {
     
@@ -13,6 +15,7 @@ public class UserDtoOut {
     private String lastName;
     private Long birthDate;
     private Gender gender;
+    private Date joinedDate;
     private Boolean openAccount;
     private ImageDtoOut avatar;
     private ImageDtoOut profileCover;
