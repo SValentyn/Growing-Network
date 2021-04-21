@@ -21,7 +21,7 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import {Toastr} from '../../../utils/toastr/Toastr'
 import TagFriendButton from '../TagFriendButton/TagFriendButton'
 import {createPost, uploadImages} from '../../../actions/post'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getAvatarLink, resetFileInput} from '../../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../../actions/friends'
 
 import useStyles from './createPostStyles'
@@ -83,6 +83,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
             uploadError: false
         }))
         setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
+        resetFileInput(e)
     }
 
     const handleFriendTag = userLabel => {

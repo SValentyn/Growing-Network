@@ -22,7 +22,7 @@ import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
 import TagFriendButton from '../TagFriendButton/TagFriendButton'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getAvatarLink, resetFileInput} from '../../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../../actions/friends'
 
 import useStyles from './updatePostStyles'
@@ -108,6 +108,7 @@ const UpdatePost = ({
             uploadError: false
         }))
         setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
+        resetFileInput(e)
     }
 
     const handleFriendTag = (userLabel) => {
