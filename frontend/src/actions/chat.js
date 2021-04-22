@@ -17,7 +17,7 @@ import {
 } from '../utils/constants/actionConstants'
 import apiRequest from '../utils/helpers/apiRequest'
 
-export const getAllChats = () => async dispatch => {
+export const getAllChats = () => async(dispatch) => {
     dispatch({
         type: START_LOADING_CHATS
     })
@@ -35,7 +35,7 @@ export const getAllChats = () => async dispatch => {
         }))
 }
 
-export const getMessagesForChat = (chatId, page, size, isInitialRequest) => async dispatch => {
+export const getMessagesForChat = (chatId, page, size, isInitialRequest) => async(dispatch) => {
     dispatch({
         type: START_LOADING_MESSAGES
     })
@@ -63,19 +63,19 @@ export const sendMessage = ({chatId, text}) => (
     apiRequest.post('/messages/add', {chatId, text})
 )
 
-export const addMessageToCurrentChat = msg => dispatch => {
+export const addMessageToCurrentChat = (msg) => (dispatch) => {
     dispatch({
         type: CURRENT_CHAT_MESSAGE_RECEIVED,
         payload: msg
     })
 }
 
-export const clearCurrentChatMessages = () => dispatch =>
+export const clearCurrentChatMessages = () => (dispatch) =>
     dispatch({
         type: CHAT_PAGE_LEFT
     })
 
-export const getChat = userId => async dispatch => {
+export const getChat = (userId) => async dispatch => {
     dispatch({
         type: START_LOADING_CHAT
     })
@@ -92,15 +92,17 @@ export const getChat = userId => async dispatch => {
         }))
 }
 
-export const getUnreadChats = () => dispatch => {
+export const getUnreadChats = () => (dispatch) => {
     apiRequest.get('/messages/unread')
-        .then(unread => dispatch({
-            type: UNREAD_CHATS_RECEIVED,
-            payload: unread
-        }))
+        .then(unreadChats => {
+            dispatch({
+                type: UNREAD_CHATS_RECEIVED,
+                payload: unreadChats
+            })
+        })
 }
 
-export const saveMessageNotification = (msg, unreadChats) => dispatch => {
+export const saveMessageNotification = (msg, unreadChats) => (dispatch) => {
     const alreadyInUnread = unreadChats.find(unread => unread.chatId === msg.chat.id)
     const unreadChat = {
         chatId: msg.chat.id,
@@ -111,9 +113,16 @@ export const saveMessageNotification = (msg, unreadChats) => dispatch => {
         type: NEW_UNREAD_MESSAGE,
         payload: unreadChat
     })
+    notification()
 }
 
-export const sendChatBeenReadNotification = chatId => dispatch => {
+const notification = () => {
+    const notification = new Audio('/static/audio/notification.wav')
+    notification.play().then()
+    notification.currentTime = 0
+}
+
+export const sendChatBeenReadNotification = (chatId) => (dispatch) => {
     apiRequest.put(`/messages/unread/${chatId}`)
         .then(readChatId => dispatch({
             type: CHAT_HAS_BEEN_READ,

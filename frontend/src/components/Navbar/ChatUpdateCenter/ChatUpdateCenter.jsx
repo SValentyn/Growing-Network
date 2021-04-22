@@ -21,7 +21,7 @@ const ChatUpdateCenter = ({
     saveMessageNotification,
     openChatId
 }) => {
-    const onBrokerMessageReceive = msg => {
+    const onBrokerMessageReceive = (msg) => {
         const newMsgChatId = get(msg, 'chat.id')
 
         if (openChatId === newMsgChatId) {
