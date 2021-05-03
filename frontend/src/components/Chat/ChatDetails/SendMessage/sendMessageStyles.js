@@ -15,7 +15,22 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         margin: '18px 16px 24px',
         padding: '8px 12px'
-    }
+    },
+    iconContainerWithoutHover: {
+        '&:hover': {
+            backgroundColor: 'unset'
+        },
+    },
+    icon: {
+        padding: 2,
+        fontSize: 30,
+        verticalAlign: 'middle',
+        '&:hover': {
+            '#picker': {
+                display: 'block',
+            }
+        },
+    },
 }))
 
 export default useStyles

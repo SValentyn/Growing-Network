@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
         color: styleConstants.PRIMARY_COLOR,
         fontSize: '1.5rem',
         fontWeight: 500,
-        lineHeight: 1.33
+        lineHeight: 1.33,
+        verticalAlign: 'top'
     },
     activity: {
         display: 'flex',

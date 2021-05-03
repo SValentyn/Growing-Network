@@ -68,10 +68,8 @@ const ChatToolbar = ({
             </Fragment>)
 
     return (
-        <Toolbar
-            className={classnames(classes.root, className)}
-        >
-            {isSingleChat && <Tooltip title="Back to chat">
+        <Toolbar className={classnames(classes.root, className)}>
+            {isSingleChat && <Tooltip title="Back to Messenger">
                 <IconButton
                     className={classes.backButton}
                     component={Link}
