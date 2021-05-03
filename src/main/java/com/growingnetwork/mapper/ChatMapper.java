@@ -43,6 +43,7 @@ public final class ChatMapper extends AbstractControllerToCrudServiceMapper<Chat
     public List<ChatDtoOutWithLastMessage> getAllChatsWithPrincipal() {
         return crudService.getAllChatsWithPrincipal()
                 .stream()
+                .filter(chat -> chat.getMessages().size() > 0)
                 .map(chat -> modelMapper.map(chat, ChatDtoOutWithLastMessage.class))
                 .peek(chatDto -> {
                     ChatMessage lastChatMessage = chatMessageService.findLastForChatIdList(chatDto.getId());
