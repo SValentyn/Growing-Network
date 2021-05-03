@@ -3,7 +3,7 @@ import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
     container: {
-        paddingTop: theme.spacing(5)
+        padding: theme.spacing(5)
     },
     paper: {
         width: 440,
@@ -22,6 +22,10 @@ const useStyles = makeStyles(theme => ({
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(3)
+    },
+    passwordContainer: {
+        width: '100%',
+        margin: 8
     },
     textField: {
         background: 'white',

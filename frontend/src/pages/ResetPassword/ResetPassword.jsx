@@ -12,6 +12,21 @@ import useStyles from './resetPasswordStyles'
 
 const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
     const classes = useStyles()
+    const inputStyleProps = {
+        inputProps: {
+            classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline
+            }
+        },
+        inputLabelProps: {
+            classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused
+            }
+        }
+    }
 
     const [formData, setFormData] = useState({
         email: '',
@@ -70,22 +85,9 @@ const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
                                 autoComplete="email"
                                 autoFocus
                                 value={email}
-                                onChange={e => onChange(e)}
                                 error={!(emailError === '')}
                                 helperText={emailError === '' ? '' : emailError}
-                                InputProps={{
-                                    classes: {
-                                        root: classes.cssOutlinedInput,
-                                        focused: classes.cssFocused,
-                                        notchedOutline: classes.notchedOutline
-                                    }
-                                }}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.cssLabel,
-                                        focused: classes.cssFocused
-                                    }
-                                }}
+                                onChange={e => onChange(e)}
                             />
                             <Button type="submit" fullWidth variant="contained" color="primary"
                                     className={classes.submit}>

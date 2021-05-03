@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         marginTop: theme.spacing(1)
     },
+    passwordContainer: {
+        width: '100%',
+        marginTop: 10
+    },
     button: {
         position: 'relative',
         color: styleConstants.BTN_PRIMARY_TEXT_COLOR,
@@ -61,7 +65,7 @@ const useStyles = makeStyles(theme => ({
         background: 'none',
         borderRadius: 5,
         '&$cssFocused': {
-            background: 'white'
+            backgroundColor: 'white'
         },
         '&$cssFocused $notchedOutline': {
             borderColor: `${styleConstants.ICON_COLOR} !important`

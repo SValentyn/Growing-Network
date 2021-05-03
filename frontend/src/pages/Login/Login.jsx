@@ -2,7 +2,20 @@ import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {Link, Redirect, useLocation} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Avatar, Button, Container, CssBaseline, Grid, Paper, TextField, Typography} from '@material-ui/core'
+import {
+    Avatar,
+    Button,
+    Container,
+    CssBaseline,
+    FormControl,
+    Grid,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    Paper,
+    TextField,
+    Typography
+} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import classNames from 'classnames'
 
@@ -12,20 +25,22 @@ import {Toastr} from '../../utils/toastr/Toastr'
 import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpers/inputValidator'
 
 import useStyles from './loginStyles'
+import IconButton from '@material-ui/core/IconButton'
+import {Visibility, VisibilityOff} from '@material-ui/icons'
 
 const googleLogo = '/static/images/google-icon.svg'
 
 const Login = ({isAuthenticated, login, loading}) => {
     const classes = useStyles()
     const inputStyleProps = {
-        InputProps: {
+        inputProps: {
             classes: {
                 root: classes.cssOutlinedInput,
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline
             }
         },
-        InputLabelProps: {
+        inputLabelProps: {
             classes: {
                 root: classes.cssLabel,
                 focused: classes.cssFocused
@@ -37,7 +52,8 @@ const Login = ({isAuthenticated, login, loading}) => {
         username: '',
         password: '',
         usernameError: '',
-        passwordError: ''
+        passwordError: '',
+        showPassword: false,
     })
 
     const location = useLocation()
@@ -52,6 +68,14 @@ const Login = ({isAuthenticated, login, loading}) => {
 
     const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
+    }
+
+    const handleClickShowPassword = () => {
+        setFormData({...formData, showPassword: !formData.showPassword})
+    }
+
+    const handleMouseDownPassword = (e) => {
+        e.preventDefault()
     }
 
     const validate = () => {
@@ -105,8 +129,8 @@ const Login = ({isAuthenticated, login, loading}) => {
                         onChange={e => onChange(e)}
                         error={!(usernameError === '')}
                         helperText={usernameError === '' ? '' : usernameError}
-                        {...inputStyleProps}
                     />
+
                     <Grid container style={{marginTop: -4}}>
                         <Grid item xs align="right">
                             <Link to="/password_reset" variant="body2" className={classes.link}>
@@ -114,21 +138,35 @@ const Login = ({isAuthenticated, login, loading}) => {
                             </Link>
                         </Grid>
                     </Grid>
-                    <TextField
-                        name="password"
-                        onChange={e => onChange(e)}
-                        error={!(passwordError === '')}
-                        helperText={passwordError === '' ? '' : passwordError}
-                        value={password}
-                        type="password"
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        label="Password"
-                        autoComplete="current-password"
-                        {...inputStyleProps}
-                    />
+
+                    <FormControl variant="outlined" className={classes.passwordContainer}>
+                        <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-password"
+                            name="password"
+                            labelWidth={82}
+                            type={formData.showPassword ? 'text' : 'password'}
+                            value={password}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {formData.showPassword ? <Visibility/> : <VisibilityOff/>}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            required
+                            fullWidth
+                            autoComplete="current-password"
+                            error={!(passwordError === '')}
+                            onChange={e => onChange(e)}
+                        />
+                    </FormControl>
+
                     <Button type="submit" fullWidth variant="contained" color="primary"
                             className={classNames(classes.button, classes.submit)}>
                         Log In

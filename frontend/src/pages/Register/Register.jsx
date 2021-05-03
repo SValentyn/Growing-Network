@@ -2,7 +2,21 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Avatar, Button, Container, CssBaseline, Grid, Paper, TextField, Typography} from '@material-ui/core'
+import {
+    Avatar,
+    Button,
+    Container,
+    CssBaseline,
+    FormControl,
+    FormHelperText,
+    Grid,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    Paper,
+    TextField,
+    Typography
+} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 import {register} from '../../actions/auth'
@@ -16,18 +30,20 @@ import {
 } from '../../utils/helpers/inputValidator'
 
 import useStyles from './registerStyles'
+import IconButton from '@material-ui/core/IconButton'
+import {Visibility, VisibilityOff} from '@material-ui/icons'
 
 const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
     const classes = useStyles()
     const inputStyleProps = {
-        InputProps: {
+        inputProps: {
             classes: {
                 root: classes.cssOutlinedInput,
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline
             }
         },
-        InputLabelProps: {
+        inputLabelProps: {
             classes: {
                 root: classes.cssLabel,
                 focused: classes.cssFocused
@@ -39,37 +55,53 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
         username: '',
         email: '',
         password: '',
-        password2: '',
+        repeatPassword: '',
         firstName: '',
         lastName: '',
         usernameError: '',
         passwordError: '',
         repeatPasswordError: '',
-        emailError: ''
+        emailError: '',
+        showPassword: false,
+        showRepeatPassword: false
     })
 
     const {
         username,
         email,
         password,
-        password2,
+        repeatPassword,
         firstName,
         lastName,
         usernameError,
         passwordError,
         repeatPasswordError,
-        emailError
+        emailError,
+        showPassword,
+        showRepeatPassword
     } = formData
 
     const onChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
+    const handleClickShowPassword = () => {
+        setFormData({...formData, showPassword: !formData.showPassword})
+    }
+
+    const handleClickShowRepeatPassword = () => {
+        setFormData({...formData, showRepeatPassword: !formData.showRepeatPassword})
+    }
+
+    const handleMouseDownPassword = (e) => {
+        e.preventDefault()
+    }
+
     const validate = () => {
         const errors = {}
 
         errors.passwordError = validatePassword(password)
-        errors.repeatPasswordError = checkPasswordsMatch(password, password2)
+        errors.repeatPasswordError = checkPasswordsMatch(password, repeatPassword)
         errors.usernameError = validateUsername(username)
         errors.emailError = validateEmail(email)
 
@@ -78,7 +110,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
         return areNoErrors(errors)
     }
 
-    const onSubmit = async e => {
+    const onSubmit = async(e) => {
         e.preventDefault()
         const inputIsValid = validate()
 
@@ -116,10 +148,9 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 fullWidth
                                 label="Username"
                                 value={username}
-                                onChange={e => onChange(e)}
                                 error={!(usernameError === '')}
                                 helperText={usernameError === '' ? '' : usernameError}
-                                {...inputStyleProps}
+                                onChange={e => onChange(e)}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -131,44 +162,80 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 fullWidth
                                 label="Email"
                                 value={email}
-                                onChange={e => onChange(e)}
                                 error={!(emailError === '')}
                                 helperText={emailError === '' ? '' : emailError}
-                                {...inputStyleProps}
+                                onChange={e => onChange(e)}
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
+
+                        <FormControl variant="outlined" className={classes.passwordContainer}>
+                            <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
                                 name="password"
-                                label="Password"
-                                type="password"
-                                autoComplete="current-password"
+                                labelWidth={82}
+                                type={formData.showPassword ? 'text' : 'password'}
                                 value={password}
-                                onChange={e => onChange(e)}
-                                error={!(passwordError === '')}
-                                helperText={passwordError === '' ? '' : passwordError}
-                                {...inputStyleProps}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {formData.showPassword ? <Visibility/> : <VisibilityOff/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
                                 required
                                 fullWidth
-                                name="password2"
-                                label="Repeat password"
-                                type="password"
                                 autoComplete="current-password"
-                                value={password2}
+                                error={!(passwordError === '')}
                                 onChange={e => onChange(e)}
-                                error={!(repeatPasswordError === '')}
-                                helperText={repeatPasswordError === '' ? '' : repeatPasswordError}
-                                {...inputStyleProps}
                             />
-                        </Grid>
+                            {!(passwordError === '')
+                                ? (<FormHelperText id="password-error" error={true}>
+                                        {passwordError}
+                                    </FormHelperText>
+                                ) : null
+                            }
+                        </FormControl>
+
+                        <FormControl variant="outlined" className={classes.passwordContainer}>
+                            <InputLabel htmlFor="outlined-adornment-repeatPassword">Repeat password *</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-repeatPassword"
+                                name="repeatPassword"
+                                labelWidth={136}
+                                type={formData.showRepeatPassword ? 'text' : 'password'}
+                                value={repeatPassword}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowRepeatPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {formData.showRepeatPassword ? <Visibility/> : <VisibilityOff/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                required
+                                fullWidth
+                                autoComplete="current-password"
+                                error={!(repeatPasswordError === '')}
+                                onChange={e => onChange(e)}
+                            />
+                            {!(repeatPasswordError === '')
+                                ? (<FormHelperText id="repeatPassword-error" error={true}>
+                                        {repeatPasswordError}
+                                    </FormHelperText>
+                                ) : null
+                            }
+                        </FormControl>
+
                         <Grid item xs={12}>
                             <TextField
                                 autoComplete="firstName"
@@ -179,7 +246,6 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 label="First name"
                                 value={firstName}
                                 onChange={e => onChange(e)}
-                                {...inputStyleProps}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -192,7 +258,6 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 label="Last name"
                                 value={lastName}
                                 onChange={e => onChange(e)}
-                                {...inputStyleProps}
                             />
                         </Grid>
                     </Grid>
