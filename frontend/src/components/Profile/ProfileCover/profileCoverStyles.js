@@ -50,11 +50,13 @@ const useStyles = makeStyles(() => ({
     },
     modalContainer: {
         padding: 0,
-        margin: '50px auto',
         backgroundColor: 'white',
         borderRadius: 10,
         border: 'none',
-        outline: 'none'
+        outline: 'none',
+        '& google-map-demo': {
+            overflowY: 'scroll'
+        }
     },
     avatarName: {
         fontSize: 30,

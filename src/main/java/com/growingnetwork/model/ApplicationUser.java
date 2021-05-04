@@ -65,6 +65,10 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "gender")
     private Gender gender;
     
+    @MayAcceptNull
+    @Column(name = "location")
+    private String location;
+    
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "joined_date", updatable = false)
     private Date joinedDate;

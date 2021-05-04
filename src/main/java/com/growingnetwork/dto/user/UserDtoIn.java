@@ -14,6 +14,7 @@ public class UserDtoIn {
     private String lastName;
     private Long birthDate;
     private Gender gender;
+    private String location;
     private Date joinedDate;
     private Boolean openAccount;
     private ImageDtoIn avatar;

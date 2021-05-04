@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Avatar, Container, IconButton, Modal, Tab, Tabs, Tooltip} from '@material-ui/core'
+import {Avatar, Container, Dialog, IconButton, Tab, Tabs, Tooltip} from '@material-ui/core'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 import ManageFriendshipButton from '../../ManageFriendshipButton/ManageFriendshipButton'
@@ -44,13 +44,16 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
                     </Tooltip>)
                 }
                 {!isOwnProfile && <ManageFriendshipButton profileOwner={profileOwner}/>}
-                <Modal disableAutoFocus
-                       open={modalOpen}
-                       onClose={handleModal}>
-                    <Container className={classes.modalContainer} maxWidth="md">
+                <Dialog disableAutoFocus
+                        scroll={'body'}
+                        fullWidth={true}
+                        maxWidth={'md'}
+                        open={modalOpen}
+                        onClose={handleModal}>
+                    <Container className={classes.modalContainer}>
                         <UpdateProfile handleClose={handleModal}/>
                     </Container>
-                </Modal>
+                </Dialog>
             </div>
             <div className={classes.tabContainer}>
                 <Tabs

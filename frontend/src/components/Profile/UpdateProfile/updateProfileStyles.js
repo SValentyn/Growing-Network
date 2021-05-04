@@ -4,7 +4,6 @@ import styleConstants from '../../../utils/constants/styleConstants'
 const useStyles = makeStyles(() => ({
     form: {
         width: '100%',
-        marginTop: 100
     },
     header: {
         padding: '8px 20px',
@@ -62,13 +61,16 @@ const useStyles = makeStyles(() => ({
         backgroundSize: 'cover'
     },
     sectionContainer: {
-        padding: '30px 34px 0px 22px'
+        padding: '30px 34px 18px 34px'
     },
     textInput: {
-        margin: '5px 10px'
+        width: '98%',
+        margin: '5px 0'
     },
     ageRadioSet: {
-        paddingLeft: 30
+        marginTop: 8,
+        display: 'flex',
+        alignItems: 'center'
     },
     ageRadioBtn: {
         height: 30
