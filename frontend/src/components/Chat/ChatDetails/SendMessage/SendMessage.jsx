@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import 'emoji-mart/css/emoji-mart.css'
-import {Picker} from 'emoji-mart'
 import {Avatar, IconButton, Input, Paper, Tooltip} from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
@@ -12,6 +11,8 @@ import {sendMessage} from '../../../../actions/chat'
 
 import useStyles from './sendMessageStyles'
 import withStyles from '@material-ui/core/styles/withStyles'
+import NimblePicker from 'emoji-mart/dist-modern/components/picker/nimble-picker'
+import data from 'emoji-mart/data/google.json'
 
 const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
@@ -21,8 +22,8 @@ const HtmlTooltip = withStyles((theme) => ({
             right: -114,
             bottom: 80,
             position: 'absolute',
-            minWidth: '319px !important',
-            maxWidth: '319px !important'
+            minWidth: '321px !important',
+            maxWidth: '321px !important'
         },
         '& .emoji-mart-scroll': {
             height: '240px'
@@ -30,12 +31,6 @@ const HtmlTooltip = withStyles((theme) => ({
         '& .emoji-mart-emoji': {
             outline: 'none'
         },
-        '& .emoji-mart-anchor-selected': {
-            color: 'black !important'
-        },
-        '& .emoji-mart-anchor-bar': {
-            backgroundColor: 'black !important'
-        }
     },
     arrow: {
         color: theme.palette.common.white,
@@ -57,7 +52,16 @@ const SendMessage = ({authUser, chatId}) => {
         }
     }
 
+    // let isShowScroll = false
     const handleKeyPress = (e) => {
+        if ((e.ctrlKey) && (e.which === 13)) {
+            let inputMessage = document.getElementById('inputMessage')
+            inputMessage.value += '\n'
+            inputMessage.blur()
+            inputMessage.focus()
+            inputMessage.selectionStart = inputMessage.value.length
+        }
+
         if (!value && e.key === 'Enter') {
             e.preventDefault()
         }
@@ -69,34 +73,50 @@ const SendMessage = ({authUser, chatId}) => {
         }
     }
 
+    const handleCheckHeight = () => {
+        let inputContainer = document.getElementById('inputContainer')
+        if (window.getComputedStyle(inputContainer).height.replace('px', '') > 255) {
+            inputContainer.style.overflowY = 'scroll'
+        } else {
+            inputContainer.style.overflowY = 'hidden'
+        }
+    }
+
     return (
         <div className={classes.root}>
             <Avatar src={getAvatarLink(authUser)} alt=""/>
-            <Paper className={classes.paper}>
-                <Input disableUnderline
+            <Paper id="inputContainer" className={classes.paper}>
+                <Input id="inputMessage"
+                       type="textarea"
+                       disableUnderline
                        multiline
                        fullWidth
                        value={value}
                        onChange={handleChange}
                        onKeyPress={handleKeyPress}
+                       onKeyDown={handleCheckHeight}
                        placeholder="Write a message..."
                        autoFocus
+                       style={{whiteSpace: 'pre-line'}}
                 />
             </Paper>
 
             <HtmlTooltip disableFocusListener interactive arrow
                          title={
                              <React.Fragment>
-                                 <Picker id="picker"
-                                         perLine={8}
-                                         set={'apple'}
-                                         theme={'light'}
-                                         notfound={'No Emoji Found'}
-                                         emojiTooltip={false}
-                                         showPreview={false}
-                                         showSkinTones={false}
-                                         autoFocus={false}
-                                         onSelect={emoji => setValue(value + emoji.native)}
+                                 <NimblePicker
+                                     id="picker"
+                                     data={data}
+                                     perLine={8}
+                                     set={'apple'}
+                                     theme={'light'}
+                                     color={'black'}
+                                     notfound={'No Emoji Found'}
+                                     emojiTooltip={false}
+                                     showPreview={false}
+                                     showSkinTones={false}
+                                     autoFocus={false}
+                                     onSelect={emoji => setValue(value + emoji.native)}
                                  />
                              </React.Fragment>
                          }

@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         flexGrow: 1,
+        maxHeight: 256,
         margin: '18px 16px 24px',
         padding: '8px 12px'
     },
