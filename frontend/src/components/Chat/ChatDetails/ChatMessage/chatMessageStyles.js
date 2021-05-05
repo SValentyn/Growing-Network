@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'flex-end',
         '& $body': {
+            whiteSpace: 'pre-line',
             backgroundColor: 'white'
         },
         '& $footer': {
@@ -17,19 +18,20 @@ const useStyles = makeStyles(theme => ({
     },
     inner: {
         display: 'flex',
-        maxWidth: 500
+        maxWidth: 650
     },
     avatar: {
         marginRight: theme.spacing(2)
     },
     body: {
-        maxWidth: 700,
+        maxWidth: 620,
         backgroundColor: '#f0f0f0',
         color: styleConstants.CONTAINER_TEXT_COLOR,
         padding: '8px 12px',
         border: '1px solid #dddfe2',
         borderRadius: 5,
-        wordWrap: 'break-word'
+        wordWrap: 'break-word',
+        overflowWrap: 'anywhere'
     },
     image: {
         marginTop: theme.spacing(2),
