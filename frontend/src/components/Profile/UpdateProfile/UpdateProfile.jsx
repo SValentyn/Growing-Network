@@ -296,28 +296,31 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                         style={{alignSelf: 'center'}}
                     />
                     <br/>
-                    <FormControl component="fieldset" className={classes.ageRadioSet}>
+                    <FormControl component="fieldset" className={classes.genderRadioSet}>
                         <FormLabel component="legend">Gender</FormLabel>
                         <RadioGroup row aria-label="gender" name="gender" value={formData.gender} onChange={onChange}>
                             <FormControlLabel
                                 value="FEMALE"
-                                control={<Radio size="small" className={classes.radioBtn}/>}
+                                control={
+                                    <Radio size="small" color="secondary" className={classes.genderFemaleRadioBtn}/>
+                                }
                                 label="Female"
-                                className={classes.ageRadioBtn}
                                 labelPlacement={'end'}
                             />
                             <FormControlLabel
                                 value="MALE"
-                                control={<Radio size="small" className={classes.radioBtn}/>}
+                                control={
+                                    <Radio size="small" color="primary" className={classes.genderMaleRadioBtn}/>
+                                }
                                 label="Male"
-                                className={classes.ageRadioBtn}
                                 labelPlacement={'end'}
                             />
                             <FormControlLabel
                                 value="OTHER"
-                                control={<Radio size="small" className={classes.radioBtn}/>}
+                                control={
+                                    <Radio size="small" color="default" className={classes.genderOtherRadioBtn}/>
+                                }
                                 label="Other"
-                                className={classes.ageRadioBtn}
                                 labelPlacement={'end'}
                             />
                         </RadioGroup>

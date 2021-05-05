@@ -67,13 +67,35 @@ const useStyles = makeStyles(() => ({
         width: '98%',
         margin: '5px 0'
     },
-    ageRadioSet: {
+    genderRadioSet: {
         marginTop: 8,
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: 'rgba(0, 0, 0, 0.54)'
     },
-    ageRadioBtn: {
-        height: 30
+    genderFemaleRadioBtn: {
+        height: 18,
+        width: 18,
+        marginRight: 2,
+        '&:hover:not(:active)': {
+            background: 'rgb(255 0 207 / 16%)'
+        },
+    },
+    genderMaleRadioBtn: {
+        height: 18,
+        width: 18,
+        marginRight: 2,
+        '&:hover:not(:active)': {
+            background: 'rgb(0 119 255 / 16%)'
+        },
+    },
+    genderOtherRadioBtn: {
+        height: 18,
+        width: 18,
+        marginRight: 2,
+        '&:hover:not(:active)': {
+            background: 'rgb(0 0 0 / 11%)'
+        },
     },
     btnSection: {
         padding: '0px 34px 30px'
@@ -127,9 +149,6 @@ const useStyles = makeStyles(() => ({
         borderWidth: '1px',
         borderColor: `${styleConstants.PRIMARY_COLOR} !important`
     },
-    radioBtn: {
-        color: `${styleConstants.PRIMARY_COLOR} !important`
-    }
 }))
 
 export default useStyles
