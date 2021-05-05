@@ -19,8 +19,8 @@ const ShortUserData = ({profileOwner}) => {
             </Typography>
             <div className={classes.textContainer}>
                 <p><span className={classes.textSpan}>Email:</span>{email}</p>
-                <p><span className={classes.textSpan}>Gender:</span>{gender && gender.toLowerCase()}</p>
                 <p><span className={classes.textSpan}>Lives in:</span>{location}</p>
+                <p><span className={classes.textSpan}>Gender:</span>{gender && gender.toLowerCase()}</p>
                 <p><span className={classes.textSpan}>Birthday:</span>{formattedBirthDate}</p>
                 <p><span className={classes.textSpan}>Joined:</span>{formattedJoinedDate}</p>
             </div>

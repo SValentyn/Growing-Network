@@ -94,7 +94,6 @@ const useStyles = makeStyles(theme => ({
         }
     },
     cssFocused: {},
-
     notchedOutline: {
         borderWidth: '1px',
         borderColor: `${styleConstants.CONTAINER_BG_COLOR} !important`

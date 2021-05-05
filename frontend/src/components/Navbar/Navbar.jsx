@@ -43,7 +43,7 @@ const Navbar = ({
     const isMenuOpen = Boolean(anchorEl)
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-    const handleProfileMenuOpen = event => {
+    const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget)
     }
 
@@ -73,7 +73,7 @@ const Navbar = ({
         history.push('/chat')
     }
 
-    const handleMobileMenuOpen = event => {
+    const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget)
     }
 
@@ -182,7 +182,7 @@ const Navbar = ({
                                 <IconButton
                                     className={classes.navbarButton}
                                     edge="end"
-                                    aria-label="account of current user"
+                                    aria-label="Account of current user"
                                     aria-controls={menuId}
                                     aria-haspopup="true"
                                     onClick={handleProfileMenuOpen}

@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
     postText: {
         margin: 0,
         padding: '2px 20px 14px',
-        color: styleConstants.PRIMARY_COLOR
+        color: styleConstants.PRIMARY_COLOR,
+        wordBreak: 'break-all'
     },
     imageContainer: {
         textAlign: 'center'

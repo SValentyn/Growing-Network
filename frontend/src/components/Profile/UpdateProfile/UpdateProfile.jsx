@@ -59,7 +59,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         email,
         birthDate: birthDate,
         gender: gender,
-        location : '',
+        location: location,
         emailError: ''
     })
 
@@ -340,7 +340,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                         }}
                         onInputChange={(event, newInputValue) => {
                             setInputValue(newInputValue)
-
+                            formData.location = newInputValue
                         }}
                         renderInput={(params) => (
                             <TextField {...params}
