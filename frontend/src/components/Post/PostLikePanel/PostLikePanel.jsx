@@ -1,17 +1,20 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 import {get, isEmpty} from 'lodash'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
-import {Avatar, IconButton, Tooltip} from '@material-ui/core'
+import MessageIcon from '@material-ui/icons/Message'
+import ShareIcon from '@material-ui/icons/Share'
+import {Avatar, IconButton, Tooltip, Zoom} from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import {updateLikes} from '../../../actions/post'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 
+import classNames from 'classnames'
 import useStyles from './postLikeStyles'
 
 const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCreatingComment}) => {
@@ -26,20 +29,24 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
 
     const LikePanelTooltip = withStyles(theme => ({
         tooltip: {
-            backgroundColor: '#f5f5f9',
-            color: 'rgba(0, 0, 0, 0.87)',
             fontSize: theme.typography.pxToRem(13),
-            border: '1px solid #9ca6ae'
         }
     }))(Tooltip)
 
     const likedList = components => {
-        if (isEmpty(components)) return <p className={classes.text}>Post has no likes</p>
-        const listForRender = components.slice(0, 10)
+        if (isEmpty(components)) {
+            return <p className={classes.text}>Post has no likes</p>
+        }
 
+        const listForRender = components.slice(0, 10)
         return listForRender.map(friend =>
             <div className={classes.container} key={get(friend, 'username')}>
-                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)}/>
+                <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(friend)} className={classes.userPhoto} alt=""
+                            style={{backgroundColor: getAvatarColorHex(friend)}}>
+                        {getFirstChars(friend)}
+                    </Avatar>
+                </Link>
                 <div className={classes.userContainer}>
                     <p className={classes.text}>{getFullName(friend)}</p>
                 </div>
@@ -50,19 +57,35 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
     return (
         <Fragment>
             <div className={classes.panel}>
-                <LikePanelTooltip title={likedList(likes)} placement="left" style={{marginLeft: -8}}>
-                    <IconButton onClick={() => updateLikes(postId)} aria-label="like" className={classes.iconButton}>
+                <LikePanelTooltip title={likedList(likes)} placement="left"
+                                  interactive TransitionComponent={Zoom}
+                                  style={{marginLeft: -8}}>
+                    <IconButton aria-label="like" className={classNames(classes.iconButton, classes.likeIconButton)}
+                                onClick={() => updateLikes(postId)}>
                         {postIsLiked ? <FavoriteIcon color="secondary"/> : <FavoriteBorderIcon/>}
                     </IconButton>
                 </LikePanelTooltip>
                 {get(likes, 'length', '—')}
-                
-                <LikePanelTooltip title="Create a comment?" placement="right" style={{marginLeft: 8}}>
-                    <IconButton onClick={focusForCreatingComment} aria-label="comment" className={classes.iconButton}>
-                        <ChatBubbleOutlineIcon/>
+
+                <Tooltip title="Write a comment" placement="top"
+                         interactive TransitionComponent={Zoom}
+                         style={{marginLeft: 3}}>
+                    <IconButton aria-label="comment" className={classes.iconButton}
+                                onClick={focusForCreatingComment}>
+                        <MessageIcon/>
                     </IconButton>
-                </LikePanelTooltip>
+                </Tooltip>
                 {get(comments, 'length', '—')}
+
+                <Tooltip title="Share this post" placement="top"
+                         interactive TransitionComponent={Zoom}
+                         style={{marginLeft: 2}}>
+                    <IconButton aria-label="share" className={classes.iconButton}
+                                onClick={null}>
+                        <ShareIcon/>
+                    </IconButton>
+                </Tooltip>
+                {'0'}
             </div>
         </Fragment>
     )

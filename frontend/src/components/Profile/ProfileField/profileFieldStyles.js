@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
+        letterSpacing: '-0.03em'
     },
     headerTitle: {
         color: styleConstants.CONTAINER_COUNT_COLOR,

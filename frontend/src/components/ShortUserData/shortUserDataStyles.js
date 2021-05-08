@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
         paddingRight: 24,
-        background: styleConstants.CONTAINER_HEADER_BG_COLOR
+        background: styleConstants.CONTAINER_HEADER_BG_COLOR,
+        letterSpacing: '-0.04em'
     },
     textContainer: {
         padding: '6px 15px',
@@ -22,7 +23,7 @@ const useStyles = makeStyles(() => ({
         }
     },
     textSpan: {
-        width: 75,
+        width: 80,
         display: 'inline-flex'
     }
 }))

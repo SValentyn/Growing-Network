@@ -20,6 +20,6 @@ public class SecurityConstants {
     
     public static final long ACCESS_TOKEN_MAX_AGE = 1000L * 60 * 20; // 20 min
     public static final long FORGOT_PASSWORD_TOKEN_MAX_AGE = 1000L * 60 * 30; // 30 min
-    public static final long REFRESH_TOKEN_MAX_AGE = 1000L * 60 * 60 * 24 * 30; 
+    public static final long REFRESH_TOKEN_MAX_AGE = 1000L * 60 * 60 * 24 * 30;
     
 }

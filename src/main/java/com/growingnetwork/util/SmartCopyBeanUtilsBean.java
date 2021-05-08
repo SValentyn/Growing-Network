@@ -13,7 +13,7 @@ public class SmartCopyBeanUtilsBean extends BeanUtilsBean {
         try {
             nullIsNotAcceptable = destinationObj.getClass().getDeclaredField(name).getAnnotation(MayAcceptNull.class) == null;
         } catch (NoSuchFieldException error) {
-            throw new RuntimeException("Unable to find property in destination object");
+            throw new RuntimeException("Unable to find property in destination object.");
         }
         
         if (value == null & nullIsNotAcceptable) {

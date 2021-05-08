@@ -6,18 +6,20 @@ const useStyles = makeStyles(() => ({
         padding: '5px 4px 5px 12px'
     },
     image: {
-        borderRadius: '50%',
-        width: 42,
-        height: 42,
+        width: styleConstants.AVATAR_SIZE_MID,
+        height: styleConstants.AVATAR_SIZE_MID,
         marginRight: 15,
+        fontSize: 19,
+        borderRadius: '50%',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
         boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)'
     },
     name: {
-        paddingTop: 12,
         boxSizing: 'border-box',
         fontWeight: '600'
     },
-    link: {
+    userLink: {
         textDecoration: 'none',
         color: styleConstants.CONTAINER_TEXT_COLOR
     },
@@ -41,6 +43,7 @@ const useStyles = makeStyles(() => ({
         height: 22,
         bottom: 3,
         marginLeft: 6,
+        fontSize: 11,
         borderRadius: '50%',
         boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)'
     }

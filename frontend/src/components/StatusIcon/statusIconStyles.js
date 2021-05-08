@@ -3,12 +3,12 @@ import {colors} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     root: {
+        height: theme.spacing(1),
+        width: theme.spacing(1),
         display: 'inline-block',
-        borderRadius: '50%',
         flexGrow: 0,
         flexShrink: 0,
-        height: theme.spacing(1),
-        width: theme.spacing(1)
+        borderRadius: '50%',
     },
     active: {
         backgroundColor: colors.green[600]

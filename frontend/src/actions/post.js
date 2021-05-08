@@ -11,7 +11,7 @@ import {
     RESET_RECEIVED_POSTS,
     TAG_REMOVED
 } from '../utils/constants/actionConstants'
-import {Toastr} from '../utils/toastr/Toastr'
+import {serverError, Toastr} from '../utils/toastr/Toastr'
 import apiRequest from '../utils/helpers/apiRequest'
 
 export const uploadSingleImage = (image) => {
@@ -66,7 +66,7 @@ export const updatePost = (postId, message, images, taggedFriends, isShownToEver
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
@@ -102,7 +102,7 @@ export const getPostsForProfile = (userId, page, size, isInitialRequest) => disp
     return getPosts(dispatch, `/posts/profile/${userId}`, {page, size}, isInitialRequest)
 }
 
-export const deletePost = (postId) => async dispatch => {
+export const deletePost = (postId) => async(dispatch) => {
     try {
         const post = await apiRequest.delete('/posts/' + postId)
         dispatch({
@@ -110,11 +110,11 @@ export const deletePost = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const updateLikes = (postId) => async dispatch => {
+export const updateLikes = (postId) => async(dispatch) => {
     try {
         const post = await apiRequest.put('/posts/' + postId + '/like')
         dispatch({
@@ -122,11 +122,11 @@ export const updateLikes = (postId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const createComment = (postId, comment) => async dispatch => {
+export const createComment = (postId, comment) => async(dispatch) => {
     const body = {
         message: comment
     }
@@ -138,11 +138,11 @@ export const createComment = (postId, comment) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const deleteComment = (postId, commentId) => async dispatch => {
+export const deleteComment = (postId, commentId) => async(dispatch) => {
     try {
         const post = await apiRequest.delete('/posts/' + postId + '/comment/' + commentId)
         dispatch({
@@ -150,11 +150,11 @@ export const deleteComment = (postId, commentId) => async dispatch => {
             payload: {postId, post}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async dispatch => {
+export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async(dispatch) => {
     try {
         const post = await apiRequest.delete('/posts/' + postId + '/tag_friends')
         dispatch({
@@ -162,6 +162,6 @@ export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async 
             payload: {postId, post, tagOwnerUsername}
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }

@@ -59,7 +59,7 @@ const HomePage = ({
             <Container className={classes.container} maxWidth="lg">
                 <Grid container spacing={2}>
                     <Grid item md={3}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <FriendSuggestions
                                 suggestions={friendSuggestions}
                                 suggestionsAreLoading={friendSuggestionsAreLoading}
@@ -67,13 +67,13 @@ const HomePage = ({
                         </Paper>
                     </Grid>
                     <Grid item md={6}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <CreatePost profileOwner={user}/>
                         </Paper>
                         <PostFeed/>
                     </Grid>
                     <Grid item md={3}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <ActiveFriends
                                 activeFriends={activeFriends}
                                 activeFriendsAreLoading={activeFriendsAreLoading}

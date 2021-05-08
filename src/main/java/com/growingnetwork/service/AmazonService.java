@@ -33,12 +33,11 @@ import java.util.UUID;
 @Slf4j
 public class AmazonService extends AbstractCrudService<Image, Long, ImageRepository> {
     
-    private final List<String> ALLOWED_CONTENT_TYPES = Arrays.asList("image/jpeg", "image/png", "image/svg+xml", "image/webp", "image/x-icon", "image/gif", "image/bmp", "image/tiff");
-    private final List<String> ALLOWED_CONTENT_TYPES_FOR_RESIZING = Arrays.asList("image/jpeg", "image/png", "image/bmp");
     private final static long MAX_FILE_SIZE = 20971520L; // 20 MB 
     private final static int STANDARD_IMAGE_WIDTH_PX = 632;
     private final static int STANDARD_IMAGE_HEIGHT_PX = 400;
-    
+    private final List<String> ALLOWED_CONTENT_TYPES = Arrays.asList("image/jpeg", "image/png", "image/svg+xml", "image/webp", "image/x-icon", "image/gif", "image/bmp", "image/tiff");
+    private final List<String> ALLOWED_CONTENT_TYPES_FOR_RESIZING = Arrays.asList("image/jpeg", "image/png", "image/bmp");
     private final AmazonS3Client s3client;
     
     @Value("${amazonProperties.bucketName}")

@@ -25,6 +25,7 @@ import {getAvatarLink, resetFileInput} from '../../../utils/helpers/imageHelper'
 import {loadCurrentUserFriends} from '../../../actions/friends'
 
 import useStyles from './createPostStyles'
+import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
 
 const FRIENDS_INITIAL_SIZE = 16
 const STARTING_PAGE = 0
@@ -60,7 +61,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
             uploadImages(imagesToUpload).then(
                 imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
                 images => {
-                    Toastr.error('Unable to load image.')
+                    Toastr.error('Unable to upload image. Please try again.')
                     setUploadForm({...uploadForm, imagesToUpload: images})
                 })
         }
@@ -132,14 +133,17 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
             <form className={classes.form}>
                 <Grid container className={classes.textContainer}>
                     <Grid container item xs={2} lg={1} justify="center">
-                        <Link to={`/profile/${get(currentUser, 'username')}`}>
-                            <Avatar className={classes.avatar} src={getAvatarLink(currentUser)}/>
+                        <Link to={`/profile/${get(currentUser, 'username')}`} className={classes.userLink}>
+                            <Avatar src={getAvatarLink(currentUser)} className={classes.userPhoto} alt=""
+                                    style={{backgroundColor: getAvatarColorHex(currentUser)}}>
+                                {getFirstChars(currentUser)}
+                            </Avatar>
                         </Link>
                     </Grid>
                     <Grid item xs={10} lg={11}>
                         <TextField
                             className={classes.postInput}
-                            style={{fontFamily: 'Open Sans Condensed, sans-serif'}}
+                            style={{fontFamily: 'Montserrat, Poppins, Open Sans Condensed, sans-serif'}}
                             autoComplete="lastName"
                             name="lastName"
                             variant="outlined"

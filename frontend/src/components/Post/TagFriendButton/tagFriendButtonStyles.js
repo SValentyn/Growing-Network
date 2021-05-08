@@ -27,6 +27,20 @@ const useStyles = makeStyles(() => ({
         fontSize: 21,
         padding: '1.5px 0'
     },
+    userLink: {
+        textDecoration: 'none',
+        color: styleConstants.CONTAINER_TEXT_COLOR
+    },
+    userPhoto: {
+        width: 25,
+        height: 25,
+        marginRight: 5,
+        fontSize: 11,
+        borderRadius: '50%',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+    },
     labelText: {
         verticalAlign: 'middle',
         display: 'inline-block',
@@ -34,17 +48,17 @@ const useStyles = makeStyles(() => ({
         lineHeight: '18px'
     },
     checkedIcon: {
-        paddingTop: 5,
         width: 18,
         height: 18,
+        margin: '0 5px 0 -5px',
+        verticalAlign: 'middle',
         color: '#6fc700',
-        verticalAlign: 'middle'
     },
     userPic: {
-        borderRadius: '50%',
         width: 25,
         height: 25,
-        marginRight: 5
+        marginRight: 5,
+        borderRadius: '50%'
     }
 }))
 

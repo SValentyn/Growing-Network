@@ -10,7 +10,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import PostMenu from './PostMenu/PostMenu'
 import TaggedFriendsSelect from './TaggedFriendsSelect/TaggedFriendsSelect'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 import {dateFormatter} from '../../../utils/helpers/dateFormatter'
 
 import useStyles from './postAuthorStyles'
@@ -54,7 +54,7 @@ const PostAuthor = ({
         const otherTaggedLine = taggedFriends.length > 1
             ? <span>{'and '}
                 <TaggedFriendsSelect taggedFriends={taggedFriends.slice(1)}/>
-      </span>
+              </span>
             : null
 
         const taggedFriendsLine = <Fragment>
@@ -72,8 +72,11 @@ const PostAuthor = ({
     return (
         <Grid container justify="space-between" className={classes.container}>
             <Grid item className={classes.user}>
-                <Link to={`/profile/${get(author, 'username')}`}>
-                    <Avatar className={classes.userPhoto} src={getAvatarLink(author)}/>
+                <Link to={`/profile/${get(author, 'username')}`} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(author)} className={classes.userPhoto} alt=""
+                            style={{backgroundColor: getAvatarColorHex(author)}}>
+                        {getFirstChars(author)}
+                    </Avatar>
                 </Link>
                 <div className={classes.userName}>
                     <p className={classes.userFullName}>

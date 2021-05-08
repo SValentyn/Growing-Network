@@ -71,7 +71,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                         .getBody();
                 result = new UsernamePasswordAuthenticationToken(claims.getSubject(), null, Collections.emptyList());
             } catch (JwtException e) {
-                throw new JwtException("The system cannot authenticate you as a user. Please try logging in again.");
+                throw new JwtException("The system cannot authenticate you as a user. Try again or contact support.");
             }
         }
         return result;
@@ -87,7 +87,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (userRefreshToken.equals(refreshToken) && tokenExpiration.after(Calendar.getInstance())) {
             return generateAccessToken(user.getUsername());
         } else {
-            throw new BadCredentialsException("Access to the application has expired. Please try logging in again.");
+            throw new BadCredentialsException("Access to the system has expired. Please log in again.");
         }
     }
     

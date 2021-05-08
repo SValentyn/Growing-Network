@@ -32,22 +32,6 @@ const googleLogo = '/static/images/google-icon.svg'
 
 const Login = ({isAuthenticated, login, loading}) => {
     const classes = useStyles()
-    const inputStyleProps = {
-        inputProps: {
-            classes: {
-                root: classes.cssOutlinedInput,
-                focused: classes.cssFocused,
-                notchedOutline: classes.notchedOutline
-            }
-        },
-        inputLabelProps: {
-            classes: {
-                root: classes.cssLabel,
-                focused: classes.cssFocused
-            }
-        }
-    }
-
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -107,7 +91,7 @@ const Login = ({isAuthenticated, login, loading}) => {
     return loading ? <Preloader/> : (
         <Container component="main" maxWidth="xs" className={classes.container}>
             <CssBaseline/>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={1}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
                 </Avatar>

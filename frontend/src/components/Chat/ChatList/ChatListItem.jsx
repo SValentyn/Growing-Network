@@ -8,7 +8,7 @@ import {Avatar, Badge, ListItem, ListItemAvatar, ListItemText, Typography} from 
 import Preloader from '../../Preloader/Preloader'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 import {getDateForChat} from '../../../utils/helpers/dateFormatter'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './ChatListItemStyles'
 
@@ -17,8 +17,8 @@ const ChatListItem = ({active, chat, className, chatsLoading, authUser, unreadMe
     const classes = useStyles()
     const isChatGrouped = participants.length > 2
     const secondParticipant = find(participants, participant => participant.username !== authUser)
-    const thirdParticipant = find(participants, participant =>
-        participant.username !== authUser && participant.username !== secondParticipant.username)
+    const thirdParticipant =
+        find(participants, participant => participant.username !== authUser && participant.username !== secondParticipant.username)
     const chatName = isChatGrouped ? name : getFullName(secondParticipant)
 
     return chatsLoading ? <Preloader/> : (
@@ -33,14 +33,26 @@ const ChatListItem = ({active, chat, className, chatsLoading, authUser, unreadMe
             component={Link}
             to={`/chat/${id}`}
         >
-            {isChatGrouped ? (<ListItemAvatar>
-                <Fragment>
-                    <Avatar className={classes.avatarSmall} src={getAvatarLink(secondParticipant)} alt=""/>
-                    <Avatar className={classes.avatarSmall} src={getAvatarLink(thirdParticipant)} alt=""/>
-                </Fragment>
-            </ListItemAvatar>) : (<ListItemAvatar>
-                <Avatar className={classes.avatar} src={getAvatarLink(secondParticipant)} alt=""/>
-            </ListItemAvatar>)}
+            {isChatGrouped
+                ? (<ListItemAvatar>
+                    <Fragment>
+                        <Avatar src={getAvatarLink(secondParticipant)} className={classes.avatarSmall} alt=""
+                                style={{backgroundColor: getAvatarColorHex(secondParticipant)}}>
+                            {getFirstChars(secondParticipant)}
+                        </Avatar>
+                        <Avatar src={getAvatarLink(thirdParticipant)} className={classes.avatarSmall} alt=""
+                                style={{backgroundColor: getAvatarColorHex(thirdParticipant)}}>
+                            {getFirstChars(thirdParticipant)}
+                        </Avatar>
+                    </Fragment>
+                </ListItemAvatar>)
+                : (<ListItemAvatar>
+                    <Avatar src={getAvatarLink(secondParticipant)} className={classes.avatar} alt=""
+                            style={{backgroundColor: getAvatarColorHex(secondParticipant)}}>
+                        {getFirstChars(secondParticipant)}
+                    </Avatar>
+                </ListItemAvatar>)
+            }
 
             <ListItemText
                 primary={chatName}

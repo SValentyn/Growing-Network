@@ -8,7 +8,7 @@ import {Avatar, Box, IconButton} from '@material-ui/core'
 
 import {deleteComment} from '../../../../actions/post'
 import {dateFormatter} from '../../../../utils/helpers/dateFormatter'
-import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../../utils/helpers/commonFormatter'
 import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 
 import useStyles from './commentStyles'
@@ -27,13 +27,15 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
     return (
         <div className={classes.panel}>
             <Box display="flex">
-                <Link to={`/profile/${get(author, 'username')}`}>
-                    <Avatar className={classes.userPhoto} src={getAvatarLink(author)}/>
+                <Link to={`/profile/${get(author, 'username')}`} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(author)} className={classes.userPhoto} alt=""
+                            style={{backgroundColor: getAvatarColorHex(author)}}>
+                        {getFirstChars(author)}
+                    </Avatar>
                 </Link>
-
                 <div className={classes.comment}>
                     <p className={classes.commentText}>
-                        <Link to={`/profile/${get(author, 'username')}`} className={classes.link}>
+                        <Link to={`/profile/${get(author, 'username')}`} className={classes.userLink}>
                             <span className={classes.commentAuthor}>
                                 {getFullName(author)}
                             </span>

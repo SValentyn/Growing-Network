@@ -28,8 +28,9 @@ const useStyles = makeStyles(theme => ({
         color: 'black'
     },
     searchContainer: {
-        width: '300px',
-        marginLeft: '20px'
+        width: 287,
+        maxWidth: 287,
+        marginLeft: 10
     },
     search: {
         position: 'relative',

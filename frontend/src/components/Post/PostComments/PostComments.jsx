@@ -26,8 +26,8 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
         }
     }
 
-    const commentList = comments.map(comment => <Comment postId={postId} postOwner={postOwner} comment={comment}
-                                                         key={get(comment, 'id')}/>)
+    const commentList = comments.map(comment =>
+        (<Comment postId={postId} postOwner={postOwner} comment={comment} key={get(comment, 'id')}/>))
 
     return (
         <Fragment>

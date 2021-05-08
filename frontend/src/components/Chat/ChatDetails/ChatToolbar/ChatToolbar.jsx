@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import {IconButton, Input, Paper, Toolbar, Tooltip, Typography} from '@material-ui/core'
+import {IconButton, Input, Paper, Toolbar, Tooltip, Typography, Zoom} from '@material-ui/core'
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace'
 import SearchIcon from '@material-ui/icons/Search'
 
@@ -69,7 +69,7 @@ const ChatToolbar = ({
 
     return (
         <Toolbar className={classnames(classes.root, className)}>
-            {isSingleChat && <Tooltip title="Back to Messenger">
+            {isSingleChat && <Tooltip title="Back to Messenger" TransitionComponent={Zoom}>
                 <IconButton
                     className={classes.backButton}
                     component={Link}
@@ -85,7 +85,7 @@ const ChatToolbar = ({
                     {activeFriendsAreLoading ? <Preloader size={10}/> : ActiveStatus}
                 </div>}
             </div>
-            <Paper className={classes.search}>
+            <Paper className={classes.search} elevation={1}>
                 <SearchIcon className={classes.searchIcon}/>
                 <Input
                     className={classes.searchInput}

@@ -1,12 +1,13 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
-import BeenhereOutlinedIcon from '@material-ui/icons/BeenhereOutlined'
-import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
+import {Avatar, Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
+import CheckIcon from '@material-ui/icons/Check'
+import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined'
 
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 
 import useStyles from './tagFriendButtonStyles'
+import {getFirstChars} from '../../../utils/helpers/commonFormatter'
 
 const sortSelectedFirst = (a, b) => {
     if (a.isSelected === true && b.isSelected === false) {
@@ -49,16 +50,27 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
             isSelected: selected.some(userLabel => userLabel.username === friend.username)
         }))
         .sort(sortSelectedFirst)
-        .map(friend => (<MenuItem
-            onClick={() => handleFriendTag(friend.userLabel)}
-            key={friend.userLabel.username}
-        >
-            <span>
-                {friend.isSelected && <BeenhereOutlinedIcon className={classes.checkedIcon}/>}
-            </span>&nbsp;
-            <img src={getAvatarLink(friend.userLabel)} alt={friend.userLabel.username} className={classes.userPic}/>
-            <span>{friend.userLabel.firstName} {friend.userLabel.lastName}</span>
-        </MenuItem>))
+        .map(friend =>
+            (<MenuItem onClick={() => handleFriendTag(friend.userLabel)} key={friend.userLabel.username}>
+                <span>
+                    {friend.isSelected && <CheckIcon className={classes.checkedIcon}/>}
+                </span>&nbsp;
+
+                {getAvatarLink(friend.userLabel) !== null
+                    ? (<img src={getAvatarLink(friend.userLabel)}
+                            alt={friend.userLabel.username}
+                            className={classes.userPic}/>)
+                    : (<div className={classes.userLink}>
+                        <Avatar className={classes.userPhoto} alt=""
+                                style={{backgroundColor: friend.userLabel.avatarColorHex}}>
+                            {getFirstChars(friend.userLabel)}
+                        </Avatar>
+                    </div>)
+                }
+
+                <span>{friend.userLabel.firstName} {friend.userLabel.lastName}</span>
+            </MenuItem>)
+        )
 
     return (
         <Fragment>

@@ -79,6 +79,9 @@ public class ApplicationUser implements DbEntity<String> {
     @Column(name = "count_uploaded_files", columnDefinition = "int default 0")
     private Integer countUploadedFiles;
     
+    @Column(name = "avatarColorHex")
+    private String avatarColorHex;
+    
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fk_avatar_img_id")
     private Image avatar;

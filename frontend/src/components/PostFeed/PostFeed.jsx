@@ -10,7 +10,7 @@ const PostFeed = ({loading, posts}) => {
     const content = posts.length > 0
         ? posts.map(post => <Post post={post} key={post.id}/>)
         : <EmptyMessages height={225}>
-            Your posts and posts of your friends will be displayed here
+            ≈ Your posts and posts of your friends will be displayed here ≈
         </EmptyMessages>
 
     return (

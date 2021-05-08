@@ -18,9 +18,9 @@ import {
     RESET_FRIENDS
 } from '../utils/constants/actionConstants'
 import apiRequest from '../utils/helpers/apiRequest'
-import {Toastr} from '../utils/toastr/Toastr'
+import {serverError, Toastr} from '../utils/toastr/Toastr'
 
-export const loadUserFriends = (username, page, size, isInitialRequest) => async (dispatch) => {
+export const loadUserFriends = (username, page, size, isInitialRequest) => async(dispatch) => {
     dispatch({
         type: FRIENDS_STARTED_LOADING
     })
@@ -44,7 +44,7 @@ export const loadUserFriends = (username, page, size, isInitialRequest) => async
     }
 }
 
-export const loadCurrentUserFriends = (username, page, size) => async (dispatch) => {
+export const loadCurrentUserFriends = (username, page, size) => async(dispatch) => {
     try {
         const friends = await apiRequest.get('/users/friends/' + username, {params: {page, size}})
         dispatch({
@@ -52,11 +52,11 @@ export const loadCurrentUserFriends = (username, page, size) => async (dispatch)
             payload: friends
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const deleteFriend = (friendUsername) => async (dispatch) => {
+export const deleteFriend = (friendUsername) => async(dispatch) => {
     try {
         const deletedUser = await apiRequest.delete('/users/friends/' + friendUsername)
         dispatch({
@@ -64,11 +64,11 @@ export const deleteFriend = (friendUsername) => async (dispatch) => {
             payload: deletedUser
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const confirmRequest = (requestId) => async (dispatch) => {
+export const confirmRequest = (requestId) => async(dispatch) => {
     try {
         const newFriend = await apiRequest.put('/requests/' + requestId)
         dispatch({
@@ -76,11 +76,11 @@ export const confirmRequest = (requestId) => async (dispatch) => {
             payload: newFriend
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const deleteRequest = (requestId) => async (dispatch) => {
+export const deleteRequest = (requestId) => async(dispatch) => {
     try {
         const requestList = await apiRequest.delete('/requests/' + requestId)
         dispatch({
@@ -88,11 +88,11 @@ export const deleteRequest = (requestId) => async (dispatch) => {
             payload: requestList
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
-export const getFriendSuggestions = (size) => async (dispatch) => {
+export const getFriendSuggestions = (size) => async(dispatch) => {
     dispatch({
         type: FRIEND_SUGGESTIONS_STARTED_LOADING
     })
@@ -111,7 +111,7 @@ export const getFriendSuggestions = (size) => async (dispatch) => {
         dispatch({
             type: FRIEND_SUGGESTIONS_STOPPED_LOADING
         })
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
@@ -127,7 +127,7 @@ export const getIncomingFriendRequests = () => async dispatch => {
             payload: requests
         })
     } catch (e) {
-        Toastr.error('Something is wrong! Please try again later.')
+        Toastr.error(serverError)
     }
 }
 
@@ -135,7 +135,7 @@ export const checkFriendshipStatus = (targetUsername) => {
     return apiRequest.get('/users/friends/status/' + targetUsername)
 }
 
-export const loadActiveFriends = (page, size, isInitialRequest) => async (dispatch) => {
+export const loadActiveFriends = (page, size, isInitialRequest) => async(dispatch) => {
     let pageable = {page, size}
 
     dispatch({

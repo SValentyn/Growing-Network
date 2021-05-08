@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import {get} from 'lodash'
 import {Avatar, Link, Typography} from '@material-ui/core'
 
-import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../../utils/helpers/commonFormatter'
 import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 import {getDateForChat} from '../../../../utils/helpers/dateFormatter'
 
@@ -17,21 +17,14 @@ const ChatMessage = ({message, authUser, isChatGrouped}) => {
     const isOwnMessage = authUser === messageAuthorUsername
 
     return (
-        <div
-            className={classnames(
-                classes.root,
-                {
-                    [classes.ownMessage]: isOwnMessage
-                }
-            )}
-        >
+        <div className={classnames(classes.root, {[classes.ownMessage]: isOwnMessage})}>
             <div className={classes.inner}>
-                <Avatar
-                    className={classes.avatar}
-                    component={RouterLink}
-                    src={getAvatarLink(message.author)}
-                    to={`/profile/${messageAuthorUsername}`}
-                />
+                <Link to={`/profile/${messageAuthorUsername}`} component={RouterLink} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(message.author)} className={classes.userPhoto} alt=""
+                            style={{backgroundColor: getAvatarColorHex(message.author)}}>
+                        {getFirstChars(message.author)}
+                    </Avatar>
+                </Link>
                 <div>
                     <div className={classes.body}>
                         <div>

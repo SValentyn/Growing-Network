@@ -7,13 +7,13 @@ const useStyles = makeStyles(() => ({
     },
     header: {
         color: styleConstants.CONTAINER_HEADER_TEXT_COLOR,
+        background: styleConstants.CONTAINER_HEADER_BG_COLOR,
         fontSize: '20px',
         padding: '4px 16px',
         fontWeight: 500,
         borderBottom: '1px solid #dddfe2',
         borderRadius: '5px 5px 0 0',
-        paddingRight: 24,
-        background: styleConstants.CONTAINER_HEADER_BG_COLOR
+        paddingRight: 24
     },
     count: {
         color: styleConstants.CONTAINER_COUNT_COLOR,

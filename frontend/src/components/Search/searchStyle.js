@@ -11,10 +11,11 @@ const useStyles = makeStyles(theme => ({
         color: 'black'
     },
     userPhoto: {
-        borderRadius: '50%',
-        width: 40,
-        height: 40,
-        margin: '5px 15px 5px 10px'
+        width: styleConstants.AVATAR_SIZE_MID,
+        height: styleConstants.AVATAR_SIZE_MID,
+        fontSize: 19,
+        margin: '5px 10px 5px 0',
+        borderRadius: '50%'
     },
     optionWrapper: {
         display: 'flex',

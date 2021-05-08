@@ -28,6 +28,8 @@ import throttle from 'lodash/throttle'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import parse from 'autosuggest-highlight/parse'
+import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import InputColor from 'react-input-color'
 
 function loadScript(src, position, id) {
     if (!position) {
@@ -43,13 +45,14 @@ function loadScript(src, position, id) {
 const autocompleteService = {current: null}
 
 const UpdateProfile = ({user, handleClose, updateProfile}) => {
-    const {avatar, profileCover, firstName, lastName, email, birthDate, gender, location} = user
+    const {avatar, avatarColorHex, profileCover, firstName, lastName, email, birthDate, gender, location} = user
 
     const [formData, setFormData] = React.useState({
         avatar: {
             file: null,
             url: getAvatarLink(user)
         },
+        avatarColorHex,
         profileCover: {
             file: null,
             url: getProfileCoverLink(user)
@@ -68,7 +71,9 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
     const [value, setValue] = React.useState(null)
     const [inputValue, setInputValue] = React.useState('')
     const [options, setOptions] = React.useState([])
+    const [color, setColor] = React.useState({})
     const loaded = React.useRef(false)
+    let isShowColorPicker = formData.avatar.url === null
 
     if (typeof window !== 'undefined' && !loaded.current) {
         if (!document.querySelector('#google-maps')) {
@@ -150,28 +155,40 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
 
     const getFileObject = (e) => {
         const file = e.target.files[0]
-        return {
-            file,
-            url: URL.createObjectURL(file),
-            uploadError: false
+        if (file !== undefined && file !== null) {
+            return {
+                file,
+                url: URL.createObjectURL(file),
+                uploadError: false
+            }
+        } else {
+            return {
+                file: null,
+                url: null,
+                uploadError: false
+            }
         }
     }
 
     const handleBackgroundChange = (e) => {
-        const newBackground = getFileObject(e)
-        setFormData({...formData, profileCover: newBackground})
+        const newBackgroundFile = getFileObject(e)
+        if (newBackgroundFile.url !== null) {
+            setFormData({...formData, profileCover: newBackgroundFile})
+        }
     }
 
     const handleAvatarChange = (e) => {
-        const newAvatar = getFileObject(e)
-        setFormData({...formData, avatar: newAvatar})
+        const newAvatarFile = getFileObject(e)
+        if (newAvatarFile.url !== null) {
+            setFormData({...formData, avatar: newAvatarFile})
+            toggleColorPicker()
+        }
     }
 
     const validateInput = () => {
         const errors = {}
         errors.emailError = validateEmail(formData.email)
         setFormData({...formData, ...errors})
-
         return areNoErrors(errors)
     }
 
@@ -180,6 +197,18 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
             return uploadSingleImage(newImg)
         }
         return Promise.resolve(currentImg)
+    }
+
+    const handleChangeColor = (color) => {
+        setColor(color)
+        setFormData({...formData, avatarColorHex: color.hex})
+        document.getElementById('avatar').style.backgroundColor = color.hex
+    }
+
+    const toggleColorPicker = () => {
+        isShowColorPicker = false
+        setColor('transparent')
+        document.getElementById('avatar').style.backgroundColor = 'transparent'
     }
 
     const onSubmit = (e) => {
@@ -198,8 +227,17 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                     .then(img => { images.profileCover = img }))
 
             Promise.all(imgUploads).then(() => {
-                const {firstName, lastName, gender, birthDate, email, location} = formData
-                updateProfile(({...images, firstName, lastName, gender, birthDate, email, location})).then(handleClose)
+                const {avatarColorHex, firstName, lastName, gender, birthDate, email, location} = formData
+                updateProfile(({
+                    ...images,
+                    avatarColorHex,
+                    firstName,
+                    lastName,
+                    gender,
+                    birthDate,
+                    email,
+                    location
+                })).then(handleClose)
             })
         }
     }
@@ -210,11 +248,10 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                 Edit profile
             </Typography>
             <div className={classes.avatarBg}>
-                <input
-                    className={classes.hidden}
-                    id="bg-img-file"
-                    type="file"
-                    onChange={handleBackgroundChange}
+                <input id="bg-img-file"
+                       type="file"
+                       className={classes.hidden}
+                       onChange={handleBackgroundChange}
                 />
                 <label htmlFor="bg-img-file">
                     <IconButton
@@ -226,12 +263,26 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                     </IconButton>
                 </label>
                 <div className={classes.avatarContainer}>
-                    <Avatar className={classes.avatarImg} src={formData.avatar.url}/>
-                    <input
-                        className={classes.hidden}
-                        id="avatar-img-file"
-                        type="file"
-                        onChange={handleAvatarChange}
+                    <Avatar id="avatar" src={formData.avatar.url} className={classes.avatarImg} alt=""
+                            style={{backgroundColor: getAvatarColorHex(user)}}>
+                        {getFirstChars(user)}
+                    </Avatar>
+                    {(isShowColorPicker)
+                        ? (<div>
+                                <InputColor
+                                    value={color}
+                                    initialValue={getAvatarColorHex(user)}
+                                    onChange={handleChangeColor}
+                                    placement="left"
+                                    className={classes.colorPicker}
+                                />
+                            </div>
+                        ) : null
+                    }
+                    <input id="avatar-img-file"
+                           type="file"
+                           className={classes.hidden}
+                           onChange={handleAvatarChange}
                     />
                     <label htmlFor="avatar-img-file">
                         <IconButton
@@ -302,7 +353,8 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                             <FormControlLabel
                                 value="FEMALE"
                                 control={
-                                    <Radio size="small" color="secondary" className={classes.genderFemaleRadioBtn}/>
+                                    <Radio size="small" color="secondary"
+                                           className={classNames(classes.genderBtn, classes.genderFemaleRadioBtn)}/>
                                 }
                                 label="Female"
                                 labelPlacement={'end'}
@@ -310,7 +362,8 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                             <FormControlLabel
                                 value="MALE"
                                 control={
-                                    <Radio size="small" color="primary" className={classes.genderMaleRadioBtn}/>
+                                    <Radio size="small" color="primary"
+                                           className={classNames(classes.genderBtn, classes.genderMaleRadioBtn)}/>
                                 }
                                 label="Male"
                                 labelPlacement={'end'}
@@ -318,7 +371,8 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                             <FormControlLabel
                                 value="OTHER"
                                 control={
-                                    <Radio size="small" color="default" className={classes.genderOtherRadioBtn}/>
+                                    <Radio size="small" color="default"
+                                           className={classNames(classes.genderBtn, classes.genderOtherRadioBtn)}/>
                                 }
                                 label="Other"
                                 labelPlacement={'end'}

@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.Color;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -123,6 +125,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
         user.setIsAdmin(false);
         user.setJoinedDate(new Date());
         user.setCountUploadedFiles(0);
+        user.setAvatarColorHex(generateRandomColor());
     }
     
     public Boolean confirmEmail(String confirmationId) {
@@ -168,7 +171,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
     }
     
     public void sendChangePasswordLink(String email) {
-        ApplicationUser user = jpaRepository.findByEmail(email).orElseThrow(() -> new BadCredentialsException("Invalid email!"));
+        ApplicationUser user = jpaRepository.findByEmail(email).orElseThrow(() -> new BadCredentialsException("Invalid email! Please check your email and try again."));
         String forgotPasswordToken = authenticationService.generateForgotPasswordToken(user);
         emailHandler.sendResetPasswordLetter(user.getEmail(), forgotPasswordToken);
     }
@@ -176,7 +179,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
     public void setNewPassword(String forgotPasswordToken, String password) {
         ApplicationUser user = jpaRepository.getByToken_ForgotPasswordToken(forgotPasswordToken);
         if (user.getToken().getForgotPasswordTokenValidTill() < System.currentTimeMillis()) {
-            throw new BadCredentialsException("Password recovery data has expired, please get new link!");
+            throw new BadCredentialsException("Your password recovery data has expired! Please request a new recovery link.");
         }
         user.setPassword(bcryptPasswordEncoder.encode(password));
         user.getToken().setForgotPasswordTokenValidTill(0L);
@@ -318,6 +321,15 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
     
     private String currentUsername() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+    
+    private String generateRandomColor() {
+        Random randomGenerator = new Random();
+        int red = randomGenerator.nextInt(256);
+        int green = randomGenerator.nextInt(256);
+        int blue = randomGenerator.nextInt(256);
+        Color randomColour = new Color(red, green, blue);
+        return String.format("#%06x", randomColour.getRGB() & 0xFFFFFF);
     }
     
 }

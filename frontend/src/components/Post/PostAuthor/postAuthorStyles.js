@@ -9,10 +9,15 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         margin: 'auto 0'
     },
+    userLink: {
+        textDecoration: 'none',
+        color: styleConstants.CONTAINER_TEXT_COLOR
+    },
     userPhoto: {
+        width: styleConstants.AVATAR_SIZE_MID,
+        height: styleConstants.AVATAR_SIZE_MID,
+        fontSize: 19,
         borderRadius: '50%',
-        width: 40,
-        height: 40,
         margin: '5px 15px 5px 10px',
         boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
     },
@@ -30,6 +35,7 @@ const useStyles = makeStyles(() => ({
     },
     userFullName: {
         margin: 0,
+        display: 'flex',
         alignItems: 'center',
         textAlign: 'left'
     },

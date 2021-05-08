@@ -52,7 +52,7 @@ export const register = (registerData) => async(dispatch) => {
         dispatch({
             type: REGISTER_SUCCESS
         })
-    } catch (err) {
+    } catch (error) {
         dispatch({
             type: REGISTER_FAIL
         })
@@ -71,14 +71,15 @@ export const login = ({username, password}) => async(dispatch) => {
         })
 
         const data = await apiRequest.post('/auth/access-token', body, {}, false)
-        Toastr.success('User logged in')
+        Toastr.success('You are successfully logged in!')
         apiRequest.rememberUser(data.accessToken)
+
         dispatch({
             type: LOGIN_SUCCESS
         })
-    } catch (err) {
-        if (err.status === 400) {
-            Toastr.error('Wrong username or password')
+    } catch (error) {
+        if (error.status === 400) {
+            Toastr.error('Wrong username or password! Please check your data and try again.')
         }
         dispatch({
             type: LOGIN_FAIL
@@ -127,7 +128,7 @@ export const setNewPassword = (password, token) => async(dispatch) => {
 /**
  * Confirm email
  */
-export const confirmEmail = token => (dispatch) => {
+export const confirmEmail = (token) => (dispatch) => {
     dispatch({
         type: START_LOADING
     })
@@ -144,7 +145,7 @@ export const confirmEmail = token => (dispatch) => {
 /**
  * Update Profile
  */
-export const updateProfile = dataForm => (dispatch) => {
+export const updateProfile = (dataForm) => (dispatch) => {
     return apiRequest.put('/users', dataForm)
         .then(data => dispatch({
                 type: USER_LOADED,

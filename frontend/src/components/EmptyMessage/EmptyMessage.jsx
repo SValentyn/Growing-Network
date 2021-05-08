@@ -9,7 +9,7 @@ export const EmptyMessages = ({height, className, children}) => {
     const classes = useStyles({height})
 
     return (
-        <Paper className={classnames(classes.root, className)}>
+        <Paper className={classnames(classes.root, className)} elevation={1}>
             <Typography>{children}</Typography>
         </Paper>
     )

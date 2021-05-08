@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {get} from 'lodash'
 import Box from '@material-ui/core/Box'
-import {Avatar, Grid, IconButton, Tooltip, Typography} from '@material-ui/core'
+import {Avatar, Grid, IconButton, Tooltip, Typography, Zoom} from '@material-ui/core'
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline'
 
 import {sendFriendRequest} from '../../../actions/friends'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './friendSuggestionItemStyles'
 
@@ -26,11 +26,15 @@ const FriendSuggestions = ({person, commonFriends}) => {
     }
 
     const commonFriendAvatars = commonFriends
-        .map(cf => <Link to={'profile/' + cf.username} key={cf.username}>
-                <Tooltip title={getFullName(cf)}>
-                    <Avatar src={getAvatarLink(cf)} alt={cf.username} className={classes.commonFriendAvatar}/>
+        .map(commonFriend =>
+            (<Link to={'profile/' + commonFriend.username} key={commonFriend.username} className={classes.userLink}>
+                <Tooltip title={getFullName(commonFriend)} TransitionComponent={Zoom}>
+                    <Avatar className={classes.commonFriendAvatar} src={getAvatarLink(commonFriend)} alt=""
+                            style={{backgroundColor: getAvatarColorHex(commonFriend)}}>
+                        {getFirstChars(commonFriend)}
+                    </Avatar>
                 </Tooltip>
-            </Link>
+            </Link>)
         )
     commonFriendAvatars.length = COMMON_F_AVATARS_TO_SHOW
 
@@ -40,14 +44,17 @@ const FriendSuggestions = ({person, commonFriends}) => {
 
                 <Grid item container xs={10}>
                     <Grid item>
-                        <Link to={`/profile/${get(person, 'username')}`}>
-                            <Avatar className={classes.image} src={getAvatarLink(person)} alt=""/>
+                        <Link to={`/profile/${get(person, 'username')}`} className={classes.userLink}>
+                            <Avatar className={classes.image} src={getAvatarLink(person)} alt=""
+                                    style={{backgroundColor: getAvatarColorHex(person)}}>
+                                {getFirstChars(person)}
+                            </Avatar>
                         </Link>
                     </Grid>
 
-                    <Grid item>
+                    <Grid item style={{alignSelf: 'center'}}>
                         <Typography variant="subtitle1" component="div" className={classes.name}>
-                            <Link to={`/profile/${get(person, 'username')}`} className={classes.link}>
+                            <Link to={`/profile/${get(person, 'username')}`} className={classes.userLink}>
                                 {getFullName(person)}
                             </Link>
                         </Typography>
@@ -55,12 +62,12 @@ const FriendSuggestions = ({person, commonFriends}) => {
                 </Grid>
 
                 <Grid item xs={2}>
-                    {!requestSent ? (
-                        <IconButton className={classes.sendIcon} onClick={() => createFriendRequest(username)}
-                                    aria-label="">
-                            <PersonAddOutlinedIcon/>
-                        </IconButton>
-                    ) : (<DoneOutlineIcon className={classes.requestSentIcon}/>)
+                    {!requestSent
+                        ? (<IconButton className={classes.sendIcon} onClick={() => createFriendRequest(username)}
+                                       aria-label="">
+                                <PersonAddOutlinedIcon/>
+                            </IconButton>
+                        ) : (<DoneOutlineIcon className={classes.requestSentIcon}/>)
                     }
                 </Grid>
 

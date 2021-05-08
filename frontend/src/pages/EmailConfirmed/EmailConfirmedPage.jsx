@@ -26,7 +26,7 @@ const EmailConfirmedPage = (props) => {
             <CssBaseline/>
             <Grid container spacing={3} justify="center" alignItems="center" style={{height: '80vh'}}>
                 <Grid item xs={10}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h5" color="textPrimary" gutterBottom>
                             <p>{textMessage}</p>
                             {emailIsConfirmed && link}

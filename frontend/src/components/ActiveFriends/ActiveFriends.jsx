@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {get, isEmpty} from 'lodash'
-import {Avatar, IconButton, Tooltip, Typography} from '@material-ui/core'
+import {Avatar, IconButton, Tooltip, Typography, Zoom} from '@material-ui/core'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import Preloader from '../Preloader/Preloader'
 import {getAvatarLink} from '../../utils/helpers/imageHelper'
 import {getLastActiveTime} from '../../utils/helpers/dateFormatter'
-import {getFullName} from '../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../utils/helpers/commonFormatter'
 import {changeTab} from '../../actions/profileTab'
 
 import useStyles from './activeFriendsStyles'
@@ -25,8 +25,11 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
             return activeFriends.map(friend => (
                     <div className={classes.container} key={get(friend, 'username')}>
                         <div className={classes.user}>
-                            <Link to={`/profile/${get(friend, 'username')}`}>
-                                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt=""/>
+                            <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
+                                <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt=""
+                                        style={{backgroundColor: getAvatarColorHex(friend)}}>
+                                    {getFirstChars(friend)}
+                                </Avatar>
                             </Link>
                             <div className={classes.userName}>
                                 <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
@@ -42,7 +45,7 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
                                 </Fragment>
                             </div>
                         </div>
-                        <Tooltip title="Send message">
+                        <Tooltip title="Send message" TransitionComponent={Zoom} placement="right">
                             <Link to={`/profile/${get(friend, 'username')}`} onClick={() => changeTab('messages')}>
                                 <IconButton className={classes.sendMessage} aria-label="Send message">
                                     <MailOutlineIcon/>

@@ -28,22 +28,6 @@ import {Visibility, VisibilityOff} from '@material-ui/icons'
 
 const NewPassword = ({loading, match, setNewPassword}) => {
     const classes = useStyles()
-    const inputStyleProps = {
-        inputProps: {
-            classes: {
-                root: classes.cssOutlinedInput,
-                focused: classes.cssFocused,
-                notchedOutline: classes.notchedOutline
-            }
-        },
-        inputLabelProps: {
-            classes: {
-                root: classes.cssLabel,
-                focused: classes.cssFocused
-            }
-        }
-    }
-
     const [formData, setFormData] = useState({
         password: '',
         repeatPassword: '',

@@ -1,6 +1,6 @@
 import {
-    FRIEND_TAB_SELECTED,
     FRIEND_REQUEST_TAB_SELECTED,
+    FRIEND_TAB_SELECTED,
     PHOTOS_TAB_SELECTED,
     TAB_CHANGED,
     TAB_RESET
@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
 
         case PHOTOS_TAB_SELECTED:
             return {...state, selectedTab: 'photos'}
-            
+
         case TAB_CHANGED:
             return {...state, selectedTab: payload}
 

@@ -2,7 +2,7 @@
 /* global atob */
 import axios from 'axios'
 import {isLocalhost} from '../../serviceWorker'
-import {Toastr} from '../toastr/Toastr'
+import {serverError, Toastr} from '../toastr/Toastr'
 
 // localhost || AWS EC2
 const DOMAIN = isLocalhost ? 'http://localhost:8080' : 'https://www.growing-network.com'
@@ -13,7 +13,7 @@ const METHOD_POST = 'post'
 const METHOD_PUT = 'put'
 const METHOD_DELETE = 'delete'
 
-const setAuthToken = token => {
+const setAuthToken = (token) => {
     if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     } else {
@@ -28,21 +28,21 @@ const tokenIsValid = () => {
     return new Date().getTime() < expirationTime
 }
 
-const handleRequestError = error => {
+const handleRequestError = (error) => {
     if (error.response) {
         const toastrMessage = error.response.data.message
             ? error.response.data.message
-            : error.response.data || 'Error occurred during request to server.'
+            : error.response.data || serverError
         Toastr.error(toastrMessage)
         return error.response
     } else if (error.request) {
-        Toastr.error('Application is not responding, check your network connection.')
+        Toastr.error('The system is not responding. Please check your network connection.')
         return error.request
     } else if (error.message) {
         Toastr.error(error.message)
         return error.message
     } else {
-        Toastr.error('Error occurred during request to server.')
+        Toastr.error(serverError)
     }
 }
 
@@ -111,14 +111,13 @@ class ApiRequest {
 
     sendBasicRequest(url, reqParams) {
         return axios(url, reqParams)
-            .then(res => res.data,
-                err => Promise.reject(handleRequestError(err)))
+            .then(res => res.data, error => Promise.reject(handleRequestError(error)))
     }
 
     sendAuthenticatedRequest(url, reqParams) {
         if (localStorage.accessToken) {
             setAuthToken(localStorage.accessToken)
-        } else return Promise.reject(new Error('Authentication is required')) // If there is no token authenticated request is not sent
+        } else return Promise.reject(new Error('This action requires authentication in the system! Please log in.')) // If there is no token authenticated request is not sent
 
         if (tokenIsValid()) {
             return this.sendBasicRequest(url, reqParams)
@@ -130,7 +129,7 @@ class ApiRequest {
 
     getNewAccessTokenFromServer() {
         setAuthToken(null)
-        const req = axios.post(API_BASE_URL + '/auth/reissue-tokens/' + getCurrentUserName())
+        const request = axios.post(API_BASE_URL + '/auth/reissue-tokens/' + getCurrentUserName())
             .then(response => {
                 setAuthToken(response.data.accessToken)
                 localStorage.setItem('accessToken', response.data.accessToken)
@@ -138,11 +137,10 @@ class ApiRequest {
             }).catch(() => {
                 this.pendingTokenRequest = null
                 window.location.href = '/login'
-                return Promise.reject(new Error('Access to the application has expired, please log in again.'))
+                return Promise.reject(new Error('Access to the system has expired. Please log in again.'))
             })
-
-        this.pendingTokenRequest = req
-        return req
+        this.pendingTokenRequest = request
+        return request
     }
 }
 

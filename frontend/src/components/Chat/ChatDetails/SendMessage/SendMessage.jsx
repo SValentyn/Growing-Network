@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import 'emoji-mart/css/emoji-mart.css'
-import {Avatar, IconButton, Input, Paper, Tooltip} from '@material-ui/core'
+import {Avatar, IconButton, Input, Paper} from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 
@@ -10,32 +10,10 @@ import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
 import {sendMessage} from '../../../../actions/chat'
 
 import useStyles from './sendMessageStyles'
-import withStyles from '@material-ui/core/styles/withStyles'
 import NimblePicker from 'emoji-mart/dist-modern/components/picker/nimble-picker'
 import data from 'emoji-mart/data/google.json'
-
-const HtmlTooltip = withStyles((theme) => ({
-    tooltip: {
-        backgroundColor: 'unset',
-        padding: 0,
-        '& .emoji-mart': {
-            right: -114,
-            bottom: 80,
-            position: 'absolute',
-            minWidth: '321px !important',
-            maxWidth: '321px !important'
-        },
-        '& .emoji-mart-scroll': {
-            height: '240px'
-        },
-        '& .emoji-mart-emoji': {
-            outline: 'none'
-        },
-    },
-    arrow: {
-        color: theme.palette.common.white,
-    },
-}))(Tooltip)
+import {getAvatarColorHex, getFirstChars} from '../../../../utils/helpers/commonFormatter'
+import {HtmlTooltip} from './HtmlTooltip'
 
 const SendMessage = ({authUser, chatId}) => {
     const classes = useStyles()
@@ -84,8 +62,12 @@ const SendMessage = ({authUser, chatId}) => {
 
     return (
         <div className={classes.root}>
-            <Avatar src={getAvatarLink(authUser)} alt=""/>
-            <Paper id="inputContainer" className={classes.paper}>
+            <Avatar src={getAvatarLink(authUser)} className={classes.userPhoto} alt=""
+                    style={{backgroundColor: getAvatarColorHex(authUser)}}>
+                {getFirstChars(authUser)}
+            </Avatar>
+
+            <Paper id="inputContainer" className={classes.paper} elevation={1}>
                 <Input id="inputMessage"
                        type="textarea"
                        disableUnderline
@@ -108,10 +90,11 @@ const SendMessage = ({authUser, chatId}) => {
                                      id="picker"
                                      data={data}
                                      perLine={8}
-                                     set={'apple'}
+                                     emojiSize={20}
                                      theme={'light'}
                                      color={'black'}
                                      notfound={'No Emoji Found'}
+                                     native={true}
                                      emojiTooltip={false}
                                      showPreview={false}
                                      showSkinTones={false}

@@ -12,6 +12,7 @@ import {searchData} from '../../actions/search'
 import {throttlingWrapper} from '../../utils/helpers/throttle'
 
 import useStyles from './searchStyle'
+import {getAvatarColorHex, getFirstChars} from '../../utils/helpers/commonFormatter'
 
 const FIRST_PAGE = 0
 const SEARCH_PAGE_SIZE = 10
@@ -46,7 +47,10 @@ const Search = ({loading, searchData, searchResults}) => {
     const renderOption = (option) => (
         <Link to={`/profile/${get(option, 'username')}`} className={classes.link}>
             <div className={classes.optionWrapper}>
-                <Avatar className={classes.userPhoto} src={getAvatarLink(option)} alt=""/>
+                <Avatar src={getAvatarLink(option)} className={classes.userPhoto} alt=""
+                        style={{backgroundColor: getAvatarColorHex(option)}}>
+                    {getFirstChars(option)}
+                </Avatar>
                 {`${get(option, 'firstName')} ${get(option, 'lastName')}`}
             </div>
         </Link>

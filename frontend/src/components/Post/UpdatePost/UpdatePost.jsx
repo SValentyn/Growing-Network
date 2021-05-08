@@ -28,6 +28,7 @@ import {loadCurrentUserFriends} from '../../../actions/friends'
 import useStyles from './updatePostStyles'
 import {updatePost, uploadImages} from '../../../actions/post'
 import {Toastr} from '../../../utils/toastr/Toastr'
+import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
 
 const FRIENDS_INITIAL_SIZE = 16
 const STARTING_PAGE = 0
@@ -85,7 +86,7 @@ const UpdatePost = ({
             uploadImages(imagesToUpload).then(
                 (imgLinks) => updatePost(id, textToUpload, imgLinks, taggedFriendsToUpload, true),
                 (images) => {
-                    Toastr.error('Unable to load image.')
+                    Toastr.error('Unable to upload image. Please try again.')
                     setUploadForm({...uploadForm, imagesToUpload: images})
                 })
         }
@@ -156,15 +157,18 @@ const UpdatePost = ({
                     {...TransitionProps}
                     style={{transformOrigin: placement === 'bottom' ? 'top' : 'bottom'}}
                 >
-                    <Paper className={classes.container} id="updating-post">
+                    <Paper className={classes.container} id="updating-post" elevation={1}>
                         <Typography variant="subtitle1" component="div" className={classes.header}>
                             Update post
                         </Typography>
                         <form className={classes.form}>
                             <Grid container className={classes.textContainer}>
                                 <Grid container item xs={2} lg={1} justify="center" alignItems="flex-start">
-                                    <Link to={`/profile/${get(currentUser, 'username')}`}>
-                                        <Avatar className={classes.avatar} src={getAvatarLink(currentUser)}/>
+                                    <Link to={`/profile/${get(currentUser, 'username')}`} className={classes.userLink}>
+                                        <Avatar src={getAvatarLink(currentUser)} className={classes.avatar} alt=""
+                                                style={{backgroundColor: getAvatarColorHex(currentUser)}}>
+                                            {getFirstChars(currentUser)}
+                                        </Avatar>
                                     </Link>
                                 </Grid>
                                 <Grid item xs={10} lg={11}>

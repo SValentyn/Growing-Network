@@ -6,12 +6,12 @@ import {get, isEmpty} from 'lodash'
 
 import Preloader from '../../Preloader/Preloader'
 import Tile from '../../Tile/Tile'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './profileFieldStyles'
 import {selectFriendsTab, selectPhotosTab} from '../../../actions/profileTab'
 import {Link} from 'react-router-dom'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
 
 const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading, selectFriendsTab, selectPhotosTab}) => {
     const classes = useStyles()
@@ -29,24 +29,33 @@ const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading, se
 
         if (friends) {
             if (isEmpty(friends)) {
-                return <p className={classes.notification}>Not friends with anyone <span role="img" aria-label="emoji">🙄</span></p>
+                return <p className={classes.notification}>Not friends with anyone&nbsp;
+                    <span role="img" aria-label="emoji">🙄</span>
+                </p>
             } else {
                 return listForRender.map(friend =>
                     <Tile
                         imageSrc={getAvatarLink(friend)}
+                        avatarColorHex={getAvatarColorHex(friend)}
+                        firstChars={getFirstChars(friend)}
                         title={getFullName(friend)}
                         username={get(friend, 'username')}
-                        key={get(friend, 'username')}/>)
+                        key={get(friend, 'username')}
+                    />)
             }
         } else {
             if (isEmpty(userPhotos)) {
                 return (
-                    <p className={classes.notification}>There are no pictures <span role="img"
-                                                                                    aria-label="emoji">😞</span></p>
+                    <p className={classes.notification}>There are no pictures&nbsp;
+                        <span role="img" aria-label="emoji">😞</span>
+                    </p>
                 )
             } else {
                 return listForRender.map(photo =>
-                    <Tile imageSrc={get(photo, 'src')} key={get(photo, 'id', '')}/>
+                    <Tile
+                        imageSrc={get(photo, 'src')}
+                        key={get(photo, 'id', '')}
+                    />
                 )
             }
         }

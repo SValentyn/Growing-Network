@@ -2,6 +2,8 @@ import React from 'react'
 import {toastr} from 'react-redux-toastr'
 import ToastrContent from '../../components/Toastr/ToastrContent'
 
+export const serverError = 'An error occurred while trying to access the server. Please try again later.'
+
 const toastrDefaultOptions = {
     timeOut: 3200,
     position: 'bottom-right',
@@ -25,7 +27,7 @@ export const Toastr = {
         showToastr({message, variant: 'success'})
     },
 
-    error: (message = 'Something is wrong! Please try again later.') => {
+    error: (message = serverError) => {
         showToastr({message, variant: 'error'})
     },
 

@@ -36,7 +36,7 @@ const ChatList = ({
             className={classnames(classes.root, className)}
         >
             <Toolbar>
-                <Paper className={classes.search}>
+                <Paper className={classes.search} elevation={1}>
                     <SearchIcon className={classes.searchIcon}/>
                     <Input
                         className={classes.searchInput}

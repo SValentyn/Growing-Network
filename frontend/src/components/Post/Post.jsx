@@ -41,7 +41,7 @@ const Post = ({post}) => {
     }
 
     return (
-        <Paper key={id} className={classes.post}>
+        <Paper key={id} className={classes.post} elevation={1}>
             <PostAuthor
                 postId={id}
                 author={author}

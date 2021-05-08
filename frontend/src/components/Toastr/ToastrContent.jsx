@@ -30,9 +30,9 @@ function MySnackbarContentWrapper(props) {
             aria-describedby="client-snackbar"
             message={
                 <span id="client-snackbar" className={classes.message}>
-          <Icon className={classnames(classes.icon, classes.iconVariant)}/>
+                    <Icon className={classnames(classes.icon, classes.iconVariant)}/>
                     {message}
-        </span>
+                </span>
             }
             action={[
                 <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>

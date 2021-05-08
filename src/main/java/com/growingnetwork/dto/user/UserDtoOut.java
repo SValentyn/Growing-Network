@@ -18,6 +18,7 @@ public class UserDtoOut {
     private String location;
     private Date joinedDate;
     private Boolean openAccount;
+    private String avatarColorHex;
     private ImageDtoOut avatar;
     private ImageDtoOut profileCover;
     private Boolean emailIsConfirmed;

@@ -8,13 +8,23 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: colors.grey[50]
         },
         avatar: {
-            height: 40,
-            width: 40
+            height: styleConstants.AVATAR_SIZE_MID,
+            width: styleConstants.AVATAR_SIZE_MID,
+            fontSize: 19,
+            borderRadius: '50%',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
         },
         avatarSmall: {
-            marginTop: 8,
             height: 30,
             width: 30,
+            marginTop: 8,
+            fontSize: 14,
+            borderRadius: '50%',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
             '&:last-child': {
                 transform: 'translate(15px, -15px)',
                 marginTop: 0

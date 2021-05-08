@@ -10,7 +10,8 @@ const PhotoList = ({userPhotos}) => {
 
     const photoComponents = userPhotos => {
         if (isEmpty(userPhotos)) {
-            return <p className={classes.notification}>There are no pictures <span role="img" aria-label="emoji">😞</span></p>
+            return <p className={classes.notification}>There are no pictures&nbsp;
+                <span role="img" aria-label="emoji">😞</span></p>
         } else {
             return userPhotos.map(photo =>
                 <Tile imageSrc={get(photo, 'src')} key={get(photo, 'id', '')}/>

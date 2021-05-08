@@ -25,16 +25,39 @@ const useStyles = makeStyles(() => ({
     hidden: {
         display: 'none'
     },
+    colorPicker: {
+        width: '0px !important',
+        height: '0px !important',
+        left: '20%',
+        bottom: 0,
+        position: 'absolute !important',
+        backgroundColor: 'transparent !important',
+        border: 'unset !important',
+        '& span': {
+            width: '35px !important',
+            height: '35px !important',
+            left: '20%',
+            bottom: -1,
+            position: 'absolute !important',
+            display: 'grid !important',
+            transform: 'translate(-50%, 30%)',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '3px solid #ffffff !important',
+            borderRadius: '50% !important',
+            cursor: 'pointer'
+        }
+    },
     uploadImgBtn: {
         position: 'absolute',
-        width: 20,
-        height: 20,
+        width: 16,
+        height: 16,
         backgroundColor: '#eaeaea',
         color: styleConstants.PRIMARY_COLOR
     },
     uploadAvatarBtn: {
         bottom: 0,
-        left: '50%',
+        left: '80%',
         transform: 'translate(-50%, 30%)',
         '&:hover': {
             backgroundColor: 'rgba(255, 255, 255, 0.75)'
@@ -55,6 +78,7 @@ const useStyles = makeStyles(() => ({
     avatarImg: {
         width: 125,
         height: 125,
+        fontSize: 56,
         border: '3px solid white',
         boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
         backgroundPosition: 'center',
@@ -73,29 +97,25 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         color: 'rgba(0, 0, 0, 0.54)'
     },
-    genderFemaleRadioBtn: {
+    genderBtn: {
         height: 18,
         width: 18,
-        marginRight: 2,
+        marginRight: -2,
+    },
+    genderFemaleRadioBtn: {
         '&:hover:not(:active)': {
             background: 'rgb(255 0 207 / 16%)'
-        },
+        }
     },
     genderMaleRadioBtn: {
-        height: 18,
-        width: 18,
-        marginRight: 2,
         '&:hover:not(:active)': {
             background: 'rgb(0 119 255 / 16%)'
-        },
+        }
     },
     genderOtherRadioBtn: {
-        height: 18,
-        width: 18,
-        marginRight: 2,
         '&:hover:not(:active)': {
             background: 'rgb(0 0 0 / 11%)'
-        },
+        }
     },
     btnSection: {
         padding: '0px 34px 30px'

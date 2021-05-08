@@ -13,7 +13,8 @@ const FriendSuggestions = ({suggestions, suggestionsAreLoading}) => {
 
     const suggestionsList = () => {
         if (isEmpty(suggestions)) {
-            return <p className={classes.notification}>You have no friendship suggestions.<br/>Take the first step yourself! <span role="img" aria-label="emoji">😏</span></p>
+            return <p className={classes.notification}>You have no friendship suggestions.<br/>Take the first step
+                yourself! <span role="img" aria-label="emoji">😏</span></p>
         } else {
             return suggestions.map(s => <FriendSuggestionItem person={s.user}
                                                               commonFriends={s.commonFriends}

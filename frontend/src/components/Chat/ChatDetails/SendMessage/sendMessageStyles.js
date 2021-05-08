@@ -32,6 +32,15 @@ const useStyles = makeStyles(theme => ({
             }
         },
     },
+    userPhoto: {
+        width: styleConstants.AVATAR_SIZE_MID,
+        height: styleConstants.AVATAR_SIZE_MID,
+        fontSize: 19,
+        borderRadius: '50%',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+    }
 }))
 
 export default useStyles

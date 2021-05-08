@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import {get} from 'lodash'
 import {
+    Avatar,
     Button,
     Dialog,
     DialogActions,
@@ -13,7 +14,8 @@ import {
     Grid,
     IconButton,
     Slide,
-    Tooltip
+    Tooltip,
+    Zoom
 } from '@material-ui/core'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
@@ -21,7 +23,7 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
 import {confirmRequest, deleteFriend, deleteRequest} from '../../../actions/friends'
 import {dateFormatter} from '../../../utils/helpers/dateFormatter'
 import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './friendsListItemStyles'
 
@@ -59,16 +61,21 @@ const FriendsListItem = ({
         <Fragment>
             {friend &&
             <Grid item sm={3} className={classes.gridItem}>
-                <Link to={`/profile/${get(friend, 'username')}`}>
-                    <div className={classes.avatar}/>
+                <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(friend)} alt=""
+                            className={getAvatarLink(friend) !== null ? classes.avatar : classes.userPhoto}
+                            style={{backgroundColor: getAvatarColorHex(friend)}}>
+                        {getFirstChars(friend)}
+                    </Avatar>
                 </Link>
                 <div className={classes.friendInfo}>
-                    <Link to={`/profile/${get(friend, 'username')}`} className={classes.link}>
+                    <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
                         <p className={classes.userName}>{getFullName(friend)}</p>
                     </Link>
                     <div>
-                        {isOwnProfile && <Tooltip title="Delete friend">
-                            <IconButton color="secondary" onClick={handleModal} aria-label="Delete friend" style={{padding: 8}}>
+                        {isOwnProfile && <Tooltip title="Delete friend" TransitionComponent={Zoom} placement={'top'}>
+                            <IconButton color="secondary" onClick={handleModal} aria-label="Delete friend"
+                                        style={{padding: 8}}>
                                 <HighlightOffIcon/>
                             </IconButton>
                         </Tooltip>}
@@ -103,26 +110,32 @@ const FriendsListItem = ({
             </Grid>
             }
             {request &&
-            <Grid item sm={5} className={classes.gridItem}>
-                <Link to={`/profile/${get(request.requester, 'username')}`}>
-                    <div className={classes.avatar}/>
+            <Grid item sm={3} className={classes.gridItem}>
+                <Link to={`/profile/${get(request.requester, 'username')}`} className={classes.userLink}>
+                    <Avatar src={getAvatarLink(request.requester)} alt=""
+                            className={getAvatarLink(request.requester) !== null ? classes.avatar : classes.userPhoto}
+                            style={{backgroundColor: getAvatarColorHex(request.requester)}}>
+                        {getFirstChars(request.requester)}
+                    </Avatar>
                 </Link>
                 <div className={classes.friendInfo}>
                     <div>
-                        <Link to={`/profile/${get(request.requester, 'username')}`} className={classes.link}>
+                        <Link to={`/profile/${get(request.requester, 'username')}`} className={classes.userLink}>
                             <p className={classes.userName}>{getFullName(request.requester)}</p>
                         </Link>
                         <p className={classes.requestDate}>{dateFormatter(request.date)}</p>
                     </div>
                     <div>
-                        <Tooltip title="Confirm request">
-                            <IconButton className={classes.confirmBtn} onClick={() => confirmRequest(request.id)}
-                                        aria-label="Confirm">
+                        <Tooltip title="Confirm request" TransitionComponent={Zoom} placement={'right'}>
+                            <IconButton className={classes.confirmBtn}
+                                        onClick={() => confirmRequest(request.id)} aria-label="Confirm">
                                 <CheckCircleOutlineIcon/>
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title="Delete request">
-                            <IconButton color="secondary" onClick={handleModal} aria-label="Delete">
+                        <Tooltip title="Delete request" className={classes.tooltipPlacementTop}
+                                 TransitionComponent={Zoom} placement={'right'}>
+                            <IconButton className={classes.deleteBtn}
+                                        onClick={handleModal} aria-label="Delete">
                                 <HighlightOffIcon/>
                             </IconButton>
                         </Tooltip>

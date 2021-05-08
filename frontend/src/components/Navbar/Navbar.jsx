@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {get} from 'lodash'
-import {AppBar, Badge, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography} from '@material-ui/core'
+import {AppBar, Badge, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, Zoom} from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
@@ -158,7 +158,7 @@ const Navbar = ({
                             <div className={classes.root}/>
                             <div className={classes.sectionDesktop}>
                                 <ChatUpdateCenter/>
-                                <Tooltip title="Messages">
+                                <Tooltip title="Messages" placement="bottom" TransitionComponent={Zoom}>
                                     <IconButton
                                         className={classes.navbarButton}
                                         onClick={openChat}
@@ -168,7 +168,7 @@ const Navbar = ({
                                         </Badge>
                                     </IconButton>
                                 </Tooltip>
-                                <Tooltip title="Friend requests">
+                                <Tooltip title="Friend requests" placement="bottom" TransitionComponent={Zoom}>
                                     <IconButton
                                         className={classes.navbarButton}
                                         onClick={openFriendRequestInProfile}

@@ -16,13 +16,14 @@ const useStyles = makeStyles(() => ({
     avatarImg: {
         width: 175,
         height: 175,
+        position: 'absolute',
+        bottom: -30,
+        left: 20,
+        fontSize: 80,
         boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
         border: '4px solid',
         borderColor: 'white',
         backgroundPosition: 'center',
-        position: 'absolute',
-        bottom: -30,
-        left: 20,
         backgroundSize: 'cover'
     },
     editProfileIcon: {

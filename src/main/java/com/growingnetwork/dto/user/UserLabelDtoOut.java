@@ -10,6 +10,7 @@ public class UserLabelDtoOut {
     private String firstName;
     private String lastName;
     private Long lastActivityTime;
+    private String avatarColorHex;
     private ImageDtoOut avatar;
     
 }

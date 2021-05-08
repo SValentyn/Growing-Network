@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Avatar, Container, Dialog, IconButton, Tab, Tabs, Tooltip} from '@material-ui/core'
+import {Avatar, Container, Dialog, IconButton, Tab, Tabs, Tooltip, Zoom} from '@material-ui/core'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 import ManageFriendshipButton from '../../ManageFriendshipButton/ManageFriendshipButton'
 import UpdateProfile from '../UpdateProfile/UpdateProfile'
 import {changeTab} from '../../../actions/profileTab'
 import {getAvatarLink, getProfileCoverLink} from '../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../utils/helpers/commonFormatter'
+import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
 import styleConstants from '../../../utils/constants/styleConstants'
 
 import useStyles from './profileCoverStyles'
@@ -33,12 +33,14 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
     return (
         <div className={classes.container}>
             <div className={classes.avatarBg}>
-                <Avatar className={classes.avatarImg} src={getAvatarLink(profileOwner)}/>
+                <Avatar src={getAvatarLink(profileOwner)} className={classes.avatarImg} alt=""
+                        style={{backgroundColor: getAvatarColorHex(profileOwner)}}>
+                    {getFirstChars(profileOwner)}
+                </Avatar>
                 <p className={classes.avatarName}>{getFullName(profileOwner)}</p>
                 {isOwnProfile && (
-                    <Tooltip title="Edit profile">
-                        <IconButton className={classes.editProfileIcon} onClick={handleModal}
-                                    aria-label="Edit profile">
+                    <Tooltip title="Edit profile" placement="right" TransitionComponent={Zoom}>
+                        <IconButton className={classes.editProfileIcon} onClick={handleModal} aria-label="Edit profile">
                             <EditOutlinedIcon/>
                         </IconButton>
                     </Tooltip>)

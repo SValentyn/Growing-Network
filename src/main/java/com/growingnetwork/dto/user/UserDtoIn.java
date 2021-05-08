@@ -17,6 +17,7 @@ public class UserDtoIn {
     private String location;
     private Date joinedDate;
     private Boolean openAccount;
+    private String avatarColorHex;
     private ImageDtoIn avatar;
     private ImageDtoIn profileCover;
     

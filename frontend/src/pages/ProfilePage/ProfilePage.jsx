@@ -91,7 +91,7 @@ const ProfilePage = ({
         >
             <Grid container className={classes.gridContainer} spacing={3}>
                 <Grid item xs={9}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <ProfileCover
                             profileOwner={profileOwner}
                             isOwnProfile={isOwnProfile}
@@ -101,18 +101,18 @@ const ProfilePage = ({
                 {selectedTab === 'timeline' &&
                 <Fragment>
                     <Grid item xs={9} sm={4}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <ShortUserData profileOwner={profileOwner}/>
                         </Paper>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <ProfileField userPhotos={userPhotos} loadingPhotos={loadingPhotos}/>
                         </Paper>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <ProfileField friends={friends} friendsAreLoading={friendsAreLoading}/>
                         </Paper>
                     </Grid>
                     <Grid item xs={9} sm={5} className={classes.feedColumn}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={1}>
                             <CreatePost profileOwner={profileOwner}/>
                         </Paper>
                         <PostFeed/>
@@ -121,27 +121,27 @@ const ProfilePage = ({
                 }
                 {selectedTab === 'friend requests' &&
                 <Grid item sm={9}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <FriendsList requests={incomingFriendRequests}/>
                     </Paper>
                 </Grid>
                 }
                 {selectedTab === 'friends' &&
                 <Grid item sm={9}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <FriendsList friends={friends} isOwnProfile={isOwnProfile}/>
                     </Paper>
                 </Grid>
                 }
                 {selectedTab === 'photos' &&
                 <Grid item sm={9}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <PhotoList userPhotos={userPhotos}/>
                     </Paper>
                 </Grid>
                 }
                 {selectedTab === 'messages' && !isOwnProfile && <Grid item sm={9}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Chat userId={userId} isSingleChat containerHeight="HALF"/>
                     </Paper>
                 </Grid>}

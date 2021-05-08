@@ -20,10 +20,10 @@ const useStyles = makeStyles(theme => ({
         }
     },
     userPic: {
-        borderRadius: '50%',
         width: 25,
         height: 25,
-        marginRight: 5
+        marginRight: 5,
+        borderRadius: '50%'
     },
     selectFullName: {
         margin: 0

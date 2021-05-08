@@ -20,9 +20,18 @@ const useStyles = makeStyles(theme => ({
     textContainer: {
         padding: '10px 15px 4px 10px'
     },
+    userLink: {
+        textDecoration: 'none',
+        color: styleConstants.CONTAINER_TEXT_COLOR
+    },
     avatar: {
         height: styleConstants.AVATAR_SIZE_MID,
-        width: styleConstants.AVATAR_SIZE_MID
+        width: styleConstants.AVATAR_SIZE_MID,
+        fontSize: 19,
+        borderRadius: '50%',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)'
     },
     postInput: {
         width: '98%',
@@ -32,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid #dddfe2'
     },
     inputMultiline: {
-        fontFamily: 'Open Sans Condensed, sans-serif'
+        fontFamily: 'Montserrat, Poppins, Open Sans Condensed, sans-serif'
     },
     footerText: {
         fontSize: 11,

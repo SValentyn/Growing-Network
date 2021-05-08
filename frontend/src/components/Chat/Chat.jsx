@@ -82,7 +82,7 @@ const Chat = ({
         setSortedChats(sortedChats)
         setIsSearchChatsApply(true)
     }
-    
+
     const handleMessagesSearch = (query) => {
         if (!query) {
             return setIsSearchMessagesApply(false)

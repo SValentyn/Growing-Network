@@ -2,19 +2,35 @@ import {makeStyles} from '@material-ui/core/styles'
 import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
-    avatar: props => ({
-        paddingTop: 100,
+    avatar: {
         width: 100,
-        backgroundImage: `url(${props.avatar})`,
+        height: 100,
+        position: 'relative',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: '50% 50%',
-        position: 'relative'
-    }),
+        borderRadius: 8,
+        cursor: 'pointer'
+    },
+    userLink: {
+        textDecoration: 'none',
+        color: styleConstants.CONTAINER_TEXT_COLOR
+    },
+    userPhoto: {
+        height: 100,
+        width: 100,
+        position: 'relative',
+        fontSize: 42,
+        borderRadius: '50%',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        boxShadow: '0 1px rgb(255 255 255 / 5%) inset, 0 1px 15px rgb(0 1 0 / 5%), 0 0 1px 1px rgb(0 1 6 / 5%)',
+    },
     gridItem: {
         display: 'flex',
         borderRadius: 5,
         minWidth: 300,
+        maxWidth: 440,
         margin: '26px auto'
     },
     friendInfo: {
@@ -30,16 +46,25 @@ const useStyles = makeStyles(() => ({
         margin: 0,
         wordBreak: 'break-word'
     },
-    link: {
-        textDecoration: 'none',
-        color: styleConstants.CONTAINER_TEXT_COLOR
-    },
     requestDate: {
         margin: 0,
         wordBreak: 'break-word'
     },
     confirmBtn: {
-        color: '#8bc34a'
+        color: 'limegreen',
+        marginRight: 4,
+        padding: 6,
+        '&:hover:not(:active)': {
+            background: 'rgb(22 221 22 / 16%)'
+        }
+    },
+    deleteBtn: {
+        color: 'red',
+        marginRight: 4,
+        padding: 6,
+        '&:hover:not(:active)': {
+            background: 'rgb(255 0 0 / 16%)'
+        }
     },
     sendMessage: {
         color: styleConstants.ICON_COLOR,

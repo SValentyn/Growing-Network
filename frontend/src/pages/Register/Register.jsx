@@ -35,22 +35,6 @@ import {Visibility, VisibilityOff} from '@material-ui/icons'
 
 const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
     const classes = useStyles()
-    const inputStyleProps = {
-        inputProps: {
-            classes: {
-                root: classes.cssOutlinedInput,
-                focused: classes.cssFocused,
-                notchedOutline: classes.notchedOutline
-            }
-        },
-        inputLabelProps: {
-            classes: {
-                root: classes.cssLabel,
-                focused: classes.cssFocused
-            }
-        }
-    }
-
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -130,7 +114,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
     return loading ? <Preloader/> : (
         <Container component="main" maxWidth="xs" className={classes.container}>
             <CssBaseline/>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={1}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
                 </Avatar>

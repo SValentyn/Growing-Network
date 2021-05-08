@@ -2,17 +2,17 @@ const DEFAULT_PROFILE_AVATAR_LINK = '/static/images/profile-avatar-placeholder.s
 const DEFAULT_PROFILE_COVER_LINK = '/static/images/profile-cover-placeholder.jpg'
 
 export const getAvatarLink = (user) => {
-    if (!user.avatar) {
-        return DEFAULT_PROFILE_AVATAR_LINK
+    if (user.avatar) {
+        return user.avatar.src
     }
-    return user.avatar.src
+    return null
 }
 
 export const getProfileCoverLink = (user) => {
-    if (!user.profileCover) {
-        return DEFAULT_PROFILE_COVER_LINK
+    if (user.profileCover) {
+        return user.profileCover.src
     }
-    return user.profileCover.src
+    return DEFAULT_PROFILE_COVER_LINK
 }
 
 export const resetFileInput = (e) => {

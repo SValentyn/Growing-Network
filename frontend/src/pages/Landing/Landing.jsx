@@ -12,17 +12,17 @@ const Landing = () => {
             <CssBaseline/>
             <Grid container spacing={3} justify="center" alignItems="center" style={{height: '80vh'}}>
                 <Grid item xs={10}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h2" component="h1" color="textPrimary" gutterBottom>
                             Growing Network
                         </Typography>
                     </Paper>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h4" color="textSecondary" gutterBottom>
                             Growing Network is a cool new social network! Share it with your friends!
                         </Typography>
                     </Paper>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Grid item xs={10} className={classes.btns_container}>
                             <Button variant="contained" size="large" color="primary" className={classes.buttons}>
                                 <Link to="/login" className={classes.link}>Sign In</Link>

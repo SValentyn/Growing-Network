@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react'
-import {Dialog, Grid, Slide} from '@material-ui/core'
+import {Avatar, Dialog, Grid, Slide} from '@material-ui/core'
 
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
@@ -10,7 +10,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
-const Tile = ({imageSrc, title, username}) => {
+const Tile = ({imageSrc, avatarColorHex, firstChars, title, username}) => {
     const classes = useStyles({image: imageSrc})
     const [openDialog, setOpenDialog] = useState(false)
 
@@ -18,15 +18,25 @@ const Tile = ({imageSrc, title, username}) => {
         setOpenDialog(!openDialog)
     }
 
-    const content = (imageSrc, title, username) => {
+    const content = (imageSrc, avatarColorHex, firstChars, title, username) => {
         return <Grid item xs={3}>
             {title
                 ? (
                     <Fragment>
-                        <Link to={'/profile/' + username} className={classes.userLink}>
-                            <div className={classes.image}/>
-                            <p className={classes.title}>{title}</p>
-                        </Link>
+                        {imageSrc !== null
+                            ? (<Link to={'/profile/' + username} className={classes.userLink}>
+                                <div className={classes.image}/>
+                                <p className={classes.title}>{title}</p>
+                            </Link>)
+                            : (<Link to={'/profile/' + username} className={classes.userLink}>
+                                    <Avatar className={classes.userPhoto} alt=""
+                                            style={{backgroundColor: avatarColorHex}}>
+                                        {firstChars}
+                                    </Avatar>
+                                    <p className={classes.title}>{title}</p>
+                                </Link>
+                            )
+                        }
                     </Fragment>
                 )
                 : (
@@ -39,7 +49,7 @@ const Tile = ({imageSrc, title, username}) => {
                             keepMounted
                             onClose={handleModal}
                         >
-                            <img className={classes.imageModal} src={imageSrc} onClick={handleModal} alt="UserPhoto"/>
+                            <img className={classes.imageModal} src={imageSrc} onClick={handleModal} alt="User photo"/>
                         </Dialog>
                     </Fragment>
                 )
@@ -49,13 +59,15 @@ const Tile = ({imageSrc, title, username}) => {
 
     return (
         <Fragment>
-            {content(imageSrc, title, username)}
+            {content(imageSrc, avatarColorHex, firstChars, title, username)}
         </Fragment>
     )
 }
 
 Tile.propTypes = {
     imageSrc: PropTypes.string.isRequired,
+    avatarColorHex: PropTypes.string,
+    firstChars: PropTypes.string,
     username: PropTypes.string,
     title: PropTypes.string
 }
