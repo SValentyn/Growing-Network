@@ -3,7 +3,7 @@ import styleConstants from '../../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginBottom: theme.spacing(2)
+        marginBottom: 11
     },
     ownMessage: {
         display: 'flex',

@@ -49,7 +49,6 @@ const useStyles = makeStyles(theme => ({
     },
     searchInput: {
         flexGrow: 1
-
     }
 }))
 

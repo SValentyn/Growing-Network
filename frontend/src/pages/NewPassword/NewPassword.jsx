@@ -25,6 +25,7 @@ import {areNoErrors, checkPasswordsMatch, validatePassword} from '../../utils/he
 import useStyles from './newPasswordStyles'
 import IconButton from '@material-ui/core/IconButton'
 import {Visibility, VisibilityOff} from '@material-ui/icons'
+import Paper from '@material-ui/core/Paper'
 
 const NewPassword = ({loading, match, setNewPassword}) => {
     const classes = useStyles()
@@ -101,13 +102,13 @@ const NewPassword = ({loading, match, setNewPassword}) => {
         return (
             <Container component="main" maxWidth="xs" className={classes.container}>
                 <CssBaseline/>
-                <div className={classes.paper}>
+                <Paper className={classes.paper}>
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon/>
                     </Avatar>
                     {!responseReceived ? (
                         <Fragment>
-                            <Typography component="h1" variant="h5">
+                            <Typography component="h1" variant="h5" className={classes.center}>
                                 Put your new strong password
                             </Typography>
                             <form className={classes.form} onSubmit={e => onSubmit(e)}>
@@ -200,7 +201,7 @@ const NewPassword = ({loading, match, setNewPassword}) => {
                             </Link>
                         </Fragment>
                     )}
-                </div>
+                </Paper>
             </Container>)
     }
 }

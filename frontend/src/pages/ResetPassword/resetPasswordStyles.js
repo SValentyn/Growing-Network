@@ -3,20 +3,20 @@ import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({
     container: {
-        paddingTop: theme.spacing(8)
+        padding: '54px 0 40px 0'
     },
     header: {
-        marginBottom: theme.spacing(5)
+        margin: 0
     },
     paper: {
-        width: 440,
+        width: 460,
         color: styleConstants.CONTAINER_TEXT_COLOR,
         background: styleConstants.CONTAINER_BG_COLOR,
         boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 40
+        padding: '20px 40px',
     },
     avatar: {
         margin: theme.spacing(1),
@@ -27,8 +27,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 5
     },
     form: {
-        width: '100%',
-        marginTop: theme.spacing(1)
+        width: '100%'
     },
     submit: {
         margin: theme.spacing(1, 0, 2),
@@ -50,7 +49,8 @@ const useStyles = makeStyles(theme => ({
         textDecoration: 'none'
     },
     center: {
-        textAlign: 'center'
+        textAlign: 'center',
+        margin: '16px 0 16px 0'
     },
     cssLabel: {
         color: styleConstants.PRIMARY_COLOR

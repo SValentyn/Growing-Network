@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {CssBaseline, Grid, Paper, Typography} from '@material-ui/core'
-import EmailIcon from '@material-ui/icons/Email'
+import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import useStyles from './EmailNeedsConfirmationPageStyles'
 
@@ -27,10 +27,10 @@ const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
                 <Grid item xs={10}>
                     <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h5" color="textPrimary" gutterBottom>
-                            <EmailIcon className={classes.icon}/>
+                            <MailOutlineIcon className={classes.icon}/>
                             <p>To confirm registration in the system, please follow the link sent to your email.</p>
-                            <p>After that,&nbsp;<Link to="/" variant="inherit" className={classes.link}
-                                                      onClick={goBack}>log in</Link>
+                            <p>After that,&nbsp;
+                                <Link to="/" variant="inherit" className={classes.link} onClick={goBack}>log in</Link>
                                 &nbsp;to the network. We&apos;ve been waiting for you!
                             </p>
                         </Typography>

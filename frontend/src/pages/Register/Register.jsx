@@ -123,6 +123,30 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                 </Typography>
                 <form className={classes.form} onSubmit={e => onSubmit(e)}>
                     <Grid container spacing={2}>
+                        <Grid item xs={6}>
+                            <TextField
+                                autoComplete="firstName"
+                                name="firstName"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                label="First name"
+                                value={firstName}
+                                onChange={e => onChange(e)}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                autoComplete="lastName"
+                                name="lastName"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                label="Last name"
+                                value={lastName}
+                                onChange={e => onChange(e)}
+                            />
+                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 autoComplete="username"
@@ -151,7 +175,6 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 onChange={e => onChange(e)}
                             />
                         </Grid>
-
                         <FormControl variant="outlined" className={classes.passwordContainer}>
                             <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
                             <OutlinedInput
@@ -219,31 +242,6 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                                 ) : null
                             }
                         </FormControl>
-
-                        <Grid item xs={12}>
-                            <TextField
-                                autoComplete="firstName"
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                label="First name"
-                                value={firstName}
-                                onChange={e => onChange(e)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                autoComplete="lastName"
-                                name="lastName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                label="Last name"
-                                value={lastName}
-                                onChange={e => onChange(e)}
-                            />
-                        </Grid>
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         Sign Up
