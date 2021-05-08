@@ -4,14 +4,21 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Montserrat', 'Open Sans Condensed', sans-serif !important;
     font-weight: 300;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: auto;
     overflow-x: hidden;
+    cursor: default;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(/fonts/Montserrat-Regular.ttf) format('truetype');
 }
