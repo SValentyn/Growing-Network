@@ -2,12 +2,18 @@ import React, {Fragment, useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {get} from 'lodash'
-import {Avatar, Grid, TextField} from '@material-ui/core'
+import {Avatar, Grid, IconButton, InputAdornment, TextField} from '@material-ui/core'
 
 import Comment from './Comment/Comment'
 import {createComment} from '../../../actions/post'
 
 import useStyles from './postCommentsStyles'
+import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import NimblePicker from 'emoji-mart/dist-modern/components/picker/nimble-picker'
+import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
+import {HtmlTooltip} from '../../Chat/ChatDetails/SendMessage/HtmlTooltip'
+import data from 'emoji-mart/data/google.json'
 
 const PostComments = ({postId, comments, postOwner, user, createComment, inputRef}) => {
     const classes = useStyles()
@@ -35,27 +41,60 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                 {commentList}
             </div>
             <Grid container className={classes.createPanel}>
-                <Grid container item xs={2} lg={1} justify="center" alignItems="flex-start">
-                    <Avatar className={classes.avatar} src={get(user.avatar, 'src')}/>
-                </Grid>
-                <Grid item xs={10} lg={11}>
+                <Grid item xs={12} style={{marginTop: 1}}>
                     <TextField
                         className={classes.createInput}
-                        variant="outlined"
                         placeholder="Write a comment..."
                         multiline
-                        fullWidth
                         value={value}
                         onChange={handleTextFieldChange}
                         onKeyPress={handleKeyPress}
                         inputRef={inputRef}
+                        style={{width: '97%'}}
                         InputProps={{
                             classes: {
                                 inputMultiline: classes.inputMultiline,
-                                root: classes.cssOutlinedInput,
-                                focused: classes.cssFocused,
-                                notchedOutline: classes.notchedOutline
-                            }
+                                root: classes.cssOutlinedInput
+                            },
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Avatar src={getAvatarLink(user)} className={classes.userPhoto} alt=""
+                                            style={{backgroundColor: getAvatarColorHex(user)}}>
+                                        {getFirstChars(user)}
+                                    </Avatar>
+                                </InputAdornment>
+                            ),
+                            endAdornment: (
+                                <InputAdornment position="start" style={{margin: 0}}>
+                                    <HtmlTooltip disableFocusListener interactive arrow
+                                                 style={{padding: 0}}
+                                                 title={
+                                                     <React.Fragment>
+                                                         <NimblePicker
+                                                             id="picker"
+                                                             data={data}
+                                                             perLine={6}
+                                                             emojiSize={20}
+                                                             theme={'light'}
+                                                             color={'black'}
+                                                             notfound={'No Emoji Found'}
+                                                             native={true}
+                                                             emojiTooltip={false}
+                                                             showPreview={false}
+                                                             showSkinTones={false}
+                                                             autoFocus={false}
+                                                             style={{right: -149, bottom: 52}}
+                                                             onSelect={emoji => setValue(value + emoji.native)}
+                                                         />
+                                                     </React.Fragment>
+                                                 }
+                                    >
+                                        <IconButton className={classes.iconEmojiPickerContainerWithoutHover}>
+                                            <EmojiEmotionsOutlinedIcon className={classes.iconEmojiPicker}/>
+                                        </IconButton>
+                                    </HtmlTooltip>
+                                </InputAdornment>
+                            )
                         }}
                     />
                 </Grid>
