@@ -2,8 +2,6 @@ package com.growingnetwork.exception;
 
 public class UploadDataException extends RuntimeException {
     
-    public UploadDataException() { }
-    
     public UploadDataException(String message) {
         super(message);
     }

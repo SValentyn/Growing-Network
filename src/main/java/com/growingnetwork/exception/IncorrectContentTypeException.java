@@ -2,8 +2,6 @@ package com.growingnetwork.exception;
 
 public class IncorrectContentTypeException extends RuntimeException {
     
-    public IncorrectContentTypeException() { }
-    
     public IncorrectContentTypeException(String message) {
         super(message);
     }

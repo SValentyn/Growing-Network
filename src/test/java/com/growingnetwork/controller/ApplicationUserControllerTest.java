@@ -19,10 +19,10 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.growingnetwork.controller.TestConstants.CONTENT_TYPE_JSON;
+import static com.growingnetwork.controller.TestConstants.OTHER_USER_USERNAME;
 import static com.growingnetwork.controller.TestConstants.URL_CONFIRM_EMAIL;
 import static com.growingnetwork.controller.TestConstants.URL_GET_CURRENT_USER;
 import static com.growingnetwork.controller.TestConstants.URL_USERS_BASIC;
-import static com.growingnetwork.controller.TestConstants.OTHER_USER_USERNAME;
 import static com.growingnetwork.controller.TestConstants.USER_AVATAR_URL;
 import static com.growingnetwork.controller.TestConstants.USER_BIRTH_DATE;
 import static com.growingnetwork.controller.TestConstants.USER_EMAIL;

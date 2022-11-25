@@ -16,7 +16,7 @@ public class SmartCopyBeanUtilsBean extends BeanUtilsBean {
             throw new RuntimeException("Unable to find property in destination object.");
         }
         
-        if (value == null & nullIsNotAcceptable) {
+        if (value == null && nullIsNotAcceptable) {
             return;
         }
         

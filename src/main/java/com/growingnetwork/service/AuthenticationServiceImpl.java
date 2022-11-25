@@ -30,11 +30,11 @@ import static com.growingnetwork.security.SecurityConstants.REFRESH_TOKEN_MAX_AG
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     
-    @Value("${spring.security.jwt-secret}")
-    public String secret;
-    
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
+    
+    @Value("${spring.security.jwt-secret}")
+    public String secret;
     
     @Autowired
     public AuthenticationServiceImpl(@Lazy AuthenticationManager authenticationManager, @Lazy UserService userService) {

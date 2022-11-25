@@ -6,6 +6,7 @@ import com.growingnetwork.model.ApplicationUser;
 import com.growingnetwork.model.Image;
 import com.growingnetwork.service.AmazonService;
 import com.growingnetwork.service.UserService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 
 @Component
+@NoArgsConstructor
 public class ImageListener {
     
     private static final int LIMIT_COUNT_UPLOADED_FILES = 24;
@@ -21,8 +23,6 @@ public class ImageListener {
     private static AmazonService amazonService;
     
     private static UserService userService;
-    
-    public ImageListener() { }
     
     @Autowired
     public ImageListener(AmazonService amazonService, UserService userService) {
@@ -48,8 +48,8 @@ public class ImageListener {
     public void delete(Image image) {
         try {
             ApplicationUser user = getCurrentUser();
-            Boolean deleted = amazonService.deleteFileFromS3Bucket(image.getKey());
-            if (deleted) {
+            boolean isDeleted = amazonService.deleteFileFromS3Bucket(image.getKey());
+            if (isDeleted) {
                 if (user.getCountUploadedFiles() > 0) {
                     user.decrementCountUploadedFiles();
                 }

@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
-class ExceptionControllerTest {
+public class ExceptionControllerTest {
     
     @Autowired
     private MockMvc mockMvc;
@@ -31,13 +31,13 @@ class ExceptionControllerTest {
     
     @Test
     @WithMockUser(username = USER_USERNAME)
-    void globalHandlerShouldReturnConflictStatusAndErrorMessage() throws Exception {
+    public void globalHandlerShouldReturnConflictStatusAndErrorMessage() throws Exception {
         String errorMessage = "Custom exception error message";
         when(userRepository.findById(USER_USERNAME)).thenThrow(new RuntimeException(errorMessage));
         
         mockMvc.perform(get(URL_GET_CURRENT_USER))
                 .andExpect(status().isConflict())
                 .andExpect(content().string(errorMessage));
-        
     }
+    
 }

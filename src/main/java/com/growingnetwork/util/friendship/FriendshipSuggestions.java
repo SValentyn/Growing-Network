@@ -22,19 +22,18 @@ public class FriendshipSuggestions {
             addVertexForGraph(friend.getFriends());
         });
         
-        currentUser.getFriends().forEach(friend -> {
-            addEdgesForGraph(friend, friend.getFriends());
-        });
+        currentUser.getFriends().forEach(friend -> addEdgesForGraph(friend, friend.getFriends()));
         
         // Breadth-First Traversal
-        return graph.breadthFirstTraversal(currentUser).entrySet().stream()
+        return graph.breadthFirstTraversal(currentUser).entrySet()
+                .stream()
                 .filter(user -> !checkFriendRequests(user.getKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
     
     private boolean checkFriendRequests(ApplicationUser user) {
-        return user.getIncomingFriendRequests().stream().anyMatch(friendRequest -> friendRequest.getRequester().equals(currentUser))
-                || currentUser.getIncomingFriendRequests().stream().anyMatch(friendRequest -> friendRequest.getRequester().equals(user));
+        return (user.getIncomingFriendRequests().stream().anyMatch(friendRequest -> friendRequest.getRequester().equals(currentUser)))
+                || (currentUser.getIncomingFriendRequests().stream().anyMatch(friendRequest -> friendRequest.getRequester().equals(user)));
     }
     
     private void addVertexForGraph(ApplicationUser user) {
@@ -42,7 +41,7 @@ public class FriendshipSuggestions {
     }
     
     private void addVertexForGraph(List<ApplicationUser> friendsOfMyFriend) {
-        friendsOfMyFriend.forEach(friend -> graph.addVertex(friend));
+        friendsOfMyFriend.forEach(graph::addVertex);
     }
     
     private void addEdgesForGraph(ApplicationUser friend, List<ApplicationUser> friendsOfMyFriend) {

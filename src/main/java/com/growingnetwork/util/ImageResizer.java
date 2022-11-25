@@ -13,8 +13,10 @@ public class ImageResizer {
         float dx = ((float) width) / imageToResize.getWidth();
         float dy = ((float) height) / imageToResize.getHeight();
         
-        int genX, genY;
-        int startX, startY;
+        int genX;
+        int genY;
+        int startX;
+        int startY;
         
         if (imageToResize.getWidth() <= width && imageToResize.getHeight() <= height) {
             genX = imageToResize.getWidth();

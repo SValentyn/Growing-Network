@@ -26,7 +26,7 @@ public class OauthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         DefaultOidcUser oidcUser = (DefaultOidcUser) authentication.getPrincipal();
-        Map attributes = oidcUser.getAttributes();
+        Map<String, Object> attributes = oidcUser.getAttributes();
         String email = (String) attributes.get("email");
         String redirectionUrl;
         try {

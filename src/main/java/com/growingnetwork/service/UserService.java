@@ -90,7 +90,7 @@ public class UserService extends AbstractCrudService<ApplicationUser, String, Us
     }
     
     public List<ApplicationUser> getAllUsersFromList(List<String> users) {
-        if (users.size() > 0) {
+        if (!users.isEmpty()) {
             return jpaRepository.getAllUsersFromList(users);
         }
         return Collections.emptyList();

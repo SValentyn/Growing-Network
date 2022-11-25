@@ -2,8 +2,6 @@ package com.growingnetwork.exception;
 
 public class FileSizeException extends RuntimeException {
     
-    public FileSizeException() { }
-    
     public FileSizeException(String message) {
         super(message);
     }
