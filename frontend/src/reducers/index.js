@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux'
-import {reducer as toastrReducer} from 'react-redux-toastr'
+import { combineReducers } from 'redux'
+import { reducer as toastrReducer } from 'react-redux-toastr'
 import auth from './auth'
 import posts from './posts'
 import search from './search'

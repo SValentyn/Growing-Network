@@ -1,7 +1,7 @@
 /* global URL */
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import {
     Avatar,
     Button,
@@ -17,21 +17,21 @@ import {
 } from '@material-ui/core'
 import classNames from 'classnames'
 
-import {PhotoCamera} from '@material-ui/icons'
-import {areNoErrors, validateEmail} from '../../../utils/helpers/inputValidator'
-import {uploadSingleImage} from '../../../actions/post'
-import {updateProfile} from '../../../actions/auth'
-import {getAvatarLink, getProfileCoverLink} from '../../../utils/helpers/imageHelper'
+import { PhotoCamera } from '@material-ui/icons'
+import { areNoErrors, validateEmail } from '../../../utils/helpers/inputValidator'
+import { uploadSingleImage } from '../../../actions/post'
+import { updateProfile } from '../../../actions/auth'
+import { getAvatarLink, getProfileCoverLink } from '../../../utils/helpers/imageHelper'
 
 import useStyles from './updateProfileStyles'
 import throttle from 'lodash/throttle'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import parse from 'autosuggest-highlight/parse'
-import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import { getAvatarColorHex, getFirstChars } from '../../../utils/helpers/commonFormatter'
 import InputColor from 'react-input-color'
 
-function loadScript(src, position, id) {
+function loadScript (src, position, id) {
     if (!position) {
         return
     }
@@ -42,10 +42,10 @@ function loadScript(src, position, id) {
     position.appendChild(script)
 }
 
-const autocompleteService = {current: null}
+const autocompleteService = { current: null }
 
-const UpdateProfile = ({user, handleClose, updateProfile}) => {
-    const {avatar, avatarColorHex, profileCover, firstName, lastName, email, birthDate, gender, location} = user
+const UpdateProfile = ({ user, handleClose, updateProfile }) => {
+    const { avatar, avatarColorHex, profileCover, firstName, lastName, email, birthDate, gender, location } = user
 
     const [formData, setFormData] = React.useState({
         avatar: {
@@ -66,7 +66,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
         emailError: ''
     })
 
-    const classes = useStyles({profileCover: formData.profileCover.url})
+    const classes = useStyles({ profileCover: formData.profileCover.url })
 
     const [value, setValue] = React.useState(null)
     const [inputValue, setInputValue] = React.useState('')
@@ -109,7 +109,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
             return undefined
         }
 
-        fetch({input: inputValue}, (results) => {
+        fetch({ input: inputValue }, (results) => {
             if (active) {
                 let newOptions = []
 
@@ -131,11 +131,11 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
     }, [value, inputValue, fetch])
 
     const onChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const onBirthDateChange = (e) => {
-        setFormData({...formData, birthDate: new Date(e.target.value).getTime()})
+        setFormData({ ...formData, birthDate: new Date(e.target.value).getTime() })
     }
 
     const parseMillisToStringDate = (dateMillis) => {
@@ -173,14 +173,14 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
     const handleBackgroundChange = (e) => {
         const newBackgroundFile = getFileObject(e)
         if (newBackgroundFile.url !== null) {
-            setFormData({...formData, profileCover: newBackgroundFile})
+            setFormData({ ...formData, profileCover: newBackgroundFile })
         }
     }
 
     const handleAvatarChange = (e) => {
         const newAvatarFile = getFileObject(e)
         if (newAvatarFile.url !== null) {
-            setFormData({...formData, avatar: newAvatarFile})
+            setFormData({ ...formData, avatar: newAvatarFile })
             toggleColorPicker()
         }
     }
@@ -188,7 +188,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
     const validateInput = () => {
         const errors = {}
         errors.emailError = validateEmail(formData.email)
-        setFormData({...formData, ...errors})
+        setFormData({ ...formData, ...errors })
         return areNoErrors(errors)
     }
 
@@ -201,7 +201,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
 
     const handleChangeColor = (color) => {
         setColor(color)
-        setFormData({...formData, avatarColorHex: color.hex})
+        setFormData({ ...formData, avatarColorHex: color.hex })
         document.getElementById('avatar').style.backgroundColor = color.hex
     }
 
@@ -227,7 +227,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                     .then(img => { images.profileCover = img }))
 
             Promise.all(imgUploads).then(() => {
-                const {avatarColorHex, firstName, lastName, gender, birthDate, email, location} = formData
+                const { avatarColorHex, firstName, lastName, gender, birthDate, email, location } = formData
                 updateProfile(({
                     ...images,
                     avatarColorHex,
@@ -264,7 +264,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                 </label>
                 <div className={classes.avatarContainer}>
                     <Avatar id="avatar" src={formData.avatar.url} className={classes.avatarImg} alt=""
-                            style={{backgroundColor: getAvatarColorHex(user)}}>
+                            style={{ backgroundColor: getAvatarColorHex(user) }}>
                         {getFirstChars(user)}
                     </Avatar>
                     {(isShowColorPicker)
@@ -344,7 +344,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                         variant="outlined"
                         value={parseMillisToStringDate(formData.birthDate)}
                         onChange={onBirthDateChange}
-                        style={{alignSelf: 'center'}}
+                        style={{ alignSelf: 'center' }}
                     />
                     <br/>
                     <FormControl component="fieldset" className={classes.genderRadioSet}>
@@ -404,7 +404,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                                        label="Location"
                                        variant="outlined"
                                        fullWidth
-                                       style={{margin: '5px 0'}}
+                                       style={{ margin: '5px 0' }}
                             />
                         )}
                         renderOption={(option) => {
@@ -421,7 +421,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                                     </Grid>
                                     <Grid item xs>
                                         {parts.map((part, index) => (
-                                            <span key={index} style={{fontWeight: part.highlight ? 700 : 400}}>
+                                            <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
                                                 {part.text}
                                             </span>
                                         ))}
@@ -432,7 +432,7 @@ const UpdateProfile = ({user, handleClose, updateProfile}) => {
                                 </Grid>
                             )
                         }}
-                        style={{width: '100%'}}
+                        style={{ width: '100%' }}
                     />
                 </Grid>
             </Grid>

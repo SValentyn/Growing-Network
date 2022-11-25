@@ -1,14 +1,14 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
-import {ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import { ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
 
-import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
-import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import { getAvatarLink } from '../../../../utils/helpers/imageHelper'
+import { getFullName } from '../../../../utils/helpers/commonFormatter'
 
 import useStyles from './taggedFriendsSelectStyles'
 
-const TaggedFriendsSelect = ({taggedFriends}) => {
+const TaggedFriendsSelect = ({ taggedFriends }) => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false)
     const anchorRef = React.useRef(null)
@@ -25,7 +25,7 @@ const TaggedFriendsSelect = ({taggedFriends}) => {
         setOpen(false)
     }
 
-    function handleListKeyDown(event) {
+    function handleListKeyDown (event) {
         if (event.key === 'Tab') {
             event.preventDefault()
             setOpen(false)
@@ -59,10 +59,10 @@ const TaggedFriendsSelect = ({taggedFriends}) => {
                 {taggedFriends.length + ' other'}
             </a>
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
-                {({TransitionProps, placement}) => (
+                {({ TransitionProps, placement }) => (
                     <Grow
                         {...TransitionProps}
-                        style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                     >
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>

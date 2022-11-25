@@ -1,13 +1,13 @@
-import React, {Fragment} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import React, { Fragment } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {CssBaseline, Grid, Paper, Typography} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { CssBaseline, Grid, Paper, Typography } from '@material-ui/core'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import useStyles from './EmailNeedsConfirmationPageStyles'
 
-const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
+const EmailNeedsConfirmationPage = ({ emailIsConfirmed }) => {
     const classes = useStyles()
     const history = useHistory()
 
@@ -23,7 +23,7 @@ const EmailNeedsConfirmationPage = ({emailIsConfirmed}) => {
     return (
         <Fragment>
             <CssBaseline/>
-            <Grid container justify="center" alignItems="center" style={{height: '80vh'}}>
+            <Grid container justify="center" alignItems="center" style={{ height: '80vh' }}>
                 <Grid item xs={10}>
                     <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h5" color="textPrimary" gutterBottom>

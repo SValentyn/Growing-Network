@@ -1,9 +1,9 @@
-import React, {Fragment, useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, { Fragment, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {get} from 'lodash'
-import {AppBar, Badge, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, Zoom} from '@material-ui/core'
+import { get } from 'lodash'
+import { AppBar, Badge, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, Zoom } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
@@ -12,13 +12,13 @@ import MoreIcon from '@material-ui/icons/MoreVert'
 
 import Search from '../Search/Search'
 import ChatUpdateCenter from './ChatUpdateCenter/ChatUpdateCenter'
-import {logout} from '../../actions/auth'
-import {resetTab, selectFriendRequestsTab} from '../../actions/profileTab'
+import { logout } from '../../actions/auth'
+import { resetTab, selectFriendRequestsTab } from '../../actions/profileTab'
 
 import useStyles from './navbarStyles'
 
 const Navbar = ({
-    auth: {isAuthenticated, user},
+    auth: { isAuthenticated, user },
     incomingFriendRequests,
     selectFriendRequestTab,
     logout,
@@ -81,10 +81,10 @@ const Navbar = ({
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             id={menuId}
             keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
@@ -100,10 +100,10 @@ const Navbar = ({
     const renderMobileMenu = (
         <Menu
             anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             id={mobileMenuId}
             keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >

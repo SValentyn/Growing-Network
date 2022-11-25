@@ -1,4 +1,4 @@
-import {makeStyles} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: '500',
         color: '#1c1e21',
     },
-    avatarBg: props => ({
+    avatarBg: (props) => ({
         backgroundImage: `url(${props.profileCover})`,
         height: 250,
         backgroundRepeat: 'no-repeat',

@@ -9,12 +9,12 @@ import {
 
 import apiRequest from '../utils/helpers/apiRequest'
 
-export const searchData = (query, page, size) => async dispatch => {
+export const searchData = (query, page, size) => async(dispatch) => {
     dispatch({
         type: START_SEARCHING
     })
 
-    apiRequest.get(`/users/users_search/${query}`, {page, size})
+    apiRequest.get(`/users/users_search/${query}`, { page, size })
         .then(res => {
                 dispatch({
                     type: SEARCH_RESULT_RECEIVED,
@@ -27,7 +27,7 @@ export const searchData = (query, page, size) => async dispatch => {
         }))
 }
 
-export const getUserProfile = userId => async dispatch => {
+export const getUserProfile = userId => async(dispatch) => {
     dispatch({
         type: START_LOADING_PROFILE
     })

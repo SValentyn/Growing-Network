@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import {sortBy} from 'lodash'
+import { sortBy } from 'lodash'
 import classnames from 'classnames'
 
 import ChatMessage from '../ChatMessage/ChatMessage'
@@ -23,7 +23,7 @@ const ChatMessages = ({
     const classes = useStyles()
 
     const scrollToBottom = () => {
-        ChatMessages.messagesEnd.scrollIntoView({behavior: 'smooth'})
+        ChatMessages.messagesEnd.scrollIntoView({ behavior: 'smooth' })
     }
 
     useEffect(() => {
@@ -63,7 +63,7 @@ const ChatMessages = ({
                             />
                         )}
                 </div>
-                <div style={{float: 'left', clear: 'both'}}
+                <div style={{ float: 'left', clear: 'both' }}
                      ref={(el) => { ChatMessages.messagesEnd = el }}/>
             </div>
         </InfiniteScroll>

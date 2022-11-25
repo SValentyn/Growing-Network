@@ -1,18 +1,18 @@
-import React, {Fragment, useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { Fragment, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import {IconButton, Input, Paper, Toolbar, Tooltip, Typography, Zoom} from '@material-ui/core'
+import { IconButton, Input, Paper, Toolbar, Tooltip, Typography, Zoom } from '@material-ui/core'
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace'
 import SearchIcon from '@material-ui/icons/Search'
 
 import Preloader from '../../../Preloader/Preloader'
 import StatusIcon from '../../../StatusIcon/StatusIcon'
-import {getLastActiveTime} from '../../../../utils/helpers/dateFormatter'
-import {getFullName} from '../../../../utils/helpers/commonFormatter'
+import { getLastActiveTime } from '../../../../utils/helpers/dateFormatter'
+import { getFullName } from '../../../../utils/helpers/commonFormatter'
 
 import useStyles from './chatToolbarStyles'
-import {get} from 'lodash'
+import { get } from 'lodash'
 
 const ChatToolbar = ({
     chat,

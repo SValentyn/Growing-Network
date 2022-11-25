@@ -1,14 +1,13 @@
-import React, {Fragment} from 'react'
-import {Grid, Typography} from '@material-ui/core'
+import React, { Fragment } from 'react'
+import { Grid, Typography } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import {get, isEmpty} from 'lodash'
-
+import { get, isEmpty } from 'lodash'
 import FriendsListItem from './FriendsListItem/FriendsListItem'
 import Preloader from '../Preloader/Preloader'
 
 import useStyles from './friendsListStyles'
 
-const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
+const FriendsList = ({ friends, requests, friendsAreLoading, isOwnProfile }) => {
     const classes = useStyles()
 
     const fieldComponents = components => {
@@ -25,8 +24,12 @@ const FriendsList = ({friends, requests, friendsAreLoading, isOwnProfile}) => {
             if (isEmpty(requests)) {
                 return <p className={classes.notification}>Not friend requests 🙄</p>
             } else {
-                return components.map(request => <FriendsListItem request={request}
-                                                                  key={get(request.requester, 'username')}/>)
+                return components.map(request => (
+                    <FriendsListItem
+                        request={request}
+                        key={get(request.requester, 'username')}
+                    />
+                ))
             }
         }
     }

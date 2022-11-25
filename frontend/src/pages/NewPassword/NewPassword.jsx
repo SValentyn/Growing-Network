@@ -1,6 +1,6 @@
-import React, {Fragment, useState} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, { Fragment, useState } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import {
@@ -19,15 +19,15 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Preloader from '../../components/Preloader/Preloader'
 
-import {setNewPassword} from '../../actions/auth'
-import {areNoErrors, checkPasswordsMatch, validatePassword} from '../../utils/helpers/inputValidator'
+import { setNewPassword } from '../../actions/auth'
+import { areNoErrors, checkPasswordsMatch, validatePassword } from '../../utils/helpers/inputValidator'
 
 import useStyles from './newPasswordStyles'
 import IconButton from '@material-ui/core/IconButton'
-import {Visibility, VisibilityOff} from '@material-ui/icons'
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 import Paper from '@material-ui/core/Paper'
 
-const NewPassword = ({loading, match, setNewPassword}) => {
+const NewPassword = ({ loading, match, setNewPassword }) => {
     const classes = useStyles()
     const [formData, setFormData] = useState({
         password: '',
@@ -52,15 +52,15 @@ const NewPassword = ({loading, match, setNewPassword}) => {
     } = formData
 
     const onChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const handleClickShowPassword = () => {
-        setFormData({...formData, showPassword: !formData.showPassword})
+        setFormData({ ...formData, showPassword: !formData.showPassword })
     }
 
     const handleClickShowRepeatPassword = () => {
-        setFormData({...formData, showRepeatPassword: !formData.showRepeatPassword})
+        setFormData({ ...formData, showRepeatPassword: !formData.showRepeatPassword })
     }
 
     const handleMouseDownPassword = (e) => {
@@ -71,7 +71,7 @@ const NewPassword = ({loading, match, setNewPassword}) => {
         const errors = {}
         errors.passwordError = validatePassword(password)
         errors.repeatPasswordError = checkPasswordsMatch(password, repeatPassword)
-        setFormData({...formData, ...errors})
+        setFormData({ ...formData, ...errors })
         return areNoErrors(errors)
     }
 
@@ -84,9 +84,9 @@ const NewPassword = ({loading, match, setNewPassword}) => {
             setNewPassword(formData.password, token)
                 .then(success => {
                     if (success) {
-                        setFormData({...formData, responseReceived: true, passwordUpdated: true})
+                        setFormData({ ...formData, responseReceived: true, passwordUpdated: true })
                     } else {
-                        setFormData({...formData, responseReceived: true, passwordUpdated: false})
+                        setFormData({ ...formData, responseReceived: true, passwordUpdated: false })
                     }
                 })
         }
@@ -215,4 +215,4 @@ const mapStateToProps = state => ({
     loading: state.auth.loading
 })
 
-export default connect(mapStateToProps, {setNewPassword})(NewPassword)
+export default connect(mapStateToProps, { setNewPassword })(NewPassword)

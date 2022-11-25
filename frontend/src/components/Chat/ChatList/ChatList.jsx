@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import {find, get} from 'lodash'
-import {Divider, Input, List, Paper, Toolbar} from '@material-ui/core'
+import { find, get } from 'lodash'
+import { Divider, Input, List, Paper, Toolbar } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
 import Preloader from '../../Preloader/Preloader'
@@ -25,7 +25,7 @@ const ChatList = ({
 
     const classes = useStyles()
     const [inputValue, setInputValue] = useState('')
-    const getUnreadMessagesCount = chatId => get(find(unreadChats, {chatId}), 'unreadMessages.length')
+    const getUnreadMessagesCount = chatId => get(find(unreadChats, { chatId }), 'unreadMessages.length')
     const handleInputChange = evt => {
         setInputValue(evt.target.value)
         handleSearch(evt.target.value)

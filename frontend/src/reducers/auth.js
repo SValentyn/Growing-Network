@@ -21,12 +21,12 @@ const initialState = {
     emailIsConfirmed: false
 }
 
-export default function(state = initialState, action) {
-    const {type, payload} = action
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
     switch (type) {
         case START_LOADING:
-            return {...state, loading: true}
+            return { ...state, loading: true }
 
         case USER_LOADED:
             return {
@@ -38,13 +38,13 @@ export default function(state = initialState, action) {
             }
 
         case REGISTER_SUCCESS:
-            return {...state, isAuthenticated: true, authFailed: false}
+            return { ...state, isAuthenticated: true, authFailed: false }
 
         case LOGIN_SUCCESS:
-            return {...state, isAuthenticated: true, authFailed: false, loading: false}
+            return { ...state, isAuthenticated: true, authFailed: false, loading: false }
 
         case REGISTER_FAIL:
-            return {...state, loading: false}
+            return { ...state, loading: false }
 
         case AUTH_ERROR:
             return {
@@ -57,21 +57,21 @@ export default function(state = initialState, action) {
             }
 
         case LOGIN_FAIL:
-            return {...state, loading: false}
+            return { ...state, loading: false }
 
         case LOGOUT:
-            return {...state, user: null, isAuthenticated: false, emailIsConfirmed: false, loading: false}
+            return { ...state, user: null, isAuthenticated: false, emailIsConfirmed: false, loading: false }
 
         case EMAIL_CONFIRMED:
-            return {...state, loading: false, emailIsConfirmed: true}
+            return { ...state, loading: false, emailIsConfirmed: true }
 
         case PASSWORD_RESET:
-            return {...state, resetEmailSend: true, loading: false}
+            return { ...state, resetEmailSend: true, loading: false }
 
         case STOP_LOADING:
-            return {...state, loading: false}
+            return { ...state, loading: false }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }

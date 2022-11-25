@@ -11,7 +11,7 @@ import {
     RESET_RECEIVED_POSTS,
     TAG_REMOVED
 } from '../utils/constants/actionConstants'
-import {serverError, Toastr} from '../utils/toastr/Toastr'
+import { serverError, Toastr } from '../utils/toastr/Toastr'
 import apiRequest from '../utils/helpers/apiRequest'
 
 export const uploadSingleImage = (image) => {
@@ -51,7 +51,7 @@ export const createPost = (profileOwnerUsername, message, images, taggedFriends,
         .then(() => window.location.reload())
 }
 
-export const updatePost = (postId, message, images, taggedFriends, isShownToEveryone) => async dispatch => {
+export const updatePost = (postId, message, images, taggedFriends, isShownToEveryone) => async(dispatch) => {
     const body = {
         message,
         image: images[0],
@@ -63,7 +63,7 @@ export const updatePost = (postId, message, images, taggedFriends, isShownToEver
         const post = await apiRequest.put('/posts/' + postId, body)
         dispatch({
             type: POST_UPDATED,
-            payload: {postId, post}
+            payload: { postId, post }
         })
     } catch (e) {
         Toastr.error(serverError)
@@ -82,7 +82,7 @@ const getPosts = async(dispatch, url, params, isInitialRequest) => {
     }
 
     try {
-        const posts = await apiRequest.get(url, {params})
+        const posts = await apiRequest.get(url, { params })
         dispatch({
             type: POSTS_RECEIVED,
             payload: posts
@@ -94,12 +94,12 @@ const getPosts = async(dispatch, url, params, isInitialRequest) => {
     }
 }
 
-export const getPostsForHomePage = (page, size, isInitialRequest) => dispatch => {
-    return getPosts(dispatch, '/posts', {page, size}, isInitialRequest)
+export const getPostsForHomePage = (page, size, isInitialRequest) => (dispatch) => {
+    return getPosts(dispatch, '/posts', { page, size }, isInitialRequest)
 }
 
 export const getPostsForProfile = (userId, page, size, isInitialRequest) => dispatch => {
-    return getPosts(dispatch, `/posts/profile/${userId}`, {page, size}, isInitialRequest)
+    return getPosts(dispatch, `/posts/profile/${userId}`, { page, size }, isInitialRequest)
 }
 
 export const deletePost = (postId) => async(dispatch) => {
@@ -107,7 +107,7 @@ export const deletePost = (postId) => async(dispatch) => {
         const post = await apiRequest.delete('/posts/' + postId)
         dispatch({
             type: POST_DELETED,
-            payload: {postId, post}
+            payload: { postId, post }
         })
     } catch (e) {
         Toastr.error(serverError)
@@ -119,7 +119,7 @@ export const updateLikes = (postId) => async(dispatch) => {
         const post = await apiRequest.put('/posts/' + postId + '/like')
         dispatch({
             type: LIKES_UPDATED,
-            payload: {postId, post}
+            payload: { postId, post }
         })
     } catch (e) {
         Toastr.error(serverError)
@@ -135,7 +135,7 @@ export const createComment = (postId, comment) => async(dispatch) => {
         const post = await apiRequest.post('/posts/' + postId + '/comment', body)
         dispatch({
             type: COMMENT_ADDED,
-            payload: {postId, post}
+            payload: { postId, post }
         })
     } catch (e) {
         Toastr.error(serverError)
@@ -147,7 +147,7 @@ export const deleteComment = (postId, commentId) => async(dispatch) => {
         const post = await apiRequest.delete('/posts/' + postId + '/comment/' + commentId)
         dispatch({
             type: COMMENT_REMOVED,
-            payload: {postId, post}
+            payload: { postId, post }
         })
     } catch (e) {
         Toastr.error(serverError)
@@ -159,7 +159,7 @@ export const deleteCurrentUserTagFromPost = (postId, tagOwnerUsername) => async(
         const post = await apiRequest.delete('/posts/' + postId + '/tag_friends')
         dispatch({
             type: TAG_REMOVED,
-            payload: {postId, post, tagOwnerUsername}
+            payload: { postId, post, tagOwnerUsername }
         })
     } catch (e) {
         Toastr.error(serverError)

@@ -1,8 +1,8 @@
-import React, {Fragment, useEffect} from 'react'
-import {Redirect, useParams} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { Redirect, useParams } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {Grid, Paper} from '@material-ui/core'
+import { Grid, Paper } from '@material-ui/core'
 
 import Chat from '../../components/Chat/Chat'
 import ProfileCover from '../../components/Profile/ProfileCover/ProfileCover'
@@ -14,12 +14,12 @@ import CreatePost from '../../components/Post/CreatePost/CreatePost'
 import PostFeed from '../../components/PostFeed/PostFeed'
 import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll'
 import Preloader from '../../components/Preloader/Preloader'
-import {getUserPhotosFromPosts} from '../../actions/image'
-import {getPostsForProfile} from '../../actions/post'
-import {getUserProfile} from '../../actions/search'
-import {getIncomingFriendRequests, loadUserFriends} from '../../actions/friends'
-import {clearCurrentChatMessages} from '../../actions/chat'
-import {resetTab} from '../../actions/profileTab'
+import { getUserPhotosFromPosts } from '../../actions/image'
+import { getPostsForProfile } from '../../actions/post'
+import { getUserProfile } from '../../actions/search'
+import { getIncomingFriendRequests, loadUserFriends } from '../../actions/friends'
+import { clearCurrentChatMessages } from '../../actions/chat'
+import { resetTab } from '../../actions/profileTab'
 
 import useStyles from './profilePageStyles'
 
@@ -99,46 +99,46 @@ const ProfilePage = ({
                     </Paper>
                 </Grid>
                 {selectedTab === 'timeline' &&
-                <Fragment>
-                    <Grid item xs={9} sm={4}>
-                        <Paper className={classes.paper} elevation={1}>
-                            <ShortUserData profileOwner={profileOwner}/>
-                        </Paper>
-                        <Paper className={classes.paper} elevation={1}>
-                            <ProfileField userPhotos={userPhotos} loadingPhotos={loadingPhotos}/>
-                        </Paper>
-                        <Paper className={classes.paper} elevation={1}>
-                            <ProfileField friends={friends} friendsAreLoading={friendsAreLoading}/>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={9} sm={5} className={classes.feedColumn}>
-                        <Paper className={classes.paper} elevation={1}>
-                            <CreatePost profileOwner={profileOwner}/>
-                        </Paper>
-                        <PostFeed/>
-                    </Grid>
-                </Fragment>
+                    <Fragment>
+                        <Grid item xs={9} sm={4}>
+                            <Paper className={classes.paper} elevation={1}>
+                                <ShortUserData profileOwner={profileOwner}/>
+                            </Paper>
+                            <Paper className={classes.paper} elevation={1}>
+                                <ProfileField userPhotos={userPhotos} loadingPhotos={loadingPhotos}/>
+                            </Paper>
+                            <Paper className={classes.paper} elevation={1}>
+                                <ProfileField friends={friends} friendsAreLoading={friendsAreLoading}/>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={9} sm={5} className={classes.feedColumn}>
+                            <Paper className={classes.paper} elevation={1}>
+                                <CreatePost profileOwner={profileOwner}/>
+                            </Paper>
+                            <PostFeed/>
+                        </Grid>
+                    </Fragment>
                 }
                 {selectedTab === 'friend requests' &&
-                <Grid item sm={9}>
-                    <Paper className={classes.paper} elevation={1}>
-                        <FriendsList requests={incomingFriendRequests}/>
-                    </Paper>
-                </Grid>
+                    <Grid item sm={9}>
+                        <Paper className={classes.paper} elevation={1}>
+                            <FriendsList requests={incomingFriendRequests}/>
+                        </Paper>
+                    </Grid>
                 }
                 {selectedTab === 'friends' &&
-                <Grid item sm={9}>
-                    <Paper className={classes.paper} elevation={1}>
-                        <FriendsList friends={friends} isOwnProfile={isOwnProfile}/>
-                    </Paper>
-                </Grid>
+                    <Grid item sm={9}>
+                        <Paper className={classes.paper} elevation={1}>
+                            <FriendsList friends={friends} isOwnProfile={isOwnProfile}/>
+                        </Paper>
+                    </Grid>
                 }
                 {selectedTab === 'photos' &&
-                <Grid item sm={9}>
-                    <Paper className={classes.paper} elevation={1}>
-                        <PhotoList userPhotos={userPhotos}/>
-                    </Paper>
-                </Grid>
+                    <Grid item sm={9}>
+                        <Paper className={classes.paper} elevation={1}>
+                            <PhotoList userPhotos={userPhotos}/>
+                        </Paper>
+                    </Grid>
                 }
                 {selectedTab === 'messages' && !isOwnProfile && <Grid item sm={9}>
                     <Paper className={classes.paper} elevation={1}>

@@ -1,16 +1,16 @@
-import React, {Fragment, useEffect} from 'react'
+import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import classnames from 'classnames'
-import {Divider} from '@material-ui/core'
-import {find, get} from 'lodash'
+import { Divider } from '@material-ui/core'
+import { find, get } from 'lodash'
 
 import Preloader from '../../Preloader/Preloader'
 import ChatToolbar from './ChatToolbar/ChatToolbar'
 import ChatMessages from './ChatMessages/ChatMessages'
 import SendMessage from './SendMessage/SendMessage'
-import {clearCurrentChatMessages, sendChatBeenReadNotification} from '../../../actions/chat'
-import {loadActiveFriends} from '../../../actions/friends'
+import { clearCurrentChatMessages, sendChatBeenReadNotification } from '../../../actions/chat'
+import { loadActiveFriends } from '../../../actions/friends'
 
 import useStyles from './chatDetailsStyles'
 
@@ -44,7 +44,7 @@ const ChatDetails = ({
     }, [chat.id, sendChatBeenReadNotification, loadActiveFriends, clearCurrentChatMessages])
 
     const otherParticipant = find(chat.participants, (participant) => participant.username !== authUser)
-    const activeParticipant = find(activeFriends, {username: otherParticipant.username})
+    const activeParticipant = find(activeFriends, { username: otherParticipant.username })
     const lastActivityTime = get(activeParticipant, 'lastActivityTime')
 
     return (

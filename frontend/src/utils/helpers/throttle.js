@@ -3,7 +3,7 @@ export const throttlingWrapper = (func, delay) => {
     let savedParams
     let savedThis
 
-    function wrapper() {
+    function wrapper () {
         if (isRequestSent) {
             savedParams = arguments
             savedThis = this
@@ -14,7 +14,7 @@ export const throttlingWrapper = (func, delay) => {
 
         isRequestSent = true
 
-        setTimeout(function() {
+        setTimeout(function () {
             isRequestSent = false
             if (savedParams) {
                 wrapper.apply(savedThis, savedParams)

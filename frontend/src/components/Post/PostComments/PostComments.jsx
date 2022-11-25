@@ -1,21 +1,21 @@
-import React, {Fragment, useState} from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {get} from 'lodash'
-import {Avatar, Grid, IconButton, InputAdornment, TextField} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { get } from 'lodash'
+import { Avatar, Grid, IconButton, InputAdornment, TextField } from '@material-ui/core'
 
 import Comment from './Comment/Comment'
-import {createComment} from '../../../actions/post'
+import { createComment } from '../../../actions/post'
 
 import useStyles from './postCommentsStyles'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
+import { getAvatarColorHex, getFirstChars } from '../../../utils/helpers/commonFormatter'
 import NimblePicker from 'emoji-mart/dist-modern/components/picker/nimble-picker'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
-import {HtmlTooltip} from '../../Chat/ChatDetails/SendMessage/HtmlTooltip'
+import { HtmlTooltip } from '../../Chat/ChatDetails/SendMessage/HtmlTooltip'
 import data from 'emoji-mart/data/google.json'
 
-const PostComments = ({postId, comments, postOwner, user, createComment, inputRef}) => {
+const PostComments = ({ postId, comments, postOwner, user, createComment, inputRef }) => {
     const classes = useStyles()
     const [value, setValue] = useState('')
     const handleTextFieldChange = (e) => {
@@ -41,7 +41,7 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                 {commentList}
             </div>
             <Grid container className={classes.createPanel}>
-                <Grid item xs={12} style={{marginTop: 1}}>
+                <Grid item xs={12} style={{ marginTop: 1 }}>
                     <TextField
                         className={classes.createInput}
                         placeholder="Write a comment..."
@@ -50,7 +50,7 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                         onChange={handleTextFieldChange}
                         onKeyPress={handleKeyPress}
                         inputRef={inputRef}
-                        style={{width: '97%'}}
+                        style={{ width: '97%' }}
                         InputProps={{
                             classes: {
                                 inputMultiline: classes.inputMultiline,
@@ -59,15 +59,15 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                             startAdornment: (
                                 <InputAdornment position="start">
                                     <Avatar src={getAvatarLink(user)} className={classes.userPhoto} alt=""
-                                            style={{backgroundColor: getAvatarColorHex(user)}}>
+                                            style={{ backgroundColor: getAvatarColorHex(user) }}>
                                         {getFirstChars(user)}
                                     </Avatar>
                                 </InputAdornment>
                             ),
                             endAdornment: (
-                                <InputAdornment position="start" style={{margin: 0}}>
+                                <InputAdornment position="start" style={{ margin: 0 }}>
                                     <HtmlTooltip disableFocusListener interactive arrow
-                                                 style={{padding: 0}}
+                                                 style={{ padding: 0 }}
                                                  title={
                                                      <React.Fragment>
                                                          <NimblePicker
@@ -83,7 +83,7 @@ const PostComments = ({postId, comments, postOwner, user, createComment, inputRe
                                                              showPreview={false}
                                                              showSkinTones={false}
                                                              autoFocus={false}
-                                                             style={{right: -149, bottom: 52}}
+                                                             style={{ right: -149, bottom: 52 }}
                                                              onSelect={emoji => setValue(value + emoji.native)}
                                                          />
                                                      </React.Fragment>
@@ -116,4 +116,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 })
 
-export default connect(mapStateToProps, {createComment})(PostComments)
+export default connect(mapStateToProps, { createComment })(PostComments)

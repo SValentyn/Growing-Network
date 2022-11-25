@@ -1,13 +1,13 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import {Avatar, Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@material-ui/core'
+import { Avatar, Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
 import CheckIcon from '@material-ui/icons/Check'
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined'
 
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
 
 import useStyles from './tagFriendButtonStyles'
-import {getFirstChars} from '../../../utils/helpers/commonFormatter'
+import { getFirstChars } from '../../../utils/helpers/commonFormatter'
 
 const sortSelectedFirst = (a, b) => {
     if (a.isSelected === true && b.isSelected === false) {
@@ -19,7 +19,7 @@ const sortSelectedFirst = (a, b) => {
     return 0
 }
 
-const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) => {
+const TagFriendButton = ({ friends, selected, handleFriendTag, getFriendsToTag }) => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false)
     const anchorRef = React.useRef(null)
@@ -37,7 +37,7 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
         setOpen(false)
     }
 
-    function handleListKeyDown(event) {
+    function handleListKeyDown (event) {
         if (event.key === 'Tab') {
             event.preventDefault()
             setOpen(false)
@@ -46,7 +46,7 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
 
     const links = friends
         .map(friend => ({
-            userLabel: {...friend},
+            userLabel: { ...friend },
             isSelected: selected.some(userLabel => userLabel.username === friend.username)
         }))
         .sort(sortSelectedFirst)
@@ -62,7 +62,7 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
                             className={classes.userPic}/>)
                     : (<div className={classes.userLink}>
                         <Avatar className={classes.userPhoto} alt=""
-                                style={{backgroundColor: friend.userLabel.avatarColorHex}}>
+                                style={{ backgroundColor: friend.userLabel.avatarColorHex }}>
                             {getFirstChars(friend.userLabel)}
                         </Avatar>
                     </div>)
@@ -88,10 +88,10 @@ const TagFriendButton = ({friends, selected, handleFriendTag, getFriendsToTag}) 
                 </div>
             </Button>
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
-                {({TransitionProps, placement}) => (
+                {({ TransitionProps, placement }) => (
                     <Grow
                         {...TransitionProps}
-                        style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                     >
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>

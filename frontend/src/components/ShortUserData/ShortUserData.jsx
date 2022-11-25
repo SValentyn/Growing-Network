@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
-import {getDateWithoutTime} from '../../utils/helpers/dateFormatter'
+import { getDateWithoutTime } from '../../utils/helpers/dateFormatter'
 
 import useStyles from './shortUserDataStyles'
 
-const ShortUserData = ({profileOwner}) => {
+const ShortUserData = ({ profileOwner }) => {
     const classes = useStyles()
-    const {email, birthDate, gender, location, joinedDate} = profileOwner
+    const { email, birthDate, gender, location, joinedDate } = profileOwner
     const formattedBirthDate = birthDate ? getDateWithoutTime(birthDate) : ''
     const formattedJoinedDate = getDateWithoutTime(joinedDate)
 

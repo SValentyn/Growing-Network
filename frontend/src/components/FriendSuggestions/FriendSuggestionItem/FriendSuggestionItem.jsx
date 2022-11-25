@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {get} from 'lodash'
+import { get } from 'lodash'
 import Box from '@material-ui/core/Box'
-import {Avatar, Grid, IconButton, Tooltip, Typography, Zoom} from '@material-ui/core'
+import { Avatar, Grid, IconButton, Tooltip, Typography, Zoom } from '@material-ui/core'
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline'
 
-import {sendFriendRequest} from '../../../actions/friends'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
+import { sendFriendRequest } from '../../../actions/friends'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './friendSuggestionItemStyles'
 
 const COMMON_F_AVATARS_TO_SHOW = 4
 
-const FriendSuggestions = ({person, commonFriends}) => {
+const FriendSuggestions = ({ person, commonFriends }) => {
     const classes = useStyles()
-    const {username} = person
+    const { username } = person
     const [requestSent, setRequestSent] = useState(false)
 
     const createFriendRequest = responderId => {
@@ -30,7 +30,7 @@ const FriendSuggestions = ({person, commonFriends}) => {
             (<Link to={'profile/' + commonFriend.username} key={commonFriend.username} className={classes.userLink}>
                 <Tooltip title={getFullName(commonFriend)} TransitionComponent={Zoom}>
                     <Avatar className={classes.commonFriendAvatar} src={getAvatarLink(commonFriend)} alt=""
-                            style={{backgroundColor: getAvatarColorHex(commonFriend)}}>
+                            style={{ backgroundColor: getAvatarColorHex(commonFriend) }}>
                         {getFirstChars(commonFriend)}
                     </Avatar>
                 </Tooltip>
@@ -46,13 +46,13 @@ const FriendSuggestions = ({person, commonFriends}) => {
                     <Grid item>
                         <Link to={`/profile/${get(person, 'username')}`} className={classes.userLink}>
                             <Avatar className={classes.image} src={getAvatarLink(person)} alt=""
-                                    style={{backgroundColor: getAvatarColorHex(person)}}>
+                                    style={{ backgroundColor: getAvatarColorHex(person) }}>
                                 {getFirstChars(person)}
                             </Avatar>
                         </Link>
                     </Grid>
 
-                    <Grid item style={{alignSelf: 'center'}}>
+                    <Grid item style={{ alignSelf: 'center' }}>
                         <Typography variant="subtitle1" component="div" className={classes.name}>
                             <Link to={`/profile/${get(person, 'username')}`} className={classes.userLink}>
                                 {getFullName(person)}
@@ -73,7 +73,9 @@ const FriendSuggestions = ({person, commonFriends}) => {
 
                 <Grid item xs={12} className={classes.commonFriendsWrapper}>
                     <Box display="flex">
-                        <span>{commonFriends.length > 0 ? commonFriends.length + ' mutual friends: ' : 'No mutual friends'}  </span>
+                        <span>
+                            {commonFriends.length > 0 ? commonFriends.length + ' mutual friends: ' : 'No mutual friends'}  
+                        </span>
                         {commonFriendAvatars} {commonFriendAvatars.length < commonFriends.length && '...'}
                     </Box>
                 </Grid>

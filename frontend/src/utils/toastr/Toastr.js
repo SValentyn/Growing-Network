@@ -1,5 +1,5 @@
 import React from 'react'
-import {toastr} from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr'
 import ToastrContent from '../../components/Toastr/ToastrContent'
 
 export const serverError = 'An error occurred while trying to access the server. Please try again later.'
@@ -12,7 +12,7 @@ const toastrDefaultOptions = {
 }
 
 const showToastr = (params) => {
-    const {variant, message, toastrOptions = {}} = params
+    const { variant, message, toastrOptions = {} } = params
     toastr.message('', {
         ...toastrDefaultOptions,
         ...toastrOptions,
@@ -24,18 +24,18 @@ const showToastr = (params) => {
 
 export const Toastr = {
     success: (message) => {
-        showToastr({message, variant: 'success'})
+        showToastr({ message, variant: 'success' })
     },
 
     error: (message = serverError) => {
-        showToastr({message, variant: 'error'})
+        showToastr({ message, variant: 'error' })
     },
 
     warning: (message) => {
-        showToastr({message, variant: 'warning'})
+        showToastr({ message, variant: 'warning' })
     },
 
     info: (message) => {
-        showToastr({message, variant: 'info'})
+        showToastr({ message, variant: 'info' })
     }
 }

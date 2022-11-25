@@ -17,7 +17,7 @@ import {
     RESET_FRIEND_SUGGESTIONS,
     RESET_FRIENDS
 } from '../utils/constants/actionConstants'
-import {addPagedPayload} from '../utils/helpers/payloadAdapter'
+import { addPagedPayload } from '../utils/helpers/payloadAdapter'
 
 const initialState = {
     userFriends: [],
@@ -30,14 +30,14 @@ const initialState = {
     loading: false
 }
 
-export default function(state = initialState, action) {
-    const {type, payload} = action
+export default function (state = initialState, action) {
+    const { type, payload } = action
     switch (type) {
         case FRIENDS_STARTED_LOADING:
-            return {...state, loading: true}
+            return { ...state, loading: true }
 
         case FRIENDS_STOPPED_LOADING:
-            return {...state, loading: false}
+            return { ...state, loading: false }
 
         case FRIENDS_RECEIVED:
             return {
@@ -47,7 +47,7 @@ export default function(state = initialState, action) {
             }
 
         case ACTIVE_FRIENDS_STARTED_LOADING:
-            return {...state, loadingActiveFriends: true}
+            return { ...state, loadingActiveFriends: true }
 
         case ACTIVE_FRIENDS_RECEIVED:
             return {
@@ -57,10 +57,10 @@ export default function(state = initialState, action) {
             }
 
         case ACTIVE_FRIENDS_STOPPED_LOADING:
-            return {...state, loadingActiveFriends: false}
+            return { ...state, loadingActiveFriends: false }
 
         case RESET_ACTIVE_FRIENDS:
-            return {...state, activeFriends: []}
+            return { ...state, activeFriends: [] }
 
         case CURRENT_USER_FRIENDS_RECEIVED:
             return {
@@ -69,16 +69,16 @@ export default function(state = initialState, action) {
             }
 
         case FRIEND_SUGGESTIONS_STARTED_LOADING:
-            return {...state, friendSuggestionsAreLoading: true}
+            return { ...state, friendSuggestionsAreLoading: true }
 
         case FRIEND_SUGGESTIONS_RECEIVED:
-            return {...state, friendSuggestions: payload, friendSuggestionsAreLoading: false}
+            return { ...state, friendSuggestions: payload, friendSuggestionsAreLoading: false }
 
         case FRIEND_SUGGESTIONS_STOPPED_LOADING:
-            return {...state, friendSuggestionsAreLoading: false}
+            return { ...state, friendSuggestionsAreLoading: false }
 
         case INCOMING_FRIEND_REQUESTS_RECEIVED:
-            return {...state, incomingFriendRequests: payload}
+            return { ...state, incomingFriendRequests: payload }
 
         case REQUEST_CONFIRMED:
             return {
@@ -100,12 +100,12 @@ export default function(state = initialState, action) {
             }
 
         case RESET_FRIENDS:
-            return {...state, userFriends: []}
+            return { ...state, userFriends: [] }
 
         case RESET_FRIEND_SUGGESTIONS:
-            return {...state, friendSuggestions: []}
+            return { ...state, friendSuggestions: [] }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }

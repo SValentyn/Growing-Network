@@ -1,21 +1,21 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import 'emoji-mart/css/emoji-mart.css'
-import {Avatar, IconButton, Input, Paper} from '@material-ui/core'
+import { Avatar, IconButton, Input, Paper } from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 
-import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
-import {sendMessage} from '../../../../actions/chat'
+import { getAvatarLink } from '../../../../utils/helpers/imageHelper'
+import { sendMessage } from '../../../../actions/chat'
 
 import useStyles from './sendMessageStyles'
 import NimblePicker from 'emoji-mart/dist-modern/components/picker/nimble-picker'
 import data from 'emoji-mart/data/google.json'
-import {getAvatarColorHex, getFirstChars} from '../../../../utils/helpers/commonFormatter'
-import {HtmlTooltip} from './HtmlTooltip'
+import { getAvatarColorHex, getFirstChars } from '../../../../utils/helpers/commonFormatter'
+import { HtmlTooltip } from './HtmlTooltip'
 
-const SendMessage = ({authUser, chatId}) => {
+const SendMessage = ({ authUser, chatId }) => {
     const classes = useStyles()
     const [value, setValue] = useState('')
 
@@ -25,7 +25,7 @@ const SendMessage = ({authUser, chatId}) => {
 
     const handleSubmit = () => {
         if (value) {
-            sendMessage({chatId, text: value})
+            sendMessage({ chatId, text: value })
             setValue('')
         }
     }
@@ -46,7 +46,7 @@ const SendMessage = ({authUser, chatId}) => {
 
         if (e.key === 'Enter' && value) {
             e.preventDefault()
-            sendMessage({chatId, text: value})
+            sendMessage({ chatId, text: value })
             setValue('')
         }
     }
@@ -63,7 +63,7 @@ const SendMessage = ({authUser, chatId}) => {
     return (
         <div className={classes.root}>
             <Avatar src={getAvatarLink(authUser)} className={classes.userPhoto} alt=""
-                    style={{backgroundColor: getAvatarColorHex(authUser)}}>
+                    style={{ backgroundColor: getAvatarColorHex(authUser) }}>
                 {getFirstChars(authUser)}
             </Avatar>
 
@@ -79,7 +79,7 @@ const SendMessage = ({authUser, chatId}) => {
                        onKeyDown={handleCheckHeight}
                        placeholder="Write a message..."
                        autoFocus
-                       style={{whiteSpace: 'pre-line'}}
+                       style={{ whiteSpace: 'pre-line' }}
                 />
             </Paper>
 

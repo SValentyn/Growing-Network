@@ -1,8 +1,8 @@
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles((props) => ({
-    root: props => ({
+    root: (props) => ({
         height: props.height,
         display: 'flex',
         justifyContent: 'center',

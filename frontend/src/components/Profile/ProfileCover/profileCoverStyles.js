@@ -1,4 +1,4 @@
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import styleConstants from '../../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(() => ({
@@ -16,8 +16,7 @@ const useStyles = makeStyles(() => ({
     avatarImg: {
         width: 175,
         height: 175,
-        position: 'absolute',
-        bottom: -30,
+        bottom: -90,
         left: 20,
         fontSize: 80,
         boxShadow: '0 1px rgb(255 255 255 / 15%) inset, 0 1px 15px rgb(0 1 0 / 15%), 0 0 1px 1px rgb(0 1 6 / 15%)',

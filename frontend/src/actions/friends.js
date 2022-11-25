@@ -18,7 +18,7 @@ import {
     RESET_FRIENDS
 } from '../utils/constants/actionConstants'
 import apiRequest from '../utils/helpers/apiRequest'
-import {serverError, Toastr} from '../utils/toastr/Toastr'
+import { serverError, Toastr } from '../utils/toastr/Toastr'
 
 export const loadUserFriends = (username, page, size, isInitialRequest) => async(dispatch) => {
     dispatch({
@@ -32,7 +32,7 @@ export const loadUserFriends = (username, page, size, isInitialRequest) => async
     }
 
     try {
-        const friends = await apiRequest.get('/users/friends/' + username, {params: {page, size}})
+        const friends = await apiRequest.get('/users/friends/' + username, { params: { page, size } })
         dispatch({
             type: FRIENDS_RECEIVED,
             payload: friends
@@ -46,7 +46,7 @@ export const loadUserFriends = (username, page, size, isInitialRequest) => async
 
 export const loadCurrentUserFriends = (username, page, size) => async(dispatch) => {
     try {
-        const friends = await apiRequest.get('/users/friends/' + username, {params: {page, size}})
+        const friends = await apiRequest.get('/users/friends/' + username, { params: { page, size } })
         dispatch({
             type: CURRENT_USER_FRIENDS_RECEIVED,
             payload: friends
@@ -102,7 +102,7 @@ export const getFriendSuggestions = (size) => async(dispatch) => {
     })
 
     try {
-        const suggestions = await apiRequest.get('/users/friends/suggest', {params: {size}})
+        const suggestions = await apiRequest.get('/users/friends/suggest', { params: { size } })
         dispatch({
             type: FRIEND_SUGGESTIONS_RECEIVED,
             payload: suggestions
@@ -119,7 +119,7 @@ export const sendFriendRequest = (responderId) => {
     return apiRequest.post(/requests/ + responderId)
 }
 
-export const getIncomingFriendRequests = () => async dispatch => {
+export const getIncomingFriendRequests = () => async(dispatch) => {
     try {
         const requests = await apiRequest.get('/requests')
         dispatch({
@@ -136,7 +136,7 @@ export const checkFriendshipStatus = (targetUsername) => {
 }
 
 export const loadActiveFriends = (page, size, isInitialRequest) => async(dispatch) => {
-    let pageable = {page, size}
+    let pageable = { page, size }
 
     dispatch({
         type: ACTIVE_FRIENDS_STARTED_LOADING

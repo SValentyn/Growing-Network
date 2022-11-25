@@ -6,12 +6,12 @@ import styleConstants from '../../utils/constants/styleConstants'
 
 import useStyles from './preloaderStyles'
 
-export default function Preloader({color = styleConstants.BTN_BG_COLOR, fullScreen = false, size = 40}) {
-    const classes = useStyles({fullScreen})
+export default function Preloader ({ color = styleConstants.BTN_BG_COLOR, fullScreen = false, size = 40 }) {
+    const classes = useStyles({ fullScreen })
 
     return (
-        <div className={classNames(classes.root, {fullScreen})}>
-            <CircularProgress style={{color}} size={size}/>
+        <div className={classNames(classes.root, { fullScreen })}>
+            <CircularProgress style={{ color }} size={size}/>
         </div>
     )
 }

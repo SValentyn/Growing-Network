@@ -46,7 +46,7 @@ export const getMessagesForChat = (chatId, page, size, isInitialRequest) => asyn
         })
     }
 
-    apiRequest.get(`/messages/${chatId}`, {params: {page, size}})
+    apiRequest.get(`/messages/${chatId}`, { params: { page, size } })
         .then(res => {
                 dispatch({
                     type: MESSAGES_RECEIVED,
@@ -59,8 +59,8 @@ export const getMessagesForChat = (chatId, page, size, isInitialRequest) => asyn
         }))
 }
 
-export const sendMessage = ({chatId, text}) => (
-    apiRequest.post('/messages/add', {chatId, text})
+export const sendMessage = ({ chatId, text }) => (
+    apiRequest.post('/messages/add', { chatId, text })
 )
 
 export const addMessageToCurrentChat = (msg) => (dispatch) => {
@@ -75,7 +75,7 @@ export const clearCurrentChatMessages = () => (dispatch) =>
         type: CHAT_PAGE_LEFT
     })
 
-export const getChat = (userId) => async dispatch => {
+export const getChat = (userId) => async(dispatch) => {
     dispatch({
         type: START_LOADING_CHAT
     })

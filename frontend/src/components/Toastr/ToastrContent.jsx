@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
@@ -10,7 +10,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
 import WarningIcon from '@material-ui/icons/Warning'
 
-import {useStyles} from './toastrStyles'
+import { useStyles } from './toastrStyles'
 
 const variantIcon = {
     success: CheckCircleIcon,
@@ -19,9 +19,9 @@ const variantIcon = {
     info: InfoIcon
 }
 
-function MySnackbarContentWrapper(props) {
+function MySnackbarContentWrapper (props) {
     const classes = useStyles()
-    const {className, message, onClose, variant, ...other} = props
+    const { className, message, onClose, variant, ...other } = props
     const Icon = variantIcon[variant]
 
     return (
@@ -51,27 +51,27 @@ MySnackbarContentWrapper.propTypes = {
     variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired
 }
 
-export default function ToastrContent(props) {
-    const {message, variant = 'info'} = props
+export default function ToastrContent (props) {
+    const { message, variant = 'info' } = props
     const classes = useStyles()
     const [open, setOpen] = useState(true)
+
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return
         }
-
         setOpen(false)
     }
 
     return (
         <div>
             <Snackbar
+                open={open}
+                onClose={handleClose}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right'
                 }}
-                open={open}
-                onClose={handleClose}
             >
                 <MySnackbarContentWrapper
                     variant={variant}

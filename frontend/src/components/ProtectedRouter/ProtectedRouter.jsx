@@ -1,17 +1,17 @@
 /* global URLSearchParams */
-import React, {useEffect} from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {Redirect, Route, Switch, useLocation} from 'react-router-dom'
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 
 import HomePage from '../../pages/HomePage/HomePage'
 import ProfilePage from '../../pages/ProfilePage/ProfilePage'
-import {loadUser} from '../../actions/auth'
+import { loadUser } from '../../actions/auth'
 import Preloader from '../Preloader/Preloader'
 import Chat from '../Chat/Chat'
 import apiRequest from '../../utils/helpers/apiRequest'
 
-const ProtectedRouter = ({authFailed, emailIsConfirmed, user, loadUser}) => {
+const ProtectedRouter = ({ authFailed, emailIsConfirmed, user, loadUser }) => {
     const token = new URLSearchParams(useLocation().search).get('token')
     if (token) {
         apiRequest.rememberUser(token)

@@ -1,23 +1,23 @@
-import React, {Fragment, useEffect, useRef, useState} from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {get, isEmpty} from 'lodash'
-import {Link} from 'react-router-dom'
-import {Avatar, CircularProgress, TextField} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { get, isEmpty } from 'lodash'
+import { Link } from 'react-router-dom'
+import { Avatar, CircularProgress, TextField } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import SearchIcon from '@material-ui/icons/Search'
 
-import {getAvatarLink} from '../../utils/helpers/imageHelper'
-import {searchData} from '../../actions/search'
-import {throttlingWrapper} from '../../utils/helpers/throttle'
+import { getAvatarLink } from '../../utils/helpers/imageHelper'
+import { searchData } from '../../actions/search'
+import { throttlingWrapper } from '../../utils/helpers/throttle'
+import { getAvatarColorHex, getFirstChars } from '../../utils/helpers/commonFormatter'
 
 import useStyles from './searchStyle'
-import {getAvatarColorHex, getFirstChars} from '../../utils/helpers/commonFormatter'
 
 const FIRST_PAGE = 0
 const SEARCH_PAGE_SIZE = 10
 
-const Search = ({loading, searchData, searchResults}) => {
+const Search = ({ loading, searchData, searchResults }) => {
     const classes = useStyles()
     const [open, setOpen] = useState(false)
     const [options, setOptions] = useState([])
@@ -48,7 +48,7 @@ const Search = ({loading, searchData, searchResults}) => {
         <Link to={`/profile/${get(option, 'username')}`} className={classes.link}>
             <div className={classes.optionWrapper}>
                 <Avatar src={getAvatarLink(option)} className={classes.userPhoto} alt=""
-                        style={{backgroundColor: getAvatarColorHex(option)}}>
+                        style={{ backgroundColor: getAvatarColorHex(option) }}>
                     {getFirstChars(option)}
                 </Avatar>
                 {`${get(option, 'firstName')} ${get(option, 'lastName')}`}
@@ -113,9 +113,9 @@ Search.propTypes = {
     searchResults: PropTypes.array
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     loading: state.search.searchResultLoading,
     searchResults: state.search.searchResults
 })
 
-export default connect(mapStateToProps, {searchData})(Search)
+export default connect(mapStateToProps, { searchData })(Search)

@@ -1,9 +1,9 @@
 /* global URL */
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {get} from 'lodash'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { get } from 'lodash'
 import {
     Avatar,
     Button,
@@ -22,13 +22,13 @@ import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
 import TagFriendButton from '../TagFriendButton/TagFriendButton'
-import {getAvatarLink, resetFileInput} from '../../../utils/helpers/imageHelper'
-import {loadCurrentUserFriends} from '../../../actions/friends'
+import { getAvatarLink, resetFileInput } from '../../../utils/helpers/imageHelper'
+import { loadCurrentUserFriends } from '../../../actions/friends'
 
 import useStyles from './updatePostStyles'
-import {updatePost, uploadImages} from '../../../actions/post'
-import {Toastr} from '../../../utils/toastr/Toastr'
-import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import { updatePost, uploadImages } from '../../../actions/post'
+import { Toastr } from '../../../utils/toastr/Toastr'
+import { getAvatarColorHex, getFirstChars } from '../../../utils/helpers/commonFormatter'
 
 const FRIENDS_INITIAL_SIZE = 16
 const STARTING_PAGE = 0
@@ -44,11 +44,11 @@ const UpdatePost = ({
     updatePost
 }) => {
     const classes = useStyles()
-    const {id, message, image, taggedFriends} = post
-    const {firstName, username} = currentUser
+    const { id, message, image, taggedFriends } = post
+    const { firstName, username } = currentUser
 
     const [uploadForm, setUploadForm] = useState({
-        imagesToUpload: image ? [{id: image.id, url: image.src}] : [],
+        imagesToUpload: image ? [{ id: image.id, url: image.src }] : [],
         textToUpload: message,
         taggedFriendsToUpload: taggedFriends
     })
@@ -87,7 +87,7 @@ const UpdatePost = ({
                 (imgLinks) => updatePost(id, textToUpload, imgLinks, taggedFriendsToUpload, true),
                 (images) => {
                     Toastr.error('Unable to upload image. Please try again.')
-                    setUploadForm({...uploadForm, imagesToUpload: images})
+                    setUploadForm({ ...uploadForm, imagesToUpload: images })
                 })
         }
     }
@@ -99,7 +99,7 @@ const UpdatePost = ({
     }
 
     const handleTextInputChange = (e) => {
-        setUploadForm({...uploadForm, textToUpload: e.target.value})
+        setUploadForm({ ...uploadForm, textToUpload: e.target.value })
     }
 
     const handleFileInputChange = (e) => {
@@ -108,7 +108,7 @@ const UpdatePost = ({
             url: URL.createObjectURL(file),
             uploadError: false
         }))
-        setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
+        setUploadForm({ ...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls) })
         resetFileInput(e)
     }
 
@@ -128,7 +128,7 @@ const UpdatePost = ({
 
     const removeImage = (url) => {
         const filteredImages = imagesToUpload.filter(img => img.url !== url)
-        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
+        setUploadForm({ ...uploadForm, imagesToUpload: filteredImages })
     }
 
     const images = imagesToUpload.map((img, index) => (
@@ -152,10 +152,10 @@ const UpdatePost = ({
 
     return (
         <Popper open={openUpdateWindow} anchorEl={updateRef.current} role={undefined} transition>
-            {({TransitionProps, placement}) => (
+            {({ TransitionProps, placement }) => (
                 <Grow
                     {...TransitionProps}
-                    style={{transformOrigin: placement === 'bottom' ? 'top' : 'bottom'}}
+                    style={{ transformOrigin: placement === 'bottom' ? 'top' : 'bottom' }}
                 >
                     <Paper className={classes.container} id="updating-post" elevation={1}>
                         <Typography variant="subtitle1" component="div" className={classes.header}>
@@ -166,7 +166,7 @@ const UpdatePost = ({
                                 <Grid container item xs={2} lg={1} justify="center" alignItems="flex-start">
                                     <Link to={`/profile/${get(currentUser, 'username')}`} className={classes.userLink}>
                                         <Avatar src={getAvatarLink(currentUser)} className={classes.avatar} alt=""
-                                                style={{backgroundColor: getAvatarColorHex(currentUser)}}>
+                                                style={{ backgroundColor: getAvatarColorHex(currentUser) }}>
                                             {getFirstChars(currentUser)}
                                         </Avatar>
                                     </Link>
@@ -222,7 +222,7 @@ const UpdatePost = ({
                                 </Grid>
                                 <Grid container item xs={4} justify="flex-end">
                                     <Button className={classes.button} variant="contained" onClick={handleClose}
-                                            style={{padding: '0 10px'}}>
+                                            style={{ padding: '0 10px' }}>
                                         Cancel
                                     </Button>
                                     <Button className={classes.button} type="submit" variant="contained"

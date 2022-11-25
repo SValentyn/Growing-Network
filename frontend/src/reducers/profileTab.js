@@ -10,26 +10,26 @@ const initialState = {
     selectedTab: 'timeline'
 }
 
-export default function(state = initialState, action) {
-    const {type, payload} = action
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
     switch (type) {
         case TAB_RESET:
-            return {...state, selectedTab: 'timeline'}
+            return { ...state, selectedTab: 'timeline' }
 
         case FRIEND_TAB_SELECTED:
-            return {...state, selectedTab: 'friends'}
+            return { ...state, selectedTab: 'friends' }
 
         case FRIEND_REQUEST_TAB_SELECTED:
-            return {...state, selectedTab: 'friend requests'}
+            return { ...state, selectedTab: 'friend requests' }
 
         case PHOTOS_TAB_SELECTED:
-            return {...state, selectedTab: 'photos'}
+            return { ...state, selectedTab: 'photos' }
 
         case TAB_CHANGED:
-            return {...state, selectedTab: payload}
+            return { ...state, selectedTab: payload }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }

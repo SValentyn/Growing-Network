@@ -1,7 +1,7 @@
-import React, {Fragment} from 'react'
-import {Link} from 'react-router-dom'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
-import {Button, CssBaseline, Grid, Paper, Typography} from '@material-ui/core'
+import { Button, CssBaseline, Grid, Paper, Typography } from '@material-ui/core'
 import useStyles from './landingStyles'
 
 const Landing = () => {
@@ -10,7 +10,7 @@ const Landing = () => {
     return (
         <Fragment>
             <CssBaseline/>
-            <Grid container spacing={3} justify="center" alignItems="center" style={{height: '80vh'}}>
+            <Grid container spacing={3} justify="center" alignItems="center" style={{ height: '80vh' }}>
                 <Grid item xs={10}>
                     <Paper className={classes.paper} elevation={1}>
                         <Typography variant="h2" component="h1" color="textPrimary" gutterBottom>

@@ -1,17 +1,17 @@
-import React, {Fragment} from 'react'
-import {connect} from 'react-redux'
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {get} from 'lodash'
-import {Link} from 'react-router-dom'
-import {Avatar} from '@material-ui/core'
+import { get } from 'lodash'
+import { Link } from 'react-router-dom'
+import { Avatar } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 
 import PostMenu from './PostMenu/PostMenu'
 import TaggedFriendsSelect from './TaggedFriendsSelect/TaggedFriendsSelect'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
-import {dateFormatter} from '../../../utils/helpers/dateFormatter'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../utils/helpers/commonFormatter'
+import { dateFormatter } from '../../../utils/helpers/dateFormatter'
 
 import useStyles from './postAuthorStyles'
 
@@ -74,7 +74,7 @@ const PostAuthor = ({
             <Grid item className={classes.user}>
                 <Link to={`/profile/${get(author, 'username')}`} className={classes.userLink}>
                     <Avatar src={getAvatarLink(author)} className={classes.userPhoto} alt=""
-                            style={{backgroundColor: getAvatarColorHex(author)}}>
+                            style={{ backgroundColor: getAvatarColorHex(author) }}>
                         {getFirstChars(author)}
                     </Avatar>
                 </Link>

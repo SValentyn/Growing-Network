@@ -1,5 +1,5 @@
-import {get} from 'lodash'
-import {getAvatarLink} from './imageHelper'
+import { get } from 'lodash'
+import { getAvatarLink } from './imageHelper'
 
 export const getFullName = (user) => {
     return `${get(user, 'firstName', '')} ${get(user, 'lastName', '')}`

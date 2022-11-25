@@ -12,7 +12,7 @@ import {
     STOP_LOADING,
     USER_LOADED
 } from '../utils/constants/actionConstants'
-import {Toastr} from '../utils/toastr/Toastr'
+import { Toastr } from '../utils/toastr/Toastr'
 
 /**
  * Load current User
@@ -62,8 +62,8 @@ export const register = (registerData) => async(dispatch) => {
 /**
  * Login into Profile
  */
-export const login = ({username, password}) => async(dispatch) => {
-    const body = {username, password}
+export const login = ({ username, password }) => async(dispatch) => {
+    const body = { username, password }
 
     try {
         dispatch({
@@ -92,20 +92,20 @@ export const login = ({username, password}) => async(dispatch) => {
  */
 export const logout = () => (dispatch) => {
     apiRequest.forgetUser()
-    dispatch({type: LOGOUT})
+    dispatch({ type: LOGOUT })
 }
 
 /**
  * Reset password
  */
 export const resetPassword = (email) => async(dispatch) => {
-    dispatch({type: START_LOADING})
+    dispatch({ type: START_LOADING })
 
     try {
-        await apiRequest.post('/users/reset_password', {email}, null, false)
-        dispatch({type: PASSWORD_RESET})
+        await apiRequest.post('/users/reset_password', { email }, null, false)
+        dispatch({ type: PASSWORD_RESET })
     } catch (e) {
-        dispatch({type: STOP_LOADING})
+        dispatch({ type: STOP_LOADING })
     }
 }
 
@@ -113,14 +113,14 @@ export const resetPassword = (email) => async(dispatch) => {
  * Set new password
  */
 export const setNewPassword = (password, token) => async(dispatch) => {
-    dispatch({type: START_LOADING})
+    dispatch({ type: START_LOADING })
 
     try {
-        await apiRequest.post('/users/set_new_password/' + token, {password}, null, false)
-        dispatch({type: STOP_LOADING})
+        await apiRequest.post('/users/set_new_password/' + token, { password }, null, false)
+        dispatch({ type: STOP_LOADING })
         return true
     } catch (e) {
-        dispatch({type: STOP_LOADING})
+        dispatch({ type: STOP_LOADING })
         return false
     }
 }

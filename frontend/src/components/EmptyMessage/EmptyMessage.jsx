@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Paper, Typography} from '@material-ui/core'
+import { Paper, Typography } from '@material-ui/core'
 import classnames from 'classnames'
 
 import useStyles from './emptyMessagesStyles'
 
-export const EmptyMessages = ({height, className, children}) => {
-    const classes = useStyles({height})
+export const EmptyMessages = ({ height, className, children }) => {
+    const classes = useStyles({ height })
 
     return (
         <Paper className={classnames(classes.root, className)} elevation={1}>

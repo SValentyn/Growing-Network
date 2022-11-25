@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {find, isEmpty} from 'lodash'
+import { find, isEmpty } from 'lodash'
 
 import ChatList from './ChatList/ChatList'
 import ChatDetails from './ChatDetails/ChatDetails'
 import ChatPlaceholder from './ChatPlaceholder/ChatPlaceholder'
-import {getAllChats, getChat, getMessagesForChat} from '../../actions/chat'
+import { getAllChats, getChat, getMessagesForChat } from '../../actions/chat'
 
 import useStyles from './chatStyles'
 
@@ -31,7 +31,7 @@ const Chat = ({
     unreadChats
 }) => {
     const classes = useStyles()
-    const {chatId, userId} = useParams()
+    const { chatId, userId } = useParams()
     const [sortedChats, setSortedChats] = useState([])
     const [sortedMessages, setSortedMessages] = useState([])
     const [isSearchChatsApply, setIsSearchChatsApply] = useState(false)
@@ -72,7 +72,7 @@ const Chat = ({
         if (!query) {
             return setIsSearchChatsApply(false)
         }
-        const sortedChats = chats.filter(chat => {
+        const sortedChats = chats.filter((chat) => {
             const secondParticipant = find(chat.participants, participant => participant.username !== authUser)
 
             return secondParticipant.firstName.toLowerCase().includes(query.toLowerCase()) ||
@@ -96,16 +96,16 @@ const Chat = ({
     return (
         <div className={classes.root}>
             {!isSingleChat &&
-            <ChatList
-                className={classes.chatList}
-                chats={isSearchChatsApply ? sortedChats : chats}
-                chatMessages={chatMessages}
-                chatsLoading={chatsLoading}
-                selectedChatId={selectedChatId}
-                authUser={authUser}
-                unreadChats={unreadChats}
-                handleSearch={handleChatsSearch}
-            />
+                <ChatList
+                    className={classes.chatList}
+                    chats={isSearchChatsApply ? sortedChats : chats}
+                    chatMessages={chatMessages}
+                    chatsLoading={chatsLoading}
+                    selectedChatId={selectedChatId}
+                    authUser={authUser}
+                    unreadChats={unreadChats}
+                    handleSearch={handleChatsSearch}
+                />
             }
             {selectedChat ? (
                 <ChatDetails
@@ -158,4 +158,4 @@ const mapStateToProps = state => ({
     unreadChats: state.chat.unreadChats
 })
 
-export default connect(mapStateToProps, {getAllChats, getMessagesForChat, getChat})(Chat)
+export default connect(mapStateToProps, { getAllChats, getMessagesForChat, getChat })(Chat)

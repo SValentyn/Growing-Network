@@ -1,20 +1,21 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Avatar, Container, Dialog, IconButton, Tab, Tabs, Tooltip, Zoom} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { Avatar, Container, Dialog, IconButton, Tab, Tabs, Tooltip, Zoom } from '@material-ui/core'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
-
 import ManageFriendshipButton from '../../ManageFriendshipButton/ManageFriendshipButton'
 import UpdateProfile from '../UpdateProfile/UpdateProfile'
-import {changeTab} from '../../../actions/profileTab'
-import {getAvatarLink, getProfileCoverLink} from '../../../utils/helpers/imageHelper'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
-import styleConstants from '../../../utils/constants/styleConstants'
+import StyledBadge from './StyledBadge'
+import { changeTab } from '../../../actions/profileTab'
+import { getAvatarLink, getProfileCoverLink } from '../../../utils/helpers/imageHelper'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../utils/helpers/commonFormatter'
+import { getLastActiveTime } from '../../../utils/helpers/dateFormatter'
 
+import styleConstants from '../../../utils/constants/styleConstants'
 import useStyles from './profileCoverStyles'
 
-const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
-    const classes = useStyles({profileCover: getProfileCoverLink(profileOwner)})
+const ProfileCover = ({ profileOwner, isOwnProfile, selectedTab, changeTab }) => {
+    const classes = useStyles({ profileCover: getProfileCoverLink(profileOwner) })
 
     const [modalOpen, setModalOpen] = useState(false)
 
@@ -27,7 +28,7 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
     }
 
     const getStyle = (isActive) => {
-        if (isActive) return {color: styleConstants.CONTAINER_TEXT_COLOR}
+        if (isActive) return { color: styleConstants.CONTAINER_TEXT_COLOR }
     }
 
     return (
@@ -60,7 +61,7 @@ const ProfileCover = ({profileOwner, isOwnProfile, selectedTab, changeTab}) => {
             <div className={classes.tabContainer}>
                 <Tabs
                     value={selectedTab}
-                    TabIndicatorProps={{style: {background: styleConstants.CONTAINER_TEXT_COLOR}}}
+                    TabIndicatorProps={{ style: { background: styleConstants.CONTAINER_TEXT_COLOR } }}
                     onChange={handleChangeTab}
                     aria-label="icon label tabs"
                     className={classes.submenu}>

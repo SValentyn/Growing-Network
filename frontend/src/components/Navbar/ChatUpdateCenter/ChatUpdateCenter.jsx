@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import SockJsClient from 'react-stomp'
-import {get} from 'lodash'
+import { get } from 'lodash'
 
 import apiRequest from '../../../utils/helpers/apiRequest'
 import {

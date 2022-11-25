@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 import useStyles from './statusIconStyles'
 
-const StatusIcon = ({className, color}) => {
+const StatusIcon = ({ className, color }) => {
     const classes = useStyles()
 
     const rootClassName = classnames(

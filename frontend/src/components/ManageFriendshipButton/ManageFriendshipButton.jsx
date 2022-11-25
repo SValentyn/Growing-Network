@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Button from '@material-ui/core/Button'
 
 import useStyles from './manageFriendshipButtonStyles'
 
-import {get} from 'lodash'
-import {checkFriendshipStatus, confirmRequest, sendFriendRequest} from '../../actions/friends'
+import { get } from 'lodash'
+import { checkFriendshipStatus, confirmRequest, sendFriendRequest } from '../../actions/friends'
 
 const ENUM_FRIENDS = 'FRIENDS'
 const ENUM_NOT_FRIENDS = 'NOT_FRIENDS'
 const ENUM_WAITING_FOR_APPROVAL = 'WAITING_FOR_APPROVAL'
 const ENUM_NEEDS_APPROVAL = 'NEEDS_APPROVAL'
 
-const ManageFriendshipButton = ({profileOwner, confirmRequest, incomingFriendRequests}) => {
+const ManageFriendshipButton = ({ profileOwner, confirmRequest, incomingFriendRequests }) => {
     const classes = useStyles()
-    const {username} = profileOwner
+    const { username } = profileOwner
     const [friendshipStatus, setFriendshipStatus] = useState(null)
 
     useEffect(() => {

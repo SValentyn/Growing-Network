@@ -1,31 +1,31 @@
-import React, {Fragment, useState} from 'react'
-import {connect} from 'react-redux'
-import {Link, Redirect} from 'react-router-dom'
+import React, { Fragment, useState } from 'react'
+import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Avatar, Button, Container, CssBaseline, Paper, TextField, Typography} from '@material-ui/core'
+import { Avatar, Button, Container, CssBaseline, Paper, TextField, Typography } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
-import {resetPassword} from '../../actions/auth'
-import {validateEmail} from '../../utils/helpers/inputValidator'
+import { resetPassword } from '../../actions/auth'
+import { validateEmail } from '../../utils/helpers/inputValidator'
 
 import useStyles from './resetPasswordStyles'
 
-const ResetPassword = ({isAuthenticated, resetPassword, resetEmailSend}) => {
+const ResetPassword = ({ isAuthenticated, resetPassword, resetEmailSend }) => {
     const classes = useStyles()
     const [formData, setFormData] = useState({
         email: '',
         emailError: ''
     })
 
-    let {email, emailError} = formData
+    let { email, emailError } = formData
 
     const onChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const validateInput = () => {
         const emailError = validateEmail(email)
-        setFormData({...formData, emailError})
+        setFormData({ ...formData, emailError })
         return emailError === ''
     }
 
@@ -110,4 +110,4 @@ const mapStateToProps = state => ({
     resetEmailSend: state.auth.resetEmailSend
 })
 
-export default connect(mapStateToProps, {resetPassword})(ResetPassword)
+export default connect(mapStateToProps, { resetPassword })(ResetPassword)

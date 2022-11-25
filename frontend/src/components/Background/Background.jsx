@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styleConstants from '../../utils/constants/styleConstants'
 
-const Background = ({children}) => {
+const Background = ({ children }) => {
     return (
         <div style={{
             backgroundColor: styleConstants.BACKGROUND_COLOR,

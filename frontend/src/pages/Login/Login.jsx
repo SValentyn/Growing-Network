@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
-import {connect} from 'react-redux'
-import {Link, Redirect, useLocation} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { Link, Redirect, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
     Avatar,
@@ -19,18 +19,18 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import classNames from 'classnames'
 
-import {login} from '../../actions/auth'
+import { login } from '../../actions/auth'
 import Preloader from '../../components/Preloader/Preloader'
-import {Toastr} from '../../utils/toastr/Toastr'
-import {areNoErrors, validatePassword, validateUsername} from '../../utils/helpers/inputValidator'
+import { Toastr } from '../../utils/toastr/Toastr'
+import { areNoErrors, validatePassword, validateUsername } from '../../utils/helpers/inputValidator'
 
 import useStyles from './loginStyles'
 import IconButton from '@material-ui/core/IconButton'
-import {Visibility, VisibilityOff} from '@material-ui/icons'
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 
 const googleLogo = '/static/images/google-icon.svg'
 
-const Login = ({isAuthenticated, login, loading}) => {
+const Login = ({ isAuthenticated, login, loading }) => {
     const classes = useStyles()
     const [formData, setFormData] = useState({
         username: '',
@@ -42,7 +42,7 @@ const Login = ({isAuthenticated, login, loading}) => {
 
     const location = useLocation()
     const error = new URLSearchParams(location.search).get('error')
-    const {username, password, usernameError, passwordError} = formData
+    const { username, password, usernameError, passwordError } = formData
 
     useEffect(() => {
         if (error) {
@@ -51,11 +51,11 @@ const Login = ({isAuthenticated, login, loading}) => {
     }, [error])
 
     const onChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const handleClickShowPassword = () => {
-        setFormData({...formData, showPassword: !formData.showPassword})
+        setFormData({ ...formData, showPassword: !formData.showPassword })
     }
 
     const handleMouseDownPassword = (e) => {
@@ -66,7 +66,7 @@ const Login = ({isAuthenticated, login, loading}) => {
         const errors = {}
         errors.passwordError = validatePassword(password)
         errors.usernameError = validateUsername(username)
-        setFormData({...formData, ...errors})
+        setFormData({ ...formData, ...errors })
 
         return areNoErrors(errors)
     }
@@ -80,7 +80,7 @@ const Login = ({isAuthenticated, login, loading}) => {
         const inputIsValid = validate()
 
         if (inputIsValid) {
-            login({username, password})
+            login({ username, password })
         }
     }
 
@@ -115,7 +115,7 @@ const Login = ({isAuthenticated, login, loading}) => {
                         helperText={usernameError === '' ? '' : usernameError}
                     />
 
-                    <Grid container style={{marginTop: -4}}>
+                    <Grid container style={{ marginTop: -4 }}>
                         <Grid item xs align="right">
                             <Link to="/password_reset" variant="body2" className={classes.link}>
                                 Forgot password?
@@ -188,4 +188,4 @@ const mapStateToProps = state => ({
     loading: state.auth.loading
 })
 
-export default connect(mapStateToProps, {login})(Login)
+export default connect(mapStateToProps, { login })(Login)

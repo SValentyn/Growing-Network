@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {EmptyMessages} from '../../EmptyMessage/EmptyMessage'
+import { EmptyMessages } from '../../EmptyMessage/EmptyMessage'
 
 import useStyles from './chatPlaceholderStyles'
 

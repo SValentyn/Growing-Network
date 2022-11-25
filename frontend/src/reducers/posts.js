@@ -10,25 +10,25 @@ import {
     RESET_RECEIVED_POSTS,
     TAG_REMOVED
 } from '../utils/constants/actionConstants'
-import {addPagedPayload} from '../utils/helpers/payloadAdapter'
+import { addPagedPayload } from '../utils/helpers/payloadAdapter'
 
 const initialState = {
     posts: [],
     loading: false
 }
 
-export default function(state = initialState, action) {
-    const {type, payload} = action
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
     switch (type) {
         case POSTS_START_LOADING:
-            return {...state, loading: true}
+            return { ...state, loading: true }
 
         case POSTS_END_LOADING:
-            return {...state, loading: false}
+            return { ...state, loading: false }
 
         case RESET_RECEIVED_POSTS:
-            return {...state, posts: []}
+            return { ...state, posts: [] }
 
         case POSTS_RECEIVED:
             return {
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
                 if (post.id === payload.postId) return payload.post
                 return post
             })
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         case POST_UPDATED: {
@@ -50,12 +50,12 @@ export default function(state = initialState, action) {
                 if (post.id === payload.postId) return payload.post
                 return post
             })
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         case POST_DELETED: {
             let result = [...state.posts].filter(post => post.id !== payload.postId)
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         case COMMENT_ADDED: {
@@ -63,7 +63,7 @@ export default function(state = initialState, action) {
                 if (post.id === payload.postId) return payload.post
                 return post
             })
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         case COMMENT_REMOVED: {
@@ -71,7 +71,7 @@ export default function(state = initialState, action) {
                 if (post.id === payload.postId) return payload.post
                 return post
             })
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         case TAG_REMOVED: {
@@ -84,10 +84,10 @@ export default function(state = initialState, action) {
             })
             if (flag) result = result.filter(post => post.id !== payload.postId)
 
-            return {...state, posts: result, loading: false}
+            return { ...state, posts: result, loading: false }
         }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }

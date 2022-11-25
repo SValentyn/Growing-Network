@@ -1,19 +1,19 @@
-import React, {Fragment} from 'react'
-import {connect} from 'react-redux'
-import {Grid, Typography} from '@material-ui/core'
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
+import { Grid, Typography } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import {get, isEmpty} from 'lodash'
+import { get, isEmpty } from 'lodash'
 
 import Preloader from '../../Preloader/Preloader'
 import Tile from '../../Tile/Tile'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../utils/helpers/commonFormatter'
 
 import useStyles from './profileFieldStyles'
-import {selectFriendsTab, selectPhotosTab} from '../../../actions/profileTab'
-import {Link} from 'react-router-dom'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
+import { selectFriendsTab, selectPhotosTab } from '../../../actions/profileTab'
+import { Link } from 'react-router-dom'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
 
-const ProfileField = ({friends, userPhotos, loadingPhotos, friendsAreLoading, selectFriendsTab, selectPhotosTab}) => {
+const ProfileField = ({ friends, userPhotos, loadingPhotos, friendsAreLoading, selectFriendsTab, selectPhotosTab }) => {
     const classes = useStyles()
 
     const gotoFriendsTab = () => {

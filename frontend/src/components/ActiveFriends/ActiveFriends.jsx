@@ -1,21 +1,21 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {get, isEmpty} from 'lodash'
-import {Avatar, IconButton, Tooltip, Typography, Zoom} from '@material-ui/core'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { get, isEmpty } from 'lodash'
+import { Avatar, IconButton, Tooltip, Typography, Zoom } from '@material-ui/core'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 
 import Preloader from '../Preloader/Preloader'
-import {getAvatarLink} from '../../utils/helpers/imageHelper'
-import {getLastActiveTime} from '../../utils/helpers/dateFormatter'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../utils/helpers/commonFormatter'
-import {changeTab} from '../../actions/profileTab'
+import { getAvatarLink } from '../../utils/helpers/imageHelper'
+import { getLastActiveTime } from '../../utils/helpers/dateFormatter'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../utils/helpers/commonFormatter'
+import { changeTab } from '../../actions/profileTab'
 
 import useStyles from './activeFriendsStyles'
 import StatusIcon from '../StatusIcon/StatusIcon'
 
-const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
+const ActiveFriends = ({ activeFriends, activeFriendsAreLoading, changeTab }) => {
     const classes = useStyles()
 
     const friendsList = () => {
@@ -27,7 +27,7 @@ const ActiveFriends = ({activeFriends, activeFriendsAreLoading, changeTab}) => {
                         <div className={classes.user}>
                             <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
                                 <Avatar className={classes.userPhoto} src={getAvatarLink(friend)} alt=""
-                                        style={{backgroundColor: getAvatarColorHex(friend)}}>
+                                        style={{ backgroundColor: getAvatarColorHex(friend) }}>
                                     {getFirstChars(friend)}
                                 </Avatar>
                             </Link>
@@ -76,4 +76,4 @@ ActiveFriends.propTypes = {
     changeTab: PropTypes.func.isRequired
 }
 
-export default connect(null, {changeTab})(ActiveFriends)
+export default connect(null, { changeTab })(ActiveFriends)

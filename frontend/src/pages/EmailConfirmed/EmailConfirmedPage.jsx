@@ -1,18 +1,18 @@
-import React, {Fragment, useEffect} from 'react'
-import {connect} from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {get} from 'lodash'
-import {CssBaseline, Grid, Paper, Typography} from '@material-ui/core'
-import {Link} from 'react-router-dom'
+import { get } from 'lodash'
+import { CssBaseline, Grid, Paper, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
-import {confirmEmail} from '../../actions/auth'
+import { confirmEmail } from '../../actions/auth'
 import useStyles from './EmailConfirmedPageStyles'
 import Preloader from '../../components/Preloader/Preloader'
 
 const EmailConfirmedPage = (props) => {
     const classes = useStyles()
     const token = get(props, 'match.params.token')
-    const {loading, emailIsConfirmed, confirmEmail} = props
+    const { loading, emailIsConfirmed, confirmEmail } = props
 
     useEffect(() => confirmEmail(token), [confirmEmail, token])
 
@@ -24,10 +24,10 @@ const EmailConfirmedPage = (props) => {
     return loading ? <Preloader/> : (
         <Fragment>
             <CssBaseline/>
-            <Grid container spacing={3} justify="center" alignItems="center" style={{height: '80vh'}}>
+            <Grid container spacing={3} justify="center" alignItems="center" style={{ height: '80vh' }}>
                 <Grid item xs={10}>
                     <Paper className={classes.paper} elevation={1}>
-                        <Typography variant="h5" color="textPrimary" gutterBottom>
+                        <Typography variant="h5" color="textPrimary" gutterBottom style={{ margin: '12px 0 12px 0' }}>
                             <p>{textMessage}</p>
                             {emailIsConfirmed && link}
                         </Typography>
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
     emailIsConfirmed: state.auth.emailIsConfirmed
 })
 
-export default connect(mapStateToProps, {confirmEmail})(EmailConfirmedPage)
+export default connect(mapStateToProps, { confirmEmail })(EmailConfirmedPage)

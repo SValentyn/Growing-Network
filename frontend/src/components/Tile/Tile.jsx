@@ -1,17 +1,17 @@
-import React, {Fragment, useState} from 'react'
-import {Avatar, Dialog, Grid, Slide} from '@material-ui/core'
+import React, { Fragment, useState } from 'react'
+import { Avatar, Dialog, Grid, Slide } from '@material-ui/core'
 
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import useStyles from './tileStyles'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = React.forwardRef(function Transition (props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
-const Tile = ({imageSrc, avatarColorHex, firstChars, title, username}) => {
-    const classes = useStyles({image: imageSrc})
+const Tile = ({ imageSrc, avatarColorHex, firstChars, title, username }) => {
+    const classes = useStyles({ image: imageSrc })
     const [openDialog, setOpenDialog] = useState(false)
 
     const handleModal = () => {
@@ -30,7 +30,7 @@ const Tile = ({imageSrc, avatarColorHex, firstChars, title, username}) => {
                             </Link>)
                             : (<Link to={'/profile/' + username} className={classes.userLink}>
                                     <Avatar className={classes.userPhoto} alt=""
-                                            style={{backgroundColor: avatarColorHex}}>
+                                            style={{ backgroundColor: avatarColorHex }}>
                                         {firstChars}
                                     </Avatar>
                                     <p className={classes.title}>{title}</p>

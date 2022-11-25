@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import {
     Button,
@@ -24,10 +24,10 @@ import LabelOffIcon from '@material-ui/icons/LabelOff'
 import MenuItem from '@material-ui/core/MenuItem'
 
 import useStyles from './postMenuStyles'
-import {deleteCurrentUserTagFromPost, deletePost} from '../../../../actions/post'
-import {get} from 'lodash'
+import { deleteCurrentUserTagFromPost, deletePost } from '../../../../actions/post'
+import { get } from 'lodash'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = React.forwardRef(function Transition (props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
@@ -90,7 +90,7 @@ const PostMenu = ({
         setOpen(!open)
     }
 
-    function handleListKeyDown(event) {
+    function handleListKeyDown (event) {
         if (event.key === 'Tab') {
             event.preventDefault()
             setOpen(false)
@@ -151,7 +151,7 @@ const PostMenu = ({
                 <MoreHorizIcon/>
             </IconButton>
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement="top">
-                {({TransitionProps}) => (
+                {({ TransitionProps }) => (
                     <Grow className={classes.grow}
                           {...TransitionProps}
                     >
@@ -159,25 +159,25 @@ const PostMenu = ({
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                                     {deleteMenuItem &&
-                                    <MenuItem onClick={handleModal}>
-                                        <DeleteIcon className={classes.menuItemIcon}/>
-                                        Delete post
-                                    </MenuItem>}
+                                        <MenuItem onClick={handleModal}>
+                                            <DeleteIcon className={classes.menuItemIcon}/>
+                                            Delete post
+                                        </MenuItem>}
                                     {editMenuItem &&
-                                    <MenuItem
-                                        ref={updateRef}
-                                        aria-controls={openUpdateWindow ? 'updating-post' : undefined}
-                                        aria-haspopup="true"
-                                        onClick={handleToggleUpdate}
-                                    >
-                                        <BrushIcon className={classes.menuItemIcon}/>
-                                        Edit post
-                                    </MenuItem>}
+                                        <MenuItem
+                                            ref={updateRef}
+                                            aria-controls={openUpdateWindow ? 'updating-post' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleToggleUpdate}
+                                        >
+                                            <BrushIcon className={classes.menuItemIcon}/>
+                                            Edit post
+                                        </MenuItem>}
                                     {removeTagMenuItem &&
-                                    <MenuItem onClick={deleteTag}>
-                                        <LabelOffIcon className={classes.menuItemIcon}/>
-                                        Remove yourself from post
-                                    </MenuItem>}
+                                        <MenuItem onClick={deleteTag}>
+                                            <LabelOffIcon className={classes.menuItemIcon}/>
+                                            Remove yourself from post
+                                        </MenuItem>}
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>

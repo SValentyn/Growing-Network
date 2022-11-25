@@ -1,23 +1,23 @@
-import React, {Fragment, useEffect, useState} from 'react'
-import {connect} from 'react-redux'
+import React, { Fragment, useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
-import {get, isEmpty} from 'lodash'
+import { Link } from 'react-router-dom'
+import { get, isEmpty } from 'lodash'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import MessageIcon from '@material-ui/icons/Message'
 import ShareIcon from '@material-ui/icons/Share'
-import {Avatar, IconButton, Tooltip, Zoom} from '@material-ui/core'
+import { Avatar, IconButton, Tooltip, Zoom } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-import {updateLikes} from '../../../actions/post'
-import {getAvatarLink} from '../../../utils/helpers/imageHelper'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../utils/helpers/commonFormatter'
+import { updateLikes } from '../../../actions/post'
+import { getAvatarLink } from '../../../utils/helpers/imageHelper'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../utils/helpers/commonFormatter'
 
 import classNames from 'classnames'
 import useStyles from './postLikeStyles'
 
-const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCreatingComment}) => {
+const PostLikePanel = ({ postId, likes, comments, user, updateLikes, focusForCreatingComment }) => {
     const classes = useStyles()
 
     const [postIsLiked, setPostIsLiked] = useState(false)
@@ -43,7 +43,7 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
             <div className={classes.container} key={get(friend, 'username')}>
                 <Link to={`/profile/${get(friend, 'username')}`} className={classes.userLink}>
                     <Avatar src={getAvatarLink(friend)} className={classes.userPhoto} alt=""
-                            style={{backgroundColor: getAvatarColorHex(friend)}}>
+                            style={{ backgroundColor: getAvatarColorHex(friend) }}>
                         {getFirstChars(friend)}
                     </Avatar>
                 </Link>
@@ -59,7 +59,7 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
             <div className={classes.panel}>
                 <LikePanelTooltip title={likedList(likes)} placement="left"
                                   interactive TransitionComponent={Zoom}
-                                  style={{marginLeft: -8}}>
+                                  style={{ marginLeft: -8 }}>
                     <IconButton aria-label="like" className={classNames(classes.iconButton, classes.likeIconButton)}
                                 onClick={() => updateLikes(postId)}>
                         {postIsLiked ? <FavoriteIcon color="secondary"/> : <FavoriteBorderIcon/>}
@@ -69,7 +69,7 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
 
                 <Tooltip title="Write a comment" placement="top"
                          interactive TransitionComponent={Zoom}
-                         style={{marginLeft: 3}}>
+                         style={{ marginLeft: 3 }}>
                     <IconButton aria-label="comment" className={classes.iconButton}
                                 onClick={focusForCreatingComment}>
                         <MessageIcon/>
@@ -79,7 +79,7 @@ const PostLikePanel = ({postId, likes, comments, user, updateLikes, focusForCrea
 
                 <Tooltip title="Share this post" placement="top"
                          interactive TransitionComponent={Zoom}
-                         style={{marginLeft: 2}}>
+                         style={{ marginLeft: 2 }}>
                     <IconButton aria-label="share" className={classes.iconButton}
                                 onClick={null}>
                         <ShareIcon/>
@@ -104,4 +104,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 })
 
-export default connect(mapStateToProps, {updateLikes})(PostLikePanel)
+export default connect(mapStateToProps, { updateLikes })(PostLikePanel)

@@ -1,7 +1,7 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import {SmoothProvider} from 'react-smooth-scrolling'
-import {Provider} from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { SmoothProvider } from 'react-smooth-scrolling'
+import { Provider } from 'react-redux'
 import store from './store'
 import theme from './theme'
 
@@ -15,9 +15,9 @@ import EmailNeedsConfirmationPage from './pages/EmailNeedsConfirmation/EmailNeed
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import NewPassword from './pages/NewPassword/NewPassword'
 import Toastr from './components/Toastr/Toastr'
-import {MuiThemeProvider} from '@material-ui/core'
+import { MuiThemeProvider } from '@material-ui/core'
 
-function App() {
+function App () {
     return (
         <SmoothProvider skew={true} ease={0.0}>
             <MuiThemeProvider theme={theme}>

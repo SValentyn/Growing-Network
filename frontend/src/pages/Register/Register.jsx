@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import {Link, Redirect} from 'react-router-dom'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
     Avatar,
@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
-import {register} from '../../actions/auth'
+import { register } from '../../actions/auth'
 import Preloader from '../../components/Preloader/Preloader'
 import {
     areNoErrors,
@@ -31,9 +31,9 @@ import {
 
 import useStyles from './registerStyles'
 import IconButton from '@material-ui/core/IconButton'
-import {Visibility, VisibilityOff} from '@material-ui/icons'
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 
-const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
+const Register = ({ isAuthenticated, loading, register, emailIsConfirmed }) => {
     const classes = useStyles()
     const [formData, setFormData] = useState({
         username: '',
@@ -66,15 +66,15 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
     } = formData
 
     const onChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const handleClickShowPassword = () => {
-        setFormData({...formData, showPassword: !formData.showPassword})
+        setFormData({ ...formData, showPassword: !formData.showPassword })
     }
 
     const handleClickShowRepeatPassword = () => {
-        setFormData({...formData, showRepeatPassword: !formData.showRepeatPassword})
+        setFormData({ ...formData, showRepeatPassword: !formData.showRepeatPassword })
     }
 
     const handleMouseDownPassword = (e) => {
@@ -89,7 +89,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
         errors.usernameError = validateUsername(username)
         errors.emailError = validateEmail(email)
 
-        setFormData({...formData, ...errors})
+        setFormData({ ...formData, ...errors })
 
         return areNoErrors(errors)
     }
@@ -99,7 +99,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
         const inputIsValid = validate()
 
         if (inputIsValid) {
-            register({email, username, password, firstName, lastName})
+            register({ email, username, password, firstName, lastName })
         }
     }
 
@@ -247,7 +247,7 @@ const Register = ({isAuthenticated, loading, register, emailIsConfirmed}) => {
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">
-                        <Grid item style={{marginTop: 6}}>
+                        <Grid item style={{ marginTop: 6 }}>
                             <Link to="/login" variant="body2" className={classes.link}>
                                 Already have an account? Sign in!
                             </Link>
@@ -272,4 +272,4 @@ const mapStateToProps = state => ({
     emailIsConfirmed: state.auth.emailIsConfirmed
 })
 
-export default connect(mapStateToProps, {register})(Register)
+export default connect(mapStateToProps, { register })(Register)

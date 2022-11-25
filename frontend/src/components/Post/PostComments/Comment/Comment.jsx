@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
-import {get} from 'lodash'
+import { Link } from 'react-router-dom'
+import { get } from 'lodash'
 import DeleteIcon from '@material-ui/icons/Delete'
-import {Avatar, Box, IconButton} from '@material-ui/core'
+import { Avatar, Box, IconButton } from '@material-ui/core'
 
-import {deleteComment} from '../../../../actions/post'
-import {dateFormatter} from '../../../../utils/helpers/dateFormatter'
-import {getAvatarColorHex, getFirstChars, getFullName} from '../../../../utils/helpers/commonFormatter'
-import {getAvatarLink} from '../../../../utils/helpers/imageHelper'
+import { deleteComment } from '../../../../actions/post'
+import { dateFormatter } from '../../../../utils/helpers/dateFormatter'
+import { getAvatarColorHex, getFirstChars, getFullName } from '../../../../utils/helpers/commonFormatter'
+import { getAvatarLink } from '../../../../utils/helpers/imageHelper'
 
 import useStyles from './commentStyles'
 
-const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
+const Comment = ({ postId, postOwner, comment, user, deleteComment }) => {
     const classes = useStyles()
 
     const [showDeleteBtn, setShowDeleteBtn] = useState(false)
-    const {id, author, message, date} = comment
+    const { id, author, message, date } = comment
 
     useEffect(
         () => setShowDeleteBtn(author.username === user.username || postOwner.username === user.username),
@@ -29,7 +29,7 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
             <Box display="flex">
                 <Link to={`/profile/${get(author, 'username')}`} className={classes.userLink}>
                     <Avatar src={getAvatarLink(author)} className={classes.userPhoto} alt=""
-                            style={{backgroundColor: getAvatarColorHex(author)}}>
+                            style={{ backgroundColor: getAvatarColorHex(author) }}>
                         {getFirstChars(author)}
                     </Avatar>
                 </Link>
@@ -47,11 +47,11 @@ const Comment = ({postId, postOwner, comment, user, deleteComment}) => {
                 </div>
             </Box>
             {showDeleteBtn &&
-            <IconButton onClick={() => deleteComment(postId, id)}
-                        aria-label="Delete comment"
-                        className={classes.deleteComment}>
-                <DeleteIcon fontSize="small"/>
-            </IconButton>
+                <IconButton onClick={() => deleteComment(postId, id)}
+                            aria-label="Delete comment"
+                            className={classes.deleteComment}>
+                    <DeleteIcon fontSize="small"/>
+                </IconButton>
             }
         </div>
     )
@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 })
 
-export default connect(mapStateToProps, {deleteComment})(Comment)
+export default connect(mapStateToProps, { deleteComment })(Comment)

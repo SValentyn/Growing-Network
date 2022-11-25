@@ -1,4 +1,4 @@
-import {fade, makeStyles} from '@material-ui/core/styles'
+import { fade, makeStyles } from '@material-ui/core/styles'
 import styleConstants from '../../utils/constants/styleConstants'
 
 const useStyles = makeStyles(theme => ({

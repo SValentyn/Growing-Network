@@ -1,9 +1,9 @@
 /* global URL */
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {get} from 'lodash'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { get } from 'lodash'
 import {
     Avatar,
     Button,
@@ -18,21 +18,21 @@ import {
 import CropOriginalOutlinedIcon from '@material-ui/icons/CropOriginalOutlined'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
-import {Toastr} from '../../../utils/toastr/Toastr'
+import { Toastr } from '../../../utils/toastr/Toastr'
 import TagFriendButton from '../TagFriendButton/TagFriendButton'
-import {createPost, uploadImages} from '../../../actions/post'
-import {getAvatarLink, resetFileInput} from '../../../utils/helpers/imageHelper'
-import {loadCurrentUserFriends} from '../../../actions/friends'
+import { createPost, uploadImages } from '../../../actions/post'
+import { getAvatarLink, resetFileInput } from '../../../utils/helpers/imageHelper'
+import { loadCurrentUserFriends } from '../../../actions/friends'
 
 import useStyles from './createPostStyles'
-import {getAvatarColorHex, getFirstChars} from '../../../utils/helpers/commonFormatter'
+import { getAvatarColorHex, getFirstChars } from '../../../utils/helpers/commonFormatter'
 
 const FRIENDS_INITIAL_SIZE = 16
 const STARTING_PAGE = 0
 
-const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentUserFriends}) => {
+const CreatePost = ({ profileOwner, currentUser, currentUserFriends, loadCurrentUserFriends }) => {
     const classes = useStyles()
-    const {firstName, username} = currentUser
+    const { firstName, username } = currentUser
     const profileOwnerUsername = profileOwner.username
 
     const [uploadForm, setUploadForm] = useState({
@@ -62,7 +62,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                 imgLinks => createPost(profileOwnerUsername, textToUpload, imgLinks, taggedFriends, true),
                 images => {
                     Toastr.error('Unable to upload image. Please try again.')
-                    setUploadForm({...uploadForm, imagesToUpload: images})
+                    setUploadForm({ ...uploadForm, imagesToUpload: images })
                 })
         }
     }
@@ -74,7 +74,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
     }
 
     const handleTextInputChange = (e) => {
-        setUploadForm({...uploadForm, textToUpload: e.target.value})
+        setUploadForm({ ...uploadForm, textToUpload: e.target.value })
     }
 
     const handleFileInputChange = (e) => {
@@ -83,7 +83,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
             url: URL.createObjectURL(file),
             uploadError: false
         }))
-        setUploadForm({...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls)})
+        setUploadForm({ ...uploadForm, imagesToUpload: imagesToUpload.concat(addedUrls) })
         resetFileInput(e)
     }
 
@@ -103,7 +103,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
 
     const removeImage = (url) => {
         const filteredImages = imagesToUpload.filter(img => img.url !== url)
-        setUploadForm({...uploadForm, imagesToUpload: filteredImages})
+        setUploadForm({ ...uploadForm, imagesToUpload: filteredImages })
     }
 
     const images = imagesToUpload.map((img, index) => (
@@ -135,7 +135,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                     <Grid container item xs={2} lg={1} justify="center">
                         <Link to={`/profile/${get(currentUser, 'username')}`} className={classes.userLink}>
                             <Avatar src={getAvatarLink(currentUser)} className={classes.userPhoto} alt=""
-                                    style={{backgroundColor: getAvatarColorHex(currentUser)}}>
+                                    style={{ backgroundColor: getAvatarColorHex(currentUser) }}>
                                 {getFirstChars(currentUser)}
                             </Avatar>
                         </Link>
@@ -143,7 +143,7 @@ const CreatePost = ({profileOwner, currentUser, currentUserFriends, loadCurrentU
                     <Grid item xs={10} lg={11}>
                         <TextField
                             className={classes.postInput}
-                            style={{fontFamily: 'Montserrat, Poppins, Open Sans Condensed, sans-serif'}}
+                            style={{ fontFamily: 'Montserrat, Poppins, Open Sans Condensed, sans-serif' }}
                             autoComplete="lastName"
                             name="lastName"
                             variant="outlined"
