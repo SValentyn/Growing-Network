@@ -34,9 +34,9 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "stylelint": "^8.2.0",
+    "stylelint": "^14.15.0",
     "stylelint-config-standard": "^17.0.0",
-    "stylelint-order": "^0.7.0"
+    "stylelint-order": "^5.0.0"
   },
   "scripts": {
     "start": "npm-run-all -p watch-styles-sass start-js",
